@@ -45,9 +45,7 @@
 > **2.** 安装 [Vundle](https://github.com/gmarik/Vundle.vim)
 
 <br/>
-
 > **3.** 将项目中的 ``vimrc`` 文件放置在 ``/usr/share/vim`` 目录下.
-
 > 启动 ``GVim`` 即可
 
 
