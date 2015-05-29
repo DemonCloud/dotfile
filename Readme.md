@@ -21,7 +21,7 @@
 
 下载项目 ： [dofile-YVIM](https://github.com/DemonCloud/dotfile-YVIM/archive/master.zip)
 
-或Clone项目 ： ``**git clone https://github.com/DemonCloud/dotfile-YVIM.git**``
+或Clone项目 ： ``git clone https://github.com/DemonCloud/dotfile-YVIM.git``
 
 <br>
 
