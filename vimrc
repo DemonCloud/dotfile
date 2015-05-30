@@ -45,8 +45,8 @@ set nocompatible
 
 "init
 "set windows pos and resize
-set lines=58
-set columns=158
+set lines=56
+set columns=128
 winpos 88 0
 
 " ## Make its Gvim Like Windows behave ## 
@@ -117,8 +117,8 @@ set go=
 filetype off
 
 " Vundle Config Manager
-set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-call vundle#begin("$VIM/vimfiles/bundle")
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " # Plugins Beginning #
 Plugin 'gmarik/Vundle.vim'
@@ -150,8 +150,8 @@ Plugin 'danro/rename.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'marijnh/tern_for_vim'
-"Plugin 'Valloric/ListToggle'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'Valloric/ListToggle'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'Shougo/neocomplcache.vim'
 "Plugin 'fatih/vim-go'
@@ -191,6 +191,7 @@ Plugin 'airblade/vim-gitgutter'
 
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
+Plugin 'junegunn/fzf'
 "Plugin 'thinca/vim-quickrun'
 "Plugin 'dyng/ctrlsf.vim'
 "Plugin 'mklabs/grunt.vim'
@@ -261,6 +262,7 @@ colorscheme gruvbox
 "call vam#ActivateAddons(['powerline'])
 
 " -----------------------------
+set rtp+=~/.fzf
 
 " alrLine && PowerLine Config
 let g:Powerline_symbols = 'fancy'
@@ -273,8 +275,8 @@ let g:airline_powerline_fonts = 1
 
 "Buftabline Config
 set hidden
-nnoremap <A-p> :bnext<CR>
-nnoremap <A-n> :bprev<CR>
+nnoremap <A-n> :bnext<CR>
+nnoremap <A-m> :bprev<CR>
 nnoremap <A-x> :bdelete<CR>
 nnoremap <A-w> :bwipeout<CR>
 
@@ -307,12 +309,15 @@ let g:lt_quickfix_list_toggle_map = '<leader>q'
 " YouCompleteMe Geek Config
 set completeopt=longest,menu
 
-let g:ycm_global_ycm_extra_conf                         = '$VIM/vimfiles/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf                            = 0
-let g:ycm_add_preview_to_completeopt					= 0
+let g:ycm_global_ycm_extra_conf        = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf           = 0
+let g:ycm_add_preview_to_completeopt   = 0
+let g:ycm_min_num_of_chars_for_completion = 3 
+let g:ycm_autoclose_preview_window_after_completion=1
+"let g:ycm_key_list_select_completion   = ['<c-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 
 let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
-let g:ycm_min_num_of_chars_for_completion               = 2   " 从第2个键入字符就开始罗列匹配项
 let g:ycm_cache_omnifunc                                = 1
 let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
 let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
@@ -330,7 +335,6 @@ let g:ycm_filetype_blacklist = {
 			\ 'vimwiki'   : 1,
 			\ 'gitcommit' : 1,
 \}
-
 
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 nnoremap <F6>  :SyntasticToggleMode <CR>
