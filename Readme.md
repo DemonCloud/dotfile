@@ -41,13 +41,25 @@
 
 > ``sudo apt-get install gvim``
 
+> ``sudo apt-get install vim``
+
+> ``sudo apt-get install vim-gtk``
+
 <br/>
 > **2.** 安装 [Vundle](https://github.com/gmarik/Vundle.vim)
 
 <br/>
-> **3.** 将项目中的 ``vimrc`` 文件放置在 ``/usr/share/vim`` 目录下.
+> **3.** 将项目中的 ``vimrc`` 文件放置在 ``~/.vim/`` 或者 ``/usr/share/vim`` 目录下.
+
 > 启动 ``GVim`` 即可
 
+<br/>
+
+> **4.** 一般来说。 插件会安装在 ``～/.vim/bundle/`` 目录下，因为要取得 Linux 文件读写权限。
+
+> 如果插件位置不在 ``/home/用户/`` 路径下，一般不会获得读写自由的权限。 可以使用 Linux ``chmod`` 命令解决读写权限问题
+
+> ``sudo chmod +777 -R  path to/files/target ``
 
 ## Update Plugin 更新插件
 
