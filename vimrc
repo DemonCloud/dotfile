@@ -45,9 +45,9 @@ set nocompatible
 
 "init
 "set windows pos and resize
-set lines=56
-set columns=128
-winpos 88 0
+set lines=48
+set columns=118
+winpos 68 0
 
 " ## Make its Gvim Like Windows behave ## 
 " So you can use 
@@ -127,6 +127,7 @@ Plugin 'tomtom/tlib_vim'
 
 " @ Plugin --- [ Style Custom ]
 Plugin 'morhetz/gruvbox'
+Plugin 'chriskempson/base16-vim'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'bling/vim-airline'
 Plugin 'terryma/vim-smooth-scroll'
@@ -143,7 +144,7 @@ Plugin 'scrooloose/syntastic'
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
 "Plugin 'ryanoasis/vim-webdevicons'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
@@ -187,11 +188,13 @@ Plugin 'Shougo/vimshell.vim'
 "Plugin 'tpope/vim-fugitive'
 Plugin 'mattn/webapi-vim'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
 
 
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
+Plugin 'kien/ctrlp.vim'
 "Plugin 'thinca/vim-quickrun'
 "Plugin 'dyng/ctrlsf.vim'
 "Plugin 'mklabs/grunt.vim'
@@ -205,8 +208,8 @@ Plugin 'othree/yajs.vim'
 "Plugin 'skammer/vim-css-color'
 Plugin 'ap/vim-css-color'
 Plugin 'hail2u/vim-css3-syntax'
-"Plugin 'othree/html5.vim'
-"Plugin 'othree/html5-syntax.vim'
+Plugin 'othree/html5.vim'
+Plugin 'othree/html5-syntax.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'kchmck/vim-coffee-script'
@@ -233,8 +236,10 @@ filetype plugin indent on
 
 " Set Color Themes 
 set background=dark
+let base16colorspace=256
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
+
 "colorscheme distinguished
 "colorscheme jellybeans
 "colorscheme hybrid
@@ -276,7 +281,7 @@ let g:airline_powerline_fonts = 1
 "Buftabline Config
 set hidden
 nnoremap <A-n> :bnext<CR>
-nnoremap <A-m> :bprev<CR>
+nnoremap <A-p> :bprev<CR>
 nnoremap <A-x> :bdelete<CR>
 nnoremap <A-w> :bwipeout<CR>
 
@@ -407,6 +412,15 @@ let g:vimfiler_tree_opened_icon = "-"
 let g:vimfiler_tree_closed_icon = "+"
 let g:vimfiler_readonly_file_icon = "🔒" "♏
 let g:vimfiler_ignore_pattern = '^\%(.git\|.idea\|.DS_Store\)$'
+
+" CtrlP Settings
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$'
+  \ }
 
 " Start it in browser. Only for Linux Google Chrome
 nnoremap <F8> :!google-chrome %<CR><CR>
