@@ -70,7 +70,8 @@ set nu
 " The fonts You will find on GitHub
 " https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
 set encoding=utf-8
-set guifont=IBM\ 3270\ Narrow\ Medium\ 12
+set guifont=ProfontWindows\ 9
+"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
 "set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
 "set guifont=Decima\ Nova\ Pro
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
@@ -127,10 +128,10 @@ Plugin 'L9'
 Plugin 'tomtom/tlib_vim'
 
 " @ Plugin --- [ ColorScheme ]
+Plugin 'chriskempson/base16-vim'
 Plugin 'DemonCloud/J.vim'
 "Plugin 'morhetz/gruvbox'
 "Plugin 'junegunn/seoul256.vim'
-"Plugin 'chriskempson/base16-vim'
 "Plugin 'fxn/vim-monochrome'
 
 " @ Plugin --- [ Style Custom ]
@@ -247,8 +248,10 @@ filetype plugin indent on
 " Set Color Themes 
 set background=dark
 let base16colorspace=256
+
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
+
 colorscheme J
 "colorscheme monochrome
 "colorscheme seoul256
@@ -294,10 +297,10 @@ let g:Powerline_symbols = 'compatible'
 
 "Buftabline Config
 set hidden
-nnoremap <A-n> :bnext<CR>
-nnoremap <A-p> :bprev<CR>
-nnoremap <A-x> :bdelete<CR>
-nnoremap <A-w> :bwipeout<CR>
+nnoremap <A-n> : bnext<CR>
+nnoremap <A-p> : bprev<CR>
+nnoremap <A-x> : bdelete<CR>
+nnoremap <A-w> : bwipeout<CR>
 " TagBar Config
 let g:tagbar_ctags_bin = "/usr/bin/ctags"
 
@@ -419,20 +422,20 @@ noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
 noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
 
 " VimFiler Settings
-let g:vimfiler_safe_mode_by_default=0
-let g:vimfiler_as_default_explorer=1
-let g:vimfiler_tree_opened_icon = "-"
-let g:vimfiler_tree_closed_icon = "+"
-let g:vimfiler_readonly_file_icon = "🔒" "♏
-let g:vimfiler_ignore_pattern = '^\%(.git\|.idea\|.DS_Store\)$'
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_as_default_explorer  = 1
+let g:vimfiler_tree_opened_icon     = "-"
+let g:vimfiler_tree_closed_icon     = "+"
+let g:vimfiler_readonly_file_icon   = "🔒" "♏
+let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 " CtrlP Settings
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$'
+  \ 'dir'  : '\v[\/]\.(git|hg|svn)$',
+  \ 'file' : '\v\.(exe|so|dll)$'
   \ }
 
 nnoremap <leader>cp :CtrlP<CR>
@@ -461,3 +464,4 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
     \endif<CR>
 
 " ========================= GUI End =========================
+" End vimrc
