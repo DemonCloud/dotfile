@@ -121,18 +121,25 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " # Plugins Beginning #
+" @ Plugin --- [ Base Require Lib ]
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'tomtom/tlib_vim'
 
+" @ Plugin --- [ ColorScheme ]
+Plugin 'DemonCloud/J.vim'
+"Plugin 'morhetz/gruvbox'
+"Plugin 'junegunn/seoul256.vim'
+"Plugin 'chriskempson/base16-vim'
+"Plugin 'fxn/vim-monochrome'
+
 " @ Plugin --- [ Style Custom ]
-Plugin 'morhetz/gruvbox'
-Plugin 'chriskempson/base16-vim'
+
 Plugin 'Lokaltog/vim-distinguished'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ap/vim-buftabline'
-"Plugin 'Lokaltog/vim-powerline'
+Plugin 'Lokaltog/vim-powerline'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
@@ -194,7 +201,9 @@ Plugin 'mhinz/vim-signify'
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
 "Plugin 'thinca/vim-quickrun'
 "Plugin 'dyng/ctrlsf.vim'
 "Plugin 'mklabs/grunt.vim'
@@ -221,6 +230,7 @@ Plugin 'StanAngeloff/php.vim'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 
 " ---- Plugin List Complete ----
 
@@ -239,12 +249,14 @@ set background=dark
 let base16colorspace=256
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
-
+colorscheme J
+"colorscheme monochrome
+"colorscheme seoul256
 "colorscheme distinguished
 "colorscheme jellybeans
 "colorscheme hybrid
 "colorscheme solarized
-colorscheme gruvbox
+"colorscheme gruvbox
 "colorscheme darktango
 "colorscheme hybrid-light
 "colorscheme badwolf
@@ -267,12 +279,14 @@ colorscheme gruvbox
 "call vam#ActivateAddons(['powerline'])
 
 " -----------------------------
+" fzf Plugin config
 set rtp+=~/.fzf
+nnoremap <C-\> :FZF<CR>
 
 " alrLine && PowerLine Config
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
-"let Powerline_symbols = 'compatible
+let g:Powerline_symbols = 'compatible'
 "let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
 "let g:WebDevIconsUnicodeDecorateFileNodes = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
@@ -284,7 +298,6 @@ nnoremap <A-n> :bnext<CR>
 nnoremap <A-p> :bprev<CR>
 nnoremap <A-x> :bdelete<CR>
 nnoremap <A-w> :bwipeout<CR>
-
 " TagBar Config
 let g:tagbar_ctags_bin = "/usr/bin/ctags"
 
@@ -422,8 +435,17 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$'
   \ }
 
+nnoremap <leader>cp :CtrlP<CR>
+nnoremap <leader>cf :CtrlPFunky<CR>
+
 " Start it in browser. Only for Linux Google Chrome
 nnoremap <F8> :!google-chrome %<CR><CR>
+
+nmap <leader>yi :call <SID>SynStack()<CR>
+
+function! <SID>SynStack()
+	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
+endfunc
 
 " ========================= Plugin Config End =========================
 
