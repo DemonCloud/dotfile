@@ -60,9 +60,9 @@ behave mswin
 
 set regexpengine=1
 " Format 
-set ts=4
-set shiftwidth=4
-set softtabstop=4
+set ts=2 "4
+set shiftwidth=2 "4
+set softtabstop=2 "4
 set noexpandtab
 set nu
 
@@ -160,7 +160,6 @@ Plugin 'danro/rename.vim'
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'Valloric/ListToggle'
 Plugin 'Valloric/YouCompleteMe'
 "Plugin 'Shougo/neocomplcache.vim'
 "Plugin 'fatih/vim-go'
@@ -212,17 +211,17 @@ Plugin 'tacahiroy/ctrlp-funky'
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'othree/yajs.vim'
+"Plugin 'othree/javascript-libraries-syntax.vim'
+"Plugin 'othree/yajs.vim'
 "Plugin 'chrisbra/Colorizer'
 "Plugin 'skammer/vim-css-color'
 Plugin 'ap/vim-css-color'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'othree/html5.vim'
-Plugin 'othree/html5-syntax.vim'
-Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'kchmck/vim-coffee-script'
+"Plugin 'hail2u/vim-css3-syntax'
+"Plugin 'othree/html5.vim'
+"Plugin 'othree/html5-syntax.vim'
+"Plugin 'groenewege/vim-less'
+"Plugin 'digitaltoad/vim-jade'
+"Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 Plugin 'StanAngeloff/php.vim'
 
@@ -301,8 +300,11 @@ nnoremap <A-n> : bnext<CR>
 nnoremap <A-p> : bprev<CR>
 nnoremap <A-x> : bdelete<CR>
 nnoremap <A-w> : bwipeout<CR>
+
+
 " TagBar Config
-let g:tagbar_ctags_bin = "/usr/bin/ctags"
+" Just configure and [make] ctags file
+let g:tagbar_ctags_bin = "~/.vim/bundle/tagbar/ctags"
 
 
 " Syntastic Config
@@ -322,10 +324,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
-
-" ListToggle QuickFix Config
-let g:lt_location_list_toggle_map = '<leader>l'
-let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 " YouCompleteMe Geek Config
 set completeopt=longest,menu
@@ -434,9 +432,9 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
 let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
-  \ 'dir'  : '\v[\/]\.(git|hg|svn)$',
-  \ 'file' : '\v\.(exe|so|dll)$'
-  \ }
+\ 'dir'  : '\v[\/]\.(git|hg|svn)$',
+\ 'file' : '\v\.(exe|so|dll|git|svn)$'
+\ }
 
 nnoremap <leader>cp :CtrlP<CR>
 nnoremap <leader>cf :CtrlPFunky<CR>
@@ -444,8 +442,8 @@ nnoremap <leader>cf :CtrlPFunky<CR>
 " Start it in browser. Only for Linux Google Chrome
 nnoremap <F8> :!google-chrome %<CR><CR>
 
+" Check Vim Syntax name Fn
 nmap <leader>yi :call <SID>SynStack()<CR>
-
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
