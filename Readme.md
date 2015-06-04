@@ -27,7 +27,7 @@
 
 #### Windows 
 
-下载 ： [YVIM for Windows](http://pan.baidu.com/s/1jG6Cdee)
+下载 ： [YVIM for Windows](http://pan.baidu.com/s/1jG6Cdee) -- <a href="#update">Update 2015.6.4</a>
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 > 
@@ -73,6 +73,10 @@
 
 
 ## Date 日志 
+
+<div id="update" style="display : none; visibility : hidden"></div>
+
+-- update 2016.6.4   解决 Windows 下中文字符乱码的问题
 
 -- update 2015.5.29  上传项目
 
