@@ -31,6 +31,13 @@ set lines=50
 set columns=108
 winpos 88 0
 
+" Encoding setting
+" The fonts You will find on GitHub
+" https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
+set encoding=utf-8
+set fileencodings=utf-8,chinese,latin-1
+language messages zh_CN.utf-8
+
 " ## Make its Gvim Like Windows behave ## 
 " So you can use 
 " @ CTRL+S save the file
@@ -47,19 +54,12 @@ set noswapfile
 set nowritebackup
 set regexpengine=1
 " Format 
-set ts=4
-set shiftwidth=4
-set softtabstop=4
+set ts=2
+set shiftwidth=2
+set softtabstop=2
 set noexpandtab
 set nu
 
-" Encoding setting
-" The fonts You will find on GitHub
-" https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
-set encoding=utf-8
-set fencs=utf-8,GB18030,ucs-bom,default,latin1
-set fileencodings=utf-8,chinese,latin-1
-language messages zh_CN.utf-8
 
 set guifont=ProFontWindows:h9:cANSI
 "set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
@@ -148,8 +148,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'terryma/vim-multiple-cursors'
 "Plugin 'Valloric/ListToggle'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'marijnh/tern_for_vim'
