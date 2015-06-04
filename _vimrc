@@ -28,7 +28,7 @@ endfunction
 "init
 "set windows pos and resize
 set lines=50
-set columns=168
+set columns=108
 winpos 88 0
 
 " ## Make its Gvim Like Windows behave ## 
@@ -57,8 +57,12 @@ set nu
 " The fonts You will find on GitHub
 " https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
 set encoding=utf-8
-set fileencodings=ucs-bom,utf-8,latin1
-set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
+set fencs=utf-8,GB18030,ucs-bom,default,latin1
+set fileencodings=utf-8,chinese,latin-1
+language messages zh_CN.utf-8
+
+set guifont=ProFontWindows:h9:cANSI
+"set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
 "set guifont=Decima\ Nova\ Pro:h11
 "set guifont=PragmataPro:w5:b:h11:cANSI
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 10
@@ -104,19 +108,21 @@ call vundle#begin("$VIM/vimfiles/bundle")
 
 " # Plugins Beginning #
 Plugin 'gmarik/Vundle.vim'
-Plugin 'L9'
+"Plugin 'L9'
 "Plugin 'tomtom/tlib_vim'
 "Plugin 'dbarsam/vim-vimtweak'
 
 
 " @ Plugin --- [ Themes Custom ]
-Plugin 'altercation/vim-colors-solarized'
+Plugin 'DemonCloud/J.vim'
+"Plugin 'altercation/vim-colors-solarized'
 "Plugin 'morhetz/gruvbox'
 Plugin 'rking/vim-detailed'
 
 
 " @ Plugin --- [ Style Custom ]
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
+Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ap/vim-buftabline'
 "Plugin 'Lokaltog/vim-powerline'
@@ -136,17 +142,18 @@ Plugin 'scrooloose/syntastic'
 "Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
+Plugin 'kien/ctrlp.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'marijnh/tern_for_vim'
 "Plugin 'Valloric/ListToggle'
 "Plugin 'Valloric/YouCompleteMe'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/neocomplete.vim'
-Bundle 'Shougo/neosnippet'
-Bundle 'Shougo/neosnippet-snippets'
-"Bundle 'skeept/Ultisnips-neocomplete-unite'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
+Plugin 'marijnh/tern_for_vim'
+"Plugin 'skeept/Ultisnips-neocomplete-unite'
 "Plugin 'fatih/vim-go'
 
 
@@ -191,16 +198,16 @@ Plugin 'rking/ag.vim'
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'othree/yajs.vim'
+"Plugin 'othree/javascript-libraries-syntax.vim'
+"Plugin 'othree/yajs.vim'
 "Plugin 'chrisbra/Colorizer'
 "Plugin 'skammer/vim-css-color'
 Plugin 'ap/vim-css-color'
-Plugin 'hail2u/vim-css3-syntax'
+"Plugin 'hail2u/vim-css3-syntax'
 "Plugin 'othree/html5.vim'
 "Plugin 'othree/html5-syntax.vim'
-Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
+"Plugin 'groenewege/vim-less'
+"Plugin 'digitaltoad/vim-jade'
 "Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 Plugin 'StanAngeloff/php.vim'
@@ -228,9 +235,11 @@ set background=dark
 "colorscheme gruvbox
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
-"colorsche jellybeans
+
+colorscheme J
+"colorscheme jellybeans
 "colorscheme hybrid
-colorscheme solarized
+"colorscheme solarized
 "colorscheme gruvbox
 "colorscheme darktango
 "colorscheme hybrid-light
@@ -522,8 +531,38 @@ let g:vimfiler_tree_closed_icon = "+"
 let g:vimfiler_readonly_file_icon = "🔒" "♏
 let g:vimfiler_ignore_pattern = '^\%(.git\|.idea\|.DS_Store\)$'
 
+" CtrlP Config
+
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$'
+  \ }
+
+" Light line Config
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+
 " Start it in browser. Only for Linux Google Chrome
 nnoremap <F8> :!google-chrome %<CR><CR>
+
 
 " ========================= Plugin Config End =========================
 
