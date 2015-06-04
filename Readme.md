@@ -27,7 +27,7 @@
 
 #### Windows 
 
-下载 ： [YVIM for Windows](http://pan.baidu.com/s/1jG6Cdee) -- <a href="#update">Update 2015.6.4</a>
+下载 ： [YVIM for Windows](http://pan.baidu.com/s/1sjLrjIl) -- <a href="#update">Update 2015.6.4</a>
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 > 
@@ -59,7 +59,31 @@
 
 > 如果插件位置不在 ``/home/用户/`` 路径下，一般不会获得读写自由的权限。 可以使用 Linux ``chmod`` 命令解决读写权限问题
 
-> ``sudo chmod +777 -R  path to/files/target ``
+> ``sudo chmod +777 -R  path to/files/target``
+
+<br/>
+
+> **5.** 很多插件是需要第三方外部组件的支持.以下我列出一些依赖列表:
+
+- [NodeJS](http://nodejs.org)
+	- 安装完成 NodeJS 以后使用 npm 安装依赖
+
+	- ``npm install -g jshint``   JSHint 语法检测
+
+	- ``npm install -g csslint``  CSSLint 语法检测
+
+	- ``npm insatll -g tern``     JavaScript 智能提示扩展
+
+- [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher)
+
+	- 安装 Ag.vim 的依赖, Ag 代码搜索需要 the\_silver\_searcher Python组件的支持
+
+	- Linux Ubuntu  下直接 ``sudo apt-get install silversearcher-ag`` 安装依赖
+
+	- Windows 下比较麻烦. 先安装 [Chocolatey](https://chocolatey.org) 安装完成之后CMD中使用命令:``choco install ag`` 就可以了.
+
+
+
 
 ## Update Plugin 更新插件
 
@@ -76,7 +100,7 @@
 
 <div id="update" style="display : none; visibility : hidden"></div>
 
--- update 2016.6.4   解决 Windows 下中文字符乱码的问题
+-- update 2016.6.4   解决 Windows 下中文字符乱码的问题 , 增加了 CtrlP 插件
 
 -- update 2015.5.29  上传项目
 
