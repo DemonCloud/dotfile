@@ -28,7 +28,7 @@ endfunction
 "init
 "set windows pos and resize
 set lines=50
-set columns=108
+set columns=168
 winpos 88 0
 
 " Encoding setting
@@ -37,6 +37,14 @@ winpos 88 0
 set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 language messages zh_CN.utf-8
+
+"set guifont=ProFontWindows:h9:cANSI
+"set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
+"set guifont=Decima\ Nova\ Pro:h11
+set guifont=PragmataPro:b:h10:cANSI
+"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 10
+"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
+"set guifont=ProgramPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 10
 
 " ## Make its Gvim Like Windows behave ## 
 " So you can use 
@@ -59,15 +67,6 @@ set shiftwidth=2
 set softtabstop=2
 set noexpandtab
 set nu
-
-
-set guifont=ProFontWindows:h9:cANSI
-"set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
-"set guifont=Decima\ Nova\ Pro:h11
-"set guifont=PragmataPro:w5:b:h11:cANSI
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 10
-"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
-"set guifont=ProgramPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 10
 
 " Search and Case
 set autoindent
@@ -108,21 +107,21 @@ call vundle#begin("$VIM/vimfiles/bundle")
 
 " # Plugins Beginning #
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'L9'
-"Plugin 'tomtom/tlib_vim'
+Plugin 'L9'
+Plugin 'tomtom/tlib_vim'
 "Plugin 'dbarsam/vim-vimtweak'
 
 
 " @ Plugin --- [ Themes Custom ]
 Plugin 'DemonCloud/J.vim'
-"Plugin 'altercation/vim-colors-solarized'
-"Plugin 'morhetz/gruvbox'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'morhetz/gruvbox'
 Plugin 'rking/vim-detailed'
 
 
 " @ Plugin --- [ Style Custom ]
-"Plugin 'bling/vim-airline'
-Plugin 'itchyny/lightline.vim'
+Plugin 'bling/vim-airline'
+"Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ap/vim-buftabline'
 "Plugin 'Lokaltog/vim-powerline'
@@ -146,21 +145,17 @@ Plugin 'kien/ctrlp.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
-"Plugin 'Valloric/ListToggle'
-"Plugin 'Valloric/YouCompleteMe'
 Plugin 'Shougo/neocomplete.vim'
-"Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'marijnh/tern_for_vim'
-"Plugin 'skeept/Ultisnips-neocomplete-unite'
+Plugin 'skeept/Ultisnips-neocomplete-unite'
 "Plugin 'fatih/vim-go'
 
 
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
-"Plugin 'SirVer/ultisnips'
-"Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
 "Plugin 'c9s/perlomni.vim'
 Plugin 'gcmt/wildfire.vim'
@@ -171,13 +166,8 @@ Plugin 'Lokaltog/vim-easymotion'
 
 
 " @ Plugin --- [ CWD File Buffer Manager ] 
-"Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/unite.vim'
-"Plugin 'Shougo/unite-outline'
-"Plugin 'Shougo/unite-session'
 Plugin 'Shougo/vimfiler.vim'
-"Plugin 'tsukkee/unite-tag'
-"Plugin 'thinca/vim-unite-history'
 Plugin 'yegappan/mru'
 
 
@@ -191,7 +181,7 @@ Plugin 'airblade/vim-gitgutter'
 
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
-"Plugin 'thinca/vim-quickrun'
+Plugin 'thinca/vim-quickrun'
 "Plugin 'dyng/ctrlsf.vim'
 "Plugin 'mklabs/grunt.vim'
 
@@ -203,7 +193,7 @@ Plugin 'pangloss/vim-javascript'
 "Plugin 'chrisbra/Colorizer'
 "Plugin 'skammer/vim-css-color'
 Plugin 'ap/vim-css-color'
-"Plugin 'hail2u/vim-css3-syntax'
+Plugin 'hail2u/vim-css3-syntax'
 "Plugin 'othree/html5.vim'
 "Plugin 'othree/html5-syntax.vim'
 "Plugin 'groenewege/vim-less'
@@ -211,8 +201,8 @@ Plugin 'ap/vim-css-color'
 "Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 Plugin 'StanAngeloff/php.vim'
-"Plugin 'vim-scripts/c.vim'
-"Plugin 'vim-scripts/a.vim'
+Plugin 'vim-scripts/c.vim'
+Plugin 'vim-scripts/a.vim'
 
 " @ Plugin --- [ ADV Program Language ]
 "Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -232,11 +222,11 @@ filetype plugin indent on
 
 " Set Color Themes 
 set background=dark
-"colorscheme gruvbox
+colorscheme gruvbox
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
 
-colorscheme J
+"colorscheme J
 "colorscheme jellybeans
 "colorscheme hybrid
 "colorscheme solarized
@@ -248,7 +238,7 @@ colorscheme J
 "colorscheme codeschool
 
 "call VimTweak Opacity
-au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 252)
+au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 253)
 
 " ========================= Vundle Plugin Setup End ========================= 
 
@@ -271,7 +261,7 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:Powerline_symbols = 'compatible'
+let g:Powerline_symbols = 'fancy'
 "let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
 "let g:WebDevIconsUnicodeDecorateFileNodes = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
@@ -540,29 +530,34 @@ let g:ctrlp_custom_ignore = {
   \ }
 
 " Light line Config
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
+"let g:lightline = {
+""      \ 'colorscheme': 'wombat',
+""      \ 'active': {
+""      \   'left': [ [ 'mode', 'paste' ],
+""      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+""      \ },
+""      \ 'component': {
+""      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+""      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+""      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+""      \ },
+""      \ 'component_visible_condition': {
+""      \   'readonly': '(&filetype!="help"&& &readonly)',
+""      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+""      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+""      \ },
+""      \ 'separator': { 'left': '', 'right': '' },
+""      \ 'subseparator': { 'left': '|', 'right': '|' }
+""      \ }
 
 " Start it in browser. Only for Linux Google Chrome
 nnoremap <F8> :!google-chrome %<CR><CR>
 
+" Check Vim Syntax name Fn
+nmap <leader>yi :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
+endfunc
 
 " ========================= Plugin Config End =========================
 
