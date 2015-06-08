@@ -36,7 +36,7 @@ runtime! debian.vim
 "  
 "                                2015.1.18 
 "
-"                 ♥♥♥ I Love You <♥Meredith♥> Forever ♥♥♥
+"                 ★★★ I Love You <★Meredith★> Forever ★★★
 "
 "
 "
@@ -106,6 +106,9 @@ set guioptions-=B
 set guioptions-=0
 set go=
 
+" figure config
+set mousehide
+
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
@@ -132,15 +135,15 @@ Plugin 'chriskempson/base16-vim'
 Plugin 'DemonCloud/J.vim'
 "Plugin 'morhetz/gruvbox'
 "Plugin 'junegunn/seoul256.vim'
-"Plugin 'fxn/vim-monochrome'
 
 " @ Plugin --- [ Style Custom ]
 
 Plugin 'Lokaltog/vim-distinguished'
 "Plugin 'bling/vim-airline'
-Plugin 'terryma/vim-smooth-scroll'
+"Plugin 'Lokaltog/vim-powerline'
+Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'terryma/vim-smooth-scroll'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
@@ -152,16 +155,15 @@ Plugin 'scrooloose/syntastic'
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
 "Plugin 'ryanoasis/vim-webdevicons'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'Shougo/neocomplcache.vim'
+Plugin 'marijnh/tern_for_vim'
 "Plugin 'fatih/vim-go'
 
 
@@ -170,7 +172,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
-"Plugin 'c9s/perlomni.vim'
+Plugin 'c9s/perlomni.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -179,20 +181,15 @@ Plugin 'Lokaltog/vim-easymotion'
 
 
 " @ Plugin --- [ CWD File Buffer Manager ] 
-"Plugin 'Shougo/neomru.vim'
 Plugin 'Shougo/unite.vim'
-"Plugin 'Shougo/unite-outline'
-"Plugin 'Shougo/unite-session'
 Plugin 'Shougo/vimfiler.vim'
-"Plugin 'tsukkee/unite-tag'
-"Plugin 'thinca/vim-unite-history'
 Plugin 'yegappan/mru'
 
 
 " @ Plugin --- [ Git && Shell Tools ]
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
-"Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-fugitive'
 Plugin 'mattn/webapi-vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
@@ -204,29 +201,24 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
-"Plugin 'thinca/vim-quickrun'
-"Plugin 'dyng/ctrlsf.vim'
-"Plugin 'mklabs/grunt.vim'
+Plugin 'thinca/vim-quickrun'
+Plugin 'dyng/ctrlsf.vim'
+Plugin 'mklabs/grunt.vim'
 
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
 "Plugin 'othree/javascript-libraries-syntax.vim'
 "Plugin 'othree/yajs.vim'
-"Plugin 'chrisbra/Colorizer'
-"Plugin 'skammer/vim-css-color'
 Plugin 'ap/vim-css-color'
-"Plugin 'hail2u/vim-css3-syntax'
-"Plugin 'othree/html5.vim'
-"Plugin 'othree/html5-syntax.vim'
-"Plugin 'groenewege/vim-less'
-"Plugin 'digitaltoad/vim-jade'
-"Plugin 'kchmck/vim-coffee-script'
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'groenewege/vim-less'
+Plugin 'digitaltoad/vim-jade'
 Plugin 'elzr/vim-json'
 Plugin 'StanAngeloff/php.vim'
 
 " @ Plugin --- [ ADV Program Language ]
-"Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
@@ -292,7 +284,7 @@ let g:Powerline_symbols = 'compatible'
 "let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
 "let g:WebDevIconsUnicodeDecorateFileNodes = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
-
+"autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
 "Buftabline Config
 set hidden
@@ -305,6 +297,25 @@ nnoremap <A-w> : bwipeout<CR>
 " TagBar Config
 " Just configure and [make] ctags file
 let g:tagbar_ctags_bin = "~/.vim/bundle/tagbar/ctags"
+" for coffeeScript
+let g:tagbar_type_coffee = {
+    \ 'ctagstype' : 'coffee',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 'm:methods',
+        \ 'f:functions',
+        \ 'v:variables',
+        \ 'f:fields',
+    \ ]
+\ }
+let g:tagbar_type_css = {
+\ 'ctagstype' : 'Css',
+    \ 'kinds'     : [
+        \ 'c:classes',
+        \ 's:selectors',
+        \ 'i:identities'
+    \ ]
+\ }
 
 
 " Syntastic Config
@@ -328,22 +339,23 @@ let g:syntastic_javascript_checkers = ['jshint']
 " YouCompleteMe Geek Config
 set completeopt=longest,menu
 
+let g:ycm_cache_omnifunc                                = 1
 let g:ycm_global_ycm_extra_conf        = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf           = 0
-let g:ycm_add_preview_to_completeopt   = 0
-let g:ycm_min_num_of_chars_for_completion = 3 
-let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_confirm_extra_conf           = 1
+let g:ycm_add_preview_to_completeopt   = 1
+let g:ycm_min_num_of_chars_for_completion = 1 
+let g:ycm_autoclose_preview_window_after_completion= 1
 "let g:ycm_key_list_select_completion   = ['<c-n>', '<Down>']
 "let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 
 let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
-let g:ycm_cache_omnifunc                                = 1
 let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
 let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
-let g:ycm_complete_in_strings                           = 0   " 在字符串输入中不能补全
+let g:ycm_complete_in_strings                           = 1   " 在字符串输入中不能补全
 let g:ycm_collect_identifiers_from_comments_and_strings = 0   " 注释和字符串中的文字也会被收入补全
 
-let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
+let g:ycm_goto_buffer_command = 'horizontal-split' 
+"[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
 let g:ycm_filetype_blacklist = {
 			\ 'tagbar'    : 1,
 			\ 'qf'        : 1,
@@ -354,6 +366,11 @@ let g:ycm_filetype_blacklist = {
 			\ 'vimwiki'   : 1,
 			\ 'gitcommit' : 1,
 \}
+
+
+" tern_node_js onmicomplete with YouCompleteMe
+let tern#is_show_argument_hints_enabled= 1
+let g:tern_show_argument_hints="on_hold"
 
 nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 nnoremap <F6>  :SyntasticToggleMode <CR>
@@ -424,7 +441,7 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer  = 1
 let g:vimfiler_tree_opened_icon     = "-"
 let g:vimfiler_tree_closed_icon     = "+"
-let g:vimfiler_readonly_file_icon   = "🔒" "♏
+let g:vimfiler_readonly_file_icon   = "♏" "♏
 let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 " CtrlP Settings
@@ -447,6 +464,28 @@ nmap <leader>yi :call <SID>SynStack()<CR>
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
+
+" LightLine Config
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component': {
+      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+      \ },
+      \ 'component_visible_condition': {
+      \   'readonly': '(&filetype!="help"&& &readonly)',
+      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+      \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '|', 'right': '|' }
+      \ }
+
 
 " ========================= Plugin Config End =========================
 
