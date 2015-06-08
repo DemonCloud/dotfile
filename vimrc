@@ -96,6 +96,7 @@ set nowritebackup
 set noswapfile
 
 " Rule the define
+set noshowmode
 set ruler
 set cursorline
 set laststatus=2
@@ -269,35 +270,56 @@ colorscheme J
 "set rtp+=~/usr/share/vim/vimfile/bundle/powerline/bindings/vim
 "call vam#ActivateAddons(['powerline'])
 
-
+" ----------------------------------
+" End Status Line
 " Normal Setting for Vim StatuLine
+" So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
-set statusline=%f                           " file name
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-set statusline+=%{&ff}] "file format
-set statusline+=%y      "filetype
-set statusline+=%h      "help file flag
-set statusline+=%m      "modified flag
-set statusline+=%r      "read only flag
+hi f1 guibg=#C0C280 guifg=#181818 gui=NONE 
+hi f2 guibg=Black guifg=#C0C280 gui=underline
+
+function! StatuslineModeColor()
+  let s:StatuslineMode=mode()
+  if s:StatuslineMode == 'n'
+		hi f1 guibg=#C0C280 guifg=#080808 
+		return 'Observer'
+  elseif s:StatuslineMode == 'i'
+		hi f1 guibg=#79BE61 guifg=#181818
+		return 'Inserter'
+	elseif s:StatuslineMode == 'v'
+		hi f1 guibg=#C0C280 guifg=#080808
+		return 'Injection'
+  endif
+endfunc
+
+set statusline=%#f1#\ %{StatuslineModeColor()}\ 
+set statusline+=%#f2#[%f]													" file name
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}]		" file encoding
+"set statusline+=[%{&ff}]													" file format
+set statusline+=%y																" filetype
+set statusline+=%h																" help file flag
+set statusline+=%m																" modified flag
+set statusline+=%r																" read only flag
 
 " Puts in the current git status
-    if count(g:pathogen_disabled, 'Fugitive') < 1   
-        set statusline+=%{fugitive#statusline()}
-    endif
+if count(g:pathogen_disabled, 'Fugitive') < 1   
+  set statusline+=%{fugitive#statusline()}
+endif
 
 " Puts in syntastic warnings
-    if count(g:pathogen_disabled, 'Syntastic') < 1  
-        set statusline+=%#warningmsg#
-        set statusline+=%{SyntasticStatuslineFlag()}
-        set statusline+=%*
-    endif
+if count(g:pathogen_disabled, 'Syntastic') < 1  
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+endif
 
+" right align laststatus
 set statusline+=\ %=                        " align left
-set statusline+=Line:%l/%L[%p%%]            " line X of Y [percent of file]
-set statusline+=\ Col:%c                    " current column
-set statusline+=\ Buf:%n                    " Buffer number
-set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
+set statusline+=C:%c\ L:%l/%L\ [%p%%]				" line X of Y [percent of file]
+set statusline+=\ Buff:[%n]                 " Buffer number
+"set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
+" End Status Line
 " -----------------------------
 
 " alrLine && PowerLine Config
@@ -308,6 +330,12 @@ set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
 "let g:WebDevIconsUnicodeDecorateFileNodes = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 "autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+
+" Check Vim Syntax name Fn
+nmap <leader>yi :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
+endfunc
 
 "Buftabline Config
 set hidden
@@ -486,12 +514,6 @@ nnoremap <leader>cf :CtrlPFunky<CR>
 
 " Start it in browser. Only for Linux Google Chrome
 nnoremap <F8> :!google-chrome %<CR><CR>
-
-" Check Vim Syntax name Fn
-nmap <leader>yi :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
-endfunc
 
 " LightLine Config
 "let g:lightline = {
