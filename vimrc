@@ -65,6 +65,7 @@ set shiftwidth=2 "4
 set softtabstop=2 "4
 set noexpandtab
 set nu
+set statusline
 
 " Encoding setting
 " The fonts You will find on GitHub
@@ -87,6 +88,7 @@ set autoread
 set ignorecase
 set hlsearch
 set wrap
+set wildmenu
 
 " No back up files 
 set nobackup
@@ -131,23 +133,21 @@ Plugin 'L9'
 Plugin 'tomtom/tlib_vim'
 
 " @ Plugin --- [ ColorScheme ]
-Plugin 'chriskempson/base16-vim'
 Plugin 'DemonCloud/J.vim'
 "Plugin 'morhetz/gruvbox'
-"Plugin 'junegunn/seoul256.vim'
 
 " @ Plugin --- [ Style Custom ]
 
 Plugin 'Lokaltog/vim-distinguished'
 "Plugin 'bling/vim-airline'
 "Plugin 'Lokaltog/vim-powerline'
-Plugin 'itchyny/lightline.vim'
+"Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'terryma/vim-smooth-scroll'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
-"Plugin 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 
@@ -155,8 +155,6 @@ Plugin 'scrooloose/syntastic'
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
 "Plugin 'ryanoasis/vim-webdevicons'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 
@@ -164,7 +162,7 @@ Plugin 'danro/rename.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
-"Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go'
 
 
 " @ Plugin --- [ Auto Complete ]
@@ -208,8 +206,7 @@ Plugin 'mklabs/grunt.vim'
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
-"Plugin 'othree/javascript-libraries-syntax.vim'
-"Plugin 'othree/yajs.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'ap/vim-css-color'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'groenewege/vim-less'
@@ -272,15 +269,41 @@ colorscheme J
 "set rtp+=~/usr/share/vim/vimfile/bundle/powerline/bindings/vim
 "call vam#ActivateAddons(['powerline'])
 
+
+" Normal Setting for Vim StatuLine
+" Formats the statusline
+set statusline=%f                           " file name
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%y      "filetype
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+
+" Puts in the current git status
+    if count(g:pathogen_disabled, 'Fugitive') < 1   
+        set statusline+=%{fugitive#statusline()}
+    endif
+
+" Puts in syntastic warnings
+    if count(g:pathogen_disabled, 'Syntastic') < 1  
+        set statusline+=%#warningmsg#
+        set statusline+=%{SyntasticStatuslineFlag()}
+        set statusline+=%*
+    endif
+
+set statusline+=\ %=                        " align left
+set statusline+=Line:%l/%L[%p%%]            " line X of Y [percent of file]
+set statusline+=\ Col:%c                    " current column
+set statusline+=\ Buf:%n                    " Buffer number
+set statusline+=\ [%b][0x%B]\               " ASCII and byte code under cursor
+
 " -----------------------------
-" fzf Plugin config
-set rtp+=~/.fzf
-nnoremap <C-\> :FZF<CR>
 
 " alrLine && PowerLine Config
 "let g:Powerline_symbols = 'fancy'
-let g:airline_powerline_fonts = 1
-let g:Powerline_symbols = 'compatible'
+"let g:airline_powerline_fonts = 1
+"let g:Powerline_symbols = 'compatible'
 "let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
 "let g:WebDevIconsUnicodeDecorateFileNodes = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
@@ -288,10 +311,15 @@ let g:Powerline_symbols = 'compatible'
 
 "Buftabline Config
 set hidden
-nnoremap <A-n> : bnext<CR>
-nnoremap <A-p> : bprev<CR>
+nnoremap <A-k> : bnext<CR>
+nnoremap <A-j> : bprev<CR>
 nnoremap <A-x> : bdelete<CR>
 nnoremap <A-w> : bwipeout<CR>
+
+
+" fzf Plugin config
+set rtp+=~/.fzf
+nnoremap <C-\> :FZF<CR>
 
 
 " TagBar Config
@@ -319,9 +347,9 @@ let g:tagbar_type_css = {
 
 
 " Syntastic Config
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
 
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list            = 1
@@ -466,25 +494,25 @@ function! <SID>SynStack()
 endfunc
 
 " LightLine Config
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '|', 'right': '|' }
-      \ }
+"let g:lightline = {
+"      \ 'colorscheme': 'wombat',
+"      \ 'active': {
+"      \   'left': [ [ 'mode', 'paste' ],
+"      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
+"      \ },
+"      \ 'component': {
+"      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
+"      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
+"      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
+"      \ },
+"      \ 'component_visible_condition': {
+"      \   'readonly': '(&filetype!="help"&& &readonly)',
+"      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
+"      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
+"      \ },
+"      \ 'separator': { 'left': '', 'right': '' },
+"      \ 'subseparator': { 'left': '|', 'right': '|' }
+"      \ }
 
 
 " ========================= Plugin Config End =========================
