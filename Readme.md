@@ -2,6 +2,17 @@
 
 ## Introduction 简介
 
+####Windows (Win7)
+<hr>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ccc2.png" alt="Window YVim preview"/>
+
+
+####Linux (Ubuntu)
+<hr>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ccc1.png" alt="Window YVim preview"/>
+
+<hr>
+
 这个 ``dotfile`` 项目包含了我最新的 Vim 配置文件。与其他人的 Vim 配置不同
 
 这些配置文件做了如下事情：
@@ -27,11 +38,13 @@
 
 #### Windows 
 
-下载 ： [YVIM for Windows](http://pan.baidu.com/s/1sjLrjIl) -- <a href="#update">Update 2015.6.4</a>
+下载 ： [YVIM for Windows](http://pan.baidu.com/s/1i3ktVO5) -- <a href="#update">Update 2015.6.8</a>
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 > 
 > __注意：请运行 ``Vim\vim74\_Vim.exe`` 文件. 此文件重新编译支持Lua 以及替换了图标.__
+>
+>关于字体的话, 我这里分享一个 PragmataPro : [Download](http://pan.baidu.com/s/1o6mlBPg)
 
 <br>
 
@@ -65,7 +78,7 @@
 
 > **5.** 很多插件是需要第三方外部组件的支持.以下我列出一些依赖列表:
 
-- [NodeJS](http://nodejs.org)
+- [NodeJS](http://nodejs.org) (syntastic)
 	- 安装完成 NodeJS 以后使用 npm 安装依赖
 
 	- ``npm install -g jshint``   JSHint 语法检测
@@ -74,7 +87,7 @@
 
 	- ``npm insatll -g tern``     JavaScript 智能提示扩展
 
-- [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher)
+- [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher) (ag.vim)
 
 	- 安装 Ag.vim 的依赖, Ag 代码搜索需要 the\_silver\_searcher Python组件的支持
 
@@ -100,7 +113,9 @@
 
 <div id="update" style="display : none; visibility : hidden"></div>
 
--- update 2016.6.4   解决 Windows 下中文字符乱码的问题 , 增加了 CtrlP 插件
+-- update 2015.6.8   更新插件
+
+-- update 2015.6.4   解决 Windows 下中文字符乱码的问题 , 增加了 CtrlP 插件
 
 -- update 2015.5.29  上传项目
 
