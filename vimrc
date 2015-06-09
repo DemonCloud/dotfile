@@ -143,8 +143,8 @@ Plugin 'terryma/vim-smooth-scroll'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
-"Plugin 'sjl/gundo.vim'
-"Plugin 'majutsushi/tagbar'
+Plugin 'sjl/gundo.vim'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 
 
@@ -259,8 +259,8 @@ colorscheme J
 " So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
 
-hi f1 guibg=#C0C280 guifg=#181818 gui=NONE 
-hi f2 guibg=Black guifg=#C0C280 gui=NONE
+hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
 
 " Observer
 "hi f1 guibg=#C0C280 guifg=#080808 gui=NONE 
@@ -272,16 +272,16 @@ hi f2 guibg=Black guifg=#C0C280 gui=NONE
 function! StatuslineModeColor()
 	let s:Status=mode()	
   if s:Status == 'n'
-		hi f1 guibg=#C0C280 guifg=#080808 gui=NONE
+		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
 		return 'Observer'
   elseif s:Status == 'i'
-		hi f1 guibg=#79BE61 guifg=#181818 gui=NONE
+		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
 		return 'Inserter'
 	elseif s:Status == 'v'
-		hi f1 guibg=#C0C280 guifg=#080808 gui=NONE
+		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
 		return 'Injection'
 	else
-		hi f1 guibg=#981000 guifg=#ffffff gui=NONE
+		hi f1 guibg=#981000 guifg=#ffffff ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
 		return 'Command'
   endif
 endfunc
@@ -408,7 +408,7 @@ nnoremap <F6>  :SyntasticToggleMode <CR>
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger       = "<c-k>"
+let g:UltiSnipsExpandTrigger       = "<c-x>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 
@@ -418,7 +418,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
-let g:user_emmet_expandabbr_key ='<c-l>'
+let g:user_emmet_expandabbr_key ='<c-e>'
 let g:user_emmet_settings = {
 \ 'php'     : {
 \ 'extends' : 'html',
