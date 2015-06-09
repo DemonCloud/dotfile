@@ -28,7 +28,7 @@ endfunction
 "init
 "set windows pos and resize
 set lines=50
-set columns=168
+set columns=118
 winpos 88 0
 
 " Encoding setting
@@ -38,10 +38,10 @@ set encoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 language messages zh_CN.utf-8
 
-"set guifont=ProFontWindows:h9:cANSI
+set guifont=ProFontWindows:h9:cANSI
 "set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
 "set guifont=Decima\ Nova\ Pro:h11
-set guifont=PragmataPro:b:h10:cANSI
+"set guifont=PragmataPro:b:h10:cANSI
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 10
 "set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 "set guifont=ProgramPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 10
@@ -60,6 +60,7 @@ behave mswin
 set nobackup
 set noswapfile
 set nowritebackup
+set t_Co=256
 set regexpengine=1
 " Format 
 set ts=2
@@ -78,6 +79,7 @@ set hlsearch
 set wrap
 
 " Rule the define
+set noshowmode
 set ruler
 set cursorline
 set laststatus=2
@@ -120,7 +122,7 @@ Plugin 'rking/vim-detailed'
 
 
 " @ Plugin --- [ Style Custom ]
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 "Plugin 'itchyny/lightline.vim'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ap/vim-buftabline'
@@ -222,11 +224,11 @@ filetype plugin indent on
 
 " Set Color Themes 
 set background=dark
-colorscheme gruvbox
+"colorscheme gruvbox
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
 
-"colorscheme J
+colorscheme J
 "colorscheme jellybeans
 "colorscheme hybrid
 "colorscheme solarized
@@ -253,6 +255,47 @@ au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 253)
 "python powerline_setup()
 "python del powerline_setup
 
+" ----------------------------------
+" End Status Line
+" Normal Setting for Vim StatuLine
+" So you not need Vim powerline or anthor status line plugin
+" Formats the statusline
+
+hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
+
+" Observer
+"hi f1 guibg=#C0C280 guifg=#080808 gui=NONE 
+" Inserter
+"hi f1 guibg=#79BE61 guifg=#181818 gui=NONE
+" Command
+"hi f1 guibg=#981000 guifg=#ffffff gui=NONE
+
+function! StatuslineModeColor()
+	let s:Status=mode()	
+  if s:Status == 'n'
+		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+		return 'Observer'
+  elseif s:Status == 'i'
+		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
+		return 'Inserter'
+	elseif s:Status == 'v'
+		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+		return 'Injection'
+	else
+		hi f1 guibg=#981000 guifg=#ffffff ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
+		return 'Command'
+  endif
+endfunc
+
+set statusline=%#f1#\ %{StatuslineModeColor()}\ 
+set statusline+=%#f2#[%f][%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r
+" right align laststatus
+set statusline+=\ %=C:%c\ L:%l[%L][%p%%]
+set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
+"set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
+
+" End Status Line
 " -----------------------------
 
 " alrLine && PowerLine Config
