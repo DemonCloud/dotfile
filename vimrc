@@ -36,7 +36,7 @@ runtime! debian.vim
 "  
 "                                2015.1.18 
 "
-"                 ★★★ I Love You <★Meredith★> Forever ★★★
+"                 ★★★ I Love You <★ Meredith ★> Forever ★★★
 "
 "
 "
@@ -58,6 +58,7 @@ winpos 68 0
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+set t_Co=256
 set regexpengine=1
 " Format 
 set ts=2 "4
@@ -65,7 +66,6 @@ set shiftwidth=2 "4
 set softtabstop=2 "4
 set noexpandtab
 set nu
-set statusline
 
 " Encoding setting
 " The fonts You will find on GitHub
@@ -130,32 +130,26 @@ call vundle#begin()
 " # Plugins Beginning #
 " @ Plugin --- [ Base Require Lib ]
 Plugin 'gmarik/Vundle.vim'
-Plugin 'L9'
-Plugin 'tomtom/tlib_vim'
+"Plugin 'L9'
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J.vim'
-"Plugin 'morhetz/gruvbox'
 
 " @ Plugin --- [ Style Custom ]
 
 Plugin 'Lokaltog/vim-distinguished'
-"Plugin 'bling/vim-airline'
-"Plugin 'Lokaltog/vim-powerline'
-"Plugin 'itchyny/lightline.vim'
 Plugin 'ap/vim-buftabline'
 Plugin 'terryma/vim-smooth-scroll'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
-Plugin 'sjl/gundo.vim'
-Plugin 'majutsushi/tagbar'
+"Plugin 'sjl/gundo.vim'
+"Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 
 
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
-"Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 
@@ -163,7 +157,6 @@ Plugin 'danro/rename.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'marijnh/tern_for_vim'
-Plugin 'fatih/vim-go'
 
 
 " @ Plugin --- [ Auto Complete ]
@@ -171,7 +164,6 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
-Plugin 'c9s/perlomni.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -187,11 +179,8 @@ Plugin 'yegappan/mru'
 
 " @ Plugin --- [ Git && Shell Tools ]
 Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'mattn/webapi-vim'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'mhinz/vim-signify'
+"Plugin 'mhinz/vim-signify'
 
 
 " @ Plugin --- [ Code BAT Sreach ]
@@ -200,23 +189,19 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'thinca/vim-quickrun'
-Plugin 'dyng/ctrlsf.vim'
-Plugin 'mklabs/grunt.vim'
+"Plugin 'dyng/ctrlsf.vim'
 
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'ap/vim-css-color'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
+"Plugin 'groenewege/vim-less'
+"Plugin 'digitaltoad/vim-jade'
 Plugin 'elzr/vim-json'
-Plugin 'StanAngeloff/php.vim'
+"Plugin 'StanAngeloff/php.vim'
 
 " @ Plugin --- [ ADV Program Language ]
-Plugin 'octol/vim-cpp-enhanced-highlight'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
@@ -233,10 +218,8 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
-
 " Set Color Themes 
 set background=dark
-let base16colorspace=256
 
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
@@ -275,48 +258,39 @@ colorscheme J
 " Normal Setting for Vim StatuLine
 " So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
+
 hi f1 guibg=#C0C280 guifg=#181818 gui=NONE 
-hi f2 guibg=Black guifg=#C0C280 gui=underline
+hi f2 guibg=Black guifg=#C0C280 gui=NONE
+
+" Observer
+"hi f1 guibg=#C0C280 guifg=#080808 gui=NONE 
+" Inserter
+"hi f1 guibg=#79BE61 guifg=#181818 gui=NONE
+" Command
+"hi f1 guibg=#981000 guifg=#ffffff gui=NONE
 
 function! StatuslineModeColor()
-  let s:StatuslineMode=mode()
-  if s:StatuslineMode == 'n'
-		hi f1 guibg=#C0C280 guifg=#080808 
+	let s:Status=mode()	
+  if s:Status == 'n'
+		hi f1 guibg=#C0C280 guifg=#080808 gui=NONE
 		return 'Observer'
-  elseif s:StatuslineMode == 'i'
-		hi f1 guibg=#79BE61 guifg=#181818
+  elseif s:Status == 'i'
+		hi f1 guibg=#79BE61 guifg=#181818 gui=NONE
 		return 'Inserter'
-	elseif s:StatuslineMode == 'v'
-		hi f1 guibg=#C0C280 guifg=#080808
+	elseif s:Status == 'v'
+		hi f1 guibg=#C0C280 guifg=#080808 gui=NONE
 		return 'Injection'
+	else
+		hi f1 guibg=#981000 guifg=#ffffff gui=NONE
+		return 'Command'
   endif
 endfunc
 
 set statusline=%#f1#\ %{StatuslineModeColor()}\ 
-set statusline+=%#f2#[%f]													" file name
-set statusline+=[%{strlen(&fenc)?&fenc:'none'}]		" file encoding
-"set statusline+=[%{&ff}]													" file format
-set statusline+=%y																" filetype
-set statusline+=%h																" help file flag
-set statusline+=%m																" modified flag
-set statusline+=%r																" read only flag
-
-" Puts in the current git status
-if count(g:pathogen_disabled, 'Fugitive') < 1   
-  set statusline+=%{fugitive#statusline()}
-endif
-
-" Puts in syntastic warnings
-if count(g:pathogen_disabled, 'Syntastic') < 1  
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
-endif
-
+set statusline+=%#f2#[%f][%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r
 " right align laststatus
-set statusline+=\ %=                        " align left
-set statusline+=C:%c\ L:%l/%L\ [%p%%]				" line X of Y [percent of file]
-set statusline+=\ Buff:[%n]                 " Buffer number
+set statusline+=\ %=C:%c\ L:%l[%L][%p%%]
+set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
 " End Status Line
@@ -488,9 +462,7 @@ let g:C_UseTool_doxygen = 'yes'
 
 " vim-smooth-scroll Config
 noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 1)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
+noremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " VimFiler Settings
 let g:vimfiler_safe_mode_by_default = 0
