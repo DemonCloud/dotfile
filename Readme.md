@@ -9,7 +9,7 @@
 
 ####Linux (Ubuntu)
 <hr>
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ccc1.png" alt="Window YVim preview"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/neovim.png" alt="Window YVim preview"/>
 
 <hr>
 
