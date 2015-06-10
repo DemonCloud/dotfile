@@ -15,6 +15,8 @@
 
 这个 ``dotfile`` 项目包含了我最新的 Vim 配置文件。与其他人的 Vim 配置不同
 
+<span style="color=red;">--Update 2015.6.10 增加了 Neovim的配置文件</span>
+
 这些配置文件做了如下事情：
 
 >	1. 使用 [Vundle](https://github.com/gmarik/Vundle.vim) 管理插件
@@ -25,7 +27,6 @@
 >	6. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
 >	7. 默认包含几款经典的主题。可切换。
 >	8. __不强奸你的按键配置，请按照自己的习惯自定义按键，默认均为原生Vim按键__
->
 
 
 ## Install 安装
@@ -113,9 +114,12 @@
 
 <div id="update" style="display : none; visibility : hidden"></div>
 
+<span style="color=red;">-- update 2015.6.10 增加了 Neovim的配置文件</span>
+
 -- update 2015.6.8   更新插件
 
 -- update 2015.6.4   解决 Windows 下中文字符乱码的问题 , 增加了 CtrlP 插件
 
 -- update 2015.5.29  上传项目
+
 
