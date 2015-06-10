@@ -1,36 +1,3 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim and sourced by
-" the call to :runtime you can find below.  If you wish to change any of those
-" settings, you should do it in this file (/etc/vim/vimrc), since debian.vim
-" will be overwritten everytime an upgrade of the vim packages is performed.
-" It is recommended to make changes after sourcing debian.vim since it alters
-" the value of the 'compatible' option.
-
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-runtime! debian.vim
-
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
-"set compatible
-
-" Vim5 and later versions support syntax highlighting. Uncommenting the next
-" line enables syntax highlighting by default.
-
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-"set background=dark
-
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
-
-" Uncomment the following to have Vim load indentation rules and plugins
-" according to the detected filetype.
-" 
-" 
 " 
 "                         YiJun Linux GVim dotfile
 "  
@@ -41,14 +8,21 @@ runtime! debian.vim
 "
 "
 " ========================= Normal Setting Start =========================  
-set nocompatible
 
-"init
-"set windows pos and resize
+" Set Linux Debian Desktop
+runtime! debian.vim
+
+" Not complete with Vi Mode
+set nocompatible
+set regexpengine=1
+
+"Init
+"Set windows pos and resize
 set lines=48
 set columns=118
 winpos 68 0
 
+" -------------- Global Setting ---------------
 " ## Make its Gvim Like Windows behave ## 
 " So you can use 
 " @ CTRL+S save the file
@@ -58,19 +32,20 @@ winpos 68 0
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-set t_Co=256
-set regexpengine=1
 " Format 
+set nu
 set ts=2 "4
 set shiftwidth=2 "4
 set softtabstop=2 "4
 set noexpandtab
-set nu
 
-" Encoding setting
+" ------------- Fonts Setting ---------------
 " The fonts You will find on GitHub
 " https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
+" Encoding setting
 set encoding=utf-8
+set termencoding=utf-8
+" Fonts
 set guifont=ProfontWindows\ 9
 "set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
 "set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
@@ -84,8 +59,8 @@ set guifont=ProfontWindows\ 9
 set autoindent
 set smartindent
 set cindent
-set autoread
 set ignorecase
+set smartcase
 set hlsearch
 set wrap
 set wildmenu
@@ -98,23 +73,56 @@ set noswapfile
 " Rule the define
 set noshowmode
 set ruler
-set cursorline
-set laststatus=2
-set guioptions-=e
-set guioptions-=m
-set guioptions-=T
-set guioptions-=L
-set guioptions-=r
-set guioptions-=B
-set guioptions-=0
-set go=
-
-" figure config
 set mousehide
+set cursorline
+
+" Advance config
+set magic
+set lazyredraw
+set ttyfast
+set hidden
+"set autochdir
+set autoread
+set showmatch
+set laststatus=2
+set cmdheight=1
+
+" No surround sound
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" Set Fold config
+" set foldmethod=syntax
+set foldenable
+" set <space> as toggle foldcomment
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+nnoremap <c-space> ?
+nnoremap ; :
+
+" Diff GUI Vim with NVim 
+" Set No Top Menu and Scroll
+if has("gui_running")  
+	set guioptions-=e
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=L
+	set guioptions-=r
+	set guioptions-=B
+	set guioptions-=0
+	set go=
+	set guitablabel=
+	"set guitablabel=%M\ %t  
+else
+	set t_Co=256
+	set showtabline=1
+	set noimd
+endif
 
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
+" -------------- Global Setting end ---------------
 
 " ========================= Normal Setting End =========================  
 
@@ -136,7 +144,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'DemonCloud/J.vim'
 
 " @ Plugin --- [ Style Custom ]
-
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'ap/vim-buftabline'
 Plugin 'terryma/vim-smooth-scroll'
@@ -218,6 +225,7 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
+
 " Set Color Themes 
 set background=dark
 
@@ -254,7 +262,7 @@ colorscheme J
 "call vam#ActivateAddons(['powerline'])
 
 " ----------------------------------
-" End Status Line
+" Start Status Line
 " Normal Setting for Vim StatuLine
 " So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
@@ -278,10 +286,10 @@ function! StatuslineModeColor()
 		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
 		return 'Inserter'
 	elseif s:Status == 'v'
-		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15 gui=NONE cterm=NONE term=NONE
 		return 'Injection'
 	else
-		hi f1 guibg=#981000 guifg=#ffffff ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
+		hi f1 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
 		return 'Command'
   endif
 endfunc
@@ -305,24 +313,8 @@ set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 "autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
-" Check Vim Syntax name Fn
-nmap <leader>yi :call <SID>SynStack()<CR>
-function! <SID>SynStack()
-	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
-endfunc
-
-"Buftabline Config
-set hidden
-nnoremap <A-k> : bnext<CR>
-nnoremap <A-j> : bprev<CR>
-nnoremap <A-x> : bdelete<CR>
-nnoremap <A-w> : bwipeout<CR>
-
-
 " fzf Plugin config
 set rtp+=~/.fzf
-nnoremap <C-\> :FZF<CR>
-
 
 " TagBar Config
 " Just configure and [make] ctags file
@@ -352,7 +344,6 @@ let g:tagbar_type_css = {
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
-
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 1
@@ -368,7 +359,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 " YouCompleteMe Geek Config
 set completeopt=longest,menu
-
 let g:ycm_cache_omnifunc                                = 1
 let g:ycm_global_ycm_extra_conf        = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf           = 1
@@ -402,16 +392,12 @@ let g:ycm_filetype_blacklist = {
 let tern#is_show_argument_hints_enabled= 1
 let g:tern_show_argument_hints="on_hold"
 
-nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
-nnoremap <F6>  :SyntasticToggleMode <CR>
-
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger       = "<c-x>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -451,7 +437,6 @@ let g:cpp_experimental_template_highlight = 1
 " GitGutter Setting
 let g:gitgutter_sign_column_always = 0 
 let g:gitgutter_max_signs = 99999 
-hi clear SignColumn
 
 
 " c.vim Building Config for C/C++ Vim
@@ -459,10 +444,6 @@ let g:C_UseTool_cmake='yes'
 let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
 
-
-" vim-smooth-scroll Config
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " VimFiler Settings
 let g:vimfiler_safe_mode_by_default = 0
@@ -481,33 +462,48 @@ let g:ctrlp_custom_ignore = {
 \ 'file' : '\v\.(exe|so|dll|git|svn)$'
 \ }
 
+
+" --------- KeyMapping Config -----------
 nnoremap <leader>cp :CtrlP<CR>
 nnoremap <leader>cf :CtrlPFunky<CR>
 
 " Start it in browser. Only for Linux Google Chrome
-nnoremap <F8> :!google-chrome %<CR><CR>
+"nnoremap <F8> :silent update<Bar>silent !google-chrome %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
+"nnoremap <F9> :silent update<Bar>silent !firefox %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
+nnoremap <F5>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+nnoremap <F6>  :SyntasticToggleMode <CR>
+nnoremap <F8>	 :silent update<Bar>silent !google-chrome %:p &<CR>
+nnoremap <F9>	 :silent update<Bar>silent !firefox %:p &<CR>
+nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
 
-" LightLine Config
-"let g:lightline = {
-"      \ 'colorscheme': 'wombat',
-"      \ 'active': {
-"      \   'left': [ [ 'mode', 'paste' ],
-"      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-"      \ },
-"      \ 'component': {
-"      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-"      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-"      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-"      \ },
-"      \ 'component_visible_condition': {
-"      \   'readonly': '(&filetype!="help"&& &readonly)',
-"      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-"      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-"      \ },
-"      \ 'separator': { 'left': '', 'right': '' },
-"      \ 'subseparator': { 'left': '|', 'right': '|' }
-"      \ }
+" Window VertSplit switcher
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-\> :FZF<CR>
 
+" Format search jump
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+nnoremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
+"Buftabline Config
+nnoremap <A-k> : bnext<CR>
+nnoremap <A-j> : bprev<CR>
+nnoremap <A-x> : bdelete<CR>
+nnoremap <A-w> : bwipeout<CR>
+
+" Check Vim Syntax name Fn
+nmap <leader>yi :call <SID>SynStack()<CR>
+function! <SID>SynStack()
+	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
+endfunc
+" --------- KeyMapping Config END ----------- 
 
 " ========================= Plugin Config End =========================
 
