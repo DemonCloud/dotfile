@@ -45,6 +45,7 @@ set noexpandtab
 " Encoding setting
 set encoding=utf-8
 set termencoding=utf-8
+
 " Fonts
 set guifont=ProfontWindows\ 9
 "set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
@@ -171,6 +172,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
+Plugin 'alvan/vim-closetag'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -419,6 +421,12 @@ let g:user_emmet_settings = {
 \}
 
 
+" AutoClose Tag Config
+" filenames like *.xml, *.html, *.xhtml, ...
+let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
+au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+
 " JavaScript Lib Syntax
 autocmd BufReadPre *.js let b:javascript_lib_use_jquery     = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
@@ -428,6 +436,7 @@ autocmd BufReadPre *.js let b:javascript_lib_use_angularjs  = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_rect		= 1
 autocmd BufReadPre *.js let b:javascript_lib_use_rectjs		= 1
 autocmd BufReadPre *.js let b:javascript_lib_use_zepto		= 1
+
 
 " C++ Syntax HighLight
 let g:cpp_class_scope_highlight = 1
