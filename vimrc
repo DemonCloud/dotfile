@@ -61,7 +61,7 @@ set autoindent
 set smartindent
 set cindent
 set ignorecase
-set smartcase
+"set smartcase
 set hlsearch
 set wrap
 set wildmenu
@@ -84,7 +84,7 @@ set ttyfast
 set hidden
 "set autochdir
 set autoread
-set showmatch
+"set showmatch
 set laststatus=2
 set cmdheight=1
 
@@ -172,7 +172,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
-Plugin 'alvan/vim-closetag'
+"Plugin 'alvan/vim-closetag'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -204,10 +204,10 @@ Plugin 'tacahiroy/ctrlp-funky'
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
 Plugin 'ap/vim-css-color'
-"Plugin 'groenewege/vim-less'
-"Plugin 'digitaltoad/vim-jade'
+Plugin 'groenewege/vim-less'
+Plugin 'digitaltoad/vim-jade'
 Plugin 'elzr/vim-json'
-"Plugin 'StanAngeloff/php.vim'
+Plugin 'StanAngeloff/php.vim'
 
 " @ Plugin --- [ ADV Program Language ]
 "Plugin 'octol/vim-cpp-enhanced-highlight'
@@ -215,6 +215,8 @@ Plugin 'elzr/vim-json'
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'yuratomo/w3m.vim'
 
 " ---- Plugin List Complete ----
 
@@ -423,8 +425,8 @@ let g:user_emmet_settings = {
 
 " AutoClose Tag Config
 " filenames like *.xml, *.html, *.xhtml, ...
-let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
-au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
+" let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
+" au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
 
 
 " JavaScript Lib Syntax
@@ -481,9 +483,12 @@ nnoremap <leader>cf :CtrlPFunky<CR>
 "nnoremap <F9> :silent update<Bar>silent !firefox %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
 nnoremap <F5>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 nnoremap <F6>  :SyntasticToggleMode <CR>
+nnoremap <F7>  :GundoToggle<CR>
 nnoremap <F8>	 :silent update<Bar>silent !google-chrome %:p &<CR>
 nnoremap <F9>	 :silent update<Bar>silent !firefox %:p &<CR>
-nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
+nnoremap <F10> :YcmForceCompileAndDiagnostics <CR>
+nnoremap <F11> :YcmDebugInfo<CR>
+nnoremap <F12> :YcmRestartServer<CR>
 
 " Window VertSplit switcher
 nnoremap <C-h> <C-w>h
