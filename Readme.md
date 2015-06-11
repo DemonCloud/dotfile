@@ -27,6 +27,7 @@
 >	6. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
 >	7. 默认包含几款经典的主题。可切换。
 >	8. __不强奸你的按键配置，请按照自己的习惯自定义按键，默认均为原生Vim按键__
+> 9. Linux 下的配置文件中，原生按键被强化，请留意配置文件最后那几段。Windows未做优化
 
 
 ## Install 安装
@@ -98,7 +99,6 @@
 
 
 
-
 ## Update Plugin 更新插件
 
 在安装完成 Vundle 之后。重启 GVim 
@@ -114,7 +114,9 @@
 
 <div id="update" style="display : none; visibility : hidden"></div>
 
-<span style="color=red;">-- update 2015.6.10 增加了 Neovim的配置文件</span>
+-- update 2015.6.12  强化 NeoVim 配置文件
+
+-- update 2015.6.10  增加了 Neovim的配置文件
 
 -- update 2015.6.8   更新插件
 
