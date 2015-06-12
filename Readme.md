@@ -26,8 +26,8 @@
 >	5. 默认支持了 Windows 常用操作 [``Ctrl-C``复制，``Ctrl-V``粘贴，``Ctrl-X``剪切...]
 >	6. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
 >	7. 默认包含几款经典的主题。可切换。
->	8. __不强奸你的按键配置，请按照自己的习惯自定义按键，默认均为原生Vim按键__
-> 9. Linux 下的配置文件中，原生按键被强化，请留意配置文件最后那几段。Windows未做优化
+>	8. 不强奸你的按键配置，请按照自己的习惯自定义按键，默认均为原生Vim按键
+> 9. Windows 和 Linux 下的原生按键配置均做了强化处理
 
 
 ## Install 安装

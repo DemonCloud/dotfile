@@ -56,11 +56,6 @@ source $VIMRUNTIME/menu.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
-" No back up files 
-set nobackup
-set noswapfile
-set nowritebackup
-set t_Co=256
 set regexpengine=1
 " Format 
 set ts=2
@@ -73,24 +68,65 @@ set nu
 set autoindent
 set smartindent
 set cindent
-set autoread
 set ignorecase
+set smartcase
 set hlsearch
 set wrap
+set wildmenu
+
+" No back up files 
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Rule the define
 set noshowmode
 set ruler
+set mousehide
 set cursorline
+
+" Advance config
+set magic
+set lazyredraw
+set ttyfast
+set hidden
+"set autochdir
+set autoread
+"set showmatch
 set laststatus=2
-set guioptions-=e
-set guioptions-=m
-set guioptions-=T
-set guioptions-=L
-set guioptions-=r
-set guioptions-=B
-set guioptions-=0
-set go=
+set cmdheight=1
+
+" No surround sound
+set noerrorbells
+set novisualbell
+set t_vb=
+
+" Set Fold config
+" set foldmethod=syntax
+set foldenable
+" set <space> as toggle foldcomment
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+nnoremap <c-space> ?
+nnoremap ; :
+
+" Diff GUI Vim with NVim 
+" Set No Top Menu and Scroll
+if has("gui_running")  
+	set guioptions-=e
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=L
+	set guioptions-=r
+	set guioptions-=B
+	set guioptions-=0
+	set go=
+	set guitablabel=
+	"set guitablabel=%M\ %t  
+else
+	set t_Co=256
+	set showtabline=1
+	set noimd
+endif
 
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
@@ -130,14 +166,14 @@ Plugin 'ap/vim-buftabline'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
-"Plugin 'sjl/gundo.vim'
+Plugin 'sjl/gundo.vim'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 "Plugin 'lukaszkorecki/CoffeeTags' "## need Ruby surport
 
 
 " NERDTree Plugins Collections
-"Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 "Plugin 'ryanoasis/vim-webdevicons'
 "Plugin 'Xuyuanp/nerdtree-git-plugin'
 "Plugin 'jistr/vim-nerdtree-tabs'
@@ -195,12 +231,12 @@ Plugin 'pangloss/vim-javascript'
 "Plugin 'chrisbra/Colorizer'
 "Plugin 'skammer/vim-css-color'
 Plugin 'ap/vim-css-color'
-Plugin 'hail2u/vim-css3-syntax'
+"Plugin 'hail2u/vim-css3-syntax'
 "Plugin 'othree/html5.vim'
 "Plugin 'othree/html5-syntax.vim'
-"Plugin 'groenewege/vim-less'
-"Plugin 'digitaltoad/vim-jade'
-"Plugin 'kchmck/vim-coffee-script'
+Plugin 'groenewege/vim-less'
+Plugin 'digitaltoad/vim-jade'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'vim-scripts/c.vim'
@@ -256,7 +292,7 @@ au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 253)
 "python del powerline_setup
 
 " ----------------------------------
-" End Status Line
+" Start Status Line
 " Normal Setting for Vim StatuLine
 " So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
@@ -280,10 +316,10 @@ function! StatuslineModeColor()
 		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
 		return 'Inserter'
 	elseif s:Status == 'v'
-		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15 gui=NONE cterm=NONE term=NONE
 		return 'Injection'
 	else
-		hi f1 guibg=#981000 guifg=#ffffff ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
+		hi f1 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
 		return 'Command'
   endif
 endfunc
@@ -297,25 +333,6 @@ set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
 
 " End Status Line
 " -----------------------------
-
-" alrLine && PowerLine Config
-"let g:Powerline_symbols = 'fancy'
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:Powerline_symbols = 'fancy'
-"let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
-"let g:WebDevIconsUnicodeDecorateFileNodes = 1
-"let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
-
-
-"Buftabline Config
-set hidden
-nnoremap <A-p> :bnext<CR>
-nnoremap <A-n> :bprev<CR>
-nnoremap <A-x> :bdelete<CR>
-nnoremap <A-w> :bwipeout<CR>
 
 " TagBar Config
 let g:tagbar_ctags_bin = "$VIM/vimfiles/bundle/tagbar/ctags.exe"
@@ -361,7 +378,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
-nnoremap <F6>  :SyntasticToggleMode <CR>
 
 
 " NeoCompelete
@@ -405,7 +421,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplete#close_popup()
-inoremap <expr><C-e>  neocomplete#cancel_popup()
+"inoremap <expr><C-e>  neocomplete#cancel_popup()
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
@@ -460,55 +476,26 @@ function! Multiple_cursors_after()
     echo 'Enabled autocomplete'
 endfunction
 
-
-" ListToggle QuickFix Config
-let g:lt_location_list_toggle_map = '<leader>l'
-let g:lt_quickfix_list_toggle_map = '<leader>q'
-
-" YouCompleteMe Geek Config
 set completeopt=longest,menu
 
-"let g:ycm_global_ycm_extra_conf                         = '$VIM/vimfiles/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"let g:ycm_confirm_extra_conf                            = 0
-"let g:ycm_add_preview_to_completeopt					= 0
-"
-"let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
-"let g:ycm_min_num_of_chars_for_completion               = 2   " 从第2个键入字符就开始罗列匹配项
-"let g:ycm_cache_omnifunc                                = 1
-"let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
-"let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
-"let g:ycm_complete_in_strings                           = 0   " 在字符串输入中不能补全
-"let g:ycm_collect_identifiers_from_comments_and_strings = 0   " 注释和字符串中的文字也会被收入补全
-"
-"let g:ycm_goto_buffer_command = 'same-buffer' "[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-"let g:ycm_filetype_blacklist = {
-""			\ 'tagbar'    : 1,
-""			\ 'qf'        : 1,
-""			\ 'notes'     : 1,
-""			\ 'markdown'  : 1,
-""			\ 'unite'     : 1,
-""			\ 'text'      : 1,
-""			\ 'vimwiki'   : 1,
-""			\ 'gitcommit' : 1,
-""\}
-"
-"
-"nnoremap <F11> :YcmForceCompileAndDiagnostics <CR>
+
+" tern_node_js onmicomplete with YouCompleteMe
+let tern#is_show_argument_hints_enabled= 1
+let g:tern_show_argument_hints="on_hold"
 
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger       = "<c-k>"
+let g:UltiSnipsExpandTrigger       = "<c-x>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
-
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
-let g:user_emmet_expandabbr_key ='<c-l>'
+let g:user_emmet_expandabbr_key ='<c-e>'
 let g:user_emmet_settings = {
 \ 'php'     : {
 \ 'extends' : 'html',
@@ -523,6 +510,12 @@ let g:user_emmet_settings = {
 \}
 
 
+" AutoClose Tag Config
+" filenames like *.xml, *.html, *.xhtml, ...
+" let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
+" au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
+
+
 " JavaScript Lib Syntax
 autocmd BufReadPre *.js let b:javascript_lib_use_jquery     = 1
 autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
@@ -533,6 +526,7 @@ autocmd BufReadPre *.js let b:javascript_lib_use_rect		= 1
 autocmd BufReadPre *.js let b:javascript_lib_use_rectjs		= 1
 autocmd BufReadPre *.js let b:javascript_lib_use_zepto		= 1
 
+
 " C++ Syntax HighLight
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
@@ -541,7 +535,6 @@ let g:cpp_experimental_template_highlight = 1
 " GitGutter Setting
 let g:gitgutter_sign_column_always = 0 
 let g:gitgutter_max_signs = 99999 
-hi clear SignColumn
 
 
 " c.vim Building Config for C/C++ Vim
@@ -550,57 +543,68 @@ let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
 
 
-" vim-smooth-scroll Config
-noremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-noremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
-noremap <silent> <c-b> :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
-noremap <silent> <c-f> :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-
 " VimFiler Settings
-let g:vimfiler_safe_mode_by_default=0
-let g:vimfiler_as_default_explorer=1
-let g:vimfiler_tree_opened_icon = "-"
-let g:vimfiler_tree_closed_icon = "+"
-let g:vimfiler_readonly_file_icon = "🔒" "♏
-let g:vimfiler_ignore_pattern = '^\%(.git\|.idea\|.DS_Store\)$'
+let g:vimfiler_safe_mode_by_default = 0
+let g:vimfiler_as_default_explorer  = 1
+let g:vimfiler_tree_opened_icon     = "-"
+let g:vimfiler_tree_closed_icon     = "+"
+let g:vimfiler_readonly_file_icon = "🔒"
+let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
-" CtrlP Config
+" CtrlP Settings
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$'
-  \ }
+\ 'dir'  : '\v[\/]\.(git|hg|svn)$',
+\ 'file' : '\v\.(exe|so|dll|git|svn)$'
+\ }
 
-" Light line Config
-"let g:lightline = {
-""      \ 'colorscheme': 'wombat',
-""      \ 'active': {
-""      \   'left': [ [ 'mode', 'paste' ],
-""      \             [ 'fugitive', 'readonly', 'filename', 'modified' ] ]
-""      \ },
-""      \ 'component': {
-""      \   'readonly': '%{&filetype=="help"?"":&readonly?"⭤":""}',
-""      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-""      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-""      \ },
-""      \ 'component_visible_condition': {
-""      \   'readonly': '(&filetype!="help"&& &readonly)',
-""      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-""      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-""      \ },
-""      \ 'separator': { 'left': '', 'right': '' },
-""      \ 'subseparator': { 'left': '|', 'right': '|' }
-""      \ }
+
+" --------- KeyMapping Config -----------
+nnoremap <leader>cp :CtrlP<CR>
+nnoremap <leader>cf :CtrlPFunky<CR>
 
 " Start it in browser. Only for Linux Google Chrome
-nnoremap <F8> :!google-chrome %<CR><CR>
+"nnoremap <F8> :silent update<Bar>silent !google-chrome %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
+"nnoremap <F9> :silent update<Bar>silent !firefox %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
+nnoremap <F5>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+nnoremap <F6>  :SyntasticToggleMode <CR>
+nnoremap <F7>  :GundoToggle<CR>
+nnoremap <F8>	 :silent update<Bar>silent !google-chrome %:p &<CR>
+nnoremap <F9>	 :silent update<Bar>silent !firefox %:p &<CR>
+nnoremap <F10> :YcmForceCompileAndDiagnostics <CR>
+nnoremap <F11> :YcmDebugInfo<CR>
+nnoremap <F12> :YcmRestartServer<CR>
+
+" Window VertSplit switcher
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-\> :FZF<CR>
+
+" Format search jump
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+nnoremap <silent> * *zz
+nnoremap <silent> # #zz
+nnoremap <silent> g* g*zz
+nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+nnoremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
+"Buftabline Config
+nnoremap <A-k> : bnext<CR>
+nnoremap <A-j> : bprev<CR>
+nnoremap <A-x> : bdelete<CR>
+nnoremap <A-w> : bwipeout<CR>
 
 " Check Vim Syntax name Fn
 nmap <leader>yi :call <SID>SynStack()<CR>
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
+" --------- KeyMapping Config END ----------- 
 
 " ========================= Plugin Config End =========================
 
@@ -616,4 +620,4 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
     \endif<CR>
 
 " ========================= GUI End =========================
-
+" End vimrc
