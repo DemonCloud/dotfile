@@ -18,9 +18,8 @@ set regexpengine=1
 
 "Init
 "Set windows pos and resize
-"set lines=48
-"set columns=118
-"winpos 68 0
+set lines=48
+set columns=118
 
 " -------------- Global Setting ---------------
 " ## Make its Gvim Like Windows behave ## 
@@ -60,9 +59,10 @@ set guifont=ProfontWindows\ 9
 set autoindent
 set smartindent
 set cindent
-set ignorecase
-set smartcase
 set hlsearch
+set incsearch
+set ignorecase
+"set smartcase
 set wrap
 set wildmenu
 
@@ -96,10 +96,6 @@ set t_vb=
 " Set Fold config
 " set foldmethod=syntax
 set foldenable
-" set <space> as toggle foldcomment
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
-nnoremap <c-space> ?
-nnoremap ; :
 
 " Diff GUI Vim with NVim 
 " Set No Top Menu and Scroll
@@ -181,13 +177,13 @@ Plugin 'Lokaltog/vim-easymotion'
 
 
 " @ Plugin --- [ CWD File Buffer Manager ] 
+Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'yegappan/mru'
 
 
 " @ Plugin --- [ Git && Shell Tools ]
-Plugin 'Shougo/vimproc.vim'
 Plugin 'airblade/vim-gitgutter'
 "Plugin 'mhinz/vim-signify'
 
@@ -215,7 +211,7 @@ Plugin 'StanAngeloff/php.vim'
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'christoomey/vim-tmux-navigator'
+"Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'yuratomo/w3m.vim'
 
 " ---- Plugin List Complete ----
@@ -461,7 +457,7 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer  = 1
 let g:vimfiler_tree_opened_icon     = "-"
 let g:vimfiler_tree_closed_icon     = "+"
-let g:vimfiler_readonly_file_icon   = "♏" "♏
+let g:vimfiler_readonly_file_icon   = "x"
 let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 " CtrlP Settings
@@ -481,7 +477,8 @@ nnoremap <leader>cf :CtrlPFunky<CR>
 " Start it in browser. Only for Linux Google Chrome
 "nnoremap <F8> :silent update<Bar>silent !google-chrome %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
 "nnoremap <F9> :silent update<Bar>silent !firefox %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
-nnoremap <F5>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+nnoremap <F4>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+nnoremap <F5>  :NERDTreeToggle<CR>
 nnoremap <F6>  :SyntasticToggleMode <CR>
 nnoremap <F7>  :GundoToggle<CR>
 nnoremap <F8>	 :silent update<Bar>silent !google-chrome %:p &<CR>
@@ -496,6 +493,11 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-\> :FZF<CR>
+" repeat Prev Command
+nnoremap ; q:k<CR>
+" set <space> as toggle foldcomment
+nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+nnoremap <c-space> ?
 
 " Format search jump
 nnoremap <silent> n nzz
@@ -503,6 +505,7 @@ nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
+" Smooth Scroll the terminal
 nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nnoremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
