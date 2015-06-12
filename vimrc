@@ -9,8 +9,10 @@
 "
 " ========================= Normal Setting Start =========================  
 
+
 " Set Linux Debian Desktop
 runtime! debian.vim
+
 
 " Not complete with Vi Mode
 set nocompatible
@@ -31,18 +33,26 @@ set columns=118
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+" @Replace <leader> keymap to <space>
+let mapleader=" "
+
 " Format 
 set nu
 set ts=2 "4
 set shiftwidth=2 "4
 set softtabstop=2 "4
 set noexpandtab
+set autowrite
+set display=lastline
+
 
 " ------------- Fonts Setting ---------------
 " The fonts You will find on GitHub
 " https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
 " Encoding setting
 set encoding=utf-8
+setglobal fileencoding=utf-8
+set fileencodings=ucs-bom,utf-8,latin1
 set termencoding=utf-8
 
 " Fonts
@@ -55,16 +65,30 @@ set guifont=ProfontWindows\ 9
 "set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 "set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
 
-" Search and Case
+" For indent
+set wrap
 set autoindent
 set smartindent
+set smarttab
 set cindent
+set linebreak
+set shiftround
+
+" Search and Case
+set gdefault
 set hlsearch
 set incsearch
 set ignorecase
+set showcmd
+set whichwrap+=<,>,h,l
 "set smartcase
-set wrap
+
+" Omni Complete Setting
 set wildmenu
+set wildmode=longest,full
+set completeopt=menu,menuone,longest
+set switchbuf=useopen,usetab
+set shortmess=a
 
 " No back up files 
 set nobackup
@@ -74,8 +98,8 @@ set noswapfile
 " Rule the define
 set noshowmode
 set ruler
-set mousehide
 set cursorline
+set winaltkeys=no
 
 " Advance config
 set magic
@@ -97,6 +121,10 @@ set t_vb=
 " set foldmethod=syntax
 set foldenable
 
+" misc settings
+set fileformat=unix     " file mode is unix
+set fileformats=unix,dos,mac
+
 " Diff GUI Vim with NVim 
 " Set No Top Menu and Scroll
 if has("gui_running")  
@@ -109,6 +137,9 @@ if has("gui_running")
 	set guioptions-=0
 	set go=
 	set guitablabel=
+	set paste
+	set mousemodel=popup_setpos
+	set mouse=a
 	"set guitablabel=%M\ %t  
 else
 	set t_Co=256
@@ -160,6 +191,7 @@ Plugin 'danro/rename.vim'
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'marijnh/tern_for_vim'
 
 
@@ -178,7 +210,9 @@ Plugin 'Lokaltog/vim-easymotion'
 
 " @ Plugin --- [ CWD File Buffer Manager ] 
 Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'yegappan/mru'
 
@@ -190,6 +224,7 @@ Plugin 'airblade/vim-gitgutter'
 
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
@@ -341,9 +376,12 @@ let g:tagbar_type_css = {
 
 
 " Syntastic Config
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
+hi f3 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
+set statusline+=%#f3#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+let g:syntastic_error_symbol = 'x'
+let g:syntastic_warning_symbol = '!'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 1
@@ -358,15 +396,14 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 
 " YouCompleteMe Geek Config
-set completeopt=longest,menu
 let g:ycm_cache_omnifunc                                = 1
 let g:ycm_global_ycm_extra_conf        = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 let g:ycm_confirm_extra_conf           = 1
 let g:ycm_add_preview_to_completeopt   = 1
 let g:ycm_min_num_of_chars_for_completion = 1 
 let g:ycm_autoclose_preview_window_after_completion= 1
-"let g:ycm_key_list_select_completion   = ['<c-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+let g:ycm_key_list_select_completion   = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 
 let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
 let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
@@ -395,9 +432,9 @@ let g:tern_show_argument_hints="on_hold"
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger       = "<c-x>"
+" let g:UltiSnipsExpandTrigger       = "<c-x>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-f>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
+let g:UltiSnipsJumpBackwardTrigger = "<c-g>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -457,7 +494,7 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer  = 1
 let g:vimfiler_tree_opened_icon     = "-"
 let g:vimfiler_tree_closed_icon     = "+"
-let g:vimfiler_readonly_file_icon   = "x"
+let g:vimfiler_readonly_file_icon   = "?"
 let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 " CtrlP Settings
@@ -469,6 +506,14 @@ let g:ctrlp_custom_ignore = {
 \ 'file' : '\v\.(exe|so|dll|git|svn)$'
 \ }
 
+" Ack Settings
+if executable('ag')
+  let g:ackprg = "ag --nocolor --nogroup --column"
+elseif executable('ack-grep')
+  let g:ackprg = "ack-grep --nocolor --nogroup --column"
+elseif executable('ack')
+  let g:ackprg = "ack --nocolor --nogroup --column"
+endif
 
 " --------- KeyMapping Config -----------
 nnoremap <leader>cp :CtrlP<CR>
@@ -488,23 +533,47 @@ nnoremap <F11> :YcmDebugInfo<CR>
 nnoremap <F12> :YcmRestartServer<CR>
 
 " Window VertSplit switcher
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-\> :FZF<CR>
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+cnoremap <C-j> <down>
+cnoremap <C-k> <up>
+
+inoremap <silent> <C-h> <Left>
+inoremap <silent> <C-j> <Down>
+inoremap <silent> <C-k> <Up>
+inoremap <silent> <C-l> <Right>
+nnoremap <silent> <C-0> :FZF<CR>
 " repeat Prev Command
 nnoremap ; q:k<CR>
 " set <space> as toggle foldcomment
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
-nnoremap <c-space> ?
+"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+"nnoremap <c-space> ?
 
-" Format search jump
+
+nnoremap / /\v
+nnoremap / /\v
+nnoremap ' `
+nnoremap ` '
+nnoremap <silent> zj o<Esc>k
+nnoremap <silent> zk O<Esc>j
+" Now we don't have to move our fingers so far when we want to scroll through
+" the command history; also, don't forget the q: command (see :h q: for more
+" info)
+"vnoremap <slient> ? ?\v
+"vnoremap <slient> ? ?\v
+
+" Format Jump
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
+nnoremap <silent> g; g;zz
+nnoremap <silent> g: g:zz
+nnoremap <silent> gs :call VisualSearch()<CR>
+
 " Smooth Scroll the terminal
 nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nnoremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 2)<CR>
@@ -516,10 +585,30 @@ nnoremap <A-x> : bdelete<CR>
 nnoremap <A-w> : bwipeout<CR>
 
 " Check Vim Syntax name Fn
-nmap <leader>yi :call <SID>SynStack()<CR>
+nnoremap <leader>yi : call <SID>SynStack()<CR>
+nnoremap <leader>w  : w!<CR>
+nnoremap <leader>cd : cd %                             : p : h<cr>
+nnoremap <leader>pg : YcmCompleter GoTo<CR>
+nnoremap <leader>pd : YcmCompleter GoToDefinition<CR>
+nnoremap <leader>pc : YcmCompleter GoToDeclaration<CR>
+
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
+
+function! VisualSearch() range
+	let l:saved_reg = @"
+	execute "normal! vgvy"
+
+	let l:pattern = escape(@", '\\/.*$^~[]')
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+	execute "Ag " . l:pattern . ' '
+
+	let @/ = l:pattern
+	let @" = l:saved_reg
+endfunction
+
 " --------- KeyMapping Config END ----------- 
 
 " ========================= Plugin Config End =========================
