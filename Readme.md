@@ -2,12 +2,8 @@
 
 ## Introduction 简介
 
-####Windows (Win7)
-<hr>
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ccc2.png" alt="Window YVim preview"/>
 
-
-####Linux (Ubuntu)
+##### Linux (Ubuntu)
 <hr>
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/neovim.png" alt="Window YVim preview"/>
 
@@ -20,14 +16,12 @@
 这些配置文件做了如下事情：
 
 >	1. 使用 [Vundle](https://github.com/gmarik/Vundle.vim) 管理插件
->	2. 包含了各种流行实用的插件，包含通用配置（最佳实践）
->	3. 重新编译 支持 `Python` `Lua`（某些插件需要Lua与Python的支持）
+>	2. 包含了各种流行实用的插件，包含通用配置（最佳实践,深度优化，适配原生Vim 和 NeoVim）
+>	3. 重新编译Vim 支持 `Python` `Lua`（某些插件需要Lua与Python的支持）
 >	4. 解决了部分插件按键冲突，某些插件加载后相互冲突导致Gvim顿卡
 >	5. 默认支持了 Windows 常用操作 [``Ctrl-C``复制，``Ctrl-V``粘贴，``Ctrl-X``剪切...]
 >	6. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
->	7. 默认包含几款经典的主题。可切换。
->	8. 不强奸你的按键配置，请按照自己的习惯自定义按键，默认均为原生Vim按键
-> 9. Windows 和 Linux 下的原生按键配置均做了强化处理
+>	7. Windows 和 Linux 下的原生按键配置均做了强化处理
 
 
 ## Install 安装
@@ -36,9 +30,11 @@
 
 或Clone项目 ： ``git clone https://github.com/DemonCloud/dotfile-YVIM.git``
 
+更新项目 ： ``git pull -u``
+
 <br>
 
-#### Windows 
+##### Windows 
 
 下载 ： [YVIM for Windows](http://pan.baidu.com/s/1i3ktVO5) -- <a href="#update">Update 2015.6.8</a>
 
@@ -47,10 +43,14 @@
 > __注意：请运行 ``Vim\vim74\_Vim.exe`` 文件. 此文件重新编译支持Lua 以及替换了图标.__
 >
 >关于字体的话, 我这里分享一个 PragmataPro : [Download](http://pan.baidu.com/s/1o6mlBPg)
+>
+>如果需要在 Windows下使用 YoucompleteMe 的插件， 可以直接Vundle安装以下这个已经编译好的YCM_WIN_x86的项目
+
+[YouCompleteMe For Windows x86](https://github.com/xleng/YCM_WIN_X86)
 
 <br>
 
-#### Linux
+##### Linux
 
 > **1.** 一般来说，Linux 下都会自带 Vim, 但是不一定会自带 Gvim. 以 Ubuntu 为例，先安装Gvim：
 
@@ -113,6 +113,7 @@
 ## Date 日志 
 
 <div id="update" style="display : none; visibility : hidden"></div>
+-- update 2015.6.13  Linux NeoVim 优化
 
 -- update 2015.6.12  强化 NeoVim 配置文件
 
