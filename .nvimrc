@@ -55,15 +55,6 @@ setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 set termencoding=utf-8
 
-" Fonts
-set guifont=ProfontWindows\ 9
-"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
-"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
-"set guifont=Decima\ Nova\ Pro
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
-"set guifont=Anonymous\ Pro\ for\ Powerline\ Bold\ 10
-"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
-"set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
 
 " For indent
 set wrap
@@ -71,7 +62,7 @@ set autoindent
 set smartindent
 set smarttab
 set cindent
-set linebreak
+"set linebreak
 set shiftround
 
 " Search and Case
@@ -141,6 +132,16 @@ if has("gui_running")
 	set mousemodel=popup_setpos
 	set mouse=a
 	"set guitablabel=%M\ %t  
+
+	" Fonts Settings
+	"set guifont=ProfontWindows\ 9
+	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
+	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
+	"set guifont=Decima\ Nova\ Pro
+	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
+	set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8 
+	"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
+	"set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
 else
 	set t_Co=256
 	set showtabline=1
@@ -170,6 +171,8 @@ Plugin 'gmarik/Vundle.vim'
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J.vim'
+"Plugin 'bling/vim-airline'
+"Plugin 'ryanoasis/vim-webdevicons'
 
 " @ Plugin --- [ Style Custom ]
 Plugin 'Lokaltog/vim-distinguished'
@@ -328,10 +331,9 @@ function! StatuslineModeColor()
 		return 'Command'
   endif
 endfunc
-
 set statusline=%#f1#\ %{StatuslineModeColor()}\ 
 set statusline+=%#f2#[%f][%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r
-" right align laststatus
+"" right align laststatus
 set statusline+=\ %=C:%c\ L:%l[%L][%p%%]
 set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
@@ -343,9 +345,11 @@ set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
 "let g:Powerline_symbols = 'fancy'
 "let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
+""let g:airline_symbols='compatible'
+"let g:airline_theme = 'base16'
 "let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
-"let g:WebDevIconsUnicodeDecorateFileNodes = 1
-"let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+"let g:WebDevIconsUnicodeDecorateFileNodes = 1 
+"let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 "autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
 " fzf Plugin config
