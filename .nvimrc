@@ -8,8 +8,6 @@
 "
 "
 " ========================= Normal Setting Start =========================  
-
-
 " Set Linux Debian Desktop
 runtime! debian.vim
 
@@ -62,7 +60,7 @@ set autoindent
 set smartindent
 set smarttab
 set cindent
-"set linebreak
+set linebreak
 set shiftround
 
 " Search and Case
@@ -72,7 +70,6 @@ set incsearch
 set ignorecase
 set showcmd
 set whichwrap+=<,>,h,l
-"set smartcase
 
 " Omni Complete Setting
 set wildmenu
@@ -116,6 +113,10 @@ set foldenable
 set fileformat=unix     " file mode is unix
 set fileformats=unix,dos,mac
 
+" set Undo file
+set undofile
+set undodir=~/.vim/undo
+
 " Diff GUI Vim with NVim 
 " Set No Top Menu and Scroll
 if has("gui_running")  
@@ -151,6 +152,7 @@ endif
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
+set list listchars=tab:-\ ,trail:\ 
 " -------------- Global Setting end ---------------
 
 " ========================= Normal Setting End =========================  
@@ -167,12 +169,13 @@ call vundle#begin()
 " # Plugins Beginning #
 " @ Plugin --- [ Base Require Lib ]
 Plugin 'gmarik/Vundle.vim'
-"Plugin 'L9'
+Plugin 'L9'
 
 " @ Plugin --- [ ColorScheme ]
-Plugin 'DemonCloud/J.vim'
-"Plugin 'bling/vim-airline'
-"Plugin 'ryanoasis/vim-webdevicons'
+Plugin 'DemonCloud/J'
+Plugin 'morhetz/gruvbox'
+Plugin 'bling/vim-airline'
+Plugin 'ryanoasis/vim-webdevicons'
 
 " @ Plugin --- [ Style Custom ]
 Plugin 'Lokaltog/vim-distinguished'
@@ -181,7 +184,8 @@ Plugin 'terryma/vim-smooth-scroll'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
-Plugin 'sjl/gundo.vim'
+"Plugin 'sjl/gundo.vim' "Steve Losh Look up Die.....
+Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 
@@ -203,7 +207,6 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
-"Plugin 'alvan/vim-closetag'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -226,13 +229,13 @@ Plugin 'airblade/vim-gitgutter'
 
 
 " @ Plugin --- [ Code BAT Sreach ]
+"Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-Plugin 'mileszs/ack.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
-"Plugin 'dyng/ctrlsf.vim'
+Plugin 'dyng/ctrlsf.vim'
 
 
 " @ Plugin --- [ Web Development Tools ]
@@ -244,12 +247,11 @@ Plugin 'elzr/vim-json'
 Plugin 'StanAngeloff/php.vim'
 
 " @ Plugin --- [ ADV Program Language ]
-"Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-"Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'yuratomo/w3m.vim'
 
 " ---- Plugin List Complete ----
@@ -264,12 +266,12 @@ filetype plugin on
 filetype plugin indent on
 
 
-" Set Color Themes 
-set background=dark
 
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
 
+" Set Color Themes 
+set background=dark
 colorscheme J
 "colorscheme monochrome
 "colorscheme seoul256
@@ -305,8 +307,8 @@ colorscheme J
 " So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
 
-hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
-hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
+"hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+"hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
 
 " Observer
 "hi f1 guibg=#C0C280 guifg=#080808 gui=NONE 
@@ -315,42 +317,41 @@ hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=
 " Command
 "hi f1 guibg=#981000 guifg=#ffffff gui=NONE
 
-function! StatuslineModeColor()
-	let s:Status=mode()	
-  if s:Status == 'n'
-		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
-		return 'Observer'
-  elseif s:Status == 'i'
-		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
-		return 'Inserter'
-	elseif s:Status == 'v'
-		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15 gui=NONE cterm=NONE term=NONE
-		return 'Injection'
-	else
-		hi f1 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
-		return 'Command'
-  endif
-endfunc
-set statusline=%#f1#\ %{StatuslineModeColor()}\ 
-set statusline+=%#f2#[%f][%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r
-"" right align laststatus
-set statusline+=\ %=C:%c\ L:%l[%L][%p%%]
-set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
+"function! StatuslineModeColor()
+""	let s:Status=mode()	
+""	if s:Status == 'n'
+""		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+""		return 'Observer'
+""	elseif s:Status == 'i'
+""		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
+""		return 'Inserter'
+""	elseif s:Status == 'v'
+""		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15 gui=NONE cterm=NONE term=NONE
+""		return 'Injection'
+""	else
+""		hi f1 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
+""		return 'Command'
+""	endif
+"endfunc
+"set statusline=%#f1#\ %{StatuslineModeColor()}\ 
+"set statusline+=%#f2#[%f][%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r
+""" right align laststatus
+"set statusline+=\ %=C:%c\ L:%l/%L[%p%%]
+"set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
 " End Status Line
 " -----------------------------
 
 " alrLine && PowerLine Config
-"let g:Powerline_symbols = 'fancy'
-"let g:airline_powerline_fonts = 1
+let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
-""let g:airline_symbols='compatible'
-"let g:airline_theme = 'base16'
-"let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
-"let g:WebDevIconsUnicodeDecorateFileNodes = 1 
-"let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-"autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+let g:airline_theme = 'base16'
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
+let g:WebDevIconsUnicodeDecorateFileNodes = 1 
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
 " fzf Plugin config
 set rtp+=~/.fzf
@@ -401,13 +402,13 @@ let g:syntastic_javascript_checkers = ['jshint']
 
 " YouCompleteMe Geek Config
 let g:ycm_cache_omnifunc                                = 1
-let g:ycm_global_ycm_extra_conf        = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf           = 1
-let g:ycm_add_preview_to_completeopt   = 1
-let g:ycm_min_num_of_chars_for_completion = 1 
-let g:ycm_autoclose_preview_window_after_completion= 1
-let g:ycm_key_list_select_completion   = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+let g:ycm_global_ycm_extra_conf                         = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf                            = 1
+let g:ycm_add_preview_to_completeopt                    = 1
+let g:ycm_min_num_of_chars_for_completion               = 1
+let g:ycm_autoclose_preview_window_after_completion     = 1
+let g:ycm_key_list_select_completion                    = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion                  = ['<c-p>', '<Up>']
 
 let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
 let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
@@ -431,7 +432,7 @@ let g:ycm_filetype_blacklist = {
 
 " tern_node_js onmicomplete with YouCompleteMe
 let tern#is_show_argument_hints_enabled= 1
-let g:tern_show_argument_hints="on_hold"
+let g:tern_show_argument_hints="on_move"
 
 
 " UltiSnips Config
@@ -458,23 +459,6 @@ let g:user_emmet_settings = {
 \ 'extends' : 'html',
 \ },
 \}
-
-
-" AutoClose Tag Config
-" filenames like *.xml, *.html, *.xhtml, ...
-" let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
-" au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
-
-
-" JavaScript Lib Syntax
-autocmd BufReadPre *.js let b:javascript_lib_use_jquery     = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_backbone   = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_prelude    = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_angularjs  = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_rect		= 1
-autocmd BufReadPre *.js let b:javascript_lib_use_rectjs		= 1
-autocmd BufReadPre *.js let b:javascript_lib_use_zepto		= 1
 
 
 " C++ Syntax HighLight
@@ -541,32 +525,29 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
-cnoremap <C-j> <down>
-cnoremap <C-k> <up>
 
 inoremap <silent> <C-h> <Left>
 inoremap <silent> <C-j> <Down>
 inoremap <silent> <C-k> <Up>
 inoremap <silent> <C-l> <Right>
-nnoremap <silent> <C-0> :FZF<CR>
+
 " repeat Prev Command
 nnoremap ; q:k<CR>
 " set <space> as toggle foldcomment
-"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
-"nnoremap <c-space> ?
-
-
+nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+" fast searcher
+nnoremap zs ?\v
+nnoremap zq /\v
+nnoremap z, :FZF<CR>
 nnoremap / /\v
-nnoremap / /\v
+
+"vnoremap <slient> ? ?\v
+"vnoremap <slient> ? ?\v
 nnoremap ' `
 nnoremap ` '
-nnoremap <silent> zj o<Esc>k
-nnoremap <silent> zk O<Esc>j
-" Now we don't have to move our fingers so far when we want to scroll through
-" the command history; also, don't forget the q: command (see :h q: for more
-" info)
-"vnoremap <slient> ? ?\v
-"vnoremap <slient> ? ?\v
+nnoremap <silent> zj o<ESC>k
+nnoremap <silent> zk O<ESC>j
 
 " Format Jump
 nnoremap <silent> n nzz
@@ -578,23 +559,28 @@ nnoremap <silent> g; g;zz
 nnoremap <silent> g: g:zz
 nnoremap <silent> gs :call VisualSearch()<CR>
 
-" Smooth Scroll the terminal
-nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-nnoremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
-"Buftabline Config
-nnoremap <A-k> : bnext<CR>
-nnoremap <A-j> : bprev<CR>
+" Smooth Scroll the terminal
+nnoremap <silent> <A-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+nnoremap <silent> <A-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+cnoremap <A-j> <Down>
+cnoremap <A-k> <Up>
+" Buftabline Config
+nnoremap <A-j> : bnext<CR>
+nnoremap <A-k> : bprev<CR>
+nnoremap <A-l> : bnext<CR>
+nnoremap <A-h> : bprev<CR>
 nnoremap <A-x> : bdelete<CR>
 nnoremap <A-w> : bwipeout<CR>
 
 " Check Vim Syntax name Fn
-nnoremap <leader>yi : call <SID>SynStack()<CR>
-nnoremap <leader>w  : w!<CR>
-nnoremap <leader>cd : cd %                             : p : h<cr>
-nnoremap <leader>pg : YcmCompleter GoTo<CR>
-nnoremap <leader>pd : YcmCompleter GoToDefinition<CR>
-nnoremap <leader>pc : YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>yi :call <SID>SynStack()<CR>
+nnoremap <leader>w  :w!<CR>
+nnoremap <leader>cd :cd %:p:h<CR>
+nnoremap <leader>cx :%s////gm
+nnoremap <leader>pg :YcmCompleter GoTo<CR>
+nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
