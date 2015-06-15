@@ -28,20 +28,21 @@ endfunction
 "init
 "set windows pos and resize
 set lines=50
-set columns=118
+set columns=158
 winpos 88 0
 
 " Encoding setting
 " The fonts You will find on GitHub
 " https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
 set encoding=utf-8
+setglobal fileencoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 language messages zh_CN.utf-8
 
-set guifont=ProFontWindows:h9:cANSI
+"set guifont=ProFontWindows:h10:cANSI
 "set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
 "set guifont=Decima\ Nova\ Pro:h11
-"set guifont=PragmataPro:b:h10:cANSI
+set guifont=PragmataPro\ For\ Powerline:h10:cANSI
 "set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 10
 "set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 "set guifont=ProgramPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 10
@@ -56,23 +57,56 @@ source $VIMRUNTIME/menu.vim
 source $VIMRUNTIME/mswin.vim
 behave mswin
 
+" Not complete with Vi Mode
 set regexpengine=1
-" Format 
-set ts=2
-set shiftwidth=2
-set softtabstop=2
-set noexpandtab
-set nu
 
-" Search and Case
+" -------------- Global Setting ---------------
+" ## Make its Gvim Like Windows behave ## 
+" So you can use 
+" @ CTRL+S save the file
+" @ CTRL+C copy text
+" @ CTRL+P paste text
+" @ CTRL+X cut text
+source $VIMRUNTIME/mswin.vim
+behave mswin
+
+" @Replace <leader> keymap to <space>
+let mapleader=" "
+
+" Format 
+set nu
+set ts=2 "4
+set shiftwidth=2 "4
+set softtabstop=2 "4
+set noexpandtab
+set autowrite
+set display=lastline
+
+
+" For indent
+set wrap
 set autoindent
 set smartindent
+set smarttab
 set cindent
-set ignorecase
-set smartcase
+"set linebreak
+set shiftround
+
+" Search and Case
+set gdefault
 set hlsearch
-set wrap
+set incsearch
+set ignorecase
+set showcmd
+set whichwrap+=<,>,h,l
+"set smartcase
+
+" Omni Complete Setting
 set wildmenu
+set wildmode=longest,full
+set completeopt=menu,menuone,longest
+set switchbuf=useopen,usetab
+set shortmess=a
 
 " No back up files 
 set nobackup
@@ -82,8 +116,8 @@ set noswapfile
 " Rule the define
 set noshowmode
 set ruler
-set mousehide
 set cursorline
+set winaltkeys=no
 
 " Advance config
 set magic
@@ -104,10 +138,10 @@ set t_vb=
 " Set Fold config
 " set foldmethod=syntax
 set foldenable
-" set <space> as toggle foldcomment
-nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
-nnoremap <c-space> ?
-nnoremap ; :
+
+" misc settings
+"set fileformat=unix     " file mode is unix
+"set fileformats=unix,dos,mac
 
 " Diff GUI Vim with NVim 
 " Set No Top Menu and Scroll
@@ -121,6 +155,9 @@ if has("gui_running")
 	set guioptions-=0
 	set go=
 	set guitablabel=
+	set paste
+	set mousemodel=popup_setpos
+	set mouse=a
 	"set guitablabel=%M\ %t  
 else
 	set t_Co=256
@@ -131,8 +168,7 @@ endif
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
-
-" ========================= Normal Setting End =========================  
+" -------------- Global Setting end ---------------
 
 
 " ========================= Vundle Plugin Manager =========================  
@@ -182,12 +218,16 @@ Plugin 'danro/rename.vim'
 Plugin 'kien/ctrlp.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimfiler.vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neosnippet'
 Plugin 'Shougo/neosnippet-snippets'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'skeept/Ultisnips-neocomplete-unite'
 "Plugin 'fatih/vim-go'
 
@@ -204,8 +244,6 @@ Plugin 'Lokaltog/vim-easymotion'
 
 
 " @ Plugin --- [ CWD File Buffer Manager ] 
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimfiler.vim'
 Plugin 'yegappan/mru'
 
 
@@ -379,7 +417,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
 
-
 " NeoCompelete
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -476,8 +513,6 @@ function! Multiple_cursors_after()
     echo 'Enabled autocomplete'
 endfunction
 
-set completeopt=longest,menu
-
 
 " tern_node_js onmicomplete with YouCompleteMe
 let tern#is_show_argument_hints_enabled= 1
@@ -562,36 +597,61 @@ let g:ctrlp_custom_ignore = {
 
 
 " --------- KeyMapping Config -----------
-nnoremap <leader>cp :CtrlP<CR>
-nnoremap <leader>cf :CtrlPFunky<CR>
-
 " Start it in browser. Only for Linux Google Chrome
 "nnoremap <F8> :silent update<Bar>silent !google-chrome %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
 "nnoremap <F9> :silent update<Bar>silent !firefox %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
-nnoremap <F5>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+nnoremap <F4>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+nnoremap <F5>  :NERDTreeToggle<CR>
 nnoremap <F6>  :SyntasticToggleMode <CR>
 nnoremap <F7>  :GundoToggle<CR>
 nnoremap <F8>	 :silent update<Bar>silent !google-chrome %:p &<CR>
 nnoremap <F9>	 :silent update<Bar>silent !firefox %:p &<CR>
-nnoremap <F10> :YcmForceCompileAndDiagnostics <CR>
-nnoremap <F11> :YcmDebugInfo<CR>
-nnoremap <F12> :YcmRestartServer<CR>
 
 " Window VertSplit switcher
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-nnoremap <C-\> :FZF<CR>
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
+cnoremap <C-j> <down>
+cnoremap <C-k> <up>
 
-" Format search jump
+inoremap <silent> <C-h> <Left>
+inoremap <silent> <C-j> <Down>
+inoremap <silent> <C-k> <Up>
+inoremap <silent> <C-l> <Right>
+nnoremap <silent> <C-0> :FZF<CR>
+" repeat Prev Command
+nnoremap ; q:k<CR>
+" set <space> as toggle foldcomment
+"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+"nnoremap <c-space> ?
+
+
+nnoremap / /\v
+nnoremap / /\v
+nnoremap ' `
+nnoremap ` '
+nnoremap <silent> zj o<Esc>k
+nnoremap <silent> zk O<Esc>j
+" Now we don't have to move our fingers so far when we want to scroll through
+" the command history; also, don't forget the q: command (see :h q: for more
+" info)
+"vnoremap <slient> ? ?\v
+"vnoremap <slient> ? ?\v
+
+" Format Jump
 nnoremap <silent> n nzz
 nnoremap <silent> N Nzz
 nnoremap <silent> * *zz
 nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
+nnoremap <silent> g; g;zz
+nnoremap <silent> g: g:zz
+nnoremap <silent> gs :call VisualSearch()<CR>
+
+" Smooth Scroll the terminal
 nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-nnoremap <silent> <c-i> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 "Buftabline Config
 nnoremap <A-k> : bnext<CR>
@@ -600,10 +660,30 @@ nnoremap <A-x> : bdelete<CR>
 nnoremap <A-w> : bwipeout<CR>
 
 " Check Vim Syntax name Fn
-nmap <leader>yi :call <SID>SynStack()<CR>
+nnoremap <leader>yi : call <SID>SynStack()<CR>
+nnoremap <leader>w  : w!<CR>
+nnoremap <leader>cd : cd %                             : p : h<cr>
+nnoremap <leader>cp :CtrlP<CR>
+nnoremap <leader>cf :CtrlPFunky<CR>
+
+
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
+
+function! VisualSearch() range
+	let l:saved_reg = @"
+	execute "normal! vgvy"
+
+	let l:pattern = escape(@", '\\/.*$^~[]')
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+	execute "Ag " . l:pattern . ' '
+
+	let @/ = l:pattern
+	let @" = l:saved_reg
+endfunction
+
 " --------- KeyMapping Config END ----------- 
 
 " ========================= Plugin Config End =========================
