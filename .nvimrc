@@ -577,7 +577,7 @@ nnoremap <A-w> : bwipeout<CR>
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
 nnoremap <leader>cd :cd %:p:h<CR>
-nnoremap <leader>cx :%s////gm
+nnoremap <leader>cx :%s///gm
 nnoremap <leader>pg :YcmCompleter GoTo<CR>
 nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>

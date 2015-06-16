@@ -200,7 +200,7 @@ Plugin 'danro/rename.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 
 
 " @ Plugin --- [ Auto Complete ]
@@ -578,7 +578,7 @@ nnoremap <A-w> : bwipeout<CR>
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
 nnoremap <leader>cd :cd %:p:h<CR>
-nnoremap <leader>cx :%s////gm
+nnoremap <leader>cx :%s///gm
 nnoremap <leader>pg :YcmCompleter GoTo<CR>
 nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
