@@ -39,11 +39,13 @@ setglobal fileencoding=utf-8
 set fileencodings=utf-8,chinese,latin-1
 language messages zh_CN.utf-8
 
-"set guifont=ProFontWindows:h10:cANSI
+set guifont=PragmataPro:h9:cANSI
+"set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h10:cANSI
+"set guifont=ProFontWindows:h11:cANSI
 "set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
 "set guifont=Decima\ Nova\ Pro:h11
-set guifont=PragmataPro\ For\ Powerline:h10:cANSI
-"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono\ 10
+"set guifont=PragmataPro\ For\ Powerline:h10:cANSI
+"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h10:cANSI
 "set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 "set guifont=ProgramPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 10
 
@@ -168,6 +170,7 @@ endif
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
+set list listchars=tab:-\ ,trail:\ 
 " -------------- Global Setting end ---------------
 
 
@@ -183,36 +186,28 @@ call vundle#begin("$VIM/vimfiles/bundle")
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'tomtom/tlib_vim'
-"Plugin 'dbarsam/vim-vimtweak'
 
 
 " @ Plugin --- [ Themes Custom ]
 Plugin 'DemonCloud/J.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'morhetz/gruvbox'
 Plugin 'rking/vim-detailed'
 
 
 " @ Plugin --- [ Style Custom ]
-"Plugin 'bling/vim-airline'
-"Plugin 'itchyny/lightline.vim'
+Plugin 'bling/vim-airline'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ap/vim-buftabline'
-"Plugin 'Lokaltog/vim-powerline'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
-Plugin 'sjl/gundo.vim'
+Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
-"Plugin 'lukaszkorecki/CoffeeTags' "## need Ruby surport
 
 
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
-"Plugin 'ryanoasis/vim-webdevicons'
-"Plugin 'Xuyuanp/nerdtree-git-plugin'
-"Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 Plugin 'kien/ctrlp.vim'
@@ -221,21 +216,20 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neosnippet'
-Plugin 'Shougo/neosnippet-snippets'
+Plugin 'xleng/YCM_WIN_X86'
+"Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'Shougo/neosnippet'
+"Plugin 'Shougo/neosnippet-snippets'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'skeept/Ultisnips-neocomplete-unite'
-"Plugin 'fatih/vim-go'
+"Plugin 'skeept/Ultisnips-neocomplete-unite'
 
 
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/emmet-vim'
-"Plugin 'c9s/perlomni.vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -250,38 +244,21 @@ Plugin 'yegappan/mru'
 " @ Plugin --- [ Git && Shell Tools ]
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
-"Plugin 'tpope/vim-fugitive'
-Plugin 'mattn/webapi-vim'
 Plugin 'airblade/vim-gitgutter'
 
 
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
-Plugin 'thinca/vim-quickrun'
-"Plugin 'dyng/ctrlsf.vim'
-"Plugin 'mklabs/grunt.vim'
 
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
-"Plugin 'othree/javascript-libraries-syntax.vim'
-"Plugin 'othree/yajs.vim'
-"Plugin 'chrisbra/Colorizer'
-"Plugin 'skammer/vim-css-color'
 Plugin 'ap/vim-css-color'
-"Plugin 'hail2u/vim-css3-syntax'
-"Plugin 'othree/html5.vim'
-"Plugin 'othree/html5-syntax.vim'
 Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'kchmck/vim-coffee-script'
+"Plugin 'digitaltoad/vim-jade'
+"Plugin 'kchmck/vim-coffee-script'
 Plugin 'elzr/vim-json'
 Plugin 'StanAngeloff/php.vim'
-Plugin 'vim-scripts/c.vim'
-Plugin 'vim-scripts/a.vim'
-
-" @ Plugin --- [ ADV Program Language ]
-"Plugin 'octol/vim-cpp-enhanced-highlight'
 
 
 " ---- Plugin List Complete ----
@@ -335,8 +312,8 @@ au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 253)
 " So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
 
-hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
-hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
+"hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+"hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
 
 " Observer
 "hi f1 guibg=#C0C280 guifg=#080808 gui=NONE 
@@ -345,32 +322,43 @@ hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=
 " Command
 "hi f1 guibg=#981000 guifg=#ffffff gui=NONE
 
-function! StatuslineModeColor()
-	let s:Status=mode()	
-  if s:Status == 'n'
-		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
-		return 'Observer'
-  elseif s:Status == 'i'
-		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
-		return 'Inserter'
-	elseif s:Status == 'v'
-		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15 gui=NONE cterm=NONE term=NONE
-		return 'Injection'
-	else
-		hi f1 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
-		return 'Command'
-  endif
-endfunc
+"function! StatuslineModeColor()
+""	let s:Status=mode()	
+""  if s:Status == 'n'
+""		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
+""		return 'Observer'
+""  elseif s:Status == 'i'
+""		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
+""		return 'Inserter'
+""	elseif s:Status == 'v'
+""		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15 gui=NONE cterm=NONE term=NONE
+""		return 'Injection'
+""	else
+""		hi f1 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
+""		return 'Command'
+""  endif
+"endfunc
 
-set statusline=%#f1#\ %{StatuslineModeColor()}\ 
-set statusline+=%#f2#[%f][%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r
-" right align laststatus
-set statusline+=\ %=C:%c\ L:%l[%L][%p%%]
-set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
+"set statusline=%#f1#\ %{StatuslineModeColor()}\ 
+"set statusline+=%#f2#[%f][%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r
+"" right align laststatus
+"set statusline+=\ %=C:%c\ L:%l[%L][%p%%]
+"set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
 " End Status Line
 " -----------------------------
+
+" AirLine Settings
+" alrLine && PowerLine Config
+let g:Powerline_symbols = 'fancy'
+let g:airline_powerline_fonts = 1
+"let g:Powerline_symbols = 'compatible'
+let g:airline_theme = 'base16'
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
+let g:WebDevIconsUnicodeDecorateFileNodes = 1 
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
 " TagBar Config
 let g:tagbar_ctags_bin = "$VIM/vimfiles/bundle/tagbar/ctags.exe"
@@ -417,101 +405,34 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
 
-" NeoCompelete
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" YouCompleteMe Geek Config
+let g:ycm_cache_omnifunc                                = 1
+let g:ycm_global_ycm_extra_conf                         = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_confirm_extra_conf                            = 1
+let g:ycm_add_preview_to_completeopt                    = 1
+let g:ycm_min_num_of_chars_for_completion               = 1
+let g:ycm_autoclose_preview_window_after_completion     = 1
+let g:ycm_key_list_select_completion                    = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion                  = ['<c-p>', '<Up>']
 
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
+let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
+let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
+let g:ycm_complete_in_strings                           = 1   " 在字符串输入中不能补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0   " 注释和字符串中的文字也会被收入补全
 
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Plugin key-mappings.
-inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-  " For no inserting <CR> key.
-  "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
-" <TAB>: completion.
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <expr><C-y>  neocomplete#close_popup()
-"inoremap <expr><C-e>  neocomplete#cancel_popup()
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
-
-" Shell like behavior(not recommended).
-"set completeopt+=longest
-"let g:neocomplete#enable_auto_select = 1
-"let g:neocomplete#disable_auto_complete = 1
-"inoremap <expr><TAB>  pumvisible() ? "\<Down>" : "\<C-x>\<C-u>"
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" For perlomni.vim setting.
-" https://github.com/c9s/perlomni.vim
-let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-let g:vimfiler_as_default_explorer = 1
-
-" Fix for vim-multiple-cursors plugin with NeoCompelete
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-    echo 'Disabled autocomplete'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-    echo 'Enabled autocomplete'
-endfunction
+let g:ycm_goto_buffer_command = 'horizontal-split' 
+"[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
+let g:ycm_filetype_blacklist = {
+			\ 'tagbar'    : 1,
+			\ 'qf'        : 1,
+			\ 'notes'     : 1,
+			\ 'markdown'  : 1,
+			\ 'unite'     : 1,
+			\ 'text'      : 1,
+			\ 'vimwiki'   : 1,
+			\ 'gitcommit' : 1,
+\}
 
 
 " tern_node_js onmicomplete with YouCompleteMe
@@ -520,7 +441,7 @@ let g:tern_show_argument_hints="on_hold"
 
 
 " UltiSnips Config
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Trigger configuration. Do not use <tab> if you use [YouCompleteMe] or [NeoComplete].
 let g:UltiSnipsExpandTrigger       = "<c-x>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
@@ -552,14 +473,14 @@ let g:user_emmet_settings = {
 
 
 " JavaScript Lib Syntax
-autocmd BufReadPre *.js let b:javascript_lib_use_jquery     = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_backbone   = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_prelude    = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_angularjs  = 1
-autocmd BufReadPre *.js let b:javascript_lib_use_rect		= 1
-autocmd BufReadPre *.js let b:javascript_lib_use_rectjs		= 1
-autocmd BufReadPre *.js let b:javascript_lib_use_zepto		= 1
+"autocmd BufReadPre *.js let b:javascript_lib_use_jquery     = 1
+"autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
+"autocmd BufReadPre *.js let b:javascript_lib_use_backbone   = 1
+"autocmd BufReadPre *.js let b:javascript_lib_use_prelude    = 1
+"autocmd BufReadPre *.js let b:javascript_lib_use_angularjs  = 1
+"autocmd BufReadPre *.js let b:javascript_lib_use_rect		= 1
+"autocmd BufReadPre *.js let b:javascript_lib_use_rectjs		= 1
+"autocmd BufReadPre *.js let b:javascript_lib_use_zepto		= 1
 
 
 " C++ Syntax HighLight
@@ -583,7 +504,7 @@ let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer  = 1
 let g:vimfiler_tree_opened_icon     = "-"
 let g:vimfiler_tree_closed_icon     = "+"
-let g:vimfiler_readonly_file_icon = "🔒"
+let g:vimfiler_readonly_file_icon   = "?"
 let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 " CtrlP Settings
@@ -597,6 +518,7 @@ let g:ctrlp_custom_ignore = {
 
 
 " --------- KeyMapping Config -----------
+
 " Start it in browser. Only for Linux Google Chrome
 "nnoremap <F8> :silent update<Bar>silent !google-chrome %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
 "nnoremap <F9> :silent update<Bar>silent !firefox %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
@@ -612,32 +534,29 @@ nnoremap <leader>h <C-w>h
 nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
-cnoremap <C-j> <down>
-cnoremap <C-k> <up>
 
 inoremap <silent> <C-h> <Left>
 inoremap <silent> <C-j> <Down>
 inoremap <silent> <C-k> <Up>
 inoremap <silent> <C-l> <Right>
-nnoremap <silent> <C-0> :FZF<CR>
+
 " repeat Prev Command
 nnoremap ; q:k<CR>
 " set <space> as toggle foldcomment
-"nnoremap <space> @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
-"nnoremap <c-space> ?
-
-
+nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+" fast searcher
+nnoremap zs ?\v
+nnoremap zq /\v
+nnoremap z, :FZF<CR>
 nnoremap / /\v
-nnoremap / /\v
+
+"vnoremap <slient> ? ?\v
+"vnoremap <slient> ? ?\v
 nnoremap ' `
 nnoremap ` '
-nnoremap <silent> zj o<Esc>k
-nnoremap <silent> zk O<Esc>j
-" Now we don't have to move our fingers so far when we want to scroll through
-" the command history; also, don't forget the q: command (see :h q: for more
-" info)
-"vnoremap <slient> ? ?\v
-"vnoremap <slient> ? ?\v
+nnoremap <silent> zj o<ESC>k
+nnoremap <silent> zk O<ESC>j
 
 " Format Jump
 nnoremap <silent> n nzz
@@ -649,23 +568,27 @@ nnoremap <silent> g; g;zz
 nnoremap <silent> g: g:zz
 nnoremap <silent> gs :call VisualSearch()<CR>
 
-" Smooth Scroll the terminal
-nnoremap <silent> <c-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-nnoremap <silent> <c-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
-"Buftabline Config
-nnoremap <A-k> : bnext<CR>
-nnoremap <A-j> : bprev<CR>
+" Smooth Scroll the terminal
+nnoremap <silent> <A-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+nnoremap <silent> <A-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+cnoremap <A-j> <Down>
+cnoremap <A-k> <Up>
+" Buftabline Config
+nnoremap <A-j> : bnext<CR>
+nnoremap <A-k> : bprev<CR>
+nnoremap <A-l> : bnext<CR>
+nnoremap <A-h> : bprev<CR>
 nnoremap <A-x> : bdelete<CR>
 nnoremap <A-w> : bwipeout<CR>
 
 " Check Vim Syntax name Fn
-nnoremap <leader>yi : call <SID>SynStack()<CR>
-nnoremap <leader>w  : w!<CR>
-nnoremap <leader>cd : cd %                             : p : h<cr>
+nnoremap <leader>yi :call <SID>SynStack()<CR>
+nnoremap <leader>w  :w!<CR>
+nnoremap <leader>cd :cd %:p:h<CR>
+nnoremap <leader>cx :%s///gm
 nnoremap <leader>cp :CtrlP<CR>
 nnoremap <leader>cf :CtrlPFunky<CR>
-
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
