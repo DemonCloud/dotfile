@@ -36,17 +36,17 @@
 
 ##### Windows 
 
-下载 ： [YVIM for Windows](http://pan.baidu.com/s/1c0i29Ni) -- <a href="#update">Update 2015.6.13 : 11.18</a>
+下载 ： [YVIM for Windows](http://pan.baidu.com/s/1c0i29Ni) -- <a href="#update">Update 2015.6.17 集成了Windows YouCompleteMe神器</a>
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 > 
 > 注意：请运行 ``Vim\vim74\_Vim.exe`` 文件. 此文件重新编译支持Lua 以及替换了图标.
 >
->关于字体的话, 我这里分享一个 PragmataPro : [Download](http://pan.baidu.com/s/1o6mlBPg)
+> 关于字体的话, 我这里分享一个 PragmataPro : [Download](http://pan.baidu.com/s/1o6mlBPg)
 >
->如果需要在 Windows下使用 YoucompleteMe 的插件， 可以直接Vundle安装以下这个已经编译好的YCM_WIN_x86的项目
+> 如果需要在 Windows下使用 YoucompleteMe 的插件， 可以直接Vundle安装以下这个已经编译好的YCM_WIN_x86的项目:
 >
->[YouCompleteMe For Windows x86](https://github.com/xleng/YCM_WIN_X86)
+> [YouCompleteMe For Windows x86](https://github.com/xleng/YCM_WIN_X86)
 
 <br>
 
@@ -113,6 +113,8 @@
 ## Date 日志 
 
 <div id="update" style="display : none; visibility : hidden"></div>
+-- update 2015.6.17  重新上传 Windows Gvim 文件, 完美支持 [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)补全神器
+
 -- update 2015.6.13  Linux NeoVim 优化
 
 -- update 2015.6.12  强化 NeoVim 配置文件
