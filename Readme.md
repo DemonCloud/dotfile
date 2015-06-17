@@ -36,7 +36,7 @@
 
 ##### Windows 
 
-下载 ： [YVIM for Windows](http://pan.baidu.com/s/1c0i29Ni) -- <a href="#update">Update 2015.6.17 集成了Windows YouCompleteMe神器</a>
+下载 ： [[YVIM for Windows]](http://pan.baidu.com/s/1bnhOUf1) -- <a href="#update">Update 2015.6.17 集成了Windows YouCompleteMe神器</a>
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 > 
@@ -44,9 +44,14 @@
 >
 > 关于字体的话, 我这里分享一个 PragmataPro : [Download](http://pan.baidu.com/s/1o6mlBPg)
 >
-> 如果需要在 Windows下使用 YoucompleteMe 的插件， 可以直接Vundle安装以下这个已经编译好的YCM_WIN_x86的项目:
+> 如果不想使用我已经上传的**Gvim**压缩包:
+>
+> 但仍需要在 Windows下使用 **YoucompleteMe** 的插件， 可以直接Vundle安装以下这个已经编译好的YCM_WIN_x86的项目 ->
 >
 > [YouCompleteMe For Windows x86](https://github.com/xleng/YCM_WIN_X86)
+>
+> 注: **YouCompleteMe For Windows x86** 这个项目是Windows下已经编译好的YCM, 因为项目文件过大, 所以有可能用Vundle会安装失败,建议直接git clone之后丢到 vimfile/bundle/里,在_vimrc中加入 Plugin 'xleng/YCM_WIN_X86'.  然后Update 一次Vundle
+>
 
 <br>
 
