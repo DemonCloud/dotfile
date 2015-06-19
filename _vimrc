@@ -25,10 +25,11 @@ function MyDiff()
   silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
+
 "init
 "set windows pos and resize
-set lines=50
-set columns=158
+set lines=58
+set columns=148
 winpos 88 0
 
 " Encoding setting
@@ -36,12 +37,12 @@ winpos 88 0
 " https://github.com/ryanoasis/nerd-filetype-glyphs-fonts-patcher
 set encoding=utf-8
 setglobal fileencoding=utf-8
-set fileencodings=utf-8,chinese,latin-1
-language messages zh_CN.utf-8
+set fileencodings=utf-8,latin-1
+language messages en_US.utf-8
 
-set guifont=PragmataPro:h9:cANSI
+"set guifont=PragmataPro:h9:cANSI
 "set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h10:cANSI
-"set guifont=ProFontWindows:h11:cANSI
+set guifont=ProFontWindows:h11:cANSI
 "set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
 "set guifont=Decima\ Nova\ Pro:h11
 "set guifont=PragmataPro\ For\ Powerline:h10:cANSI
@@ -189,7 +190,7 @@ Plugin 'tomtom/tlib_vim'
 
 
 " @ Plugin --- [ Themes Custom ]
-Plugin 'DemonCloud/J.vim'
+Plugin 'DemonCloud/J'
 Plugin 'rking/vim-detailed'
 
 
@@ -207,29 +208,33 @@ Plugin 'scrooloose/syntastic'
 
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
-Plugin 'ryanoasis/vim-webdevicons'
+"Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 Plugin 'kien/ctrlp.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimfiler.vim'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'xleng/YCM_WIN_X86'
-"Plugin 'Shougo/neocomplete.vim'
-"Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/neocomplete.vim'
 "Plugin 'Shougo/neosnippet'
 "Plugin 'Shougo/neosnippet-snippets'
+"Plugin 'xleng/YCM_WIN_X86'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-"Plugin 'skeept/Ultisnips-neocomplete-unite'
+Plugin 'JazzCore/neocomplcache-ultisnips'
 
 
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
+Plugin 'mattn/webapi-vim'
 Plugin 'mattn/emmet-vim'
+Plugin 'mattn/livestyle-vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -242,8 +247,6 @@ Plugin 'yegappan/mru'
 
 
 " @ Plugin --- [ Git && Shell Tools ]
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
 Plugin 'airblade/vim-gitgutter'
 
 
@@ -291,7 +294,7 @@ colorscheme J
 "colorscheme codeschool
 
 "call VimTweak Opacity
-au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 253)
+"au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 253)
 
 " ========================= Vundle Plugin Setup End ========================= 
 
@@ -355,9 +358,9 @@ let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
 let g:airline_theme = 'base16'
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
-let g:WebDevIconsUnicodeDecorateFileNodes = 1 
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+"let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
+"let g:WebDevIconsUnicodeDecorateFileNodes = 1 
+"let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
 " TagBar Config
@@ -405,34 +408,117 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
 
+""-------------------- NeoComplete ---------------------
+" NeoComplete
+
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
+" Use neocomplete.
+let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
+    \ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
+\ }
+
+" Define keyword.
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+endfunction
+
+" <TAB>: completion.
+" <C-h>, <BS>: close popup and delete backword char.
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+" For cursor moving in insert mode(Not recommended)
+inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Enable omni completion.
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" Noconflict NeoComplete With Vim Multiple Cursors
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+    echo 'Disabled autocomplete'
+endfunction
+
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+    echo 'Enabled autocomplete'
+endfunction
+
+
+""--------------------- YouCompleteMe ------------------------
+" If you choice NeoComplete , That you want use YouCompleteMe
+
 " YouCompleteMe Geek Config
-let g:ycm_cache_omnifunc                                = 1
-let g:ycm_global_ycm_extra_conf                         = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf                            = 1
-let g:ycm_add_preview_to_completeopt                    = 1
-let g:ycm_min_num_of_chars_for_completion               = 1
-let g:ycm_autoclose_preview_window_after_completion     = 1
-let g:ycm_key_list_select_completion                    = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion                  = ['<c-p>', '<Up>']
-
-let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
-let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
-let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
-let g:ycm_complete_in_strings                           = 1   " 在字符串输入中不能补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 0   " 注释和字符串中的文字也会被收入补全
-
-let g:ycm_goto_buffer_command = 'horizontal-split' 
-"[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-let g:ycm_filetype_blacklist = {
-			\ 'tagbar'    : 1,
-			\ 'qf'        : 1,
-			\ 'notes'     : 1,
-			\ 'markdown'  : 1,
-			\ 'unite'     : 1,
-			\ 'text'      : 1,
-			\ 'vimwiki'   : 1,
-			\ 'gitcommit' : 1,
-\}
+"let g:ycm_cache_omnifunc                                = 1
+"let g:ycm_global_ycm_extra_conf                         = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"let g:ycm_confirm_extra_conf                            = 1
+"let g:ycm_add_preview_to_completeopt                    = 1
+"let g:ycm_min_num_of_chars_for_completion               = 1
+"let g:ycm_autoclose_preview_window_after_completion     = 1
+"let g:ycm_key_list_select_completion                    = ['<c-n>']
+"let g:ycm_key_list_previous_completion                  = ['<c-p>']
+"
+"let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
+"let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
+"let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
+"let g:ycm_complete_in_strings                           = 1   " 在字符串输入中不能补全
+"let g:ycm_collect_identifiers_from_comments_and_strings = 0   " 注释和字符串中的文字也会被收入补全
+"
+"let g:ycm_goto_buffer_command = 'horizontal-split' 
+""[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
+"let g:ycm_filetype_blacklist = {
+""			\ 'tagbar'    : 1,
+""			\ 'qf'        : 1,
+""			\ 'notes'     : 1,
+""			\ 'markdown'  : 1,
+""			\ 'unite'     : 1,
+""			\ 'text'      : 1,
+""			\ 'vimwiki'   : 1,
+""			\ 'gitcommit' : 1,
+""\}
 
 
 " tern_node_js onmicomplete with YouCompleteMe
@@ -442,7 +528,7 @@ let g:tern_show_argument_hints="on_hold"
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use [YouCompleteMe] or [NeoComplete].
-let g:UltiSnipsExpandTrigger       = "<c-x>"
+"let g:UltiSnipsExpandTrigger      = "<c-x>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-b>"
 " If you want :UltiSnipsEdit to split your window.
@@ -451,7 +537,8 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
-let g:user_emmet_expandabbr_key ='<c-e>'
+let g:user_emmet_mode='a'
+let g:user_emmet_expandabbr_key ='<C-e>'
 let g:user_emmet_settings = {
 \ 'php'     : {
 \ 'extends' : 'html',
@@ -465,28 +552,9 @@ let g:user_emmet_settings = {
 \ },
 \}
 
-
-" AutoClose Tag Config
-" filenames like *.xml, *.html, *.xhtml, ...
-" let g:closetag_filenames = "*.xml,*.html,*.xhtml,*.phtml,*.php"
-" au FileType xml,html,phtml,php,xhtml,js let b:delimitMate_matchpairs = "(:),[:],{:}"
-
-
-" JavaScript Lib Syntax
-"autocmd BufReadPre *.js let b:javascript_lib_use_jquery     = 1
-"autocmd BufReadPre *.js let b:javascript_lib_use_underscore = 1
-"autocmd BufReadPre *.js let b:javascript_lib_use_backbone   = 1
-"autocmd BufReadPre *.js let b:javascript_lib_use_prelude    = 1
-"autocmd BufReadPre *.js let b:javascript_lib_use_angularjs  = 1
-"autocmd BufReadPre *.js let b:javascript_lib_use_rect		= 1
-"autocmd BufReadPre *.js let b:javascript_lib_use_rectjs		= 1
-"autocmd BufReadPre *.js let b:javascript_lib_use_zepto		= 1
-
-
 " C++ Syntax HighLight
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
-
 
 " GitGutter Setting
 let g:gitgutter_sign_column_always = 0 
@@ -516,12 +584,22 @@ let g:ctrlp_custom_ignore = {
 \ 'file' : '\v\.(exe|so|dll|git|svn)$'
 \ }
 
+" Unite Settings
+let g:unite_source_file_rec_max_cache_files = 0
+let g:unite_source_history_yank_enable      = 1
+let g:unite_source_rec_async_command        = 1
+let g:unite_source_grep_command             = 'ag'
+let g:unite_source_grep_default_opts        = '--nocolor --nogroup --column'
+let g:unite_source_grep_recursive_opt       = ''
+let g:unite_source_history_yank_enable      = 1
+call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
+
 
 " --------- KeyMapping Config -----------
 
-" Start it in browser. Only for Linux Google Chrome
-"nnoremap <F8> :silent update<Bar>silent !google-chrome %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
-"nnoremap <F9> :silent update<Bar>silent !firefox %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
+" Start It In Browser. Only for Linux Google Chrome
 nnoremap <F4>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 nnoremap <F5>  :NERDTreeToggle<CR>
 nnoremap <F6>  :SyntasticToggleMode <CR>
@@ -535,17 +613,11 @@ nnoremap <leader>j <C-w>j
 nnoremap <leader>k <C-w>k
 nnoremap <leader>l <C-w>l
 
-inoremap <silent> <C-h> <Left>
-inoremap <silent> <C-j> <Down>
-inoremap <silent> <C-k> <Up>
-inoremap <silent> <C-l> <Right>
 
-" repeat Prev Command
-nnoremap ; q:k<CR>
-" set <space> as toggle foldcomment
+" Set as toggle foldcomment
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
-" fast searcher
+" Fast searcher
 nnoremap zs ?\v
 nnoremap zq /\v
 nnoremap z, :FZF<CR>
@@ -566,14 +638,21 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 nnoremap <silent> g; g;zz
 nnoremap <silent> g: g:zz
-nnoremap <silent> gs :call VisualSearch()<CR>
-
 
 " Smooth Scroll the terminal
 nnoremap <silent> <A-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nnoremap <silent> <A-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
+" Cursor Moving
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
 cnoremap <A-j> <Down>
 cnoremap <A-k> <Up>
+cnoremap <A-h> <Left>
+cnoremap <A-l> <Right>
 " Buftabline Config
 nnoremap <A-j> : bnext<CR>
 nnoremap <A-k> : bprev<CR>
@@ -585,27 +664,38 @@ nnoremap <A-w> : bwipeout<CR>
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
+nnoremap <leader>q  :wq<CR>
+
+" Command
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cx :%s///gm
-nnoremap <leader>cp :CtrlP<CR>
 nnoremap <leader>cf :CtrlPFunky<CR>
+" repeat Prev Command
+nnoremap <leader>c; q:k<CR>
+
+" Unite file config
+" Ag searcher
+nnoremap <leader>uf :Unite file -complete<CR>
+nnoremap <leader>up :Unite file_rec/async<CR>
+nnoremap <leader>us :Unite grep:.<CR>
+nnoremap <leader>vf :VimFiler<CR>
+nnoremap <leader>ag :Ag 
+
+" Vundle keyfire
+nnoremap <leader>vi :PLuginInstall<CR>
+nnoremap <leader>vu :PluginUpdate<CR>
+
+" Tabluer Format
+vnoremap <leader>t :Tabularize/
+vnoremap <leader>= :Tabularize/=<CR>
+vnoremap <leader>, :Tabularize/,<CR>
+vnoremap <leader>; :Tabularize/:<CR>
+
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
 
-function! VisualSearch() range
-	let l:saved_reg = @"
-	execute "normal! vgvy"
-
-	let l:pattern = escape(@", '\\/.*$^~[]')
-	let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-	execute "Ag " . l:pattern . ' '
-
-	let @/ = l:pattern
-	let @" = l:saved_reg
-endfunction
 
 " --------- KeyMapping Config END ----------- 
 
