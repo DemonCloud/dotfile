@@ -161,6 +161,7 @@ if has("gui_running")
 	set paste
 	set mousemodel=popup_setpos
 	set mouse=a
+	set shell=cmd.exe
 	"set guitablabel=%M\ %t  
 else
 	set t_Co=256
@@ -538,7 +539,7 @@ let g:UltiSnipsEditSplit="vertical"
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
 let g:user_emmet_mode='a'
-let g:user_emmet_expandabbr_key ='<C-e>'
+let g:user_emmet_expandabbr_key ='<S-Tab>'
 let g:user_emmet_settings = {
 \ 'php'     : {
 \ 'extends' : 'html',
@@ -604,18 +605,12 @@ nnoremap <F4>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 nnoremap <F5>  :NERDTreeToggle<CR>
 nnoremap <F6>  :SyntasticToggleMode <CR>
 nnoremap <F7>  :GundoToggle<CR>
-nnoremap <F8>	 :silent update<Bar>silent !google-chrome %:p &<CR>
-nnoremap <F9>	 :silent update<Bar>silent !firefox %:p &<CR>
 
 " Window VertSplit switcher
 nnoremap <leader>h <C-w>h
-nnoremap <leader>hh <C-w>h
 nnoremap <leader>j <C-w>j
-nnoremap <leader>jj <C-w>j
 nnoremap <leader>k <C-w>k
-nnoremap <leader>kk <C-w>k
 nnoremap <leader>l <C-w>l
-nnoremap <leader>ll <C-w>l
 
 
 " Set as toggle foldcomment
@@ -624,7 +619,6 @@ nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
 " Fast searcher
 nnoremap zs ?\v
 nnoremap zq /\v
-nnoremap z, :FZF<CR>
 nnoremap / /\v
 
 "vnoremap <slient> ? ?\v
@@ -684,6 +678,9 @@ nnoremap <leader>up :Unite file_rec/async<CR>
 nnoremap <leader>us :Unite grep:.<CR>
 nnoremap <leader>vf :VimFiler<CR>
 nnoremap <leader>ag :Ag 
+
+nnoremap <leader>vs :vs<CR>
+nnoremap <leader>sp :sp<CR>
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
