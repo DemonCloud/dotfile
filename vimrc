@@ -140,8 +140,7 @@ if has("gui_running")
 	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
 	"set guifont=Decima\ Nova\ Pro
 	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
-	set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 8
-	"set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 9 
+	set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8 
 	"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 	"set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
 else
@@ -185,7 +184,6 @@ Plugin 'terryma/vim-smooth-scroll'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
-"Plugin 'sjl/gundo.vim' "Steve Losh Look up Die.....
 Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
@@ -200,14 +198,15 @@ Plugin 'danro/rename.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
-"Plugin 'marijnh/tern_for_vim'
-
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/livestyle-vim'
 
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'mattn/emmet-vim'
 Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -230,7 +229,7 @@ Plugin 'airblade/vim-gitgutter'
 
 
 " @ Plugin --- [ Code BAT Sreach ]
-"Plugin 'mileszs/ack.vim'
+Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
@@ -433,12 +432,12 @@ let g:ycm_filetype_blacklist = {
 
 " tern_node_js onmicomplete with YouCompleteMe
 let tern#is_show_argument_hints_enabled= 1
-let g:tern_show_argument_hints="on_move"
+let g:tern_show_argument_hints="on_hold"
 
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger       = "<c-x>"
+" let g:UltiSnipsExpandTrigger     = "<c-x>"
 let g:UltiSnipsJumpForwardTrigger  = "<c-f>"
 let g:UltiSnipsJumpBackwardTrigger = "<c-g>"
 " If you want :UltiSnipsEdit to split your window.
@@ -447,7 +446,7 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
-let g:user_emmet_expandabbr_key ='<c-e>'
+let g:user_emmet_expandabbr_key ='<S-Tab>'
 let g:user_emmet_settings = {
 \ 'php'     : {
 \ 'extends' : 'html',
@@ -478,6 +477,17 @@ let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
 
 
+" Unite Settings
+let g:unite_source_file_rec_max_cache_files = 0
+let g:unite_source_history_yank_enable      = 1
+let g:unite_source_rec_async_command        = 1
+let g:unite_source_grep_command             = 'ag'
+let g:unite_source_grep_default_opts        = '--nocolor --nogroup --column'
+let g:unite_source_grep_recursive_opt       = ''
+let g:unite_source_history_yank_enable      = 1
+call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
+call unite#filters#matcher_default#use(['matcher_fuzzy'])
+call unite#filters#sorter_default#use(['sorter_rank'])
 " VimFiler Settings
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer  = 1
@@ -509,8 +519,6 @@ nnoremap <leader>cp :CtrlP<CR>
 nnoremap <leader>cf :CtrlPFunky<CR>
 
 " Start it in browser. Only for Linux Google Chrome
-"nnoremap <F8> :silent update<Bar>silent !google-chrome %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
-"nnoremap <F9> :silent update<Bar>silent !firefox %:p:s?\(.\{-}/\)\{4}?http://localhost/?<CR>
 nnoremap <F4>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 nnoremap <F5>  :NERDTreeToggle<CR>
 nnoremap <F6>  :SyntasticToggleMode <CR>
@@ -523,21 +531,19 @@ nnoremap <F12> :YcmRestartServer<CR>
 
 " Window VertSplit switcher
 nnoremap <leader>h <C-w>h
+nnoremap <leader>hh <C-w>h
 nnoremap <leader>j <C-w>j
+nnoremap <leader>jj <C-w>j
 nnoremap <leader>k <C-w>k
+nnoremap <leader>kk <C-w>k
 nnoremap <leader>l <C-w>l
+nnoremap <leader>ll <C-w>l
 
-inoremap <silent> <C-h> <Left>
-inoremap <silent> <C-j> <Down>
-inoremap <silent> <C-k> <Up>
-inoremap <silent> <C-l> <Right>
 
-" repeat Prev Command
-nnoremap ; q:k<CR>
-" set <space> as toggle foldcomment
+" Set as toggle foldcomment
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
-" fast searcher
+" Fast searcher
 nnoremap zs ?\v
 nnoremap zq /\v
 nnoremap z, :FZF<CR>
@@ -558,14 +564,22 @@ nnoremap <silent> # #zz
 nnoremap <silent> g* g*zz
 nnoremap <silent> g; g;zz
 nnoremap <silent> g: g:zz
-nnoremap <silent> gs :call VisualSearch()<CR>
-
 
 " Smooth Scroll the terminal
 nnoremap <silent> <A-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nnoremap <silent> <A-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
+" Cursor Moving
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
 cnoremap <A-j> <Down>
 cnoremap <A-k> <Up>
+cnoremap <A-h> <Left>
+cnoremap <A-l> <Right>
+
 " Buftabline Config
 nnoremap <A-j> : bnext<CR>
 nnoremap <A-k> : bprev<CR>
@@ -577,28 +591,40 @@ nnoremap <A-w> : bwipeout<CR>
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
+nnoremap <leader>q  :wq<CR>
+
+" Command
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cx :%s///gm
-nnoremap <leader>pg :YcmCompleter GoTo<CR>
-nnoremap <leader>pd :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>pc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>cf :CtrlPFunky<CR>
+" repeat Prev Command
+nnoremap <leader>c; q:k<CR>
+
+" Unite file config
+" Ag searcher
+nnoremap <leader>uf :Unite file -complete<CR>
+nnoremap <leader>up :Unite file_rec/async<CR>
+nnoremap <leader>us :Unite grep:.<CR>
+nnoremap <leader>vf :VimFiler<CR>
+nnoremap <leader>vs :vs<CR>
+nnoremap <leader>sp :sp<CR>
+nnoremap <leader>ag :Ag 
+
+" Vundle keyfire
+nnoremap <leader>vi :PluginInstall<CR>
+nnoremap <leader>vu :PluginUpdate<CR>
+
+" Tabluer Format
+vnoremap <leader>t :Tab/
+vnoremap <leader>= :Tab/=<CR>
+vnoremap <leader>, :Tab/,<CR>
+vnoremap <leader>; :Tab/:<CR>
+
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
 
-function! VisualSearch() range
-	let l:saved_reg = @"
-	execute "normal! vgvy"
-
-	let l:pattern = escape(@", '\\/.*$^~[]')
-	let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-	execute "Ag " . l:pattern . ' '
-
-	let @/ = l:pattern
-	let @" = l:saved_reg
-endfunction
 
 " --------- KeyMapping Config END ----------- 
 

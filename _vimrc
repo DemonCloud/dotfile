@@ -609,9 +609,13 @@ nnoremap <F9>	 :silent update<Bar>silent !firefox %:p &<CR>
 
 " Window VertSplit switcher
 nnoremap <leader>h <C-w>h
+nnoremap <leader>hh <C-w>h
 nnoremap <leader>j <C-w>j
+nnoremap <leader>jj <C-w>j
 nnoremap <leader>k <C-w>k
+nnoremap <leader>kk <C-w>k
 nnoremap <leader>l <C-w>l
+nnoremap <leader>ll <C-w>l
 
 
 " Set as toggle foldcomment
@@ -682,7 +686,7 @@ nnoremap <leader>vf :VimFiler<CR>
 nnoremap <leader>ag :Ag 
 
 " Vundle keyfire
-nnoremap <leader>vi :PLuginInstall<CR>
+nnoremap <leader>vi :PluginInstall<CR>
 nnoremap <leader>vu :PluginUpdate<CR>
 
 " Tabluer Format
