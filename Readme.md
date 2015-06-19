@@ -36,7 +36,12 @@
 
 ##### Windows 
 
-下载 ： [[YVIM for Windows]](http://pan.baidu.com/s/1bnhOUf1) -- <a href="#update">Update 2015.6.17 集成了Windows YouCompleteMe神器</a>
+下载 ： 
+
+[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成了Windows YouCompleteMe神器
+
+[[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1o67QYmA) -- Update 2015.6.18 集成 NeoComplete 并且支持 Ultisnips 神器
+
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 > 
@@ -118,6 +123,9 @@
 ## Date 日志 
 
 <div id="update" style="display : none; visibility : hidden"></div>
+
+-- updata 2015.6.18  上传 Windows Gvim 第二版, 完美支持 [NeoComplete](https://github.com/Shougo/neocomplete.vim) 补全神器2 
+
 -- update 2015.6.17  重新上传 Windows Gvim 文件, 完美支持 [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)补全神器
 
 -- update 2015.6.13  Linux NeoVim 优化
