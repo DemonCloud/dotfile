@@ -553,15 +553,10 @@ let g:multi_cursor_quit_key='<Esc>'
 " --------- KeyMapping Config -----------
 
 " Start it in browser. Only for Linux Google Chrome
-nnoremap <F4>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-nnoremap <F5>  :NERDTreeToggle<CR>
-nnoremap <F6>  :SyntasticToggleMode <CR>
-nnoremap <F7>  :GundoToggle<CR>
-nnoremap <F8>	 :silent update<Bar>silent !google-chrome %:p &<CR>
-nnoremap <F9>	 :silent update<Bar>silent !firefox %:p &<CR>
-nnoremap <F10> :YcmForceCompileAndDiagnostics <CR>
-nnoremap <F11> :YcmDebugInfo<CR>
-nnoremap <F12> :YcmRestartServer<CR>
+nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F6> :SyntasticToggleMode <CR>
+nnoremap <F7> :GundoToggle<CR>
 
 " Normal Key Map
 nnoremap U :redo<CR>
@@ -587,8 +582,6 @@ nnoremap zq /\v
 nnoremap z, :FZF --no-mouse .<CR>
 nnoremap / /\v
 
-"vnoremap <slient> ? ?\v
-"vnoremap <slient> ? ?\v
 nnoremap ' `
 nnoremap ` '
 nnoremap <silent> zj o<ESC>k
@@ -618,11 +611,9 @@ cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
 
-inoremap <C-b> <ESC>A
-inoremap <C-e> <ESC><Home>i
-inoremap <C-w> <ESC>f<space>a
-inoremap <C-u> <ESC>c<Home>
-
+inoremap <C-e> <ESC>A
+inoremap <C-b> <ESC><Home>i
+inoremap <C-u> <ESC>S
 
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
@@ -650,7 +641,7 @@ nnoremap <leader>c; q:k<CR>
 nnoremap <leader>ui :Unite file -complete<CR>
 nnoremap <leader>uf :Unite file find:<CR>
 nnoremap <leader>up :Unite file_rec/async<CR>
-nnoremap <leader>us :Unite grep:.<CR>
+nnoremap <leader>ug :Unite grep:.<CR>
 nnoremap <leader>vf :VimFiler<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>lp :sp<CR>
