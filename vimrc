@@ -8,9 +8,9 @@
 "
 "
 " ========================= Normal Setting Start =========================  
+
 " Set Linux Debian Desktop
 runtime! debian.vim
-
 
 " Not complete with Vi Mode
 set nocompatible
@@ -52,7 +52,6 @@ set encoding=utf-8
 setglobal fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 set termencoding=utf-8
-
 
 " For indent
 set wrap
@@ -152,7 +151,9 @@ endif
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
-set list listchars=tab:-\ ,trail:\ 
+"set list listchars=tab:-\ ,trail:\ 
+set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+set showbreak=↪
 " -------------- Global Setting end ---------------
 
 " ========================= Normal Setting End =========================  
@@ -173,6 +174,7 @@ Plugin 'L9'
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
+Plugin 'DemonCloud/vim-aixinde'
 Plugin 'morhetz/gruvbox'
 Plugin 'bling/vim-airline'
 Plugin 'ryanoasis/vim-webdevicons'
@@ -196,6 +198,7 @@ Plugin 'danro/rename.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-expand-region'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
@@ -207,7 +210,7 @@ Plugin 'mattn/livestyle-vim'
 
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
-Plugin 'gcmt/wildfire.vim'
+"Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -437,9 +440,9 @@ let g:tern_show_argument_hints="on_hold"
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-" let g:UltiSnipsExpandTrigger     = "<c-x>"
-let g:UltiSnipsJumpForwardTrigger  = "<c-f>"
-let g:UltiSnipsJumpBackwardTrigger = "<c-g>"
+let g:UltiSnipsExpandTrigger     = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<leader><Tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
@@ -476,6 +479,9 @@ let g:C_UseTool_cmake='yes'
 let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
 
+" Vimshell Settings
+let g:vimshell_prompt = "AixShell:$ "
+let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 
 " Unite Settings
 let g:unite_source_file_rec_max_cache_files = 0
@@ -485,9 +491,24 @@ let g:unite_source_grep_command             = 'ag'
 let g:unite_source_grep_default_opts        = '--nocolor --nogroup --column'
 let g:unite_source_grep_recursive_opt       = ''
 let g:unite_source_history_yank_enable      = 1
-call unite#custom#source('file_rec,file_rec/async', 'max_candidates', 0)
+let g:unite_split_rule                      = "botright"
+let g:unite_update_time                     = 100
+call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
+      \ 'ignore_pattern', join([
+      \ '\.git/',
+      \ 'git5/.*/review/',
+      \ 'google/obj/',
+      \ 'tmp/',
+      \ '.sass-cache',
+      \ 'node_modules/',
+      \ 'bower_components/',
+      \ 'dist/',
+      \ '.git5_specs/',
+      \ '.pyc',
+      \ ], '\|'))
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
+
 " VimFiler Settings
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer  = 1
@@ -497,13 +518,21 @@ let g:vimfiler_readonly_file_icon   = "?"
 let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 " CtrlP Settings
+set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*DS_Store*
+set wildignore+=vendor/rails/**
+set wildignore+=vendor/cache/**
+set wildignore+=*.gem
+set wildignore+=log/**
+set wildignore+=tmp/**
+set wildignore+=*.png,*.jpg,*.gif
+set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
+set wildignore+=*/.nx/**,*.app,*.git,.git
 
+let g:ctrlp_map = '<C-\>'
 let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
-let g:ctrlp_custom_ignore = {
-\ 'dir'  : '\v[\/]\.(git|hg|svn)$',
-\ 'file' : '\v\.(exe|so|dll|git|svn)$'
-\ }
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Ack Settings
 if executable('ag')
@@ -514,9 +543,14 @@ elseif executable('ack')
   let g:ackprg = "ack --nocolor --nogroup --column"
 endif
 
+" Multip C©r2015JJohn Doe
+" Default mapping
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
 " --------- KeyMapping Config -----------
-nnoremap <leader>cp :CtrlP<CR>
-nnoremap <leader>cf :CtrlPFunky<CR>
 
 " Start it in browser. Only for Linux Google Chrome
 nnoremap <F4>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
@@ -529,16 +563,20 @@ nnoremap <F10> :YcmForceCompileAndDiagnostics <CR>
 nnoremap <F11> :YcmDebugInfo<CR>
 nnoremap <F12> :YcmRestartServer<CR>
 
-" Window VertSplit switcher
-nnoremap <leader>h <C-w>h
-nnoremap <leader>hh <C-w>h
-nnoremap <leader>j <C-w>j
-nnoremap <leader>jj <C-w>j
-nnoremap <leader>k <C-w>k
-nnoremap <leader>kk <C-w>k
-nnoremap <leader>l <C-w>l
-nnoremap <leader>ll <C-w>l
+" Normal Key Map
+nnoremap U :redo<CR>
+nnoremap Q :q!<CR>
+nnoremap W :w!<CR>
 
+" Window VertSplit switcher
+nnoremap <leader>h  <C-w>h
+nnoremap <leader>hh <C-w>h
+nnoremap <leader>j  <C-w>j
+nnoremap <leader>jj <C-w>j
+nnoremap <leader>k  <C-w>k
+nnoremap <leader>kk <C-w>k
+nnoremap <leader>l  <C-w>l
+nnoremap <leader>ll <C-w>l
 
 " Set as toggle foldcomment
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
@@ -546,7 +584,7 @@ nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
 " Fast searcher
 nnoremap zs ?\v
 nnoremap zq /\v
-nnoremap z, :FZF<CR>
+nnoremap z, :FZF --no-mouse .<CR>
 nnoremap / /\v
 
 "vnoremap <slient> ? ?\v
@@ -580,18 +618,25 @@ cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
 
+inoremap <C-b> <ESC>A
+inoremap <C-e> <ESC><Home>i
+inoremap <C-w> <ESC>f<space>a
+inoremap <C-u> <ESC>c<Home>
+
+
 " Buftabline Config
-nnoremap <A-j> : bnext<CR>
-nnoremap <A-k> : bprev<CR>
-nnoremap <A-l> : bnext<CR>
-nnoremap <A-h> : bprev<CR>
-nnoremap <A-x> : bdelete<CR>
-nnoremap <A-w> : bwipeout<CR>
+nnoremap <A-j> :bnext<CR>
+nnoremap <A-k> :bprev<CR>
+nnoremap <A-l> :bnext<CR>
+nnoremap <A-h> :bprev<CR>
+nnoremap <A-x> :bdelete<CR>
+nnoremap <A-w> :bwipeout<CR>
 
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
 nnoremap <leader>q  :wq<CR>
+nnoremap <leader>hs :MRU<CR>
 
 " Command
 nnoremap <leader>cd :cd %:p:h<CR>
@@ -600,15 +645,23 @@ nnoremap <leader>cf :CtrlPFunky<CR>
 " repeat Prev Command
 nnoremap <leader>c; q:k<CR>
 
-" Unite file config
+" Unite file configure
 " Ag searcher
-nnoremap <leader>uf :Unite file -complete<CR>
+nnoremap <leader>ui :Unite file -complete<CR>
+nnoremap <leader>uf :Unite file find:<CR>
 nnoremap <leader>up :Unite file_rec/async<CR>
 nnoremap <leader>us :Unite grep:.<CR>
 nnoremap <leader>vf :VimFiler<CR>
 nnoremap <leader>vs :vs<CR>
-nnoremap <leader>sp :sp<CR>
+nnoremap <leader>lp :sp<CR>
 nnoremap <leader>ag :Ag 
+
+" Editor
+nnoremap <silent> <leader>en :e! ~/.nvimrc<CR>
+nnoremap <silent> <leader>ev :e! ~/.vim/vimrc<CR>
+" copy path
+nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
+      \ path '".expand("%:p")."' to clipboard"<CR>
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
@@ -619,12 +672,27 @@ vnoremap <leader>t :Tab/
 vnoremap <leader>= :Tab/=<CR>
 vnoremap <leader>, :Tab/,<CR>
 vnoremap <leader>; :Tab/:<CR>
+vnoremap <leader>. :Tab/.<CR>
+
+" <leader>s: Spell checking shortcuts
+nnoremap <leader>ss :setlocal spell!<CR>
+nnoremap <leader>sj ]szz
+nnoremap <leader>sk [szz
+nnoremap <leader>sa zg]szz
+nnoremap <leader>sd 1z=
+nnoremap <leader>sf z=
+
+" Multi Cursor Find
+vnoremap <leader>mf :MultipleCursorsFind 
+
+" Multi Expand Region
+map K <Plug>(expand_region_expand)
+map J <Plug>(expand_region_shrink)
 
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
-
 
 " --------- KeyMapping Config END ----------- 
 
