@@ -175,8 +175,8 @@ Plugin 'L9'
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
-Plugin 'morhetz/gruvbox'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
+Plugin 'gcavallanti/vim-noscrollbar'
 Plugin 'ryanoasis/vim-webdevicons'
 
 " @ Plugin --- [ Style Custom ]
@@ -215,6 +215,8 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'justinmk/vim-sneak'
+Plugin 'haya14busa/incsearch.vim'
 
 
 " @ Plugin --- [ CWD File Buffer Manager ] 
@@ -310,8 +312,11 @@ colorscheme J
 " So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
 
-"hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
-"hi f2 guibg=Black guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
+hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230 gui=NONE cterm=NONE term=NONE
+hi f2 guibg=#060606 guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
+hi f3 guibg=#101010 guifg=#888888 ctermbg=232 ctermfg=242 gui=NONE cterm=NONE term=NONE
+hi f4 guibg=#181818 guifg=#af0000 ctermbg=234 ctermfg=124 gui=NONE cterm=NONE term=NONE
+hi f5g guibg=#000000 guifg=#181818 ctermbg=16 ctermfg=234 gui=NONE cterm=NONE term=NONE
 
 " Observer
 "hi f1 guibg=#C0C280 guifg=#080808 gui=NONE 
@@ -320,37 +325,41 @@ colorscheme J
 " Command
 "hi f1 guibg=#981000 guifg=#ffffff gui=NONE
 
-"function! StatuslineModeColor()
-""	let s:Status=mode()	
-""	if s:Status == 'n'
-""		hi f1 guibg=#C0C280 guifg=#080808 ctermbg=230 ctermfg=16 gui=NONE cterm=NONE term=NONE
-""		return 'Observer'
-""	elseif s:Status == 'i'
-""		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 gui=NONE cterm=NONE term=NONE
-""		return 'Inserter'
-""	elseif s:Status == 'v'
-""		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15 gui=NONE cterm=NONE term=NONE
-""		return 'Injection'
-""	else
-""		hi f1 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
-""		return 'Command'
-""	endif
-"endfunc
-"set statusline=%#f1#\ %{StatuslineModeColor()}\ 
-"set statusline+=%#f2#[%f][%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r
-""" right align laststatus
-"set statusline+=\ %=C:%c\ L:%l/%L[%p%%]
-"set statusline+=%#f1#\ Buff:[%n]                 " Buffer number
+function! StatuslineModeColor()
+	let s:Status=mode()	
+  if s:Status == 'n'
+		hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230 
+		return 'Observer'
+  elseif s:Status == 'i'
+		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 
+		return 'Inserter'
+	elseif s:Status == 'v'
+		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
+		return 'Injection'
+	else
+		hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16 
+	return 'Command'
+  endif
+endfunc
+
+set statusline=%#f1#\ %{StatuslineModeColor()}\ 
+set statusline+=%#f4#\ FILE:\ %f\ %#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f5g#\ %{fugitive#statusline()}\  
+" right align laststatus
+set statusline+=%=%#f3#\ \|%{noscrollbar#statusline(20,'-','=')}\|\ 
+set statusline+=%#f4#\ C:%c\ L:%l
+set statusline+=\/%L\ [%p%%]\ 
+set statusline+=%#f1#\ Buff:[%n]\ 
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
 " End Status Line
 " -----------------------------
 
+" AirLine Settings
 " alrLine && PowerLine Config
 let g:Powerline_symbols = 'fancy'
-let g:airline_powerline_fonts = 1
+"let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
-let g:airline_theme = 'base16'
+"let g:airline_theme = 'solarized'
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
 let g:WebDevIconsUnicodeDecorateFileNodes = 1 
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
@@ -384,8 +393,7 @@ let g:tagbar_type_css = {
 
 
 " Syntastic Config
-hi f3 guibg=#981000 guifg=#FFFFFF ctermbg=52 ctermfg=15 gui=NONE cterm=NONE term=NONE
-set statusline+=%#f3#
+set statusline+=%#f1#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_error_symbol = 'x'
@@ -543,12 +551,19 @@ elseif executable('ack')
   let g:ackprg = "ack --nocolor --nogroup --column"
 endif
 
-" Multip C©r2015JJohn Doe
+" Multip Cursor 
 " Default mapping
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
+" Sneak Vim
+let g:sneak#streak = 1
+
+" Vim incsearch
+let g:vim_search_pulse_disable_auto_mappings = 1
+let g:incsearch#auto_nohlsearch = 1
 
 " --------- KeyMapping Config -----------
 
@@ -576,11 +591,9 @@ nnoremap <leader>ll <C-w>l
 " Set as toggle foldcomment
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+nnoremap zr zR
 " Fast searcher
-nnoremap zs ?\v
-nnoremap zq /\v
 nnoremap z, :FZF --no-mouse .<CR>
-nnoremap / /\v
 
 nnoremap ' `
 nnoremap ` '
@@ -588,11 +601,6 @@ nnoremap <silent> zj o<ESC>k
 nnoremap <silent> zk O<ESC>j
 
 " Format Jump
-nnoremap <silent> n nzz
-nnoremap <silent> N Nzz
-nnoremap <silent> * *zz
-nnoremap <silent> # #zz
-nnoremap <silent> g* g*zz
 nnoremap <silent> g; g;zz
 nnoremap <silent> g: g:zz
 
@@ -647,9 +655,7 @@ nnoremap <leader>vs :vs<CR>
 nnoremap <leader>lp :sp<CR>
 nnoremap <leader>ag :Ag 
 
-" Editor
-nnoremap <silent> <leader>en :e! ~/.nvimrc<CR>
-nnoremap <silent> <leader>ev :e! ~/.vim/vimrc<CR>
+" first to copy files path
 " copy path
 nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
       \ path '".expand("%:p")."' to clipboard"<CR>
@@ -666,6 +672,7 @@ vnoremap <leader>; :Tab/:<CR>
 vnoremap <leader>. :Tab/.<CR>
 
 " <leader>s: Spell checking shortcuts
+" fold enable settings
 nnoremap <leader>ss :setlocal spell!<CR>
 nnoremap <leader>sj ]szz
 nnoremap <leader>sk [szz
@@ -679,6 +686,44 @@ vnoremap <leader>mf :MultipleCursorsFind
 " Multi Expand Region
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
+
+
+" For Git fire
+nnoremap <leader>gs :Gstatus<CR> 
+nnoremap <leader>gc :Gcommit -m "" 
+nnoremap <leader>gb :Gblame
+nnoremap <leader>gv :Gitv<CR>
+nnoremap <leader>gr :Gremove
+nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gt :Git
+
+" Sneack Vim
+"replace 'f' with 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+"replace 't' with 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
+
+" Incsearch
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
+
+map n <Plug>(incsearch-nohl-n)zzzv
+map N <Plug>(incsearch-nohl-N)zzzv
+map * <Plug>(incsearch-nohl-*)zzzv
+map # <Plug>(incsearch-nohl-#)zzzv
+map g* <Plug>(incsearch-nohl-g*)zzzv
+map g# <Plug>(incsearch-nohl-g#)zzzv
 
 
 function! <SID>SynStack()
