@@ -218,6 +218,9 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-expand-region'
+Plugin 'terryma/vim-smooth-scroll'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
@@ -246,6 +249,7 @@ Plugin 'gregsexton/gitv'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-easymotion'
+Plugin 'justinmk/vim-sneak'
 
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
@@ -643,6 +647,9 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+" Sneak Vim
+let g:sneak#streak = 1
+
 " --------- KeyMapping Config -----------
 
 " Start it in browser. Only for Linux Google Chrome
@@ -774,12 +781,28 @@ map J <Plug>(expand_region_shrink)
 
 " For Git fire
 nnoremap <leader>gs :Gstatus<CR> 
-nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gc :Gcommit -m "" 
 nnoremap <leader>gb :Gblame<CR>
 nnoremap <leader>gv :Gitv<CR>
 nnoremap <leader>gr :Gremove<CR>
 nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gt :Git<CR>
+
+" Sneack Vim
+"replace 'f' with 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+"replace 't' with 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
 
 
 function! <SID>SynStack()
