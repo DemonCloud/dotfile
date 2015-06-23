@@ -194,12 +194,12 @@ Plugin 'tomtom/tlib_vim'
 
 " @ Plugin --- [ Themes Custom ]
 Plugin 'DemonCloud/J'
+Plugin 'DemonCloud/vim-aixinde'
 Plugin 'rking/vim-detailed'
 
 
 " @ Plugin --- [ Style Custom ]
 Plugin 'bling/vim-airline'
-Plugin 'terryma/vim-smooth-scroll'
 Plugin 'ap/vim-buftabline'
 
 
@@ -215,18 +215,17 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimfiler.vim'
+Plugin 'yegappan/mru'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'Shougo/neocomplete.vim'
-"Plugin 'Shougo/neosnippet'
-"Plugin 'Shougo/neosnippet-snippets'
 "Plugin 'xleng/YCM_WIN_X86'
-Plugin 'terryma/vim-multiple-cursors'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -238,24 +237,18 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/livestyle-vim'
-Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
+Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular'
 Plugin 'Lokaltog/vim-easymotion'
 
-
-" @ Plugin --- [ CWD File Buffer Manager ] 
-Plugin 'yegappan/mru'
-
-
-" @ Plugin --- [ Git && Shell Tools ]
-Plugin 'airblade/vim-gitgutter'
-
-
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
-
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
@@ -538,9 +531,17 @@ let g:UltiSnipsJumpBackwardTrigger = "<leader><Tab>"
 let g:UltiSnipsEditSplit="vertical"
 
 
+" UltiSnips Config
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger     = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<leader><Tab>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
-let g:user_emmet_mode='a'
 let g:user_emmet_expandabbr_key ='<S-Tab>'
 let g:user_emmet_settings = {
 \ 'php'     : {
@@ -555,9 +556,11 @@ let g:user_emmet_settings = {
 \ },
 \}
 
+
 " C++ Syntax HighLight
 let g:cpp_class_scope_highlight = 1
 let g:cpp_experimental_template_highlight = 1
+
 
 " GitGutter Setting
 let g:gitgutter_sign_column_always = 0 
@@ -568,7 +571,6 @@ let g:gitgutter_max_signs = 99999
 let g:C_UseTool_cmake='yes'
 let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
-
 
 " Vimshell Settings
 let g:vimshell_prompt = "AixShell:$ "
@@ -641,14 +643,13 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-
 " --------- KeyMapping Config -----------
 
-" Start It In Browser. Only for Linux Google Chrome
-nnoremap <F4>  :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-nnoremap <F5>  :NERDTreeToggle<CR>
-nnoremap <F6>  :SyntasticToggleMode <CR>
-nnoremap <F7>  :GundoToggle<CR>
+" Start it in browser. Only for Linux Google Chrome
+nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F6> :SyntasticToggleMode <CR>
+nnoremap <F7> :GundoToggle<CR>
 
 " Normal Key Map
 nnoremap U :redo<CR>
@@ -668,14 +669,13 @@ nnoremap <leader>ll <C-w>l
 " Set as toggle foldcomment
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
+nnoremap zr zR
 " Fast searcher
 nnoremap zs ?\v
 nnoremap zq /\v
 nnoremap z, :FZF --no-mouse .<CR>
 nnoremap / /\v
 
-"vnoremap <slient> ? ?\v
-"vnoremap <slient> ? ?\v
 nnoremap ' `
 nnoremap ` '
 nnoremap <silent> zj o<ESC>k
@@ -705,11 +705,9 @@ cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
 
-inoremap <C-b> <ESC>A
-inoremap <C-e> <ESC><Home>i
-inoremap <C-w> <ESC>f<space>a
-inoremap <C-u> <ESC>c<Home>
-
+inoremap <C-e> <ESC>A
+inoremap <C-b> <ESC><Home>i
+inoremap <C-u> <ESC>S
 
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
@@ -722,7 +720,7 @@ nnoremap <A-w> :bwipeout<CR>
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
-nnoremap <leader>q  :wq<CR>
+nnoremap <leader>q  :q<CR>
 nnoremap <leader>hs :MRU<CR>
 
 " Command
@@ -737,15 +735,12 @@ nnoremap <leader>c; q:k<CR>
 nnoremap <leader>ui :Unite file -complete<CR>
 nnoremap <leader>uf :Unite file find:<CR>
 nnoremap <leader>up :Unite file_rec/async<CR>
-nnoremap <leader>us :Unite grep:.<CR>
+nnoremap <leader>ug :Unite grep:.<CR>
 nnoremap <leader>vf :VimFiler<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>lp :sp<CR>
 nnoremap <leader>ag :Ag 
 
-" Editor
-nnoremap <silent> <leader>en :e! ~/.nvimrc<CR>
-nnoremap <silent> <leader>ev :e! ~/.vim/vimrc<CR>
 " copy path
 nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
       \ path '".expand("%:p")."' to clipboard"<CR>
@@ -762,6 +757,7 @@ vnoremap <leader>; :Tab/:<CR>
 vnoremap <leader>. :Tab/.<CR>
 
 " <leader>s: Spell checking shortcuts
+" fold enable settings
 nnoremap <leader>ss :setlocal spell!<CR>
 nnoremap <leader>sj ]szz
 nnoremap <leader>sk [szz
@@ -775,6 +771,15 @@ vnoremap <leader>mf :MultipleCursorsFind
 " Multi Expand Region
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
+
+" For Git fire
+nnoremap <leader>gs :Gstatus<CR> 
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gb :Gblame<CR>
+nnoremap <leader>gv :Gitv<CR>
+nnoremap <leader>gr :Gremove<CR>
+nnoremap <leader>gl :Glog<CR>
+nnoremap <leader>gt :Git<CR>
 
 
 function! <SID>SynStack()
