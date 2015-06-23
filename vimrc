@@ -9,6 +9,7 @@
 "
 " ========================= Normal Setting Start =========================  
 
+
 " Set Linux Debian Desktop
 runtime! debian.vim
 
@@ -42,7 +43,6 @@ set softtabstop=2 "4
 set noexpandtab
 set autowrite
 set display=lastline
-
 
 " ------------- Fonts Setting ---------------
 " The fonts You will find on GitHub
@@ -135,25 +135,26 @@ if has("gui_running")
 
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
-	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
+	"set guifont=IBM\ 3270\ Narrow\ Medium\ 9 
 	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
 	"set guifont=Decima\ Nova\ Pro
 	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
-	set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8 
+	set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 9 
 	"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 	"set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
 else
 	set t_Co=256
-	set showtabline=1
+	set showtabline=2
 	set noimd
+  set ttimeoutlen=0
 endif
 
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
 "set list listchars=tab:-\ ,trail:\ 
-set list listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
-set showbreak=↪
+set list listchars=tab:▸\ ,extends:❯,precedes:❮
+
 " -------------- Global Setting end ---------------
 
 " ========================= Normal Setting End =========================  
@@ -211,6 +212,8 @@ Plugin 'mattn/livestyle-vim'
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
 "Plugin 'gcmt/wildfire.vim'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -225,6 +228,9 @@ Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/vimfiler.vim'
+"Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'JazzCore/neocomplcache-ultisnips'
 Plugin 'yegappan/mru'
 
 
@@ -271,7 +277,6 @@ filetype plugin on
 filetype plugin indent on
 
 
-
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
 
@@ -313,9 +318,15 @@ colorscheme J
 " Formats the statusline
 
 hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230 gui=NONE cterm=NONE term=NONE
-hi f2 guibg=#060606 guifg=#C0C280 ctermbg=16 ctermfg=230 gui=NONE cterm=NONE term=NONE
-hi f3 guibg=#101010 guifg=#888888 ctermbg=232 ctermfg=242 gui=NONE cterm=NONE term=NONE
+hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52 gui=NONE cterm=NONE term=NONE
+hi f2 guibg=#080808 guifg=#C0C280 ctermbg=232 ctermfg=230 gui=NONE cterm=NONE term=NONE
+
+hi f3 guibg=#121212 guifg=#888888 ctermbg=233 ctermfg=242 gui=NONE cterm=NONE term=NONE
+hi f3r guibg=#080808 guifg=#121212 ctermbg=232 ctermfg=233 gui=NONE cterm=NONE term=NONE
+
 hi f4 guibg=#181818 guifg=#af0000 ctermbg=234 ctermfg=124 gui=NONE cterm=NONE term=NONE
+hi f4r guibg=#121212 guifg=#181818 ctermbg=233 ctermfg=234 gui=NONE cterm=NONE term=NONE
+
 hi f5g guibg=#000000 guifg=#181818 ctermbg=16 ctermfg=234 gui=NONE cterm=NONE term=NONE
 
 " Observer
@@ -324,31 +335,52 @@ hi f5g guibg=#000000 guifg=#181818 ctermbg=16 ctermfg=234 gui=NONE cterm=NONE te
 "hi f1 guibg=#79BE61 guifg=#181818 gui=NONE
 " Command
 "hi f1 guibg=#981000 guifg=#ffffff gui=NONE
-
+let g:last_mode = 'n'
 function! StatuslineModeColor()
-	let s:Status=mode()	
-  if s:Status == 'n'
-		hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230 
-		return 'Observer'
-  elseif s:Status == 'i'
-		hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 
-		return 'Inserter'
-	elseif s:Status == 'v'
-		hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
-		return 'Injection'
+	let l:Status=mode()	
+
+	if l:Status !=# g:last_mode
+		let g:last_mode = l:Status
+
+	  if l:Status == 'n'
+			hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230 
+			hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52
+	  elseif l:Status == 'i'
+			hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 
+			hi f1r guibg=#181818 guifg=#79BE61 ctermbg=234 ctermfg=83
+		elseif l:Status == 'v'
+			hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
+			hi f1r guibg=#181818 guifg=#276888 ctermbg=234 ctermfg=32
+		else
+			hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16 
+			hi f1r guibg=#181818 guifg=#C0C280 ctermbg=234 ctermfg=230
+	  endif
+	endif
+
+	if l:Status ==# "n"
+		return "NORMAL"
+	elseif l:Status ==# "i"
+		return "INSERT"
+	elseif l:Status ==# "R"
+		return "REPLACE"
+	elseif l:Status ==# "v"
+		return "VISUAL"
+	elseif l:Status ==# "V"
+		return "V·LINE"
+	elseif l:Status ==# ""
+		return "V·BLOCK"
 	else
-		hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16 
-	return 'Command'
-  endif
+		return l:Status
+	endif
 endfunc
 
-set statusline=%#f1#\ %{StatuslineModeColor()}\ 
-set statusline+=%#f4#\ FILE:\ %f\ %#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f5g#\ %{fugitive#statusline()}\  
+set statusline=%#f1#\ %{StatuslineModeColor()}\ %#f1r#⮀
+set statusline+=%#f4#\ %f\ %#f4r#⮀%#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\  
 " right align laststatus
-set statusline+=%=%#f3#\ \|%{noscrollbar#statusline(20,'-','=')}\|\ 
-set statusline+=%#f4#\ C:%c\ L:%l
-set statusline+=\/%L\ [%p%%]\ 
-set statusline+=%#f1#\ Buff:[%n]\ 
+set statusline+=%=%#f3r#⮂%#f3#\ ⭡\ %l
+set statusline+=/%L\ 
+set statusline+=%#f4r#⮂%#f4#\ %{noscrollbar#statusline(10,'-','o')}\ 
+set statusline+=%#f1r#⮂%#f1#\ ✹\ BUFF:[%n]\ 
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
 " End Status Line
@@ -438,7 +470,86 @@ let g:ycm_filetype_blacklist = {
 			\ 'text'      : 1,
 			\ 'vimwiki'   : 1,
 			\ 'gitcommit' : 1,
-\}
+			\}
+
+"-------------------- NeoComplete ---------------------
+" NeoComplete
+
+" Disable AutoComplPop.
+"let g:acp_enableAtStartup = 0
+" Use neocomplete.
+"let g:neocomplete#enable_at_startup = 1
+" Use smartcase.
+"let g:neocomplete#enable_smart_case = 1
+" Set minimum syntax keyword length.
+"let g:neocomplete#sources#syntax#min_keyword_length = 2
+"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+
+" Define dictionary.
+"let g:neocomplete#sources#dictionary#dictionaries = {
+"    \ 'default' : '',
+"    \ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
+"    \ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
+"\ }
+
+" Define keyword.
+"if !exists('g:neocomplete#keyword_patterns')
+"    let g:neocomplete#keyword_patterns = {}
+"endif
+"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
+" Recommended key-mappings.
+" <CR>: close popup and save indent.
+"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+"function! s:my_cr_function()
+"  return neocomplete#close_popup() . "\<CR>"
+"endfunction
+
+" <TAB>: completion.
+" <C-h>, <BS>: close popup and delete backword char.
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+
+" Close popup by <Space>.
+"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
+
+" For cursor moving in insert mode(Not recommended)
+"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+" Or set this.
+"let g:neocomplete#enable_cursor_hold_i = 1
+" Or set this.
+"let g:neocomplete#enable_insert_char_pre = 1
+
+" AutoComplPop like behavior.
+"let g:neocomplete#enable_auto_select = 1
+
+" Enable omni completion.
+"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+" Enable heavy omni completion.
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+"  let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+
+" Noconflict NeoComplete With Vim Multiple Cursors
+"function! Multiple_cursors_before()
+""    exe 'NeoCompleteLock'
+""    echo 'Disabled autocomplete'
+"endfunction
+"
+"function! Multiple_cursors_after()
+""    exe 'NeoCompleteUnlock'
+""    echo 'Enabled autocomplete'
+"endfunction
 
 
 " tern_node_js onmicomplete with YouCompleteMe
@@ -690,12 +801,17 @@ map J <Plug>(expand_region_shrink)
 
 " For Git fire
 nnoremap <leader>gs :Gstatus<CR> 
-nnoremap <leader>gc :Gcommit -m "" 
-nnoremap <leader>gb :Gblame
+nnoremap <leader>gc :Gcommit %f -m " 
+nnoremap <leader>gb :Gblame 
 nnoremap <leader>gv :Gitv<CR>
-nnoremap <leader>gr :Gremove
+nnoremap <leader>gr :Gremove 
 nnoremap <leader>gl :Glog<CR>
-nnoremap <leader>gt :Git
+nnoremap <leader>gt :Git 
+nnoremap <leader>gp :Git push origin master<CR>
+nnoremap <leader>gu :Git pull -u<CR>
+
+nnoremap <leader>en :e! ~/.nvimrc<CR>
+nnoremap <leader>ev :e! ~/.vim/vimrc<CR>
 
 " Sneack Vim
 "replace 'f' with 1-char Sneak
