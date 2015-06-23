@@ -38,9 +38,9 @@
 
 下载 ： 
 
-[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成了Windows YouCompleteMe神器
+[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成Windows YouCompleteMe
 
-[[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1o67QYmA) -- Update 2015.6.20 集成 NeoComplete 并且支持 Ultisnips 神器
+[[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1hqGQT72) -- Update 2015.6.23 集成 NeoComplete 支持 Ultisnips 
 
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
@@ -121,6 +121,7 @@
 
 
 ## Date 日志 
+-- update 2015.6.23  全部更新,增加强化搜索插件insearch, 强化原生按键. 重新打包 YVIM with NeoComplete
 
 -- update 2015.6.20  更新Windows \_vimrc Fix emmet <S-Tab> confilct
 
