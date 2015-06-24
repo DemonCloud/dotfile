@@ -31,7 +31,7 @@ endfunction
 "init
 "set windows pos and resize
 set lines=58
-set columns=148
+set columns=158
 winpos 88 0
 
 " Encoding setting
@@ -42,7 +42,11 @@ setglobal fileencoding=utf-8
 set fileencodings=utf-8,latin-1
 language messages en_US.utf-8
 
-set guifont=PragmataPro:h9:cANSI
+"https://github.com/eugeii/consolas-powerline-vim
+set guifont=Consolas:h11:cANSI
+"set guifont=Consolas\ for\ Powerline\ FixedD:h10
+
+"set guifont=PragmataPro:w6:h9:cANSI
 "set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h10:cANSI
 "set guifont=ProFontWindows:h11:cANSI
 "set guifont=PragmataPro\ for\ Powerline:w5:b:h11:cANSI
@@ -174,7 +178,7 @@ endif
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
-set list listchars=tab:-\ ,trail:\ 
+set list listchars=tab:▸\ ,trail:\ 
 " -------------- Global Setting end ---------------
 
 
@@ -193,6 +197,7 @@ Plugin 'tomtom/tlib_vim'
 
 
 " @ Plugin --- [ Themes Custom ]
+Plugin 'chriskempson/base16-vim'
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
 Plugin 'rking/vim-detailed'
@@ -256,6 +261,7 @@ Plugin 'haya14busa/incsearch.vim'
 
 " @ Plugin --- [ Code BAT Sreach ]
 Plugin 'rking/ag.vim'
+Plugin 'dhruvasagar/vim-table-mode'
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
@@ -287,6 +293,9 @@ set background=dark
 " If you are not having them. You Search in Google and download them
 
 colorscheme J
+"colorscheme base16-3024
+"colorscheme base16-apathy
+"colorscheme base16-ashes
 "colorscheme jellybeans
 "colorscheme hybrid
 "colorscheme solarized
@@ -377,12 +386,12 @@ function! StatuslineModeColor()
 endfunc
 
 set statusline=%#f1#\ %{StatuslineModeColor()}\ %#f1r#⮀
-set statusline+=%#f4#\ %f\ %#f4r#⮀%#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\  
+set statusline+=%#f4#\ %<%f\ %#f4r#⮀%#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\  
 " right align laststatus
 set statusline+=%=%#f3r#⮂%#f3#\ ⭡\ %l
 set statusline+=/%L\ 
-set statusline+=%#f4r#⮂%#f4#\ %{noscrollbar#statusline(10,'-','★')}\ 
-set statusline+=%#f1r#⮂%#f1#\ ✹\ BUFF:[%n]\ 
+set statusline+=%#f4r#⮂%#f4#\ %{noscrollbar#statusline(10,'-','○')}\ 
+set statusline+=%#f1r#⮂%#f1#\ ■\ BUFF:[%n]\ 
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
 " End Status Line
@@ -442,7 +451,6 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_java_checkers       = ['java', 'jsp']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
-
 
 ""-------------------- NeoComplete ---------------------
 " NeoComplete
@@ -682,6 +690,7 @@ let g:incsearch#auto_nohlsearch = 1
 
 " --------- KeyMapping Config -----------
 
+nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :SyntasticToggleMode <CR>
@@ -778,11 +787,11 @@ nnoremap <leader>vi :PluginInstall<CR>
 nnoremap <leader>vu :PluginUpdate<CR>
 
 " Tabluer Format
-vnoremap <leader>t :Tab/
-vnoremap <leader>= :Tab/=<CR>
-vnoremap <leader>, :Tab/,<CR>
-vnoremap <leader>; :Tab/:<CR>
-vnoremap <leader>. :Tab/.<CR>
+vnoremap <leader>t :Tabularize/
+vnoremap <leader>= :Tabularize/=<CR>
+vnoremap <leader>, :Tabularize/,<CR>
+vnoremap <leader>; :Tabularize/:<CR>
+vnoremap <leader>. :Tabularize/.<CR>
 
 " <leader>s: Spell checking shortcuts
 " fold enable settings
