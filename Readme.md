@@ -2,16 +2,13 @@
 
 ## Introduction 简介
 
-
-##### Linux (Ubuntu)
 <hr>
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/neovim.png" alt="Window YVim preview"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/neovim.png" alt="Linux YVIM previews"/>
 
 <hr>
 
-这个 ``dotfile`` 项目包含了我最新的 Vim 配置文件。与其他人的 Vim 配置不同
-
-<span style="color=red;">--Update 2015.6.10 增加了 Neovim的配置文件</span>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/2015-06-24_172100.png" alt="Window YVIM previews">
+<hr>
 
 这些配置文件做了如下事情：
 
@@ -22,6 +19,7 @@
 >	5. 默认支持了 Windows 常用操作 [``Ctrl-C``复制，``Ctrl-V``粘贴，``Ctrl-X``剪切...]
 >	6. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
 >	7. Windows 和 Linux 下的原生按键配置均做了强化处理
+> 8. 原生制定的 Statusline 配合主题 J, 不喜可自己更换XXXLine系列插件
 
 
 ## Install 安装
@@ -34,13 +32,13 @@
 
 <br>
 
-##### Windows 
+#### Windows 
 
 下载 ： 
 
-[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成Windows YouCompleteMe
+[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成Windows YouCompleteMe\(配置过时\)
 
-[[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1hqGQT72) -- Update 2015.6.23 集成 NeoComplete 支持 Ultisnips 
+[[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1hqGQT72) -- Update 2015.6.24 集成 NeoComplete 支持 Ultisnips 
 
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
@@ -57,16 +55,15 @@
 >
 > 注: **YouCompleteMe For Windows x86** 这个项目是Windows下已经编译好的YCM, 因为项目文件过大, 所以有可能用Vundle会安装失败,建议直接git clone之后丢到 vimfile/bundle/里,在_vimrc中加入 Plugin 'xleng/YCM_WIN_X86'.  然后Update 一次Vundle
 >
+> **在下载完成打包好的 YVIM 建议将 _vimrc 替换一次. 因为可能不是最新的配置**
 
 <br>
 
-##### Linux
+#### Linux
 
 > **1.** 一般来说，Linux 下都会自带 Vim, 但是不一定会自带 Gvim. 以 Ubuntu 为例，先安装Gvim：
 
 > ``sudo apt-get install gvim``
-
-> ``sudo apt-get install vim``
 
 > ``sudo apt-get install vim-gtk``
 
@@ -121,6 +118,9 @@
 
 
 ## Date 日志 
+
+-- update 2015.6.24  全部更新,重新打包Windows YVIM,增加 vim-table-mode 插件
+
 -- update 2015.6.23  全部更新,增加强化搜索插件insearch, 强化原生按键. 重新打包 YVIM with NeoComplete
 
 -- update 2015.6.20  更新Windows \_vimrc Fix emmet <S-Tab> confilct
