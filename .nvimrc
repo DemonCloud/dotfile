@@ -20,7 +20,7 @@ set regexpengine=1
 "Init
 "Set windows pos and resize
 set lines=48
-set columns=118
+set columns=128
 
 " -------------- Global Setting ---------------
 " ## Make its Gvim Like Windows behave ## 
@@ -136,10 +136,11 @@ if has("gui_running")
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
+	set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9 
 	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
 	"set guifont=Decima\ Nova\ Pro
 	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
-	set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8 
+	"set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8 
 	"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 	"set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
 else
@@ -247,6 +248,7 @@ Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'dyng/ctrlsf.vim'
+Plugin 'dhruvasagar/vim-table-mode'
 
 
 " @ Plugin --- [ Web Development Tools ]
@@ -367,6 +369,8 @@ function! StatuslineModeColor()
 		return "VISUAL"
 	elseif l:Status ==# "V"
 		return "V·LINE"
+	elseif l:Status ==# "s"
+		return "SELECT"
 	elseif l:Status ==# ""
 		return "V·BLOCK"
 	else
@@ -375,11 +379,11 @@ function! StatuslineModeColor()
 endfunc
 
 set statusline=%#f1#\ %{StatuslineModeColor()}\ %#f1r#⮀
-set statusline+=%#f4#\ %f\ %#f4r#⮀%#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\  
+set statusline+=%#f4#\ %f\ %#f4r#⮀%#f3#\ %y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\  
 " right align laststatus
-set statusline+=%=%#f3r#⮂%#f3#\ ⭡\ %l
+set statusline+=%=%#f2#%{WebDevIconsGetFileFormatSymbol()}%#f3r#⮂%#f3#\ ⭡\ %l
 set statusline+=/%L\ 
-set statusline+=%#f4r#⮂%#f4#\ %{noscrollbar#statusline(10,'-','★')}\ 
+set statusline+=%#f4r#⮂%#f4#\ %{noscrollbar#statusline(10,'-','o')}\ 
 set statusline+=%#f1r#⮂%#f1#\ ✹\ BUFF:[%n]\ 
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
@@ -392,7 +396,7 @@ let g:Powerline_symbols = 'fancy'
 "let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
 "let g:airline_theme = 'solarized'
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1 
 let g:WebDevIconsUnicodeDecorateFileNodes = 1 
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
@@ -678,7 +682,7 @@ let g:incsearch#auto_nohlsearch = 1
 
 " --------- KeyMapping Config -----------
 
-" Start it in browser. Only for Linux Google Chrome
+nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
 nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :SyntasticToggleMode <CR>
@@ -776,11 +780,11 @@ nnoremap <leader>vi :PluginInstall<CR>
 nnoremap <leader>vu :PluginUpdate<CR>
 
 " Tabluer Format
-vnoremap <leader>t :Tab/
-vnoremap <leader>= :Tab/=<CR>
-vnoremap <leader>, :Tab/,<CR>
-vnoremap <leader>; :Tab/:<CR>
-vnoremap <leader>. :Tab/.<CR>
+vnoremap <leader>t :Tabularize/
+vnoremap <leader>= :Tabularize/=<CR>
+vnoremap <leader>, :Tabularize/,<CR>
+vnoremap <leader>; :Tabularize/:<CR>
+vnoremap <leader>. :Tabularize/.<CR>
 
 " <leader>s: Spell checking shortcuts
 " fold enable settings
