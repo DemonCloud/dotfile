@@ -3,7 +3,7 @@
 ## Introduction 简介
 
 <hr>
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/neovim.png" alt="Linux YVIM previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/Nvim.png" alt="Linux YVIM previews"/>
 
 <hr>
 
