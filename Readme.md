@@ -36,7 +36,7 @@
 
 下载 ： 
 
-[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成Windows YouCompleteMe\(配置过时\)
+[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1qWQefik) -- Update 2015.6.17 集成Windows YouCompleteMe\(配置过时\)
 
 [[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1hqGQT72) -- Update 2015.6.24 集成 NeoComplete 支持 Ultisnips 
 
