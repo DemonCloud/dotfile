@@ -757,7 +757,7 @@ nnoremap <A-x> :bdelete<CR>
 nnoremap <A-w> :bwipeout<CR>
 
 " Check Vim Syntax name Fn
-nnoremap <leader>yi :call <SID>SynStack()<CR>
+nnoremap <leader>yi :call <SID>SynStack()<CR
 nnoremap <leader>w  :w!<CR>
 nnoremap <leader>q  :q<CR>
 nnoremap <leader>hs :MRU<CR>
@@ -766,8 +766,10 @@ nnoremap <leader>hs :MRU<CR>
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cx :%s///gm
 nnoremap <leader>cf :CtrlPFunky<CR>
+
 " repeat Prev Command
-nnoremap <leader>c; q:k<CR>
+nnoremap <leader>. @:
+vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
 " Ag searcher
@@ -793,7 +795,6 @@ vnoremap <leader>t :Tabularize/
 vnoremap <leader>= :Tabularize/=<CR>
 vnoremap <leader>, :Tabularize/,<CR>
 vnoremap <leader>; :Tabularize/:<CR>
-vnoremap <leader>. :Tabularize/.<CR>
 
 " <leader>s: Spell checking shortcuts
 " fold enable settings
