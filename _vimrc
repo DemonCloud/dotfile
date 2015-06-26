@@ -820,6 +820,8 @@ nnoremap <leader>gv :Gitv<CR>
 nnoremap <leader>gr :Gremove
 nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gt :Git
+nnoremap <leader>gp :Git push origin master<CR>
+nnoremap <leader>gu :Git pull -u<CR>
 
 " Sneack Vim
 "replace 'f' with 1-char Sneak

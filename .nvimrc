@@ -365,6 +365,8 @@ function! StatuslineModeColor()
 		return "INSERT"
 	elseif l:Status ==# "R"
 		return "REPLACE"
+	elseif l:Status ==# "t"
+		return "TERMINAL"
 	elseif l:Status ==# "v"
 		return "VISUAL"
 	elseif l:Status ==# "V"
@@ -756,8 +758,10 @@ nnoremap <leader>hs :MRU<CR>
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cx :%s///gm
 nnoremap <leader>cf :CtrlPFunky<CR>
+
 " repeat Prev Command
-nnoremap <leader>c; q:k<CR>
+nnoremap <leader>. @:
+vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
 " Ag searcher
@@ -784,7 +788,6 @@ vnoremap <leader>t :Tabularize/
 vnoremap <leader>= :Tabularize/=<CR>
 vnoremap <leader>, :Tabularize/,<CR>
 vnoremap <leader>; :Tabularize/:<CR>
-vnoremap <leader>. :Tabularize/.<CR>
 
 " <leader>s: Spell checking shortcuts
 " fold enable settings

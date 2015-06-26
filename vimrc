@@ -757,8 +757,10 @@ nnoremap <leader>hs :MRU<CR>
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cx :%s///gm
 nnoremap <leader>cf :CtrlPFunky<CR>
+
 " repeat Prev Command
-nnoremap <leader>c; q:k<CR>
+nnoremap <leader>. @:
+vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
 " Ag searcher
@@ -785,7 +787,6 @@ vnoremap <leader>t :Tabularize/
 vnoremap <leader>= :Tabularize/=<CR>
 vnoremap <leader>, :Tabularize/,<CR>
 vnoremap <leader>; :Tabularize/:<CR>
-vnoremap <leader>. :Tabularize/.<CR>
 
 " <leader>s: Spell checking shortcuts
 " fold enable settings
@@ -814,6 +815,7 @@ nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gt :Git 
 nnoremap <leader>gp :Git push origin master<CR>
 nnoremap <leader>gu :Git pull -u<CR>
+nnoremap <leader>gd :!git difftool<CR>Y<CR>
 
 nnoremap <leader>en :e! ~/.nvimrc<CR>
 nnoremap <leader>ev :e! ~/.vim/vimrc<CR>
