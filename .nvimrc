@@ -136,7 +136,8 @@ if has("gui_running")
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
-	set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9 
+	"set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9 
+	set guifont=Larabiefont\ free\ 10
 	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
 	"set guifont=Decima\ Nova\ Pro
 	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
@@ -363,6 +364,8 @@ function! StatuslineModeColor()
 		return "NORMAL"
 	elseif l:Status ==# "i"
 		return "INSERT"
+	elseif l:Status ==# "c"
+		return "COMMAND"
 	elseif l:Status ==# "R"
 		return "REPLACE"
 	elseif l:Status ==# "t"

@@ -137,7 +137,7 @@ if has("gui_running")
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
 	"set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9 
-	set guifont=IBM\ 3270\ Narrow\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9 
+	set guifont=Larabiefont\ free\ 10
 	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
 	"set guifont=Decima\ Nova\ Pro
 	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
@@ -364,8 +364,12 @@ function! StatuslineModeColor()
 		return "NORMAL"
 	elseif l:Status ==# "i"
 		return "INSERT"
+	elseif l:Status ==# "c"
+		return "COMMAND"
 	elseif l:Status ==# "R"
 		return "REPLACE"
+	elseif l:Status ==# "t"
+		return "TERMINAL"
 	elseif l:Status ==# "v"
 		return "VISUAL"
 	elseif l:Status ==# "V"
@@ -815,7 +819,6 @@ nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gt :Git 
 nnoremap <leader>gp :Git push origin master<CR>
 nnoremap <leader>gu :Git pull -u<CR>
-nnoremap <leader>gd :!git difftool<CR>Y<CR>
 
 nnoremap <leader>en :e! ~/.nvimrc<CR>
 nnoremap <leader>ev :e! ~/.vim/vimrc<CR>
