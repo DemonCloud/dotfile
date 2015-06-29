@@ -1,7 +1,7 @@
 " 
 "                         YiJun Linux GVim dotfile
 "  
-"                                2015.1.18 
+"                                2015.6.18 
 "
 "                 ★★★ I Love You <★ Meredith ★> Forever ★★★
 "
@@ -137,7 +137,7 @@ if has("gui_running")
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
 	"set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9 
-	set guifont=Larabiefont\ free\ 10
+	set guifont=Larabiefont\ Free\ 10
 	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
 	"set guifont=Decima\ Nova\ Pro
 	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
@@ -383,13 +383,14 @@ function! StatuslineModeColor()
 	endif
 endfunc
 
-set statusline=%#f1#\ %{StatuslineModeColor()}\ %#f1r#⮀
-set statusline+=%#f4#\ %f\ %#f4r#⮀%#f3#\ %y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\  
+set statusline=%#f1#\ %{StatuslineModeColor()}%#f1r#◣\ 
+"⮀⮂
+set statusline+=%#f4#\ %f\ %#f4r#◣\ %#f3#\ %y%h%m%r\ %#f3r#◣\ %#f2#\ %{fugitive#statusline()}\  
 " right align laststatus
-set statusline+=%=%#f2#%{WebDevIconsGetFileFormatSymbol()}%#f3r#⮂%#f3#\ ⭡\ %l
+set statusline+=%=%#f2#%#f3r#\ ◢%#f3#\ ⭡\ %l
 set statusline+=/%L\ 
-set statusline+=%#f4r#⮂%#f4#\ %{noscrollbar#statusline(10,'-','o')}\ 
-set statusline+=%#f1r#⮂%#f1#\ ✹\ BUFF:[%n]\ 
+set statusline+=%#f4r#\ ◢%#f4#\ %{noscrollbar#statusline(10,'-','o')}\ 
+set statusline+=%#f1r#\ ◢%#f1#\ ✹\ BUFF:[%n]\ 
 "set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
 
 " End Status Line
@@ -403,6 +404,8 @@ let g:Powerline_symbols = 'fancy'
 "let g:airline_theme = 'solarized'
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1 
 let g:WebDevIconsUnicodeDecorateFileNodes = 1 
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
