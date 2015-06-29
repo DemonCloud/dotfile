@@ -2,12 +2,19 @@
 
 ## Introduction 简介
 
-<hr>
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim.png" alt="YVIM Neo previews"/>
-
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-1.png" alt="YVIM Neo previews"/>
 <hr>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim1.png" alt="YVIM Coding previews">
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-2.png" alt="YVIM Coding previews">
+<hr>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-3.png" alt="YVIM Coding previews">
+<hr>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-4.png" alt="YVIM Coding previews">
+<hr>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-5.png" alt="YVIM Coding previews">
 <hr>
 
 这些配置文件做了如下事情：
