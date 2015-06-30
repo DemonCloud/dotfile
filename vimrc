@@ -16,6 +16,7 @@ runtime! debian.vim
 " Not complete with Vi Mode
 set nocompatible
 set regexpengine=1
+set history=9999
 
 "Init
 "Set windows pos and resize
@@ -742,9 +743,13 @@ cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
 
-inoremap <C-e> <ESC>A
-inoremap <C-b> <ESC><Home>i
+inoremap <C-e> <End>
+inoremap <C-b> <Home>
 inoremap <C-u> <ESC>S
+inoremap <C-f> <Down><End>
+inoremap <C-r> <Up><End>
+inoremap <C-d> <Up><Home>
+inoremap <C-g> <Down><Home>
 
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
