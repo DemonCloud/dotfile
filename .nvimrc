@@ -150,6 +150,8 @@ else
 	set showtabline=2
 	set noimd
   set ttimeoutlen=0
+	let g:python_host_prog = '/usr/bin/python2.7'
+	let g:python3_host_prog = '/usr/bin/python3.5'
 endif
 
 " setting the tabs like that 
