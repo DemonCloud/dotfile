@@ -158,7 +158,7 @@ endif
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
 "set list listchars=tab:-\ ,trail:\ 
-set list listchars=tab:▸\ ,extends:❯,precedes:❮
+set list listchars=tab:-\ ,extends:❯,precedes:❮
 
 " -------------- Global Setting end ---------------
 
@@ -241,7 +241,7 @@ Plugin 'yegappan/mru'
 
 " @ Plugin --- [ Git && Shell Tools ]
 Plugin 'airblade/vim-gitgutter'
-"Plugin 'mhinz/vim-signify'
+Plugin 'mhinz/vim-signify'
 
 
 " @ Plugin --- [ Code BAT Sreach ]
@@ -409,7 +409,7 @@ let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 let g:WebDevIconsUnicodeDecorateFileNodes = 1 
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
 " fzf Plugin config
@@ -570,7 +570,6 @@ let g:ycm_filetype_blacklist = {
 " tern_node_js onmicomplete with YouCompleteMe
 let tern#is_show_argument_hints_enabled= 1
 let g:tern_show_argument_hints="on_hold"
-
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -745,6 +744,7 @@ cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
 
+" Like Emacs
 inoremap <C-e> <End>
 inoremap <C-b> <Home>
 inoremap <C-u> <ESC>S
@@ -798,9 +798,10 @@ nnoremap <leader>vu :PluginUpdate<CR>
 
 " Tabluer Format
 vnoremap <leader>t :Tabularize/
-vnoremap <leader>= :Tabularize/=<CR>
-vnoremap <leader>, :Tabularize/,<CR>
-vnoremap <leader>; :Tabularize/:<CR>
+vnoremap <leader>t= :Tabularize/=<CR>
+vnoremap <leader>t, :Tabularize/,<CR>
+vnoremap <leader>t: :Tabularize/:<CR>
+vnoremap <leader>t; :Tabularize/;<CR>
 
 " <leader>s: Spell checking shortcuts
 " fold enable settings
@@ -817,7 +818,6 @@ vnoremap <leader>mf :MultipleCursorsFind
 " Multi Expand Region
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
-
 
 " For Git fire
 nnoremap <leader>gs :Gstatus<CR> 
