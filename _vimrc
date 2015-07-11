@@ -730,8 +730,8 @@ nnoremap <silent> g; g;zz
 nnoremap <silent> g: g:zz
 
 " Smooth Scroll the terminal
-nnoremap <silent> <A-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-nnoremap <silent> <A-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " Cursor Moving
 inoremap <C-h> <Left>
@@ -744,9 +744,14 @@ cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
 
-inoremap <C-e> <ESC>A
-inoremap <C-b> <ESC><Home>i
+" Like Emacs
+inoremap <C-e> <End>
+inoremap <C-b> <Home>
 inoremap <C-u> <ESC>S
+inoremap <C-f> <Down><End>
+inoremap <C-r> <Up><End>
+inoremap <C-d> <Up><Home>
+inoremap <C-g> <Down><Home>
 
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
@@ -757,7 +762,7 @@ nnoremap <A-x> :bdelete<CR>
 nnoremap <A-w> :bwipeout<CR>
 
 " Check Vim Syntax name Fn
-nnoremap <leader>yi :call <SID>SynStack()<CR
+nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
 nnoremap <leader>q  :q<CR>
 nnoremap <leader>hs :MRU<CR>
@@ -782,19 +787,20 @@ nnoremap <leader>vs :vs<CR>
 nnoremap <leader>lp :sp<CR>
 nnoremap <leader>ag :Ag 
 
+" first to copy files path
 " copy path
-nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
-      \ path '".expand("%:p")."' to clipboard"<CR>
+nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file path '".expand("%:p")."' to clipboard"<CR>
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
 nnoremap <leader>vu :PluginUpdate<CR>
 
 " Tabluer Format
-vnoremap <leader>t :Tabularize/
-vnoremap <leader>= :Tabularize/=<CR>
-vnoremap <leader>, :Tabularize/,<CR>
-vnoremap <leader>; :Tabularize/:<CR>
+vnoremap <leader>t  :Tabularize/
+vnoremap <leader>t= :Tabularize/=<CR>
+vnoremap <leader>t, :Tabularize/,<CR>
+vnoremap <leader>t: :Tabularize/:<CR>
+vnoremap <leader>t; :Tabularize/;<CR>
 
 " <leader>s: Spell checking shortcuts
 " fold enable settings
@@ -814,12 +820,12 @@ map J <Plug>(expand_region_shrink)
 
 " For Git fire
 nnoremap <leader>gs :Gstatus<CR> 
-nnoremap <leader>gc :Gcommit -m "" 
-nnoremap <leader>gb :Gblame
+nnoremap <leader>gc :Gcommit %f -m " 
+nnoremap <leader>gb :Gblame 
 nnoremap <leader>gv :Gitv<CR>
-nnoremap <leader>gr :Gremove
+nnoremap <leader>gr :Gremove 
 nnoremap <leader>gl :Glog<CR>
-nnoremap <leader>gt :Git
+nnoremap <leader>gt :Git 
 nnoremap <leader>gp :Git push origin master<CR>
 nnoremap <leader>gu :Git pull -u<CR>
 
