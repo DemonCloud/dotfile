@@ -74,13 +74,18 @@
 
 > ``sudo apt-get install gvim``
 
+>	``sudo apt-get install vim``
+
 > ``sudo apt-get install vim-gtk``
+
 
 <br/>
 > **2.** 安装 [Vundle](https://github.com/gmarik/Vundle.vim)
 
 <br/>
-> **3.** 将项目中的 ``vimrc`` 文件放置在 ``~/.vim/`` 或者 ``/usr/share/vim`` 目录下.
+> **3.** 将项目中的 ``.vimrc`` 文件放置在 ``~/`` 或者 ``/usr/share/vim`` 目录下.
+
+> 更多具体的位置，可以输入``:version``查看Vim默认配置文件的几个路径.
 
 > 启动 ``GVim`` 即可
 
@@ -127,6 +132,8 @@
 
 
 ## Date 日志 
+
+-- update 2015.7.11  加入TMUX配置文件，将statusline单独独立成.aixline文件.
 
 -- update 2015.6.29  更新Linux Neovim && Vim
 
