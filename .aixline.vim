@@ -62,6 +62,8 @@ function! StatuslineModeColor()
 		return "V·LINE"
 	elseif l:Status ==# "s"
 		return "SELECT"
+	elseif l:Status ==# "S"
+		return "SELEALL"
 	elseif l:Status ==# ""
 		return "V·BLOCK"
 	else
