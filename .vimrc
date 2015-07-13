@@ -230,7 +230,6 @@ Plugin 'mattn/livestyle-vim'
 
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
-"Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
@@ -238,6 +237,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-commentary'
 Plugin 'Lokaltog/vim-easymotion'
 " Full Fucking sneak, not support Multip-cursor
 "Plugin 'justinmk/vim-sneak'
