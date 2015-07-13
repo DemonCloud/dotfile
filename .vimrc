@@ -213,7 +213,7 @@ Plugin 'scrooloose/syntastic'
 
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
