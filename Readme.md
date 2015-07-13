@@ -1,4 +1,4 @@
-# YiJun Gvim DotFile 
+# YiJun Gvim DotFile
 
 ## Introduction 简介
 
@@ -20,16 +20,19 @@
 这些配置文件做了如下事情：
 
 >	1. 使用 [Vundle](https://github.com/gmarik/Vundle.vim) 管理插件
->	2. 包含了各种流行实用的插件，包含通用配置（最佳实践,深度优化，适配原生Vim 和 NeoVim）
->	3. 重新编译Vim 支持 `Python` `Lua`（某些插件需要Lua与Python的支持）
->	4. 解决了部分插件按键冲突，某些插件加载后相互冲突导致Gvim顿卡
->	5. 默认支持了 Windows 常用操作 [``Ctrl-C``复制，``Ctrl-V``粘贴，``Ctrl-X``剪切...]
->	6. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
->	7. Windows 和 Linux 下的原生按键配置均做了强化处理
->	8. 原生制定的 Statusline 配合主题 J, 不喜可自己更换XXXLine系列插件
+>	2. 最新版本YVIM编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
+>	3. 包含了各种流行实用的插件，包含通用配置（最佳实践,深度优化，适配原生Vim 和 NeoVim）
+>	4. 修复了Tmux Bash 中 Vim 不支持 Alt 组合键的问题
+>	5. 解决了部分插件按键冲突，某些插件加载后相互冲突导致Gvim顿卡
+>	6. 默认支持了 Windows 常用操作 [``Ctrl-C``复制，``Ctrl-V``粘贴，``Ctrl-X``剪切...]
+>	7. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
+>	8. Windows 和 Linux 下的原生按键配置均做了强化处理
+>	9. 原生制定的 Statusline 配合主题 J, 不喜可自己更换XXXLine系列插件
 
 
 ## Install 安装
+
+#### 配置文件
 
 下载项目 ： [dofile-YVIM](https://github.com/DemonCloud/dotfile-YVIM/archive/master.zip)
 
@@ -39,20 +42,23 @@
 
 <br>
 
-#### Windows 
+#### Windows
 
-##### Windows Gvim 自2015.6.30 日最后一次整合上传之后不进行更新，包括``_vimrc`` 文件。
+下载 ：
 
-下载 ： 
+- 最新的Vim Windows编译版，来自原生的Source，不像某些无良的编译者， 连Vim作者的名字都改成了自己的， **很讨厌那种不尊重原作者的人**，所以我自己编译了一个：
 
-[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成Windows YouCompleteMe\(配置过时\)
+- Vim 7.4.777 (集成了2015年5月777 补丁集成。作者最新一版更新是在最近的7月12，ftp此地址上可以看到最新的更新动态：[FTP for Vim subversion](ftp://ftp.vim.org/pub/vim/patches/7.4/README))
 
-[[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1qWQefik) -- Update 2015.6.24 集成 NeoComplete 支持 Ultisnips 
+- 不过追求稳定就没有编译最新的patch版本，YVIM 集成的patch 777 和最新的 781 差了4个发布更新
 
+[[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1dDDABtv) -- Update 2015.7.12 集成 NeoComplete 支持 Ultisnips\(强力推荐，请看下面，安装Lua\)
+
+[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成Windows YouCompleteMe\(版本和配置都已过时，适合想用Youcompelete的朋友\)
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
-> 
-> 注意：请运行 ``Vim\vim74\_Vim.exe`` 文件. 此文件重新编译支持Lua 以及替换了图标.
+>
+> 注意：请运行 ``Vim\vim74\gvim.exe`` 文件. 此文件重新编译 最新版本YVIM 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
 >
 > 关于字体的话, 我这里分享一个 PragmataPro : [Download](http://pan.baidu.com/s/1o6mlBPg)
 >
@@ -74,9 +80,7 @@
 
 > ``sudo apt-get install gvim``
 
->	``sudo apt-get install vim``
-
-> ``sudo apt-get install vim-gtk``
+>	``sudo apt-get install vim vim-gnome vim-gtk``
 
 
 <br/>
@@ -101,6 +105,30 @@
 
 > **5.** 很多插件是需要第三方外部组件的支持.以下我列出一些依赖列表:
 
+- [Lua](http://lua.org) (neocomplete)
+	- 最新版本YVIM编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
+
+	- 所以Windows 和 Linux 下都需要安装 Lua ， 已支持 Neocomplete 这个插件.
+
+	- Linux 安装太简单了，可以自己查找资料， Ubuntu下直接有源： ``sudo apt-get install lua5.3``
+
+	- 本人已经在windows下的Lua5.2 和 Lua5.3 都做了整合,使用哪个版本的Lua需要更具Vim编译具体支持的Lua版本，下载后加入Windows环境变量就可以直接使用：
+
+	- Download [Lua5.3](http://pan.baidu.com/s/1eQB6I2m) , [Lua5.2](http://pan.baidu.com/s/1eQrnRJs)
+
+	- 将 Lua RAR 解压出来（推荐是C盘里，因为要设置环境变量）
+
+	- 添加环境变量：（以C盘为例，我将Lua解压至 C:\Program Files (x86)\ 文件夹下，不同盘，``LUA_DIR`` 路径不同）
+
+			- LUA_DIR : C:\Program Files (x86)\Lua
+
+			- LUA_CPATH : ?.dll;%LUA_DIR%\?.dll
+
+			- LUA_PATH : ?.lua;%LUA_DIR%\lua\?.lua
+
+			- 最后在Path中增加Lua文件夹位置的环境变量，就搞定了 : C:\Program Files (x86)\Lua;
+
+
 - [NodeJS](http://nodejs.org) (syntastic)
 	- 安装完成 NodeJS 以后使用 npm 安装依赖
 
@@ -122,7 +150,7 @@
 
 ## Update Plugin 更新插件
 
-在安装完成 Vundle 之后。重启 GVim 
+在安装完成 Vundle 之后。重启 GVim
 
 输入 ``:BundleInstall``  安装插件
 
@@ -131,7 +159,9 @@
 注意：``:BundleClean`` 清理插件请慎用.
 
 
-## Date 日志 
+## Date 日志
+
+-- update 2015.7.12  重大更新,重新打包YVIM for Neocomplete
 
 -- update 2015.7.11  加入TMUX配置文件，将statusline单独独立成.aixline文件.
 
@@ -143,7 +173,7 @@
 
 -- update 2015.6.20  更新Windows \_vimrc Fix emmet <S-Tab> confilct
 
--- updata 2015.6.18  上传 Windows Gvim 第二版, 完美支持 [NeoComplete](https://github.com/Shougo/neocomplete.vim) 补全神器2 
+-- updata 2015.6.18  上传 Windows Gvim 第二版, 完美支持 [NeoComplete](https://github.com/Shougo/neocomplete.vim) 补全神器2
 
 -- update 2015.6.17  重新上传 Windows Gvim 文件, 完美支持 [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)补全神器
 
