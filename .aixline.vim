@@ -1,5 +1,5 @@
 " ----------------------------------
-" AixLine 
+" AixLine
 " YiJun -- :: Boom!!!
 " Start Status Line
 " Normal Setting for Vim StatuLine
