@@ -9,7 +9,6 @@
 "
 " ========================= Normal Setting Start =========================
 
-
 " Set Linux Debian Desktop
 runtime! debian.vim
 
@@ -118,6 +117,7 @@ set fileformats=unix,dos,mac
 " set Undo file
 set undofile
 set undodir=~/.vim/undo
+set viminfo+=!
 
 " Diff GUI Vim with NVim
 " Set No Top Menu and Scroll
@@ -197,7 +197,7 @@ Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
 "Plugin 'bling/vim-airline'
 Plugin 'gcavallanti/vim-noscrollbar'
-Plugin 'ryanoasis/vim-webdevicons'
+Plugin 'ryanoasis/vim-devicons'
 
 " @ Plugin --- [ Style Custom ]
 Plugin 'Lokaltog/vim-distinguished'
@@ -219,7 +219,7 @@ Plugin 'danro/rename.vim'
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-expand-region'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -250,9 +250,9 @@ Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/vimfiler.vim'
-"Plugin 'Shougo/neocomplete.vim'
-"Plugin 'Shougo/neocomplcache.vim'
-"Plugin 'JazzCore/neocomplcache-ultisnips'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'JazzCore/neocomplcache-ultisnips'
 Plugin 'yegappan/mru'
 
 
@@ -287,6 +287,7 @@ Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
+Plugin 'dimasg/vim-mark'
 Plugin 'plasticboy/vim-markdown'
 
 " @ Plugin --- [ Fix and Patch ]
@@ -348,12 +349,14 @@ let g:Powerline_symbols = 'fancy'
 "let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
 "let g:airline_theme = 'solarized'
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 let g:WebDevIconsUnicodeDecorateFileNodes = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
 autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+
 
 " fzf Plugin config
 set rtp+=~/.fzf
@@ -434,80 +437,80 @@ let g:ycm_filetype_blacklist = {
 " NeoComplete
 
 " Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 0
 " Use neocomplete.
-"let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
-"let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-"let g:neocomplete#sources#syntax#min_keyword_length = 2
-"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
-"let g:neocomplete#sources#dictionary#dictionaries = {
-"    \ 'default' : '',
-"    \ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
-"    \ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
-"\ }
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
+    \ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
+\ }
 
 " Define keyword.
-"if !exists('g:neocomplete#keyword_patterns')
-"    let g:neocomplete#keyword_patterns = {}
-"endif
-"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-"  return neocomplete#close_popup() . "\<CR>"
-"endfunction
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplete#close_popup() . "\<CR>"
+endfunction
 
 " <TAB>: completion.
 " <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
 " Close popup by <Space>.
 "inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
 
 " For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
+inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
+inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
+inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
+inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
 " Or set this.
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
 "let g:neocomplete#enable_insert_char_pre = 1
 
 " AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Enable omni completion.
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
-"if !exists('g:neocomplete#sources#omni#input_patterns')
-"  let g:neocomplete#sources#omni#input_patterns = {}
-"endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " Noconflict NeoComplete With Vim Multiple Cursors
-"function! Multiple_cursors_before()
-""    exe 'NeoCompleteLock'
-""    echo 'Disabled autocomplete'
-"endfunction
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+    echo 'Disabled autocomplete'
+endfunction
 "
-"function! Multiple_cursors_after()
-""    exe 'NeoCompleteUnlock'
-""    echo 'Enabled autocomplete'
-"endfunction
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+    echo 'Enabled autocomplete'
+endfunction
 
 
 " tern_node_js onmicomplete with YouCompleteMe
@@ -632,6 +635,10 @@ let g:sneak#streak = 1
 " Vim incsearch
 let g:vim_search_pulse_disable_auto_mappings = 1
 let g:incsearch#auto_nohlsearch = 1
+
+" Mark config
+let g:mwDefaultHighlightingPalette = 'maximum'
+let g:mwAutoLoadMarks = 1
 
 " --------- KeyMapping Config -----------
 
@@ -805,9 +812,6 @@ nnoremap <leader>gu :Git pull -u<CR>
 nnoremap <leader>en :e! ~/.nvimrc<CR>
 nnoremap <leader>ev :e! ~/.vimrc<CR>
 
-" Man the complete
-nnoremap <leader>m :Man 
-
 " Incsearch
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
@@ -815,11 +819,14 @@ map g/ <Plug>(incsearch-stay)
 
 map n <Plug>(incsearch-nohl-n)zzzv
 map N <Plug>(incsearch-nohl-N)zzzv
-map * <Plug>(incsearch-nohl-*)zzzv
-map # <Plug>(incsearch-nohl-#)zzzv
+"map * <Plug>(incsearch-nohl-*)zzzv
+"map # <Plug>(incsearch-nohl-#)zzzv
 map g* <Plug>(incsearch-nohl-g*)zzzv
 map g# <Plug>(incsearch-nohl-g#)zzzv
 
+" Mark vim Plugin
+nnoremap <Leader>M <Plug>MarkToggle
+nnoremap <Leader>N <Plug>MarkAllClear
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
