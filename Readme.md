@@ -48,7 +48,7 @@
 
 - 最新的Vim Windows编译版，来自原生的Source，不像某些无良的编译者， 连Vim作者的名字都改成了自己的， **很讨厌那种不尊重原作者的人**，所以我自己编译了一个：
 
-- Vim 7.4.777 (集成了2015年5月777 补丁集成。作者最新一版更新是在最近的7月12，ftp此地址上可以看到最新的更新动态：[FTP for Vim subversion](ftp://ftp.vim.org/pub/vim/patches/7.4/README))
+- Vim 7.4.777 集成了2015年5月777 补丁集成。作者最新一版更新是在最近的7月12，ftp此地址上可以看到最新的更新动态：[FTP for Vim subversion](ftp://ftp.vim.org/pub/vim/patches/7.4/README)
 
 - 不过追求稳定就没有编译最新的patch版本，YVIM 集成的patch 777 和最新的 781 差了4个发布更新
 
@@ -106,17 +106,18 @@
 > **5.** 很多插件是需要第三方外部组件的支持.以下我列出一些依赖列表:
 
 - [Lua](http://lua.org) (neocomplete)
+
 	- 最新版本YVIM编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
 
-	- 所以Windows 和 Linux 下都需要安装 Lua ， 已支持 Neocomplete 这个插件.
+	- 所以Windows 和 Linux 下都需要安装 Lua ， 用于支持 Neocomplete 智能补全插件.
 
 	- Linux 安装太简单了，可以自己查找资料， Ubuntu下直接有源： ``sudo apt-get install lua5.3``
 
-	- 本人已经在windows下的Lua5.2 和 Lua5.3 都做了整合,使用哪个版本的Lua需要更具Vim编译具体支持的Lua版本，下载后加入Windows环境变量就可以直接使用：
+	- 本人已经在windows下的Lua5.2 和 Lua5.3 都做了整合,使用哪个版本的Lua需要根据Vim具体支持的Lua版本，下载后加入Windows环境变量就可以直接使用：
 
 	- Download [Lua5.3](http://pan.baidu.com/s/1eQB6I2m) , [Lua5.2](http://pan.baidu.com/s/1eQrnRJs)
 
-	- 将 Lua RAR 解压出来（推荐是C盘里，因为要设置环境变量）
+	- 将 Lua RAR 解压出来（推荐是C盘里，因为要设置环境变量,和方便管理，当然其他盘也是可以的）
 
 	- 添加环境变量：（以C盘为例，我将Lua解压至 C:\Program Files (x86)\ 文件夹下，不同盘，``LUA_DIR`` 路径不同）
 
@@ -130,6 +131,7 @@
 
 
 - [NodeJS](http://nodejs.org) (syntastic)
+
 	- 安装完成 NodeJS 以后使用 npm 安装依赖
 
 	- ``npm install -g jshint``   JSHint 语法检测
@@ -138,11 +140,12 @@
 
 	- ``npm insatll -g tern``     JavaScript 智能提示扩展
 
+
 - [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher) (ag.vim)
 
 	- 安装 Ag.vim 的依赖, Ag 代码搜索需要 the\_silver\_searcher Python组件的支持
 
-	- Linux Ubuntu  下直接 ``sudo apt-get install silversearcher-ag`` 安装依赖
+	- Linux Ubuntu  下直接 ``sudo apt-get install silversearcher-ag`` 安装依赖, 也可以自己编译源码（推荐自己编译）
 
 	- Windows 下比较麻烦. 先安装 [Chocolatey](https://chocolatey.org) 安装完成之后CMD中使用命令:``choco install ag`` 就可以了.
 
