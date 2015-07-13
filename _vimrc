@@ -30,7 +30,7 @@ endfunction
 
 "init
 "set windows pos and resize
-set lines=58
+set lines=51
 set columns=158
 winpos 88 0
 
@@ -43,8 +43,8 @@ set fileencodings=utf-8,latin-1
 language messages en_US.utf-8
 
 "https://github.com/eugeii/consolas-powerline-vim
-set guifont=Consolas:h11:cANSI
-"set guifont=Consolas\ for\ Powerline\ FixedD:h10
+"set guifont=Consolas:h11:cANSI
+set guifont=Consolas\ for\ Powerline\ FixedD:h10
 
 "set guifont=PragmataPro:w6:h9:cANSI
 "set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h10:cANSI
@@ -56,8 +56,8 @@ set guifont=Consolas:h11:cANSI
 "set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 "set guifont=ProgramPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 10
 
-" ## Make its Gvim Like Windows behave ## 
-" So you can use 
+" ## Make its Gvim Like Windows behave ##
+" So you can use
 " @ CTRL+S save the file
 " @ CTRL+C copy text
 " @ CTRL+P paste text
@@ -70,8 +70,8 @@ behave mswin
 set regexpengine=1
 
 " -------------- Global Setting ---------------
-" ## Make its Gvim Like Windows behave ## 
-" So you can use 
+" ## Make its Gvim Like Windows behave ##
+" So you can use
 " @ CTRL+S save the file
 " @ CTRL+C copy text
 " @ CTRL+P paste text
@@ -82,7 +82,7 @@ behave mswin
 " @Replace <leader> keymap to <space>
 let mapleader=" "
 
-" Format 
+" Format
 set nu
 set ts=2 "4
 set shiftwidth=2 "4
@@ -117,7 +117,7 @@ set completeopt=menu,menuone,longest
 set switchbuf=useopen,usetab
 set shortmess=a
 
-" No back up files 
+" No back up files
 set nobackup
 set nowritebackup
 set noswapfile
@@ -147,14 +147,17 @@ set t_vb=
 " Set Fold config
 " set foldmethod=syntax
 set foldenable
+set undofile
+set undodir=~/.vim/undo
+set viminfo+=!
 
 " misc settings
-"set fileformat=unix     " file mode is unix
-"set fileformats=unix,dos,mac
+set fileformat=unix     " file mode is unix
+set fileformats=unix,dos,mac
 
-" Diff GUI Vim with NVim 
+" Diff GUI Vim with NVim
 " Set No Top Menu and Scroll
-if has("gui_running")  
+if has("gui_running")
 	set guioptions-=e
 	set guioptions-=m
 	set guioptions-=T
@@ -166,14 +169,18 @@ if has("gui_running")
 	set guitablabel=
 	set paste
 	set mousemodel=popup_setpos
-	set mouse=a
+	set mouse-=a
 	set shell=cmd.exe
-	"set guitablabel=%M\ %t  
+	"set guitablabel=%M\ %t
 else
 	set t_Co=256
 	set showtabline=1
 	set noimd
+  set ttimeoutlen=0
 endif
+
+set spelllang=en_us                      " spelling options
+set spellfile=$VIMRUNTIME/vim74/spell/en.utf-8.add  " spell files added with `zg`
 
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
@@ -182,7 +189,7 @@ set list listchars=tab:▸\ ,trail:\
 " -------------- Global Setting end ---------------
 
 
-" ========================= Vundle Plugin Manager =========================  
+" ========================= Vundle Plugin Manager =========================
 
 filetype off
 
@@ -191,22 +198,21 @@ set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 call vundle#begin("$VIM/vimfiles/bundle")
 
 " # Plugins Beginning #
+" @ Plugin --- [ Base Require Lib ]
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
-Plugin 'tomtom/tlib_vim'
 
-
-" @ Plugin --- [ Themes Custom ]
-Plugin 'chriskempson/base16-vim'
+" @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
-Plugin 'rking/vim-detailed'
-
+"Plugin 'bling/vim-airline'
+Plugin 'gcavallanti/vim-noscrollbar'
+"Plugin 'ryanoasis/vim-devicons'
 
 " @ Plugin --- [ Style Custom ]
-"Plugin 'bling/vim-airline'
+Plugin 'Lokaltog/vim-distinguished'
 Plugin 'ap/vim-buftabline'
-Plugin 'gcavallanti/vim-noscrollbar'
+Plugin 'terryma/vim-smooth-scroll'
 
 
 " @ Plugin --- [ Source Code Cheacker ]
@@ -217,61 +223,88 @@ Plugin 'scrooloose/syntastic'
 
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
-"Plugin 'ryanoasis/vim-webdevicons'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-expand-region'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/vimfiler.vim'
-Plugin 'yegappan/mru'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'Shougo/neocomplete.vim'
-"Plugin 'xleng/YCM_WIN_X86'
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'JazzCore/neocomplcache-ultisnips'
-
+Plugin 'marijnh/tern_for_vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/livestyle-vim'
 
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mattn/livestyle-vim'
+"Plugin 'gcmt/wildfire.vim'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-"Plugin 'airblade/vim-gitgutter'
-Plugin 'mhinz/vim-signify'
-Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-dispatch'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'justinmk/vim-sneak'
+" Full Fucking sneak, not support Multip-cursor
+"Plugin 'justinmk/vim-sneak'
 Plugin 'haya14busa/incsearch.vim'
 
+
+" @ Plugin --- [ CWD File Buffer Manager ]
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/neossh.vim'
+Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'JazzCore/neocomplcache-ultisnips'
+Plugin 'yegappan/mru'
+
+
+" @ Plugin --- [ Git && Shell Tools ]
+Plugin 'airblade/vim-gitgutter'
+Plugin 'mhinz/vim-signify'
+
+
 " @ Plugin --- [ Code BAT Sreach ]
+Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/limelight.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'dyng/ctrlsf.vim'
 Plugin 'dhruvasagar/vim-table-mode'
+
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
 Plugin 'ap/vim-css-color'
 Plugin 'groenewege/vim-less'
-"Plugin 'digitaltoad/vim-jade'
-"Plugin 'kchmck/vim-coffee-script'
+Plugin 'digitaltoad/vim-jade'
 Plugin 'elzr/vim-json'
+Plugin 'chrisbra/csv.vim'
 Plugin 'StanAngeloff/php.vim'
+Plugin 'tmux-plugins/vim-tmux'
 
+" @ Plugin --- [ ADV Program Language ]
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" @ Plugin --- [ Code Format ]
+Plugin 'godlygeek/tabular'
+Plugin 'dimasg/vim-mark'
+Plugin 'plasticboy/vim-markdown'
+
+" @ Plugin --- [ Fix and Patch ]
+Plugin 'bruno-/vim-alt-mappings'
+Plugin 'bruno-/vim-man'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'bronson/vim-visual-star-search'
 
 " ---- Plugin List Complete ----
 
@@ -285,7 +318,7 @@ filetype plugin on
 filetype plugin indent on
 
 
-" Set Color Themes 
+" Set Color Themes
 set background=dark
 "set background=light
 
@@ -303,20 +336,20 @@ colorscheme J
 "colorscheme darktango
 "colorscheme hybrid-light
 "colorscheme badwolf
-"colorscheme mirodark	
+"colorscheme mirodark
 "colorscheme codeschool
 
 "call VimTweak Opacity
-"au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 253)
+au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 254)
 
-" ========================= Vundle Plugin Setup End ========================= 
+" ========================= Vundle Plugin Setup End =========================
 
 
 
-" ========================= Plugin Config Start ========================= 
+" ========================= Plugin Config Start =========================
 
 " @ Linux Install Python PowerLine settings
-" @ If you used [airline]  You should Ignor this! 
+" @ If you used [airline]  You should Ignor this!
 
 "python from powerline.vim import setup as powerline_setup
 "python powerline_setup()
@@ -341,29 +374,29 @@ hi f4r guibg=#121212 guifg=#181818 ctermbg=233 ctermfg=234 gui=NONE cterm=NONE t
 hi f5g guibg=#000000 guifg=#181818 ctermbg=16 ctermfg=234 gui=NONE cterm=NONE term=NONE
 
 " Observer
-"hi f1 guibg=#C0C280 guifg=#080808 gui=NONE 
+"hi f1 guibg=#C0C280 guifg=#080808 gui=NONE
 " Inserter
 "hi f1 guibg=#79BE61 guifg=#181818 gui=NONE
 " Command
 "hi f1 guibg=#981000 guifg=#ffffff gui=NONE
 let g:last_mode = 'n'
 function! StatuslineModeColor()
-	let l:Status=mode()	
+	let l:Status=mode()
 
 	if l:Status !=# g:last_mode
 		let g:last_mode = l:Status
 
 	  if l:Status == 'n'
-			hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230 
+			hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230
 			hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52
 	  elseif l:Status == 'i'
-			hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 
+			hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16
 			hi f1r guibg=#181818 guifg=#79BE61 ctermbg=234 ctermfg=83
 		elseif l:Status == 'v'
 			hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
 			hi f1r guibg=#181818 guifg=#276888 ctermbg=234 ctermfg=32
 		else
-			hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16 
+			hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16
 			hi f1r guibg=#181818 guifg=#C0C280 ctermbg=234 ctermfg=230
 	  endif
 	endif
@@ -372,6 +405,8 @@ function! StatuslineModeColor()
 		return "NORMAL"
 	elseif l:Status ==# "i"
 		return "INSERT"
+	elseif l:Status ==# "c"
+		return "COMMAND"
 	elseif l:Status ==# "R"
 		return "REPLACE"
 	elseif l:Status ==# "v"
@@ -380,6 +415,8 @@ function! StatuslineModeColor()
 		return "V·LINE"
 	elseif l:Status ==# "s"
 		return "SELECT"
+	elseif l:Status ==# "S"
+		return "SELEALL"
 	elseif l:Status ==# ""
 		return "V·BLOCK"
 	else
@@ -388,7 +425,7 @@ function! StatuslineModeColor()
 endfunc
 
 set statusline=%#f1#\ %{StatuslineModeColor()}\ %#f1r#⮀
-set statusline+=%#f4#\ %<%f\ %#f4r#⮀%#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\  
+set statusline+=%#f4#\ %<%f\ %#f4r#⮀%#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\ 
 " right align laststatus
 set statusline+=%=%#f3r#⮂%#f3#\ ⭡\ %l
 set statusline+=/%L\ 
@@ -405,8 +442,8 @@ let g:Powerline_symbols = 'fancy'
 "let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
 "let g:airline_theme = 'solarized'
-"let g:WebDevIconsUnicodeGlyphDoubleWidth = 2 
-"let g:WebDevIconsUnicodeDecorateFileNodes = 1 
+"let g:WebDevIconsUnicodeGlyphDoubleWidth = 2
+"let g:WebDevIconsUnicodeDecorateFileNodes = 1
 "let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
@@ -446,7 +483,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 0
 let g:syntastic_check_on_wq              = 0
-" set Syntastic Cheacker engine 
+" set Syntastic Cheacker engine
 " example JavaScript use JSHint [ NodeJS ]
 let g:syntastic_php_checkers        = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
@@ -454,7 +491,7 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
-""-------------------- NeoComplete ---------------------
+"-------------------- NeoComplete ---------------------
 " NeoComplete
 
 " Disable AutoComplPop.
@@ -470,8 +507,8 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
-    \ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
-    \ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
+    \ 'vimshell' : $VIM.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
+    \ 'scheme' : $VIM.'/vimfile/bundle/gosh/.gosh_completions'
 \ }
 
 " Define keyword.
@@ -505,7 +542,7 @@ inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
 "let g:neocomplete#enable_insert_char_pre = 1
 
 " AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -527,45 +564,11 @@ function! Multiple_cursors_before()
     exe 'NeoCompleteLock'
     echo 'Disabled autocomplete'
 endfunction
-
+"
 function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
     echo 'Enabled autocomplete'
 endfunction
-
-
-""--------------------- YouCompleteMe ------------------------
-" If you choice NeoComplete , That you want use YouCompleteMe
-
-" YouCompleteMe Geek Config
-"let g:ycm_cache_omnifunc                                = 1
-"let g:ycm_global_ycm_extra_conf                         = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-"let g:ycm_confirm_extra_conf                            = 1
-"let g:ycm_add_preview_to_completeopt                    = 1
-"let g:ycm_min_num_of_chars_for_completion               = 1
-"let g:ycm_autoclose_preview_window_after_completion     = 1
-"let g:ycm_key_list_select_completion                    = ['<c-n>']
-"let g:ycm_key_list_previous_completion                  = ['<c-p>']
-"
-"let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
-"let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
-"let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
-"let g:ycm_complete_in_strings                           = 1   " 在字符串输入中不能补全
-"let g:ycm_collect_identifiers_from_comments_and_strings = 0   " 注释和字符串中的文字也会被收入补全
-"
-"let g:ycm_goto_buffer_command = 'horizontal-split' 
-""[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-"let g:ycm_filetype_blacklist = {
-""			\ 'tagbar'    : 1,
-""			\ 'qf'        : 1,
-""			\ 'notes'     : 1,
-""			\ 'markdown'  : 1,
-""			\ 'unite'     : 1,
-""			\ 'text'      : 1,
-""			\ 'vimwiki'   : 1,
-""			\ 'gitcommit' : 1,
-""\}
-
 
 " tern_node_js onmicomplete with YouCompleteMe
 let tern#is_show_argument_hints_enabled= 1
@@ -603,8 +606,8 @@ let g:cpp_experimental_template_highlight = 1
 
 
 " GitGutter Setting
-let g:gitgutter_sign_column_always = 0 
-let g:gitgutter_max_signs = 99999 
+let g:gitgutter_sign_column_always = 0
+let g:gitgutter_max_signs = 99999
 
 
 " c.vim Building Config for C/C++ Vim
@@ -690,6 +693,10 @@ let g:sneak#streak = 1
 let g:vim_search_pulse_disable_auto_mappings = 1
 let g:incsearch#auto_nohlsearch = 1
 
+" Mark config
+let g:mwDefaultHighlightingPalette = 'maximum'
+let g:mwAutoLoadMarks = 1
+
 " --------- KeyMapping Config -----------
 
 nnoremap <F3> :TableModeToggle<CR>
@@ -739,10 +746,20 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
+inoremap <M-h> <Left>
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-l> <Right>
+
 cnoremap <A-j> <Down>
 cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
+
+cnoremap <M-j> <Down>
+cnoremap <M-k> <Up>
+cnoremap <M-h> <Left>
+cnoremap <M-l> <Right>
 
 " Like Emacs
 inoremap <C-e> <End>
@@ -753,6 +770,14 @@ inoremap <C-r> <Up><End>
 inoremap <C-d> <Up><Home>
 inoremap <C-g> <Down><Home>
 
+inoremap <M-e> <End>
+inoremap <M-b> <Home>
+inoremap <M-u> <ESC>S
+inoremap <M-f> <Down><End>
+inoremap <M-r> <Up><End>
+inoremap <M-d> <Up><Home>
+inoremap <M-g> <Down><Home>
+
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
 nnoremap <A-k> :bprev<CR>
@@ -760,6 +785,13 @@ nnoremap <A-l> :bnext<CR>
 nnoremap <A-h> :bprev<CR>
 nnoremap <A-x> :bdelete<CR>
 nnoremap <A-w> :bwipeout<CR>
+
+nnoremap <M-j> :bnext<CR>
+nnoremap <M-k> :bprev<CR>
+nnoremap <M-l> :bnext<CR>
+nnoremap <M-h> :bprev<CR>
+nnoremap <M-x> :bdelete<CR>
+nnoremap <M-w> :bwipeout<CR>
 
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
@@ -782,6 +814,7 @@ nnoremap <leader>ui :Unite file -complete<CR>
 nnoremap <leader>uf :Unite file find:<CR>
 nnoremap <leader>up :Unite file_rec/async<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
+nnoremap <leader>ub :Unite file buffer<CR>
 nnoremap <leader>vf :VimFiler<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>lp :sp<CR>
@@ -789,14 +822,17 @@ nnoremap <leader>ag :Ag
 
 " first to copy files path
 " copy path
-nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file path '".expand("%:p")."' to clipboard"<CR>
+nnoremap <silent> <leader>p "+gp
+nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
+      \ path '".expand("%:p")."' to clipboard"<CR>
+inoremap <silent> <C-v> <ESC>"+gpi
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
 nnoremap <leader>vu :PluginUpdate<CR>
 
 " Tabluer Format
-vnoremap <leader>t  :Tabularize/
+vnoremap <leader>t :Tabularize/
 vnoremap <leader>t= :Tabularize/=<CR>
 vnoremap <leader>t, :Tabularize/,<CR>
 vnoremap <leader>t: :Tabularize/:<CR>
@@ -819,7 +855,7 @@ map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
 " For Git fire
-nnoremap <leader>gs :Gstatus<CR> 
+nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit %f -m " 
 nnoremap <leader>gb :Gblame 
 nnoremap <leader>gv :Gitv<CR>
@@ -829,21 +865,9 @@ nnoremap <leader>gt :Git
 nnoremap <leader>gp :Git push origin master<CR>
 nnoremap <leader>gu :Git pull -u<CR>
 
-" Sneack Vim
-"replace 'f' with 1-char Sneak
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-"replace 't' with 1-char Sneak
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
+" Editor dotfile
+nnoremap <leader>en :e! ~/.nvimrc<CR>
+nnoremap <leader>ev :e! ~/.vimrc<CR>
 
 " Incsearch
 map / <Plug>(incsearch-forward)
@@ -852,20 +876,20 @@ map g/ <Plug>(incsearch-stay)
 
 map n <Plug>(incsearch-nohl-n)zzzv
 map N <Plug>(incsearch-nohl-N)zzzv
-map * <Plug>(incsearch-nohl-*)zzzv
-map # <Plug>(incsearch-nohl-#)zzzv
+"map * <Plug>(incsearch-nohl-*)zzzv
+"map # <Plug>(incsearch-nohl-#)zzzv
 map g* <Plug>(incsearch-nohl-g*)zzzv
 map g# <Plug>(incsearch-nohl-g#)zzzv
 
-" Pulses the first match after hitting the enter keyan
-autocmd! User IncSearchExecute
-autocmd User IncSearchExecute :call search_pulse#Pulse()
+" Mark vim Plugin
+nnoremap <Leader>M <Plug>MarkToggle
+nnoremap <Leader>N <Plug>MarkAllClear
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
 
-" --------- KeyMapping Config END ----------- 
+" --------- KeyMapping Config END -----------
 
 " ========================= Plugin Config End =========================
 
