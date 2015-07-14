@@ -611,7 +611,14 @@ set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/*
 set wildignore+=*/.nx/**,*.app,*.git,.git
 
 let g:ctrlp_map = '<C-\>'
-let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
 
@@ -763,7 +770,6 @@ nnoremap <leader>ub :Unite file buffer<CR>
 nnoremap <leader>vf :VimFiler<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>lp :sp<CR>
-nnoremap <leader>ag :Ag 
 
 " first to copy files path
 " copy path
