@@ -32,7 +32,7 @@ set columns=128
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
 
-" @Replace <leader> keymap to <space>
+" @Replace <leader> key map to <space>
 let mapleader=" "
 
 " Format
@@ -175,7 +175,7 @@ set dictionary+=/usr/share/dict/words
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
 "set list listchars=tab:-\ ,trail:\ 
-set list listchars=tab:-\ ,extends:❯,precedes:❮
+set list listchars=tab:-\ ,extends:>,precedes:<
 
 " -------------- Global Setting end ---------------
 
@@ -198,7 +198,6 @@ Plugin 'L9'
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
-Plugin 'gcavallanti/vim-noscrollbar'
 "Plugin 'bling/vim-airline'
 "Plugin 'ryanoasis/vim-devicons'
 
@@ -211,6 +210,8 @@ Plugin 'terryma/vim-smooth-scroll'
 " @ Plugin --- [ Source Code Cheacker ]
 Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 Plugin 'scrooloose/syntastic'
 
 
@@ -223,7 +224,7 @@ Plugin 'danro/rename.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-expand-region'
 "Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
+"Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'marijnh/tern_for_vim'
@@ -235,6 +236,7 @@ Plugin 'mattn/livestyle-vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
+Plugin 'gregsexton/gitv'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
@@ -270,6 +272,7 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'ompugao/ctrlp-locate'
 Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'dhruvasagar/vim-table-mode'
@@ -277,6 +280,7 @@ Plugin 'dhruvasagar/vim-table-mode'
 
 " @ Plugin --- [ Web Development Tools ]
 Plugin 'pangloss/vim-javascript'
+Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'ap/vim-css-color'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
@@ -296,8 +300,8 @@ Plugin 'plasticboy/vim-markdown'
 " @ Plugin --- [ Fix and Patch ]
 Plugin 'bruno-/vim-alt-mappings'
 Plugin 'bruno-/vim-man'
-Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'bronson/vim-visual-star-search'
+Plugin 'romainl/vim-qf'
 
 " ---- Plugin List Complete ----
 
@@ -358,7 +362,8 @@ set rtp+=~/.fzf
 
 " TagBar Config
 " Just configure and [make] ctags file
-let g:tagbar_ctags_bin = "~/.vim/bundle/tagbar/ctags"
+let g:tagbar_ctags_bin = "/usr/bin/ctags"
+let g:tagbar_iconchars = ['+', '-']
 " for coffeeScript
 let g:tagbar_type_coffee = {
     \ 'ctagstype' : 'coffee',
@@ -438,6 +443,8 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
+autocmd FileType javascript JsPreTmpl html
+autocmd FileType javascript JsPreTmpl php
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -598,6 +605,7 @@ let g:mwAutoLoadMarks = 1
 
 nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+nnoremap <F5> :TagbarToggle<CR>
 nnoremap <F6> :SyntasticToggleMode <CR>
 nnoremap <F7> :GundoToggle<CR>
 
@@ -699,7 +707,9 @@ nnoremap <leader>hs :MRU<CR>
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cx :%s///gm
 nnoremap <leader>cf :CtrlPFunky<CR>
+nnoremap <Leader>cs :CtrlPLocate<CR>
 
+noremap <silent> <C-v> <ESC>"+gpi
 " repeat Prev Command
 nnoremap <leader>. @:
 vnoremap <leader>. :normal .<CR>
@@ -755,7 +765,7 @@ map J <Plug>(expand_region_shrink)
 
 " For Git fire
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit %f -m " 
+nnoremap <leader>gc :Gcommit  
 nnoremap <leader>gb :Gblame 
 nnoremap <leader>gv :Gitv<CR>
 nnoremap <leader>gr :Gremove 
