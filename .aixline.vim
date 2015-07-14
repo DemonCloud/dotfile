@@ -75,11 +75,9 @@ set statusline=%#f1#\ %{StatuslineModeColor()}%#f1r#◣\
 "⮀⮂
 set statusline+=%#f4#\ %f\ %#f4r#◣\ %#f3#\ %y%h%m%r\ %#f3r#◣\ %#f2#\ %{fugitive#statusline()}\  
 " right align laststatus
-set statusline+=%=%#f2#%#f3r#\ ◢%#f3#\ L\ %l
-set statusline+=/%L\ 
-set statusline+=%#f4r#\ ◢%#f4#\ %{noscrollbar#statusline(10,'-','o')}\ 
-set statusline+=%#f1r#\ ◢%#f1#\ ✹\ BUFF:[%n]\ 
-"set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
+set statusline+=%=%#f2#%#f3r#\ ◢%#f3#\ [%b][0x%B]\ 
+set statusline+=%#f4r#\ ◢%#f4#\ L\ %l/%L\ 
+set statusline+=%#f1r#\ ◢%#f1#\ ✹\ BUFF:%n\ 
 
 " End Status Line
 " -----------------------------
