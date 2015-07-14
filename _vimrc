@@ -45,6 +45,7 @@ language messages en_US.utf-8
 "https://github.com/eugeii/consolas-powerline-vim
 "set guifont=Consolas:h11:cANSI
 set guifont=Consolas\ for\ Powerline\ FixedD:h10
+" set guifont=saxMono:h10:cANSI
 
 "set guifont=PragmataPro:w6:h9:cANSI
 "set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ Mono:h10:cANSI
@@ -172,6 +173,9 @@ if has("gui_running")
 	set mouse-=a
 	set shell=cmd.exe
 	"set guitablabel=%M\ %t
+	autocmd! InsertLeave * set imdisable
+	autocmd! InsertEnter * set noimdisable
+	noremap / :set noimdisable<CR>/
 else
 	set t_Co=256
 	set showtabline=1
@@ -185,7 +189,8 @@ set spellfile=$VIMRUNTIME/vim74/spell/en.utf-8.add  " spell files added with `zg
 " setting the tabs like that 
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
-set list listchars=tab:▸\ ,trail:\ 
+" set list listchars=tab:▸\ ,trail:\ 
+set list listchars=tab:-\ ,trail:\ ,extends:>,precedes:<
 " -------------- Global Setting end ---------------
 
 
@@ -201,6 +206,7 @@ call vundle#begin("$VIM/vimfiles/bundle")
 " @ Plugin --- [ Base Require Lib ]
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
+"Plugin 'mhinz/vim-startify'
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
@@ -223,8 +229,9 @@ Plugin 'scrooloose/syntastic'
 
 " NERDTree Plugins Collections
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
+Plugin 'pelodelfuego/vim-swoop'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
@@ -248,6 +255,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-commentary'
 Plugin 'Lokaltog/vim-easymotion'
 " Full Fucking sneak, not support Multip-cursor
 "Plugin 'justinmk/vim-sneak'
@@ -550,6 +558,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -653,6 +662,13 @@ let g:vimfiler_tree_closed_icon     = "+"
 let g:vimfiler_readonly_file_icon   = "?"
 let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
+"CtrlP Settings
+if executable('ag')
+" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+ let g:ctrlp_clear_cache_on_exit = 1
+else
+ let g:ctrlp_clear_cache_on_exit = 0
+endif
 " CtrlP Settings
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
@@ -667,7 +683,13 @@ set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/*
 set wildignore+=*/.nx/**,*.app,*.git,.git
 
 let g:ctrlp_map = '<C-\>'
-let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+"let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+"      \ --ignore .git
+"      \ --ignore .svn
+"      \ --ignore .hg
+"      \ --ignore .DS_Store
+"      \ --ignore "**/*.pyc"
+"      \ -g ""'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 " Ack Settings
@@ -818,7 +840,6 @@ nnoremap <leader>ub :Unite file buffer<CR>
 nnoremap <leader>vf :VimFiler<CR>
 nnoremap <leader>vs :vs<CR>
 nnoremap <leader>lp :sp<CR>
-nnoremap <leader>ag :Ag 
 
 " first to copy files path
 " copy path
