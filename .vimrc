@@ -268,6 +268,7 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 
@@ -612,6 +613,7 @@ set wildignore+=*/.nx/**,*.app,*.git,.git
 let g:ctrlp_map = '<C-\>'
 let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
 
 " Ack Settings
 if executable('ag')
