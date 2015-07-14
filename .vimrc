@@ -152,6 +152,9 @@ else
 	set showtabline=2
 	set noimd
   set ttimeoutlen=0
+	if(has('nvim'))
+	  set clipboard+=unnamedplus
+	endif
 	let g:python_host_prog = '/usr/bin/python2.7'
 	let g:python3_host_prog = '/usr/bin/python3.5'
 endif
@@ -195,9 +198,9 @@ Plugin 'L9'
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
-"Plugin 'bling/vim-airline'
 Plugin 'gcavallanti/vim-noscrollbar'
-Plugin 'ryanoasis/vim-devicons'
+"Plugin 'bling/vim-airline'
+"Plugin 'ryanoasis/vim-devicons'
 
 " @ Plugin --- [ Style Custom ]
 Plugin 'Lokaltog/vim-distinguished'
@@ -212,7 +215,7 @@ Plugin 'scrooloose/syntastic'
 
 
 " NERDTree Plugins Collections
-Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdtree'
 "Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 
@@ -239,7 +242,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-commentary'
 Plugin 'Lokaltog/vim-easymotion'
-" Full Fucking sneak, not support Multip-cursor
+"Full Fucking sneak, not support Multip-cursor
 "Plugin 'justinmk/vim-sneak'
 Plugin 'haya14busa/incsearch.vim'
 
@@ -343,20 +346,12 @@ colorscheme J
 "set rtp+=~/usr/share/vim/vimfile/bundle/powerline/bindings/vim
 "call vam#ActivateAddons(['powerline'])
 
-
 " AirLine Settings
 " alrLine && PowerLine Config
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 "let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
 "let g:airline_theme = 'solarized'
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
-let g:WebDevIconsUnicodeDecorateFileNodes = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
-autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
 
 
 " fzf Plugin config
@@ -404,41 +399,11 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
-
-" YouCompleteMe Geek Config
-let g:ycm_cache_omnifunc                                = 1
-let g:ycm_global_ycm_extra_conf                         = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf                            = 1
-let g:ycm_add_preview_to_completeopt                    = 1
-let g:ycm_min_num_of_chars_for_completion               = 1
-let g:ycm_autoclose_preview_window_after_completion     = 1
-let g:ycm_key_list_select_completion                    = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion                  = ['<c-p>', '<Up>']
-
-let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
-let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
-let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
-let g:ycm_complete_in_strings                           = 1   " 在字符串输入中不能补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 0   " 注释和字符串中的文字也会被收入补全
-
-let g:ycm_goto_buffer_command = 'horizontal-split'
-"[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-let g:ycm_filetype_blacklist = {
-			\ 'tagbar'    : 1,
-			\ 'qf'        : 1,
-			\ 'notes'     : 1,
-			\ 'markdown'  : 1,
-			\ 'unite'     : 1,
-			\ 'text'      : 1,
-			\ 'vimwiki'   : 1,
-			\ 'gitcommit' : 1,
-			\}
-
 "-------------------- NeoComplete ---------------------
-" NeoComplete
+" neocomplete
 
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 1
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -460,32 +425,12 @@ if !exists('g:neocomplete#keyword_patterns')
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return neocomplete#close_popup() . "\<CR>"
-endfunction
-
-" <TAB>: completion.
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_insert_char_pre = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -493,6 +438,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -505,12 +451,10 @@ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\
 " Noconflict NeoComplete With Vim Multiple Cursors
 function! Multiple_cursors_before()
     exe 'NeoCompleteLock'
-    echo 'Disabled autocomplete'
 endfunction
 "
 function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
-    echo 'Enabled autocomplete'
 endfunction
 
 
@@ -560,10 +504,11 @@ let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
 
 " Vimshell Settings
-let g:vimshell_prompt = "AixShell:$ "
+let g:vimshell_prompt = "AIX>> "
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 
 " Unite Settings
+let g:unite_prompt=">>"
 let g:unite_source_file_rec_max_cache_files = 0
 let g:unite_source_history_yank_enable      = 1
 let g:unite_source_rec_async_command        = 1
@@ -617,6 +562,7 @@ let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
       \ --ignore .svn
       \ --ignore .hg
       \ --ignore .DS_Store
+			\ --ignore .idea
       \ --ignore "**/*.pyc"
       \ -g ""'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
@@ -653,7 +599,7 @@ let g:mwAutoLoadMarks = 1
 
 nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-nnoremap <F5> :NERDTreeToggle<CR>
+"nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :SyntasticToggleMode <CR>
 nnoremap <F7> :GundoToggle<CR>
 
@@ -762,18 +708,20 @@ vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
 " Ag searcher
-nnoremap <leader>ui :Unite file -complete<CR>
-nnoremap <leader>uf :Unite file find:<CR>
-nnoremap <leader>up :Unite file_rec/async<CR>
+nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
 nnoremap <leader>ub :Unite file buffer<CR>
 nnoremap <leader>vf :VimFiler<CR>
-nnoremap <leader>vs :vs<CR>
-nnoremap <leader>lp :sp<CR>
+
+" Split faster
+nnoremap <leader>\ :vs<CR>
+nnoremap <leader>- :sp<CR>
+" End Split
 
 " first to copy files path
 " copy path
 nnoremap <silent> <leader>p "+gp
+vnoremap <silent> <leader>y "+y
 nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
       \ path '".expand("%:p")."' to clipboard"<CR>
 inoremap <silent> <C-v> <ESC>"+gpi
@@ -797,6 +745,8 @@ nnoremap <leader>sk [szz
 nnoremap <leader>sa zg]szz
 nnoremap <leader>sd 1z=
 nnoremap <leader>sf z=
+"Vim Shell Faster
+nnoremap <leader>sh :VimShell<CR>
 
 " Multi Cursor Find
 vnoremap <leader>mf :MultipleCursorsFind 

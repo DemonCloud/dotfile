@@ -1,14 +1,13 @@
-" 
+"
 "                         YiJun Linux GVim dotfile
-"  
-"                                2015.6.18 
+"
+"                                2015.6.18
 "
 "                 ★★★ I Love You <★ Meredith ★> Forever ★★★
 "
 "
 "
-" ========================= Normal Setting Start =========================  
-
+" ========================= Normal Setting Start =========================
 
 " Set Linux Debian Desktop
 runtime! debian.vim
@@ -24,19 +23,19 @@ set lines=48
 set columns=128
 
 " -------------- Global Setting ---------------
-" ## Make its Gvim Like Windows behave ## 
-" So you can use 
+" ## Make its Gvim Like Windows behave ##
+" So you can use
 " @ CTRL+S save the file
 " @ CTRL+C copy text
 " @ CTRL+P paste text
 " @ CTRL+X cut text
-source $VIMRUNTIME/mswin.vim
-behave mswin
+"source $VIMRUNTIME/mswin.vim
+"behave mswin
 
 " @Replace <leader> keymap to <space>
 let mapleader=" "
 
-" Format 
+" Format
 set nu
 set ts=2 "4
 set shiftwidth=2 "4
@@ -68,6 +67,7 @@ set gdefault
 set hlsearch
 set incsearch
 set ignorecase
+set fileignorecase
 set showcmd
 set whichwrap+=<,>,h,l
 
@@ -75,10 +75,11 @@ set whichwrap+=<,>,h,l
 set wildmenu
 set wildmode=longest,full
 set completeopt=menu,menuone,longest
+set completeopt-=preview
 set switchbuf=useopen,usetab
 set shortmess=a
 
-" No back up files 
+" No back up files
 set nobackup
 set nowritebackup
 set noswapfile
@@ -116,10 +117,11 @@ set fileformats=unix,dos,mac
 " set Undo file
 set undofile
 set undodir=~/.vim/undo
+set viminfo+=!
 
-" Diff GUI Vim with NVim 
+" Diff GUI Vim with NVim
 " Set No Top Menu and Scroll
-if has("gui_running")  
+if has("gui_running")
 	set guioptions-=e
 	set guioptions-=m
 	set guioptions-=T
@@ -131,18 +133,18 @@ if has("gui_running")
 	set guitablabel=
 	set paste
 	set mousemodel=popup_setpos
-	set mouse=a
-	"set guitablabel=%M\ %t  
+	set mouse-=a
+	"set guitablabel=%M\ %t
 
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
-	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10 
-	"set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9 
+	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10
+	"set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9
 	set guifont=Ohsnapu\ 10
 	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
 	"set guifont=Decima\ Nova\ Pro
 	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
-	"set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8 
+	"set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8
 	"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
 	"set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
 else
@@ -150,11 +152,26 @@ else
 	set showtabline=2
 	set noimd
   set ttimeoutlen=0
+	if(has('nvim'))
+	  set clipboard+=unnamedplus
+	endif
 	let g:python_host_prog = '/usr/bin/python2.7'
 	let g:python3_host_prog = '/usr/bin/python3.5'
 endif
 
-" setting the tabs like that 
+if len($TMUX) > 0
+  " set screen title to vim $PWD folder name - format 'v:folder'
+  set titlestring=v:%(%{fnamemodify(expand(\"$PWD\"),\":t\")}%)
+  set t_ts=k
+  set t_fs=\
+  set title
+endif
+
+set spelllang=en_us                      " spelling options
+set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
+set dictionary+=/usr/share/dict/words
+
+" setting the tabs like that
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
 "set list listchars=tab:-\ ,trail:\ 
@@ -162,10 +179,10 @@ set list listchars=tab:-\ ,extends:❯,precedes:❮
 
 " -------------- Global Setting end ---------------
 
-" ========================= Normal Setting End =========================  
+" ========================= Normal Setting End =========================
 
 
-" ========================= Vundle Plugin Manager =========================  
+" ========================= Vundle Plugin Manager =========================
 
 filetype off
 
@@ -181,9 +198,9 @@ Plugin 'L9'
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
-"Plugin 'bling/vim-airline'
 Plugin 'gcavallanti/vim-noscrollbar'
-Plugin 'ryanoasis/vim-webdevicons'
+"Plugin 'bling/vim-airline'
+"Plugin 'ryanoasis/vim-devicons'
 
 " @ Plugin --- [ Style Custom ]
 Plugin 'Lokaltog/vim-distinguished'
@@ -198,14 +215,14 @@ Plugin 'scrooloose/syntastic'
 
 
 " NERDTree Plugins Collections
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'scrooloose/nerdcommenter'
 Plugin 'danro/rename.vim'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-expand-region'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'rdnetto/YCM-Generator'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
@@ -216,26 +233,29 @@ Plugin 'mattn/livestyle-vim'
 
 " @ Plugin --- [ Auto Complete ]
 Plugin 'Raimondi/delimitMate'
-"Plugin 'gcmt/wildfire.vim'
 Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-commentary'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'justinmk/vim-sneak'
+"Full Fucking sneak, not support Multip-cursor
+"Plugin 'justinmk/vim-sneak'
 Plugin 'haya14busa/incsearch.vim'
 
 
-" @ Plugin --- [ CWD File Buffer Manager ] 
+" @ Plugin --- [ CWD File Buffer Manager ]
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/vimfiler.vim'
-"Plugin 'Shougo/neocomplete.vim'
-"Plugin 'Shougo/neocomplcache.vim'
-"Plugin 'JazzCore/neocomplcache-ultisnips'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'JazzCore/neocomplcache-ultisnips'
 Plugin 'yegappan/mru'
 
 
@@ -251,6 +271,7 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
+Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'dyng/ctrlsf.vim'
 Plugin 'dhruvasagar/vim-table-mode'
 
@@ -261,15 +282,23 @@ Plugin 'ap/vim-css-color'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
 Plugin 'elzr/vim-json'
+Plugin 'chrisbra/csv.vim'
 Plugin 'StanAngeloff/php.vim'
+Plugin 'tmux-plugins/vim-tmux'
 
 " @ Plugin --- [ ADV Program Language ]
 Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
+Plugin 'dimasg/vim-mark'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'yuratomo/w3m.vim'
+
+" @ Plugin --- [ Fix and Patch ]
+Plugin 'bruno-/vim-alt-mappings'
+Plugin 'bruno-/vim-man'
+Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'bronson/vim-visual-star-search'
 
 " ---- Plugin List Complete ----
 
@@ -286,7 +315,7 @@ filetype plugin indent on
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
 
-" Set Color Themes 
+" Set Color Themes
 set background=dark
 colorscheme J
 "colorscheme monochrome
@@ -299,17 +328,17 @@ colorscheme J
 "colorscheme darktango
 "colorscheme hybrid-light
 "colorscheme badwolf
-"colorscheme mirodark	
+"colorscheme mirodark
 "colorscheme codeschool
 
-" ========================= Vundle Plugin Setup End ========================= 
+" ========================= Vundle Plugin Setup End =========================
 
 
 
-" ========================= Plugin Config Start ========================= 
+" ========================= Plugin Config Start =========================
 
 " @ Linux Install Python PowerLine settings
-" @ If you used [#airline#]  You should Ignor this! 
+" @ If you used [#airline#]  You should Ignor this!
 
 "python from powerline.vim import setup as powerline_setup
 "python powerline_setup()
@@ -319,16 +348,11 @@ colorscheme J
 
 " AirLine Settings
 " alrLine && PowerLine Config
-let g:Powerline_symbols = 'fancy'
+"let g:Powerline_symbols = 'fancy'
 "let g:airline_powerline_fonts = 1
 "let g:Powerline_symbols = 'compatible'
 "let g:airline_theme = 'solarized'
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1 
-let g:WebDevIconsUnicodeDecorateFileNodes = 1 
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
-autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained conceal containedin=ALL
+
 
 " fzf Plugin config
 set rtp+=~/.fzf
@@ -367,7 +391,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list            = 1
 let g:syntastic_check_on_open            = 1
 let g:syntastic_check_on_wq              = 0
-" set Syntastic Cheacker engine 
+" set Syntastic Cheacker engine
 " example JavaScript use JSHint [ NodeJS ]
 let g:syntastic_php_checkers        = ['php', 'phpcs', 'phpmd']
 let g:syntastic_javascript_checkers = ['jshint']
@@ -375,114 +399,62 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
-
-" YouCompleteMe Geek Config
-let g:ycm_cache_omnifunc                                = 1
-let g:ycm_global_ycm_extra_conf                         = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_confirm_extra_conf                            = 1
-let g:ycm_add_preview_to_completeopt                    = 1
-let g:ycm_min_num_of_chars_for_completion               = 1
-let g:ycm_autoclose_preview_window_after_completion     = 1
-let g:ycm_key_list_select_completion                    = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion                  = ['<c-p>', '<Up>']
-
-let g:ycm_collect_identifiers_from_tags_files           = 1   " 开启 YCM 基于标签引擎
-let g:ycm_seed_identifiers_with_syntax                  = 1   " 语法关键字补全
-let g:ycm_complete_in_comments                          = 1   " 在注释输入中也能补全
-let g:ycm_complete_in_strings                           = 1   " 在字符串输入中不能补全
-let g:ycm_collect_identifiers_from_comments_and_strings = 0   " 注释和字符串中的文字也会被收入补全
-
-let g:ycm_goto_buffer_command = 'horizontal-split' 
-"[ 'same-buffer', 'horizontal-split', 'vertical-split', 'new-tab' ]
-let g:ycm_filetype_blacklist = {
-			\ 'tagbar'    : 1,
-			\ 'qf'        : 1,
-			\ 'notes'     : 1,
-			\ 'markdown'  : 1,
-			\ 'unite'     : 1,
-			\ 'text'      : 1,
-			\ 'vimwiki'   : 1,
-			\ 'gitcommit' : 1,
-			\}
-
 "-------------------- NeoComplete ---------------------
-" NeoComplete
+" neocomplete
 
 " Disable AutoComplPop.
-"let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 1
 " Use neocomplete.
-"let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
-"let g:neocomplete#enable_smart_case = 1
+let g:neocomplete#enable_smart_case = 1
 " Set minimum syntax keyword length.
-"let g:neocomplete#sources#syntax#min_keyword_length = 2
-"let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+let g:neocomplete#sources#syntax#min_keyword_length = 2
+let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
-"let g:neocomplete#sources#dictionary#dictionaries = {
-"    \ 'default' : '',
-"    \ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
-"    \ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
-"\ }
+let g:neocomplete#sources#dictionary#dictionaries = {
+    \ 'default' : '',
+    \ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
+    \ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
+\ }
 
 " Define keyword.
-"if !exists('g:neocomplete#keyword_patterns')
-"    let g:neocomplete#keyword_patterns = {}
-"endif
-"let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-"inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-"function! s:my_cr_function()
-"  return neocomplete#close_popup() . "\<CR>"
-"endfunction
-
-" <TAB>: completion.
 " <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? neocomplete#close_popup() : "\<Space>"
-
-" For cursor moving in insert mode(Not recommended)
-"inoremap <expr><Left>  neocomplete#close_popup() . "\<Left>"
-"inoremap <expr><Right> neocomplete#close_popup() . "\<Right>"
-"inoremap <expr><Up>    neocomplete#close_popup() . "\<Up>"
-"inoremap <expr><Down>  neocomplete#close_popup() . "\<Down>"
-" Or set this.
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
-"let g:neocomplete#enable_insert_char_pre = 1
-
-" AutoComplPop like behavior.
-"let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_insert_char_pre = 1
 
 " Enable omni completion.
-"autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-"autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-"autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-"autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
-"if !exists('g:neocomplete#sources#omni#input_patterns')
-"  let g:neocomplete#sources#omni#input_patterns = {}
-"endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+if !exists('g:neocomplete#sources#omni#input_patterns')
+  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " Noconflict NeoComplete With Vim Multiple Cursors
-"function! Multiple_cursors_before()
-""    exe 'NeoCompleteLock'
-""    echo 'Disabled autocomplete'
-"endfunction
+function! Multiple_cursors_before()
+    exe 'NeoCompleteLock'
+endfunction
 "
-"function! Multiple_cursors_after()
-""    exe 'NeoCompleteUnlock'
-""    echo 'Enabled autocomplete'
-"endfunction
+function! Multiple_cursors_after()
+    exe 'NeoCompleteUnlock'
+endfunction
 
 
 " tern_node_js onmicomplete with YouCompleteMe
@@ -521,8 +493,8 @@ let g:cpp_experimental_template_highlight = 1
 
 
 " GitGutter Setting
-let g:gitgutter_sign_column_always = 0 
-let g:gitgutter_max_signs = 99999 
+let g:gitgutter_sign_column_always = 0
+let g:gitgutter_max_signs = 99999
 
 
 " c.vim Building Config for C/C++ Vim
@@ -531,10 +503,11 @@ let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
 
 " Vimshell Settings
-let g:vimshell_prompt = "AixShell:$ "
+let g:vimshell_prompt = "AIX>> "
 let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
 
 " Unite Settings
+let g:unite_prompt=">>"
 let g:unite_source_file_rec_max_cache_files = 0
 let g:unite_source_history_yank_enable      = 1
 let g:unite_source_rec_async_command        = 1
@@ -582,8 +555,17 @@ set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/*
 set wildignore+=*/.nx/**,*.app,*.git,.git
 
 let g:ctrlp_map = '<C-\>'
-let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+			\ --ignore .idea
+      \ --ignore "**/*.pyc"
+      \ -g ""'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
 
 " Ack Settings
 if executable('ag')
@@ -594,7 +576,7 @@ elseif executable('ack')
   let g:ackprg = "ack --nocolor --nogroup --column"
 endif
 
-" Multip Cursor 
+" Multip Cursor
 " Default mapping
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
@@ -608,11 +590,15 @@ let g:sneak#streak = 1
 let g:vim_search_pulse_disable_auto_mappings = 1
 let g:incsearch#auto_nohlsearch = 1
 
+" Mark config
+let g:mwDefaultHighlightingPalette = 'maximum'
+let g:mwAutoLoadMarks = 1
+
 " --------- KeyMapping Config -----------
 
 nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-nnoremap <F5> :NERDTreeToggle<CR>
+"nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :SyntasticToggleMode <CR>
 nnoremap <F7> :GundoToggle<CR>
 
@@ -657,10 +643,20 @@ inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
 
+inoremap <M-h> <Left>
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-l> <Right>
+
 cnoremap <A-j> <Down>
 cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
+
+cnoremap <M-j> <Down>
+cnoremap <M-k> <Up>
+cnoremap <M-h> <Left>
+cnoremap <M-l> <Right>
 
 " Like Emacs
 inoremap <C-e> <End>
@@ -671,6 +667,14 @@ inoremap <C-r> <Up><End>
 inoremap <C-d> <Up><Home>
 inoremap <C-g> <Down><Home>
 
+inoremap <M-e> <End>
+inoremap <M-b> <Home>
+inoremap <M-u> <ESC>S
+inoremap <M-f> <Down><End>
+inoremap <M-r> <Up><End>
+inoremap <M-d> <Up><Home>
+inoremap <M-g> <Down><Home>
+
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
 nnoremap <A-k> :bprev<CR>
@@ -678,6 +682,13 @@ nnoremap <A-l> :bnext<CR>
 nnoremap <A-h> :bprev<CR>
 nnoremap <A-x> :bdelete<CR>
 nnoremap <A-w> :bwipeout<CR>
+
+nnoremap <M-j> :bnext<CR>
+nnoremap <M-k> :bprev<CR>
+nnoremap <M-l> :bnext<CR>
+nnoremap <M-h> :bprev<CR>
+nnoremap <M-x> :bdelete<CR>
+nnoremap <M-w> :bwipeout<CR>
 
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
@@ -696,26 +707,30 @@ vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
 " Ag searcher
-nnoremap <leader>ui :Unite file -complete<CR>
-nnoremap <leader>uf :Unite file find:<CR>
-nnoremap <leader>up :Unite file_rec/async<CR>
+nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
+nnoremap <leader>ub :Unite file buffer<CR>
 nnoremap <leader>vf :VimFiler<CR>
-nnoremap <leader>vs :vs<CR>
-nnoremap <leader>lp :sp<CR>
-nnoremap <leader>ag :Ag 
+
+" Split faster
+nnoremap <leader>\ :vs<CR>
+nnoremap <leader>- :sp<CR>
+" End Split
 
 " first to copy files path
 " copy path
+nnoremap <silent> <leader>p "+gp
+vnoremap <silent> <leader>y "+y
 nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
       \ path '".expand("%:p")."' to clipboard"<CR>
+inoremap <silent> <C-v> <ESC>"+gpi
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
 nnoremap <leader>vu :PluginUpdate<CR>
 
 " Tabluer Format
-vnoremap <leader>t  :Tabularize/
+vnoremap <leader>t :Tabularize/
 vnoremap <leader>t= :Tabularize/=<CR>
 vnoremap <leader>t, :Tabularize/,<CR>
 vnoremap <leader>t: :Tabularize/:<CR>
@@ -729,6 +744,8 @@ nnoremap <leader>sk [szz
 nnoremap <leader>sa zg]szz
 nnoremap <leader>sd 1z=
 nnoremap <leader>sf z=
+"Vim Shell Faster
+nnoremap <leader>sh :VimShell<CR>
 
 " Multi Cursor Find
 vnoremap <leader>mf :MultipleCursorsFind 
@@ -738,7 +755,7 @@ map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
 " For Git fire
-nnoremap <leader>gs :Gstatus<CR> 
+nnoremap <leader>gs :Gstatus<CR>
 nnoremap <leader>gc :Gcommit %f -m " 
 nnoremap <leader>gb :Gblame 
 nnoremap <leader>gv :Gitv<CR>
@@ -748,24 +765,9 @@ nnoremap <leader>gt :Git
 nnoremap <leader>gp :Git push origin master<CR>
 nnoremap <leader>gu :Git pull -u<CR>
 
+" Editor dotfile
 nnoremap <leader>en :e! ~/.nvimrc<CR>
 nnoremap <leader>ev :e! ~/.vimrc<CR>
-
-" Sneack Vim
-"replace 'f' with 1-char Sneak
-nmap f <Plug>Sneak_f
-nmap F <Plug>Sneak_F
-xmap f <Plug>Sneak_f
-xmap F <Plug>Sneak_F
-omap f <Plug>Sneak_f
-omap F <Plug>Sneak_F
-"replace 't' with 1-char Sneak
-nmap t <Plug>Sneak_t
-nmap T <Plug>Sneak_T
-xmap t <Plug>Sneak_t
-xmap T <Plug>Sneak_T
-omap t <Plug>Sneak_t
-omap T <Plug>Sneak_T
 
 " Incsearch
 map / <Plug>(incsearch-forward)
@@ -774,17 +776,20 @@ map g/ <Plug>(incsearch-stay)
 
 map n <Plug>(incsearch-nohl-n)zzzv
 map N <Plug>(incsearch-nohl-N)zzzv
-map * <Plug>(incsearch-nohl-*)zzzv
-map # <Plug>(incsearch-nohl-#)zzzv
+"map * <Plug>(incsearch-nohl-*)zzzv
+"map # <Plug>(incsearch-nohl-#)zzzv
 map g* <Plug>(incsearch-nohl-g*)zzzv
 map g# <Plug>(incsearch-nohl-g#)zzzv
 
+" Mark vim Plugin
+nnoremap <Leader>M <Plug>MarkToggle
+nnoremap <Leader>N <Plug>MarkAllClear
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
 
-" --------- KeyMapping Config END ----------- 
+" --------- KeyMapping Config END -----------
 
 " ========================= Plugin Config End =========================
 
@@ -802,4 +807,4 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
 " ========================= GUI End =========================
 " End vimrc
 
-" End vimrc
+source $HOME/.aixline.vim
