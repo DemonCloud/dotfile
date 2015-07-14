@@ -242,7 +242,6 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-commentary'
 Plugin 'Lokaltog/vim-easymotion'
-"Full Fucking sneak, not support Multip-cursor
 "Plugin 'justinmk/vim-sneak'
 Plugin 'haya14busa/incsearch.vim'
 
@@ -599,7 +598,6 @@ let g:mwAutoLoadMarks = 1
 
 nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-"nnoremap <F5> :NERDTreeToggle<CR>
 nnoremap <F6> :SyntasticToggleMode <CR>
 nnoremap <F7> :GundoToggle<CR>
 
@@ -766,6 +764,11 @@ nnoremap <leader>gt :Git
 nnoremap <leader>gp :Git push origin master<CR>
 nnoremap <leader>gu :Git pull -u<CR>
 
+" For SVN fire
+nnoremap <leader>sc :!svn ci -m ""<CR>
+nnoremap <leader>su :!svn up<CR>
+nnoremap <leader>st :!svn st<CR>
+
 " Editor dotfile
 nnoremap <leader>en :e! ~/.nvimrc<CR>
 nnoremap <leader>ev :e! ~/.vimrc<CR>
@@ -785,6 +788,22 @@ map g# <Plug>(incsearch-nohl-g#)zzzv
 " Mark vim Plugin
 nnoremap <Leader>M <Plug>MarkToggle
 nnoremap <Leader>N <Plug>MarkAllClear
+
+"Sneak
+"replace 'f' with 1-char Sneak
+"nmap f <Plug>Sneak_f
+"nmap F <Plug>Sneak_F
+"xmap f <Plug>Sneak_f
+"xmap F <Plug>Sneak_F
+"omap f <Plug>Sneak_f
+"omap F <Plug>Sneak_F
+"replace 't' with 1-char Sneak
+"nmap t <Plug>Sneak_t
+"nmap T <Plug>Sneak_T
+"xmap t <Plug>Sneak_t
+"xmap T <Plug>Sneak_T
+"omap t <Plug>Sneak_t
+"omap T <Plug>Sneak_T
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
