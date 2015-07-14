@@ -191,9 +191,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " # Plugins Beginning #
-" @ Plugin --- [ Base Require Lib ]
+" @ Plugin --- [ Base Require Lib & Prefix ]
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'romainl/vim-qf'
+Plugin 'mattn/webapi-vim'
+Plugin 'bruno-/vim-alt-mappings'
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
@@ -201,71 +205,30 @@ Plugin 'DemonCloud/vim-aixinde'
 "Plugin 'bling/vim-airline'
 "Plugin 'ryanoasis/vim-devicons'
 
-" @ Plugin --- [ Style Custom ]
-Plugin 'Lokaltog/vim-distinguished'
+" @ Plugin --- [ File Buffer Manager ]
 Plugin 'ap/vim-buftabline'
-Plugin 'terryma/vim-smooth-scroll'
-
-
-" @ Plugin --- [ Source Code Cheacker ]
-Plugin 'simnalamburt/vim-mundo'
-Plugin 'majutsushi/tagbar'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'scrooloose/syntastic'
-
-
-" NERDTree Plugins Collections
-"Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/nerdcommenter'
-Plugin 'danro/rename.vim'
-
-" @ Plugin --- [ |Google| Geeks Plugin ]
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'terryma/vim-expand-region'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'rdnetto/YCM-Generator'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/livestyle-vim'
-
-" @ Plugin --- [ Auto Complete ]
-Plugin 'Raimondi/delimitMate'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-commentary'
-Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'justinmk/vim-sneak'
-Plugin 'haya14busa/incsearch.vim'
-
-
-" @ Plugin --- [ CWD File Buffer Manager ]
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/vimfiler.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'JazzCore/neocomplcache-ultisnips'
-Plugin 'yegappan/mru'
+"Plugin 'yegappan/mru'
+Plugin 'danro/rename.vim'
 
 
-" @ Plugin --- [ Git && Shell Tools ]
+" @ Plugin --- [ Code Cheacker Viewer ] 
+Plugin 'simnalamburt/vim-mundo'
+Plugin 'majutsushi/tagbar'
+"Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-easytags'
+Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'justinmk/vim-sneak'
+Plugin 'haya14busa/incsearch.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 
-
-" @ Plugin --- [ Code BAT Sreach ]
+" @ Plugin --- [ Code Sreach ]
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
@@ -274,13 +237,40 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ompugao/ctrlp-locate'
 Plugin 'JazzCore/ctrlp-cmatcher'
-Plugin 'dyng/ctrlsf.vim'
+
+" @ Plugin --- [ |Google| Geeks Plugin ]
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-smooth-scroll'
+Plugin 'terryma/vim-expand-region'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'rdnetto/YCM-Generator'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'JazzCore/neocomplcache-ultisnips'
+
+" @ Plugin --- [ Code Complete Unity ]
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/livestyle-vim'
+Plugin 'Raimondi/delimitMate'
+
+" @ Plugin --- [ Geeks Plugin ]
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-commentary'
+Plugin 'gregsexton/gitv'
+Plugin 'bruno-/vim-man'
 Plugin 'dhruvasagar/vim-table-mode'
 
-
-" @ Plugin --- [ Web Development Tools ]
+" @ Plugin --- [ Syntax ] 
+Plugin 'tpope/vim-git'
 Plugin 'pangloss/vim-javascript'
-Plugin 'Quramy/vim-js-pretty-template'
 Plugin 'ap/vim-css-color'
 Plugin 'groenewege/vim-less'
 Plugin 'digitaltoad/vim-jade'
@@ -288,20 +278,12 @@ Plugin 'elzr/vim-json'
 Plugin 'chrisbra/csv.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'tmux-plugins/vim-tmux'
-
-" @ Plugin --- [ ADV Program Language ]
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'plasticboy/vim-markdown'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
 Plugin 'dimasg/vim-mark'
-Plugin 'plasticboy/vim-markdown'
-
-" @ Plugin --- [ Fix and Patch ]
-Plugin 'bruno-/vim-alt-mappings'
-Plugin 'bruno-/vim-man'
-Plugin 'bronson/vim-visual-star-search'
-Plugin 'romainl/vim-qf'
 
 " ---- Plugin List Complete ----
 
@@ -443,8 +425,6 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
-autocmd FileType javascript JsPreTmpl html
-autocmd FileType javascript JsPreTmpl php
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
