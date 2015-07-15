@@ -1,4 +1,3 @@
-"
 "                         YiJun Linux GVim dotfile
 "
 "                                2015.6.18
@@ -8,7 +7,6 @@
 "
 "
 " ========================= Normal Setting Start =========================
-
 " Set Linux Debian Desktop
 runtime! debian.vim
 
@@ -152,11 +150,6 @@ else
 	set showtabline=2
 	set noimd
   set ttimeoutlen=0
-	if(has('nvim'))
-	  set clipboard+=unnamedplus
-	endif
-	let g:python_host_prog = '/usr/bin/python2.7'
-	let g:python3_host_prog = '/usr/bin/python3.5'
 endif
 
 if len($TMUX) > 0
@@ -219,12 +212,13 @@ Plugin 'danro/rename.vim'
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
-"Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'justinmk/vim-sneak'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'vim-scripts/gitignore'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 
@@ -242,8 +236,8 @@ Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'rdnetto/YCM-Generator'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'JazzCore/neocomplcache-ultisnips'
@@ -263,6 +257,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-commentary'
 Plugin 'gregsexton/gitv'
 Plugin 'bruno-/vim-man'
@@ -366,7 +361,6 @@ let g:tagbar_type_css = {
     \ ]
 \ }
 
-
 " Syntastic Config
 set statusline+=%#f1#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -384,6 +378,39 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_java_checkers       = ['java', 'jsp']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
+
+"-------------------- YouCompleteMe -------------------
+let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_cache_omnifunc = 1
+let g:ycm_disable_for_files_larger_than_kb = 10000
+let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1,
+			\ 'mundo': 1,
+			\ 'fzf': 1,
+			\ 'ctrlp' : 1
+      \}
+
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "-------------------- NeoComplete ---------------------
 " neocomplete
@@ -417,6 +444,7 @@ inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
 let g:neocomplete#enable_insert_char_pre = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -424,7 +452,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
+autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteVim
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -442,7 +470,6 @@ endfunction
 function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
 endfunction
-
 
 " tern_node_js onmicomplete with YouCompleteMe
 let tern#is_show_argument_hints_enabled= 1
@@ -581,6 +608,11 @@ let g:incsearch#auto_nohlsearch = 1
 let g:mwDefaultHighlightingPalette = 'maximum'
 let g:mwAutoLoadMarks = 1
 
+
+" Vim-EasyTags configure
+"let g:easytags_cmd = '/usr/bin/ctags'
+"let g:easytags_async = 1
+
 " --------- KeyMapping Config -----------
 
 nnoremap <F3> :TableModeToggle<CR>
@@ -648,19 +680,9 @@ cnoremap <M-l> <Right>
 " Like Emacs
 inoremap <C-e> <End>
 inoremap <C-b> <Home>
-inoremap <C-u> <ESC>S
-inoremap <C-f> <Down><End>
-inoremap <C-r> <Up><End>
-inoremap <C-d> <Up><Home>
-inoremap <C-g> <Down><Home>
 
 inoremap <M-e> <End>
 inoremap <M-b> <Home>
-inoremap <M-u> <ESC>S
-inoremap <M-f> <Down><End>
-inoremap <M-r> <Up><End>
-inoremap <M-d> <Up><Home>
-inoremap <M-g> <Down><Home>
 
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
@@ -708,11 +730,13 @@ nnoremap <leader>- :sp<CR>
 
 " first to copy files path
 " copy path
-nnoremap <silent> <leader>p "+gp
-vnoremap <silent> <leader>y "+y
-nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
+nnoremap <leader>p "+gp
+vnoremap <Leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <Leader>d "+d
+nnoremap <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
       \ path '".expand("%:p")."' to clipboard"<CR>
-inoremap <silent> <C-v> <ESC>"+gpi
+inoremap <C-v> <ESC>"+gpi
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
