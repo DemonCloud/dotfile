@@ -1,4 +1,3 @@
-"
 "                         YiJun Linux GVim dotfile
 "
 "                                2015.6.18
@@ -8,7 +7,6 @@
 "
 "
 " ========================= Normal Setting Start =========================
-
 " Set Linux Debian Desktop
 runtime! debian.vim
 
@@ -139,24 +137,12 @@ if has("gui_running")
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10
-	"set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9
-	set guifont=Ohsnapu\ 10
-	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
-	"set guifont=Decima\ Nova\ Pro
-	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
-	"set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8
-	"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
-	"set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
+	set guifont=Aix\ 10
 else
 	set t_Co=256
 	set showtabline=2
 	set noimd
   set ttimeoutlen=0
-	if(has('nvim'))
-	  set clipboard+=unnamedplus
-	endif
-	let g:python_host_prog = '/usr/bin/python2.7'
-	let g:python3_host_prog = '/usr/bin/python3.5'
 endif
 
 if len($TMUX) > 0
@@ -195,7 +181,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'Lokaltog/vim-distinguished'
-Plugin 'romainl/vim-qf'
+"Plugin 'romainl/vim-qf'
 Plugin 'mattn/webapi-vim'
 Plugin 'bruno-/vim-alt-mappings'
 
@@ -203,9 +189,10 @@ Plugin 'bruno-/vim-alt-mappings'
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
 "Plugin 'bling/vim-airline'
-"Plugin 'ryanoasis/vim-devicons'
+Plugin 'ryanoasis/vim-devicons'
 
 " @ Plugin --- [ File Buffer Manager ]
+Plugin 'scrooloose/nerdtree'
 Plugin 'ap/vim-buftabline'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -219,12 +206,13 @@ Plugin 'danro/rename.vim'
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
-"Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-easytags'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'justinmk/vim-sneak'
 Plugin 'haya14busa/incsearch.vim'
+Plugin 'vim-scripts/gitignore'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 
@@ -242,8 +230,8 @@ Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'rdnetto/YCM-Generator'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'JazzCore/neocomplcache-ultisnips'
@@ -251,7 +239,6 @@ Plugin 'JazzCore/neocomplcache-ultisnips'
 " @ Plugin --- [ Code Complete Unity ]
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/livestyle-vim'
 Plugin 'Raimondi/delimitMate'
@@ -263,6 +250,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-sleuth'
 Plugin 'tpope/vim-commentary'
 Plugin 'gregsexton/gitv'
 Plugin 'bruno-/vim-man'
@@ -366,7 +354,6 @@ let g:tagbar_type_css = {
     \ ]
 \ }
 
-
 " Syntastic Config
 set statusline+=%#f1#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -385,11 +372,44 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
+"-------------------- YouCompleteMe -------------------
+let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_cache_omnifunc = 1
+let g:ycm_disable_for_files_larger_than_kb = 10000
+let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1,
+			\ 'mundo': 1,
+			\ 'fzf': 1,
+			\ 'ctrlp' : 1
+      \}
+
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 "-------------------- NeoComplete ---------------------
 " neocomplete
 
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 1
+let g:acp_enableAtStartup = 0
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -413,10 +433,17 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  "return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
 
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
 let g:neocomplete#enable_insert_char_pre = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -424,7 +451,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
+autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteVim
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -442,11 +469,6 @@ endfunction
 function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
 endfunction
-
-
-" tern_node_js onmicomplete with YouCompleteMe
-let tern#is_show_argument_hints_enabled= 1
-let g:tern_show_argument_hints="on_hold"
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -523,9 +545,9 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 " VimFiler Settings
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer  = 1
-let g:vimfiler_tree_opened_icon     = "-"
-let g:vimfiler_tree_closed_icon     = "+"
-let g:vimfiler_readonly_file_icon   = "?"
+"let g:vimfiler_tree_opened_icon     = "-"
+"let g:vimfiler_tree_closed_icon     = "+"
+"let g:vimfiler_readonly_file_icon   = "?"
 let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 " CtrlP Settings
@@ -581,8 +603,27 @@ let g:incsearch#auto_nohlsearch = 1
 let g:mwDefaultHighlightingPalette = 'maximum'
 let g:mwAutoLoadMarks = 1
 
+
+" Vim-EasyTags 
+"let g:easytags_cmd = '/usr/bin/ctags'
+let g:easytags_async = 1
+set tags=~/.vim/tags;
+
+" DevIcons Config
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_unite = 1
+let g:webdevicons_enable_vimfiler = 1
+let g:WebDevIconsUnicodeDecorateFileNodes = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+
 " --------- KeyMapping Config -----------
 
+nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
 nnoremap <F5> :TagbarToggle<CR>
@@ -648,19 +689,9 @@ cnoremap <M-l> <Right>
 " Like Emacs
 inoremap <C-e> <End>
 inoremap <C-b> <Home>
-inoremap <C-u> <ESC>S
-inoremap <C-f> <Down><End>
-inoremap <C-r> <Up><End>
-inoremap <C-d> <Up><Home>
-inoremap <C-g> <Down><Home>
 
 inoremap <M-e> <End>
 inoremap <M-b> <Home>
-inoremap <M-u> <ESC>S
-inoremap <M-f> <Down><End>
-inoremap <M-r> <Up><End>
-inoremap <M-d> <Up><Home>
-inoremap <M-g> <Down><Home>
 
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
@@ -708,11 +739,13 @@ nnoremap <leader>- :sp<CR>
 
 " first to copy files path
 " copy path
-nnoremap <silent> <leader>p "+gp
-vnoremap <silent> <leader>y "+y
-nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
+nnoremap <leader>p "+gp
+vnoremap <Leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <Leader>d "+d
+nnoremap <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
       \ path '".expand("%:p")."' to clipboard"<CR>
-inoremap <silent> <C-v> <ESC>"+gpi
+inoremap <C-v> <ESC>"+gpi
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
@@ -806,7 +839,7 @@ endfunc
 
 " ========================= GUI Setting =========================
 
-map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+map <silent> <F1> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
         \set guioptions-=m <bar>
     \else <Bar>

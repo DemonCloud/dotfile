@@ -137,14 +137,7 @@ if has("gui_running")
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10
-	"set guifont=M+\ 1m\ Plus\ Nerd\ File\ Types\ Mono\ Plus\ Pomicons\ 9
-	set guifont=Ohsnapu\ 10
-	"set guifont=PragmataPro\ for\ Powerline\ Bold\ 10
-	"set guifont=Decima\ Nova\ Pro
-	"set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\ Bold\ 8
-	"set guifont=Anonymice\ Powerline\ Plus\ Nerd\ File\ Types\ 8
-	"set guifont=Sauce\ Code\ Powerline\ Plus\ Nerd\ File\ Types\ Mono
-	"set guifont=PragmataPro\ for\ Powerline\ Plus\ Nerd\ File\ Types\ Bold\ 10
+	set guifont=Aix\ 10
 else
 	set t_Co=256
 	set showtabline=2
@@ -188,7 +181,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'Lokaltog/vim-distinguished'
-Plugin 'romainl/vim-qf'
+"Plugin 'romainl/vim-qf'
 Plugin 'mattn/webapi-vim'
 Plugin 'bruno-/vim-alt-mappings'
 
@@ -196,9 +189,10 @@ Plugin 'bruno-/vim-alt-mappings'
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
 "Plugin 'bling/vim-airline'
-"Plugin 'ryanoasis/vim-devicons'
+Plugin 'ryanoasis/vim-devicons'
 
 " @ Plugin --- [ File Buffer Manager ]
+Plugin 'scrooloose/nerdtree'
 Plugin 'ap/vim-buftabline'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
@@ -245,7 +239,6 @@ Plugin 'JazzCore/neocomplcache-ultisnips'
 " @ Plugin --- [ Code Complete Unity ]
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/livestyle-vim'
 Plugin 'Raimondi/delimitMate'
@@ -416,7 +409,7 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " neocomplete
 
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 1
+let g:acp_enableAtStartup = 0
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -440,6 +433,12 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  "return neocomplete#close_popup() . "\<CR>"
+  " For no inserting <CR> key.
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
 
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
@@ -470,10 +469,6 @@ endfunction
 function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
 endfunction
-
-" tern_node_js onmicomplete with YouCompleteMe
-let tern#is_show_argument_hints_enabled= 1
-let g:tern_show_argument_hints="on_hold"
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -550,9 +545,9 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 " VimFiler Settings
 let g:vimfiler_safe_mode_by_default = 0
 let g:vimfiler_as_default_explorer  = 1
-let g:vimfiler_tree_opened_icon     = "-"
-let g:vimfiler_tree_closed_icon     = "+"
-let g:vimfiler_readonly_file_icon   = "?"
+"let g:vimfiler_tree_opened_icon     = "-"
+"let g:vimfiler_tree_closed_icon     = "+"
+"let g:vimfiler_readonly_file_icon   = "?"
 let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 " CtrlP Settings
@@ -609,12 +604,26 @@ let g:mwDefaultHighlightingPalette = 'maximum'
 let g:mwAutoLoadMarks = 1
 
 
-" Vim-EasyTags configure
+" Vim-EasyTags 
 "let g:easytags_cmd = '/usr/bin/ctags'
-"let g:easytags_async = 1
+let g:easytags_async = 1
+set tags=~/.vim/tags;
+
+" DevIcons Config
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_unite = 1
+let g:webdevicons_enable_vimfiler = 1
+let g:WebDevIconsUnicodeDecorateFileNodes = 1
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 
 " --------- KeyMapping Config -----------
 
+nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
 nnoremap <F5> :TagbarToggle<CR>
@@ -830,7 +839,7 @@ endfunc
 
 " ========================= GUI Setting =========================
 
-map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+map <silent> <F1> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
         \set guioptions-=m <bar>
     \else <Bar>
