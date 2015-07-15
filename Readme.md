@@ -24,10 +24,9 @@
 >	3. 包含了各种流行实用的插件，包含通用配置（最佳实践,深度优化，适配原生Vim 和 NeoVim）
 >	4. 修复了Tmux Bash 中 Vim 不支持 Alt 组合键的问题
 >	5. 解决了部分插件按键冲突，某些插件加载后相互冲突导致Gvim顿卡
->	6. 默认支持了 Windows 常用操作 [``Ctrl-C``复制，``Ctrl-V``粘贴，``Ctrl-X``剪切...]
->	7. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
->	8. Windows 和 Linux 下的原生按键配置均做了强化处理
->	9. 原生制定的 Statusline 配合主题 J, 不喜可自己更换XXXLine系列插件
+>	6. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
+>	7. Windows 和 Linux 下的原生按键配置均做了强化处理
+>	8. 原生制定的 Statusline 配合主题 J, 不喜可自己更换XXXLine系列插件
 
 
 ## Install 安装
@@ -48,13 +47,13 @@
 
 - 最新的Vim Windows编译版，来自原生的Source，不像某些无良的编译者， 连Vim作者的名字都改成了自己的， **很讨厌那种不尊重原作者的人**，所以我自己编译了一个：
 
-- Vim 7.4.777 集成了2015年5月777 补丁集成。作者最新一版更新是在最近的7月12，ftp此地址上可以看到最新的更新动态：[FTP for Vim subversion](ftp://ftp.vim.org/pub/vim/patches/7.4/README)
+- Vim 7.4.777 集成了2015年5月777 补丁集成。作者最新一版更新是在最近的7月12，ftp此地址上可以看到最新的更新动态 : 
+		
+<a href="ftp://ftp.vim.org/pub/vim/patches/7.4/README" target="_blank">FTP for Vim subversion</a> 
 
 - 不过追求稳定就没有编译最新的patch版本，YVIM 集成的patch 777 和最新的 781 差了4个发布更新
 
-[[YCIM for Windows With NeoComplete]](http://pan.baidu.com/s/1dDDABtv) -- Update 2015.7.12 集成 NeoComplete 支持 Ultisnips\(强力推荐，请看下面，安装Lua\)
-
-[[YVIM for Windows With YouCompleteMe]](http://pan.baidu.com/s/1bnhOUf1) -- Update 2015.6.17 集成Windows YouCompleteMe\(版本和配置都已过时，适合想用Youcompelete的朋友\)
+[[YCIM for Windows](http://pan.baidu.com/s/1i3ImvyP) -- Update 2015.7.14 集成 NeoComplete 和 YoucompleteMe 支持 Ultisnips\(强力推荐，请看下面，安装Lua\)
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 >
