@@ -532,7 +532,7 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " <C-h>, <BS>: close popup and delete backword char.
-"inoremap <expr><BS> neocomplete#smart_close_popup()."\<Left><DELETE>"
+inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
   " For no inserting <CR> key.
@@ -762,16 +762,6 @@ nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " Cursor Moving
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-
-inoremap <M-h> <Left>
-inoremap <M-j> <Down>
-inoremap <M-k> <Up>
-inoremap <M-l> <Right>
-
 cnoremap <A-j> <Down>
 cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
