@@ -27,7 +27,6 @@ function MyDiff()
 endfunction
 
 "------ Begin ------
-
 "init
 "set windows pos and resize
 set lines=51
@@ -64,21 +63,13 @@ set guifont=Consolas\ for\ Powerline\ FixedD:h10
 " @ CTRL+P paste text
 " @ CTRL+X cut text
 source $VIMRUNTIME/menu.vim
-source $VIMRUNTIME/mswin.vim
-behave mswin
+"source $VIMRUNTIME/mswin.vim
+"behave mswin
 
 " Not complete with Vi Mode
 set regexpengine=1
 
 " -------------- Global Setting ---------------
-" ## Make its Gvim Like Windows behave ##
-" So you can use
-" @ CTRL+S save the file
-" @ CTRL+C copy text
-" @ CTRL+P paste text
-" @ CTRL+X cut text
-source $VIMRUNTIME/mswin.vim
-behave mswin
 
 " @Replace <leader> keymap to <space>
 let mapleader=" "
@@ -159,27 +150,27 @@ set fileformats=unix,dos,mac
 " Diff GUI Vim with NVim
 " Set No Top Menu and Scroll
 if has("gui_running")
-	set guioptions-=e
-	set guioptions-=m
-	set guioptions-=T
-	set guioptions-=L
-	set guioptions-=r
-	set guioptions-=B
-	set guioptions-=0
-	set go=
-	set guitablabel=
-	set paste
-	set mousemodel=popup_setpos
-	set mouse-=a
-	set shell=cmd.exe
-	"set guitablabel=%M\ %t
-	autocmd! InsertLeave * set imdisable
-	autocmd! InsertEnter * set noimdisable
-	noremap / :set noimdisable<CR>/
+  set guioptions-=e
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=L
+  set guioptions-=r
+  set guioptions-=B
+  set guioptions-=0
+  set go=
+  set guitablabel=
+  set paste
+  set mousemodel=popup_setpos
+  set mouse-=a
+  set shell=cmd.exe
+  "set guitablabel=%M\ %t
+  autocmd! InsertLeave * set imdisable
+  autocmd! InsertEnter * set noimdisable
+  noremap / :set noimdisable<CR>/
 else
-	set t_Co=256
-	set showtabline=1
-	set noimd
+  set t_Co=256
+  set showtabline=1
+  set noimd
   set ttimeoutlen=0
 endif
 
@@ -203,94 +194,88 @@ set rtp+=$VIM/vimfiles/bundle/Vundle.vim
 call vundle#begin("$VIM/vimfiles/bundle")
 
 " # Plugins Beginning #
-" @ Plugin --- [ Base Require Lib ]
+" @ Plugin --- [ Base Require Lib & Prefix ]
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
-"Plugin 'mhinz/vim-startify'
+Plugin 'Lokaltog/vim-distinguished'
+Plugin 'romainl/vim-qf'
+Plugin 'mattn/webapi-vim'
+Plugin 'bruno-/vim-alt-mappings'
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
 Plugin 'DemonCloud/vim-aixinde'
 "Plugin 'bling/vim-airline'
-Plugin 'gcavallanti/vim-noscrollbar'
 "Plugin 'ryanoasis/vim-devicons'
 
-" @ Plugin --- [ Style Custom ]
-Plugin 'Lokaltog/vim-distinguished'
+" @ Plugin --- [ File Buffer Manager ]
 Plugin 'ap/vim-buftabline'
-Plugin 'terryma/vim-smooth-scroll'
-
-
-" @ Plugin --- [ Source Code Cheacker ]
-Plugin 'simnalamburt/vim-mundo'
-Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/syntastic'
-
-
-" NERDTree Plugins Collections
-Plugin 'scrooloose/nerdtree'
-"Plugin 'scrooloose/nerdcommenter'
-Plugin 'danro/rename.vim'
-Plugin 'pelodelfuego/vim-swoop'
-
-" @ Plugin --- [ |Google| Geeks Plugin ]
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'terryma/vim-expand-region'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'marijnh/tern_for_vim'
-Plugin 'mattn/emmet-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/livestyle-vim'
-
-" @ Plugin --- [ Auto Complete ]
-Plugin 'Raimondi/delimitMate'
-"Plugin 'gcmt/wildfire.vim'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-abolish'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-commentary'
-Plugin 'Lokaltog/vim-easymotion'
-" Full Fucking sneak, not support Multip-cursor
-"Plugin 'justinmk/vim-sneak'
-Plugin 'haya14busa/incsearch.vim'
-
-
-" @ Plugin --- [ CWD File Buffer Manager ]
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/vimfiler.vim'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neocomplcache.vim'
-Plugin 'JazzCore/neocomplcache-ultisnips'
-Plugin 'yegappan/mru'
+"Plugin 'yegappan/mru'
+Plugin 'danro/rename.vim'
 
 
-" @ Plugin --- [ Git && Shell Tools ]
+" @ Plugin --- [ Code Cheacker Viewer ] 
+Plugin 'simnalamburt/vim-mundo'
+Plugin 'majutsushi/tagbar'
+"Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-easytags'
+Plugin 'scrooloose/syntastic'
+Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'justinmk/vim-sneak'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'vim-scripts/gitignore'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 
-
-" @ Plugin --- [ Code BAT Sreach ]
+" @ Plugin --- [ Code Sreach ]
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'dyng/ctrlsf.vim'
+Plugin 'ompugao/ctrlp-locate'
+Plugin 'JazzCore/ctrlp-cmatcher'
+
+" @ Plugin --- [ |Google| Geeks Plugin ]
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'terryma/vim-smooth-scroll'
+Plugin 'terryma/vim-expand-region'
+"Plugin 'Valloric/YouCompleteMe'
+Plugin 'xleng/YCM_WIN_X86'
+Plugin 'rdnetto/YCM-Generator'
+Plugin 'Shougo/neocomplete.vim'
+Plugin 'Shougo/neocomplcache.vim'
+Plugin 'JazzCore/neocomplcache-ultisnips'
+
+" @ Plugin --- [ Code Complete Unity ]
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'marijnh/tern_for_vim'
+Plugin 'mattn/emmet-vim'
+Plugin 'mattn/livestyle-vim'
+Plugin 'Raimondi/delimitMate'
+
+" @ Plugin --- [ Geeks Plugin ]
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-dispatch'
+Plugin 'tpope/vim-sleuth'
+Plugin 'tpope/vim-commentary'
+Plugin 'gregsexton/gitv'
+Plugin 'bruno-/vim-man'
 Plugin 'dhruvasagar/vim-table-mode'
 
-
-" @ Plugin --- [ Web Development Tools ]
+" @ Plugin --- [ Syntax ] 
+Plugin 'tpope/vim-git'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ap/vim-css-color'
 Plugin 'groenewege/vim-less'
@@ -299,20 +284,12 @@ Plugin 'elzr/vim-json'
 Plugin 'chrisbra/csv.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'tmux-plugins/vim-tmux'
-
-" @ Plugin --- [ ADV Program Language ]
-Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'plasticboy/vim-markdown'
+"Plugin 'octol/vim-cpp-enhanced-highlight'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
 Plugin 'dimasg/vim-mark'
-Plugin 'plasticboy/vim-markdown'
-
-" @ Plugin --- [ Fix and Patch ]
-Plugin 'bruno-/vim-alt-mappings'
-Plugin 'bruno-/vim-man'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'bronson/vim-visual-star-search'
 
 " ---- Plugin List Complete ----
 
@@ -326,17 +303,15 @@ filetype plugin on
 filetype plugin indent on
 
 
-" Set Color Themes
-set background=dark
-"set background=light
-
 " @ COLOR Themes
 " If you are not having them. You Search in Google and download them
 
+" Set Color Themes
+set background=dark
 colorscheme J
-"colorscheme base16-3024
-"colorscheme base16-apathy
-"colorscheme base16-ashes
+"colorscheme monochrome
+"colorscheme seoul256
+"colorscheme distinguished
 "colorscheme jellybeans
 "colorscheme hybrid
 "colorscheme solarized
@@ -346,9 +321,6 @@ colorscheme J
 "colorscheme badwolf
 "colorscheme mirodark
 "colorscheme codeschool
-
-"call VimTweak Opacity
-au GUIEnter * call libcallnr("vimtweak.dll", "SetAlpha", 254)
 
 " ========================= Vundle Plugin Setup End =========================
 
@@ -389,57 +361,58 @@ hi f5g guibg=#000000 guifg=#181818 ctermbg=16 ctermfg=234 gui=NONE cterm=NONE te
 "hi f1 guibg=#981000 guifg=#ffffff gui=NONE
 let g:last_mode = 'n'
 function! StatuslineModeColor()
-	let l:Status=mode()
+  let l:Status=mode()
 
-	if l:Status !=# g:last_mode
-		let g:last_mode = l:Status
+  if l:Status !=# g:last_mode
+    let g:last_mode = l:Status
 
-	  if l:Status == 'n'
-			hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230
-			hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52
-	  elseif l:Status == 'i'
-			hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16
-			hi f1r guibg=#181818 guifg=#79BE61 ctermbg=234 ctermfg=83
-		elseif l:Status == 'v'
-			hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
-			hi f1r guibg=#181818 guifg=#276888 ctermbg=234 ctermfg=32
-		else
-			hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16
-			hi f1r guibg=#181818 guifg=#C0C280 ctermbg=234 ctermfg=230
-	  endif
-	endif
+    if l:Status == 'n'
+      hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230
+      hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52
+    elseif l:Status == 'i'
+      hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16
+      hi f1r guibg=#181818 guifg=#79BE61 ctermbg=234 ctermfg=83
+    elseif l:Status == 'v'
+      hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
+      hi f1r guibg=#181818 guifg=#276888 ctermbg=234 ctermfg=32
+    else
+      hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16
+      hi f1r guibg=#181818 guifg=#C0C280 ctermbg=234 ctermfg=230
+    endif
+  endif
 
-	if l:Status ==# "n"
-		return "NORMAL"
-	elseif l:Status ==# "i"
-		return "INSERT"
-	elseif l:Status ==# "c"
-		return "COMMAND"
-	elseif l:Status ==# "R"
-		return "REPLACE"
-	elseif l:Status ==# "v"
-		return "VISUAL"
-	elseif l:Status ==# "V"
-		return "V·LINE"
-	elseif l:Status ==# "s"
-		return "SELECT"
-	elseif l:Status ==# "S"
-		return "SELEALL"
-	elseif l:Status ==# ""
-		return "V·BLOCK"
-	else
-		return l:Status
-	endif
+  if l:Status ==# "n"
+    return "NORMAL"
+  elseif l:Status ==# "i"
+    return "INSERT"
+  elseif l:Status ==# "c"
+    return "COMMAND"
+  elseif l:Status ==# "R"
+    return "REPLACE"
+  elseif l:Status ==# "t"
+    return "TERMINAL"
+  elseif l:Status ==# "v"
+    return "VISUAL"
+  elseif l:Status ==# "V"
+    return "V·LINE"
+  elseif l:Status ==# "s"
+    return "SELECT"
+  elseif l:Status ==# "S"
+    return "SELEALL"
+  elseif l:Status ==# ""
+    return "V·BLOCK"
+  else
+    return l:Status
+  endif
 endfunc
 
-set statusline=%#f1#\ %{StatuslineModeColor()}\ %#f1r#⮀
-set statusline+=%#f4#\ %<%f\ %#f4r#⮀%#f3#\ [%{strlen(&fenc)?&fenc:'none'}]%y%h%m%r\ %#f3r#⮀%#f2#\ %{fugitive#statusline()}\ 
+set statusline=%#f1#\ %{StatuslineModeColor()}\ %#f1r#⮀\ 
+"⮀⮂
+set statusline+=%#f4#\ %f\ %#f4r#⮀\ %#f3#\ %y%h%m%r\ %#f3r#⮀\ %#f2#\ %{fugitive#statusline()}\  
 " right align laststatus
-set statusline+=%=%#f3r#⮂%#f3#\ ⭡\ %l
-set statusline+=/%L\ 
-set statusline+=%#f4r#⮂%#f4#\ %{noscrollbar#statusline(10,'-','○')}\ 
-set statusline+=%#f1r#⮂%#f1#\ ■\ BUFF:[%n]\ 
-"set statusline+=\ [%b][0x%B]\              " ASCII and byte code under cursor
+set statusline+=%=%#f2#%#f3r#\ ⮂%#f3#\ [%b][0x%B]\ 
+set statusline+=%#f4r#\ ⮂%#f4#\ ⭡\ %l/%L\ 
+set statusline+=%#f1r#\ ⮂%#f1#\ ✹\ BUFF:%n\ 
 
 " End Status Line
 " -----------------------------
@@ -499,6 +472,39 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
+"-------------------- YouCompleteMe -------------------
+let g:ycm_global_ycm_extra_conf = "$VIM/vimfiles/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_cache_omnifunc = 1
+let g:ycm_disable_for_files_larger_than_kb = 10000
+let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'mail' : 1,
+      \ 'mundo': 1,
+      \ 'fzf': 1,
+      \ 'ctrlp' : 1
+      \}
+
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
+
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+
 "-------------------- NeoComplete ---------------------
 " neocomplete
 
@@ -515,8 +521,8 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
-    \ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
-    \ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
+    \ 'vimshell' : $VIM.'/vimfiles/bundle/vimshell.vim/.vimshell_hist',
+    \ 'scheme' : $VIM.'/vimfiles/bundle/gosh/.gosh_completions'
 \ }
 
 " Define keyword.
@@ -526,11 +532,17 @@ endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+"inoremap <expr><BS> neocomplete#smart_close_popup()."\<Left><DELETE>"
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  " For no inserting <CR> key.
+  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+endfunction
 
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
 let g:neocomplete#enable_insert_char_pre = 1
+let g:neocomplete#enable_auto_select = 1
 
 " Enable omni completion.
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -538,7 +550,7 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType vim map <buffer> <Leader><space> :w!<CR>:source %<CR>
+autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteVim
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
@@ -560,7 +572,6 @@ endfunction
 " tern_node_js onmicomplete with YouCompleteMe
 let tern#is_show_argument_hints_enabled= 1
 let g:tern_show_argument_hints="on_hold"
-
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use [YouCompleteMe] or [NeoComplete].
@@ -659,16 +670,21 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
 set wildignore+=*/.nx/**,*.app,*.git,.git
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 
 let g:ctrlp_map = '<C-\>'
+"let g:ctrlp_user_command = 'dir %s /-n /b /s /a-d'
+"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
 "let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-"      \ --ignore .git
-"      \ --ignore .svn
-"      \ --ignore .hg
-"      \ --ignore .DS_Store
+""      \ --ignore .git
+""      \ --ignore .svn
+""      \ --ignore .hg
+""      \ --ignore .DS_Store
+""      \ --ignore .idea
 "      \ --ignore "**/*.pyc"
-"      \ -g ""'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+""      \ -g ""'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|exe)$'
+"let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
 
 " Ack Settings
 if executable('ag')
@@ -697,11 +713,16 @@ let g:incsearch#auto_nohlsearch = 1
 let g:mwDefaultHighlightingPalette = 'maximum'
 let g:mwAutoLoadMarks = 1
 
+" Vim EasyTags
+" Install Ctags Plugin for using
+" http://ctags.sourceforge.net/
+" On Windows you Must add it to the System $PATH
+
 " --------- KeyMapping Config -----------
 
 nnoremap <F3> :TableModeToggle<CR>
 nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-nnoremap <F5> :NERDTreeToggle<CR>
+nnoremap <F5> :TagbarToggle<CR>
 nnoremap <F6> :SyntasticToggleMode <CR>
 nnoremap <F7> :GundoToggle<CR>
 
@@ -764,19 +785,9 @@ cnoremap <M-l> <Right>
 " Like Emacs
 inoremap <C-e> <End>
 inoremap <C-b> <Home>
-inoremap <C-u> <ESC>S
-inoremap <C-f> <Down><End>
-inoremap <C-r> <Up><End>
-inoremap <C-d> <Up><Home>
-inoremap <C-g> <Down><Home>
 
 inoremap <M-e> <End>
 inoremap <M-b> <Home>
-inoremap <M-u> <ESC>S
-inoremap <M-f> <Down><End>
-inoremap <M-r> <Up><End>
-inoremap <M-d> <Up><Home>
-inoremap <M-g> <Down><Home>
 
 " Buftabline Config
 nnoremap <A-j> :bnext<CR>
@@ -803,28 +814,34 @@ nnoremap <leader>hs :MRU<CR>
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cx :%s///gm
 nnoremap <leader>cf :CtrlPFunky<CR>
+nnoremap <Leader>cs :CtrlPLocate<CR>
 
+noremap <silent> <C-v> <ESC>"+gpi
 " repeat Prev Command
 nnoremap <leader>. @:
 vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
 " Ag searcher
-nnoremap <leader>ui :Unite file -complete<CR>
-nnoremap <leader>uf :Unite file find:<CR>
-nnoremap <leader>up :Unite file_rec/async<CR>
+nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
 nnoremap <leader>ub :Unite file buffer<CR>
 nnoremap <leader>vf :VimFiler<CR>
-nnoremap <leader>vs :vs<CR>
-nnoremap <leader>lp :sp<CR>
+
+" Split faster
+nnoremap <leader>\ :vs<CR>
+nnoremap <leader>- :sp<CR>
+" End Split
 
 " first to copy files path
 " copy path
-nnoremap <silent> <leader>p "+gp
-nnoremap <silent> <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
+nnoremap <leader>p "+gp
+vnoremap <Leader>p "+p
+vnoremap <leader>y "+y
+vnoremap <Leader>d "+d
+nnoremap <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
       \ path '".expand("%:p")."' to clipboard"<CR>
-inoremap <silent> <C-v> <ESC>"+gpi
+inoremap <C-v> <ESC>"+gpi
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
@@ -845,6 +862,8 @@ nnoremap <leader>sk [szz
 nnoremap <leader>sa zg]szz
 nnoremap <leader>sd 1z=
 nnoremap <leader>sf z=
+"Vim Shell Faster
+nnoremap <leader>sh :VimShell<CR>
 
 " Multi Cursor Find
 vnoremap <leader>mf :MultipleCursorsFind 
@@ -855,7 +874,7 @@ map J <Plug>(expand_region_shrink)
 
 " For Git fire
 nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit %f -m " 
+nnoremap <leader>gc :Gcommit  
 nnoremap <leader>gb :Gblame 
 nnoremap <leader>gv :Gitv<CR>
 nnoremap <leader>gr :Gremove 
@@ -863,6 +882,11 @@ nnoremap <leader>gl :Glog<CR>
 nnoremap <leader>gt :Git 
 nnoremap <leader>gp :Git push origin master<CR>
 nnoremap <leader>gu :Git pull -u<CR>
+
+" For SVN fire
+nnoremap <leader>sc :!svn ci -m ""<CR>
+nnoremap <leader>su :!svn up<CR>
+nnoremap <leader>st :!svn st<CR>
 
 " Editor dotfile
 nnoremap <leader>en :e! ~/.nvimrc<CR>
@@ -883,6 +907,22 @@ map g# <Plug>(incsearch-nohl-g#)zzzv
 " Mark vim Plugin
 nnoremap <Leader>M <Plug>MarkToggle
 nnoremap <Leader>N <Plug>MarkAllClear
+
+"Sneak
+"replace 'f' with 1-char Sneak
+"nmap f <Plug>Sneak_f
+"nmap F <Plug>Sneak_F
+"xmap f <Plug>Sneak_f
+"xmap F <Plug>Sneak_F
+"omap f <Plug>Sneak_f
+"omap F <Plug>Sneak_F
+"replace 't' with 1-char Sneak
+"nmap t <Plug>Sneak_t
+"nmap T <Plug>Sneak_T
+"xmap t <Plug>Sneak_t
+"xmap T <Plug>Sneak_T
+"omap t <Plug>Sneak_t
+"omap T <Plug>Sneak_T
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
