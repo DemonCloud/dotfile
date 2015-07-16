@@ -26,27 +26,21 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'L9'
 Plugin 'Lokaltog/vim-distinguished'
-"Plugin 'romainl/vim-qf'
+Plugin 'romainl/vim-qf'
 Plugin 'mattn/webapi-vim'
 Plugin 'bruno-/vim-alt-mappings'
 
-" @ Plugin --- [ ColorScheme ]
-Plugin 'DemonCloud/J'
-Plugin 'DemonCloud/vim-aixinde'
-"Plugin 'bling/vim-airline'
-Plugin 'ryanoasis/vim-devicons'
-
 " @ Plugin --- [ File Buffer Manager ]
 Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ap/vim-buftabline'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/vimfiler.vim'
-"Plugin 'yegappan/mru'
+Plugin 'yegappan/mru'
 Plugin 'danro/rename.vim'
-
 
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plugin 'simnalamburt/vim-mundo'
@@ -66,7 +60,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'tacahiroy/ctrlp-funky'
 Plugin 'ompugao/ctrlp-locate'
 Plugin 'JazzCore/ctrlp-cmatcher'
@@ -116,6 +110,12 @@ Plugin 'plasticboy/vim-markdown'
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
 Plugin 'dimasg/vim-mark'
+
+" @ Plugin --- [ ColorScheme ]
+Plugin 'DemonCloud/J'
+Plugin 'DemonCloud/vim-aixinde'
+"Plugin 'bling/vim-airline'
+Plugin 'ryanoasis/vim-devicons'
 
 " ---- Plugin List Complete ----
 
@@ -241,7 +241,7 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "-------------------- NeoComplete ---------------------
 
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
+let g:acp_enableAtStartup = 1
 " Use neocomplete.
 let g:neocomplete#enable_at_startup = 1
 " Use smartcase.
@@ -386,8 +386,7 @@ call vimfiler#custom#profile('default', 'context', {
 " Like Textmate icons.
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '-'
-let g:vimfiler_tree_closed_icon = '+'
-"let g:vimfiler_file_icon = '-'
+let g:vimfiler_tree_closed_icon = '>'
 let g:vimfiler_marked_file_icon = '*'
 " Use trashbox.
 " Windows only and require latest vimproc.
@@ -453,16 +452,43 @@ let g:easytags_async = 1
 set tags=~/.vim/tags;
 
 " DevIcons Config
+" ColorFul NERDTree
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+	exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+	exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
+call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
+call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
+call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
+call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
+call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
+call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
+call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+
+let g:NERDTreeDirArrows=0
 let g:webdevicons_enable = 1
 let g:webdevicons_enable_nerdtree = 1
 let g:webdevicons_enable_unite = 1
 let g:webdevicons_enable_vimfiler = 1
 let g:WebDevIconsUnicodeDecorateFileNodes = 1
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
+let g:WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
 
 " ========================= Plugin Config End =========================
 
