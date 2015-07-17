@@ -3,27 +3,27 @@ set nocompatible
 " Default System Config
 set diffexpr=MyDiff()
 function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+	let opt = '-a --binary '
+	if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+	if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+	let arg1 = v:fname_in
+	if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+	let arg2 = v:fname_new
+	if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+	let arg3 = v:fname_out
+	if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+	let eq = ''
+	if $VIMRUNTIME =~ ' '
+		if &sh =~ '\<cmd'
+			let cmd = '""' . $VIMRUNTIME . '\diff"'
+			let eq = '"'
+		else
+			let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+		endif
+	else
+		let cmd = $VIMRUNTIME . '\diff'
+	endif
+	silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 endfunction
 
 "------ Begin ------
@@ -150,28 +150,28 @@ set fileformats=unix,dos,mac
 " Diff GUI Vim with NVim
 " Set No Top Menu and Scroll
 if has("gui_running")
-  set guioptions-=e
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=L
-  set guioptions-=r
-  set guioptions-=B
-  set guioptions-=0
-  set go=
-  set guitablabel=
-  set paste
-  set mousemodel=popup_setpos
-  set mouse-=a
-  set shell=cmd.exe
-  "set guitablabel=%M\ %t
-  autocmd! InsertLeave * set imdisable
-  autocmd! InsertEnter * set noimdisable
-  noremap / :set noimdisable<CR>/
+	set guioptions-=e
+	set guioptions-=m
+	set guioptions-=T
+	set guioptions-=L
+	set guioptions-=r
+	set guioptions-=B
+	set guioptions-=0
+	set go=
+	set guitablabel=
+	set paste
+	set mousemodel=popup_setpos
+	set mouse-=a
+	set shell=cmd.exe
+	"set guitablabel=%M\ %t
+	autocmd! InsertLeave * set imdisable
+	autocmd! InsertEnter * set noimdisable
+	noremap / :set noimdisable<CR>/
 else
-  set t_Co=256
-  set showtabline=1
-  set noimd
-  set ttimeoutlen=0
+	set t_Co=256
+	set showtabline=1
+	set noimd
+	set ttimeoutlen=0
 endif
 
 set spelllang=en_us                      " spelling options
@@ -361,49 +361,49 @@ hi f5g guibg=#000000 guifg=#181818 ctermbg=16 ctermfg=234 gui=NONE cterm=NONE te
 "hi f1 guibg=#981000 guifg=#ffffff gui=NONE
 let g:last_mode = 'n'
 function! StatuslineModeColor()
-  let l:Status=mode()
+	let l:Status=mode()
 
-  if l:Status !=# g:last_mode
-    let g:last_mode = l:Status
+	if l:Status !=# g:last_mode
+		let g:last_mode = l:Status
 
-    if l:Status == 'n'
-      hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230
-      hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52
-    elseif l:Status == 'i'
-      hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16
-      hi f1r guibg=#181818 guifg=#79BE61 ctermbg=234 ctermfg=83
-    elseif l:Status == 'v'
-      hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
-      hi f1r guibg=#181818 guifg=#276888 ctermbg=234 ctermfg=32
-    else
-      hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16
-      hi f1r guibg=#181818 guifg=#C0C280 ctermbg=234 ctermfg=230
-    endif
-  endif
+		if l:Status == 'n'
+			hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230
+			hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52
+		elseif l:Status == 'i'
+			hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16
+			hi f1r guibg=#181818 guifg=#79BE61 ctermbg=234 ctermfg=83
+		elseif l:Status == 'v'
+			hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
+			hi f1r guibg=#181818 guifg=#276888 ctermbg=234 ctermfg=32
+		else
+			hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16
+			hi f1r guibg=#181818 guifg=#C0C280 ctermbg=234 ctermfg=230
+		endif
+	endif
 
-  if l:Status ==# "n"
-    return "NORMAL"
-  elseif l:Status ==# "i"
-    return "INSERT"
-  elseif l:Status ==# "c"
-    return "COMMAND"
-  elseif l:Status ==# "R"
-    return "REPLACE"
-  elseif l:Status ==# "t"
-    return "TERMINAL"
-  elseif l:Status ==# "v"
-    return "VISUAL"
-  elseif l:Status ==# "V"
-    return "V·LINE"
-  elseif l:Status ==# "s"
-    return "SELECT"
-  elseif l:Status ==# "S"
-    return "SELEALL"
-  elseif l:Status ==# ""
-    return "V·BLOCK"
-  else
-    return l:Status
-  endif
+	if l:Status ==# "n"
+		return "NORMAL"
+	elseif l:Status ==# "i"
+		return "INSERT"
+	elseif l:Status ==# "c"
+		return "COMMAND"
+	elseif l:Status ==# "R"
+		return "REPLACE"
+	elseif l:Status ==# "t"
+		return "TERMINAL"
+	elseif l:Status ==# "v"
+		return "VISUAL"
+	elseif l:Status ==# "V"
+		return "V·LINE"
+	elseif l:Status ==# "s"
+		return "SELECT"
+	elseif l:Status ==# "S"
+		return "SELEALL"
+	elseif l:Status ==# ""
+		return "V·BLOCK"
+	else
+		return l:Status
+	endif
 endfunc
 
 set statusline=%#f1#\ %{StatuslineModeColor()}\ %#f1r#⮀\ 
@@ -432,23 +432,23 @@ autocmd FileType nerdtree syntax match hideBracketsInNerdTree "\]" contained con
 let g:tagbar_ctags_bin = "$VIM/vimfiles/bundle/tagbar/ctags.exe"
 " for coffeeScript
 let g:tagbar_type_coffee = {
-    \ 'ctagstype' : 'coffee',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 'm:methods',
-        \ 'f:functions',
-        \ 'v:variables',
-        \ 'f:fields',
-    \ ]
-\ }
+			\ 'ctagstype' : 'coffee',
+			\ 'kinds'     : [
+			\ 'c:classes',
+			\ 'm:methods',
+			\ 'f:functions',
+			\ 'v:variables',
+			\ 'f:fields',
+			\ ]
+			\ }
 let g:tagbar_type_css = {
-\ 'ctagstype' : 'Css',
-    \ 'kinds'     : [
-        \ 'c:classes',
-        \ 's:selectors',
-        \ 'i:identities'
-    \ ]
-\ }
+			\ 'ctagstype' : 'Css',
+			\ 'kinds'     : [
+			\ 'c:classes',
+			\ 's:selectors',
+			\ 'i:identities'
+			\ ]
+			\ }
 "# Please read the TagBar documentation
 "let g:tagbar_type_javascript = {
 "    \ 'ctagsbin' : 'path/to/jsctags'
@@ -483,20 +483,20 @@ let g:ycm_disable_for_files_larger_than_kb = 10000
 let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
 let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'mail' : 1,
-      \ 'mundo': 1,
-      \ 'fzf': 1,
-      \ 'ctrlp' : 1
-      \}
+			\ 'tagbar' : 1,
+			\ 'qf' : 1,
+			\ 'notes' : 1,
+			\ 'markdown' : 1,
+			\ 'unite' : 1,
+			\ 'text' : 1,
+			\ 'vimwiki' : 1,
+			\ 'pandoc' : 1,
+			\ 'infolog' : 1,
+			\ 'mail' : 1,
+			\ 'mundo': 1,
+			\ 'fzf': 1,
+			\ 'ctrlp' : 1
+			\}
 
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
@@ -520,14 +520,14 @@ let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $VIM.'/vimfiles/bundle/vimshell.vim/.vimshell_hist',
-    \ 'scheme' : $VIM.'/vimfiles/bundle/gosh/.gosh_completions'
-\ }
+			\ 'default' : '',
+			\ 'vimshell' : $VIM.'/vimfiles/bundle/vimshell.vim/.vimshell_hist',
+			\ 'scheme' : $VIM.'/vimfiles/bundle/gosh/.gosh_completions'
+			\ }
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
+	let g:neocomplete#keyword_patterns = {}
 endif
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
@@ -535,8 +535,8 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 function! s:my_cr_function()
-  " For no inserting <CR> key.
-  return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+	" For no inserting <CR> key.
+	return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 endfunction
 
 "let g:neocomplete#enable_cursor_hold_i = 1
@@ -554,7 +554,7 @@ autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteVim
 
 " Enable heavy omni completion.
 if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
+	let g:neocomplete#sources#omni#input_patterns = {}
 endif
 let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
@@ -562,11 +562,11 @@ let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\
 
 " Noconflict NeoComplete With Vim Multiple Cursors
 function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
+	exe 'NeoCompleteLock'
 endfunction
 "
 function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
+	exe 'NeoCompleteUnlock'
 endfunction
 
 " tern_node_js onmicomplete with YouCompleteMe
@@ -585,17 +585,17 @@ let g:UltiSnipsEditSplit="vertical"
 " change <Tab> config , if use [YouCompleteMe]
 let g:user_emmet_expandabbr_key ='<S-Tab>'
 let g:user_emmet_settings = {
-\ 'php'     : {
-\ 'extends' : 'html',
-\ 'filters' : 'c',
-\ },
-\ 'xml'     : {
-\ 'extends' : 'html',
-\ },
-\ 'haml'    : {
-\ 'extends' : 'html',
-\ },
-\}
+			\ 'php'     : {
+			\ 'extends' : 'html',
+			\ 'filters' : 'c',
+			\ },
+			\ 'xml'     : {
+			\ 'extends' : 'html',
+			\ },
+			\ 'haml'    : {
+			\ 'extends' : 'html',
+			\ },
+			\}
 
 
 " C++ Syntax HighLight
@@ -628,18 +628,18 @@ let g:unite_source_history_yank_enable      = 1
 let g:unite_split_rule                      = "botright"
 let g:unite_update_time                     = 100
 call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-      \ 'ignore_pattern', join([
-      \ '\.git/',
-      \ 'git5/.*/review/',
-      \ 'google/obj/',
-      \ 'tmp/',
-      \ '.sass-cache',
-      \ 'node_modules/',
-      \ 'bower_components/',
-      \ 'dist/',
-      \ '.git5_specs/',
-      \ '.pyc',
-      \ ], '\|'))
+			\ 'ignore_pattern', join([
+			\ '\.git/',
+			\ 'git5/.*/review/',
+			\ 'google/obj/',
+			\ 'tmp/',
+			\ '.sass-cache',
+			\ 'node_modules/',
+			\ 'bower_components/',
+			\ 'dist/',
+			\ '.git5_specs/',
+			\ '.pyc',
+			\ ], '\|'))
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
@@ -653,10 +653,10 @@ let g:vimfiler_ignore_pattern       = '^\%(.git\|.idea\|.DS_Store\)$'
 
 "CtrlP Settings
 if executable('ag')
-" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
- let g:ctrlp_clear_cache_on_exit = 1
+	" let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+	let g:ctrlp_clear_cache_on_exit = 1
 else
- let g:ctrlp_clear_cache_on_exit = 0
+	let g:ctrlp_clear_cache_on_exit = 0
 endif
 " CtrlP Settings
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
@@ -688,11 +688,11 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn|exe)$'
 
 " Ack Settings
 if executable('ag')
-  let g:ackprg = "ag --nocolor --nogroup --column"
+	let g:ackprg = "ag --nocolor --nogroup --column"
 elseif executable('ack-grep')
-  let g:ackprg = "ack-grep --nocolor --nogroup --column"
+	let g:ackprg = "ack-grep --nocolor --nogroup --column"
 elseif executable('ack')
-  let g:ackprg = "ack --nocolor --nogroup --column"
+	let g:ackprg = "ack --nocolor --nogroup --column"
 endif
 
 " Multip Cursor
@@ -830,7 +830,7 @@ vnoremap <Leader>p "+p
 vnoremap <leader>y "+y
 vnoremap <Leader>d "+d
 nnoremap <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
-      \ path '".expand("%:p")."' to clipboard"<CR>
+			\ path '".expand("%:p")."' to clipboard"<CR>
 inoremap <C-v> <ESC>"+gpi
 
 " Vundle keyfire
@@ -926,12 +926,12 @@ endfunc
 " ========================= GUI Setting =========================
 
 map <silent> <F2> :if &guioptions =~# 'T' <Bar>
-        \set guioptions-=T <Bar>
-        \set guioptions-=m <bar>
-    \else <Bar>
-        \set guioptions+=T <Bar>
-        \set guioptions+=m <Bar>
-    \endif<CR>
+			\set guioptions-=T <Bar>
+			\set guioptions-=m <bar>
+			\else <Bar>
+			\set guioptions+=T <Bar>
+			\set guioptions+=m <Bar>
+			\endif<CR>
 
 " ========================= GUI End =========================
 " End vimrc
