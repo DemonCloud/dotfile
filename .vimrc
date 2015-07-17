@@ -8,7 +8,7 @@ runtime! debian.vim
 " Not complete with Vi Mode
 set nocompatible
 set regexpengine=1
-set history=9999
+set history=10000
 
 " @Replace <leader> key map to <space>
 let mapleader=" "
@@ -45,8 +45,8 @@ Plugin 'danro/rename.vim'
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
+"Plugin 'xolox/vim-misc'
+"Plugin 'xolox/vim-easytags'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'justinmk/vim-sneak'
@@ -69,8 +69,8 @@ Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'rdnetto/YCM-Generator'
+"Plugin 'Valloric/YouCompleteMe'
+"Plugin 'rdnetto/YCM-Generator'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'JazzCore/neocomplcache-ultisnips'
@@ -83,6 +83,7 @@ Plugin 'mattn/livestyle-vim'
 Plugin 'Raimondi/delimitMate'
 
 " @ Plugin --- [ Geeks Plugin ]
+Plugin 'tpope/vim-git'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'tpope/vim-abolish'
@@ -95,7 +96,6 @@ Plugin 'bruno-/vim-man'
 Plugin 'dhruvasagar/vim-table-mode'
 
 " @ Plugin --- [ Syntax ] 
-Plugin 'tpope/vim-git'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ap/vim-css-color'
 Plugin 'groenewege/vim-less'
@@ -206,37 +206,37 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
 "-------------------- YouCompleteMe -------------------
-let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_use_ultisnips_completer = 1
-let g:ycm_cache_omnifunc = 1
-let g:ycm_disable_for_files_larger_than_kb = 10000
-let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
-let g:ycm_filetype_blacklist = {
-			\ 'tagbar' : 1,
-			\ 'qf' : 1,
-			\ 'notes' : 1,
-			\ 'markdown' : 1,
-			\ 'unite' : 1,
-			\ 'text' : 1,
-			\ 'vimwiki' : 1,
-			\ 'pandoc' : 1,
-			\ 'infolog' : 1,
-			\ 'mail' : 1,
-			\ 'mundo': 1,
-			\ 'fzf': 1,
-			\ 'ctrlp' : 1
-			\}
+" let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_min_num_of_chars_for_completion = 2
+" let g:ycm_add_preview_to_completeopt = 1
+" let g:ycm_use_ultisnips_completer = 1
+" let g:ycm_cache_omnifunc = 1
+" let g:ycm_disable_for_files_larger_than_kb = 10000
+" let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
+" let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
+" let g:ycm_filetype_blacklist = {
+" 			\ 'tagbar' : 1,
+" 			\ 'qf' : 1,
+" 			\ 'notes' : 1,
+" 			\ 'markdown' : 1,
+" 			\ 'unite' : 1,
+" 			\ 'text' : 1,
+" 			\ 'vimwiki' : 1,
+" 			\ 'pandoc' : 1,
+" 			\ 'infolog' : 1,
+" 			\ 'mail' : 1,
+" 			\ 'mundo': 1,
+" 			\ 'fzf': 1,
+" 			\ 'ctrlp' : 1
+" 			\}
 
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
+" let g:ycm_error_symbol = '>>'
+" let g:ycm_warning_symbol = '>*'
 
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+" nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "-------------------- NeoComplete ---------------------
 
@@ -445,7 +445,6 @@ let g:incsearch#auto_nohlsearch = 1
 let g:mwDefaultHighlightingPalette = 'maximum'
 let g:mwAutoLoadMarks = 1
 
-
 " Vim-EasyTags 
 "let g:easytags_cmd = '/usr/bin/ctags'
 let g:easytags_async = 1
@@ -458,24 +457,24 @@ function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
 	exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
-call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
-call NERDTreeHighlightFile('ini', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('md', 'blue', 'none', '#3366FF', '#151515')
-call NERDTreeHighlightFile('yml', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('config', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('conf', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('json', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('html', 'yellow', 'none', 'yellow', '#151515')
-call NERDTreeHighlightFile('styl', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('css', 'cyan', 'none', 'cyan', '#151515')
-call NERDTreeHighlightFile('coffee', 'Red', 'none', 'red', '#151515')
-call NERDTreeHighlightFile('js', 'Red', 'none', '#ffa500', '#151515')
-call NERDTreeHighlightFile('php', 'Magenta', 'none', '#ff00ff', '#151515')
-call NERDTreeHighlightFile('ds_store', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitconfig', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('gitignore', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashrc', 'Gray', 'none', '#686868', '#151515')
-call NERDTreeHighlightFile('bashprofile', 'Gray', 'none', '#686868', '#151515')
+call NERDTreeHighlightFile('jade'        , '202' , '232' , '#F27221' , '#080808')
+call NERDTreeHighlightFile('ini'         , '15'  , '232' , '#FFFFFF' , '#080808')
+call NERDTreeHighlightFile('md'          , '238' , '232' , '#444444' , '#080808')
+call NERDTreeHighlightFile('yml'         , '241' , '232' , '#606060' , '#080808')
+call NERDTreeHighlightFile('config'      , '15'  , '232' , '#FFFFFF' , '#080808')
+call NERDTreeHighlightFile('conf'        , '15'  , '232' , '#FFFFFF' , '#080808')
+call NERDTreeHighlightFile('json'        , '63'  , '232' , '#255899' , '#080808')
+call NERDTreeHighlightFile('html'        , '202' , '232' , '#F27221' , '#080808')
+call NERDTreeHighlightFile('styl'        , '144' , '232' , '#C0C280' , '#080808')
+call NERDTreeHighlightFile('css'         , '144' , '232' , '#C0C280' , '#080808')
+call NERDTreeHighlightFile('coffee'      , '88'  , '232' , '#870000' , '#080808')
+call NERDTreeHighlightFile('js'          , '88'  , '232' , '#870000' , '#080808')
+call NERDTreeHighlightFile('php'         , '63'  , '232' , '#255899' , '#080808')
+call NERDTreeHighlightFile('ds_store'    , '23'  , '232' , '#005F5F' , '#080808')
+call NERDTreeHighlightFile('gitconfig'   , '15'  , '232' , '#FFFFFF' , '#080808')
+call NERDTreeHighlightFile('gitignore'   , '15'  , '232' , '#FFFFFF' , '#080808')
+call NERDTreeHighlightFile('bashrc'      , '15'  , '232' , '#FFFFFF' , '#080808')
+call NERDTreeHighlightFile('bashprofile' , '15'  , '232' , '#FFFFFF' , '#080808')
 
 let g:NERDTreeDirArrows=0
 let g:webdevicons_enable = 1
@@ -614,7 +613,7 @@ if has("gui_running")
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10
-	set guifont=Aix\ 11
+	set guifont=Aix\ 9
 else
 	set t_Co=256
 	set showtabline=2
