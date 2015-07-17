@@ -2,20 +2,10 @@
 
 ## Introduction 简介
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-1.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y1.png" alt="YVIM Neo previews"/>
 <hr>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-2.png" alt="YVIM Coding previews">
-<hr>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-3.png" alt="YVIM Coding previews">
-<hr>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-4.png" alt="YVIM Coding previews">
-<hr>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yvim-5.png" alt="YVIM Coding previews">
-<hr>
+<a href="#screen" rel="#screen">Screen Shot ::BOOM! </a>
 
 这些配置文件做了如下事情：
 
@@ -159,6 +149,61 @@
 输入 ``:BundleUpdate``  更新插件
 
 注意：``:BundleClean`` 清理插件请慎用.
+
+## Screen Shot 截图
+
+
+#### Preview
+
+<img id="screen" src="http://7j1zwt.com1.z0.glb.clouddn.com/y1.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y2.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y3.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y4.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y5.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y6.png" alt="YVIM Neo previews"/>
+
+#### GitView
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y7.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y8.png" alt="YVIM Neo previews"/>
+
+#### HTML
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yhtml1.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yhtml2.png" alt="YVIM Neo previews"/>
+
+#### CSS
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ycss1.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ycss2.png" alt="YVIM Neo previews"/>
+
+#### JavaScript
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjs1.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjs2.png" alt="YVIM Neo previews"/>
+
+#### PHP
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yphp1.png" alt="YVIM Neo previews"/>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yphp2.png" alt="YVIM Neo previews"/>
+
+#### JSON
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjson.png" alt="YVIM Neo previews"/>
+
+#### MarkDown
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ymkd.png" alt="YVIM Neo previews"/>
 
 
 ## Date 日志
