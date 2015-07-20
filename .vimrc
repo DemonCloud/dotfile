@@ -8,7 +8,7 @@ runtime! debian.vim
 " Not complete with Vi Mode
 set nocompatible
 set regexpengine=1
-set history=10000
+set history=8888
 
 " @Replace <leader> key map to <space>
 let mapleader=" "
@@ -16,7 +16,6 @@ let mapleader=" "
 " ========================= Vundle Plugin Manager =========================
 
 filetype off
-
 " Vundle Config Manager
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -50,8 +49,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'justinmk/vim-sneak'
+"Plugin 'goldfeld/vim-seek'
 Plugin 'haya14busa/incsearch.vim'
-Plugin 'vim-scripts/gitignore'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 
@@ -523,7 +522,7 @@ set display=lastline
 
 " Encoding setting
 set encoding=utf-8
-setglobal fileencoding=utf-8
+set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 set termencoding=utf-8
 
@@ -799,15 +798,15 @@ map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
 " For Git fire
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit  
-nnoremap <leader>gb :Gblame 
-nnoremap <leader>gv :Gitv<CR>
-nnoremap <leader>gr :Gremove 
-nnoremap <leader>gl :Glog<CR>
-nnoremap <leader>gt :Git 
-nnoremap <leader>gp :Git push origin master<CR>
-nnoremap <leader>gu :Git pull -u<CR>
+nnoremap <leader>gs : Gstatus<CR>
+nnoremap <leader>gc : Gcommit
+nnoremap <leader>gb : Gblame
+nnoremap <leader>gv : Gitv<CR>
+nnoremap <leader>gr : Gremove
+nnoremap <leader>gl : Glog<CR>
+nnoremap <leader>gt : Git
+nnoremap <leader>gp : Git push origin master<CR>
+nnoremap <leader>gu : Git pull -u<CR>
 
 " For SVN fire
 nnoremap <leader>sc :!svn ci -m ""<CR>
