@@ -8,15 +8,15 @@ runtime! debian.vim
 " Not complete with Vi Mode
 set nocompatible
 set regexpengine=1
-set history=10000
+set history=8888
 
 " @Replace <leader> key map to <space>
 let mapleader=" "
+let g:deoplete#enable_at_startup = 1
 
 " ========================= Vundle Plugin Manager =========================
 
 filetype off
-
 " Vundle Config Manager
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -50,8 +50,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 "Plugin 'justinmk/vim-sneak'
+"Plugin 'goldfeld/vim-seek'
 Plugin 'haya14busa/incsearch.vim'
-Plugin 'vim-scripts/gitignore'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 
@@ -71,8 +71,9 @@ Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
 "Plugin 'Valloric/YouCompleteMe'
 "Plugin 'rdnetto/YCM-Generator'
-Plugin 'Shougo/neocomplete.vim'
-Plugin 'Shougo/neocomplcache.vim'
+"Plugin 'Shougo/neocomplete.vim'
+"Plugin 'Shougo/neocomplcache.vim'
+Plugin 'Shougo/deoplete.nvim'
 Plugin 'JazzCore/neocomplcache-ultisnips'
 
 " @ Plugin --- [ Code Complete Unity ]
@@ -239,38 +240,37 @@ let g:syntastic_javascript_checkers = ['jshint']
 " nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "-------------------- NeoComplete ---------------------
-
 " Disable AutoComplPop.
-let g:acp_enableAtStartup = 1
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
+" let g:acp_enableAtStartup = 1
+" " Use neocomplete.
+" let g:neocomplete#enable_at_startup = 1
+" " Use smartcase.
+" let g:neocomplete#enable_smart_case = 1
+" " Set minimum syntax keyword length.
+" let g:neocomplete#sources#syntax#min_keyword_length = 2
+" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
 
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-			\ 'default' : '',
-			\ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
-			\ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
-			\ }
+" " Define dictionary.
+" let g:neocomplete#sources#dictionary#dictionaries = {
+" 			\ 'default' : '',
+" 			\ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
+" 			\ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
+" 			\ }
 
 " Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-	let g:neocomplete#keyword_patterns = {}
-endif
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+" if !exists('g:neocomplete#keyword_patterns')
+" 	let g:neocomplete#keyword_patterns = {}
+" endif
+" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-	"return neocomplete#close_popup() . "\<CR>"
-	" For no inserting <CR> key.
-	return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-endfunction
+" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function()
+" 	"return neocomplete#close_popup() . "\<CR>"
+" 	" For no inserting <CR> key.
+" 	return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+" endfunction
 
 "let g:neocomplete#enable_cursor_hold_i = 1
 " Or set this.
@@ -286,21 +286,21 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteVim
 
 " Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-	let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+"if !exists('g:neocomplete#sources#omni#input_patterns')
+""	let g:neocomplete#sources#omni#input_patterns = {}
+"endif
+"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
 " Noconflict NeoComplete With Vim Multiple Cursors
-function! Multiple_cursors_before()
-	exe 'NeoCompleteLock'
-endfunction
+"function! Multiple_cursors_before()
+"	exe 'NeoCompleteLock'
+"endfunction
 "
-function! Multiple_cursors_after()
-	exe 'NeoCompleteUnlock'
-endfunction
+"function! Multiple_cursors_after()
+"	exe 'NeoCompleteUnlock'
+"endfunction
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -523,7 +523,7 @@ set display=lastline
 
 " Encoding setting
 set encoding=utf-8
-setglobal fileencoding=utf-8
+set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
 set termencoding=utf-8
 
@@ -799,15 +799,15 @@ map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
 " For Git fire
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit  
-nnoremap <leader>gb :Gblame 
-nnoremap <leader>gv :Gitv<CR>
-nnoremap <leader>gr :Gremove 
-nnoremap <leader>gl :Glog<CR>
-nnoremap <leader>gt :Git 
-nnoremap <leader>gp :Git push origin master<CR>
-nnoremap <leader>gu :Git pull -u<CR>
+nnoremap <leader>gs : Gstatus<CR>
+nnoremap <leader>gc : Gcommit
+nnoremap <leader>gb : Gblame
+nnoremap <leader>gv : Gitv<CR>
+nnoremap <leader>gr : Gremove
+nnoremap <leader>gl : Glog<CR>
+nnoremap <leader>gt : Git
+nnoremap <leader>gp : Git push origin master<CR>
+nnoremap <leader>gu : Git pull -u<CR>
 
 " For SVN fire
 nnoremap <leader>sc :!svn ci -m ""<CR>
