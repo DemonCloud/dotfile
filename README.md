@@ -136,8 +136,6 @@
 
 #### Preview
 
-<img id="screen" src="http://7j1zwt.com1.z0.glb.clouddn.com/y1.png" alt="YVIM Neo previews"/>
-
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/y2.png" alt="YVIM Neo previews"/>
 
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/y3.png" alt="YVIM Neo previews"/>
