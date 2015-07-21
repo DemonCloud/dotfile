@@ -1,4 +1,4 @@
-# YiJun Gvim DotFile
+# Aix-Vim 
 
 ## Introduction 简介
 
@@ -29,19 +29,13 @@
 
 更新项目 ： ``git pull -u``
 
+
+
 <br>
 
 #### Windows
 
 下载 ：
-
-- 最新的Vim Windows编译版，来自原生的Source，不像某些无良的编译者， 连Vim作者的名字都改成了自己的， **很讨厌那种不尊重原作者的人**，所以我自己编译了一个：
-
-- Vim 7.4.777 集成了2015年5月777 补丁集成。作者最新一版更新是在最近的7月12，ftp此地址上可以看到最新的更新动态 : 
-		
-<a href="ftp://ftp.vim.org/pub/vim/patches/7.4/README" target="_blank">FTP for Vim subversion</a> 
-
-- 不过追求稳定就没有编译最新的patch版本，YVIM 集成的patch 777 和最新的 781 差了4个发布更新
 
 [[YCIM for Windows](http://pan.baidu.com/s/1i3ImvyP) -- Update 2015.7.14 集成 NeoComplete 和 YoucompleteMe 支持 Ultisnips\(强力推荐，请看下面，安装Lua\)
 
@@ -49,17 +43,7 @@
 >
 > 注意：请运行 ``Vim\vim74\gvim.exe`` 文件. 此文件重新编译 最新版本YVIM 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
 >
-> 关于字体的话, 我这里分享一个 PragmataPro : [Download](http://pan.baidu.com/s/1o6mlBPg)
->
-> 如果不想使用我已经上传的**Gvim**压缩包:
->
-> 但仍需要在 Windows下使用 **YoucompleteMe** 的插件， 可以直接Vundle安装以下这个已经编译好的YCM_WIN_x86的项目 ->
->
-> [YouCompleteMe For Windows x86](https://github.com/xleng/YCM_WIN_X86)
->
-> 注: **YouCompleteMe For Windows x86** 这个项目是Windows下已经编译好的YCM, 因为项目文件过大, 所以有可能用Vundle会安装失败,建议直接git clone之后丢到 vimfile/bundle/里,在_vimrc中加入 Plugin 'xleng/YCM_WIN_X86'.  然后Update 一次Vundle
->
-> **在下载完成打包好的 YVIM 建议将 _vimrc 替换一次. 因为可能不是最新的配置**
+> Window 2015.7.1 之后不再更新
 
 <br>
 
@@ -71,16 +55,13 @@
 
 >	``sudo apt-get install vim vim-gnome vim-gtk``
 
-
 <br/>
 > **2.** 安装 [Vundle](https://github.com/gmarik/Vundle.vim)
 
 <br/>
-> **3.** 将项目中的 ``.vimrc`` 文件放置在 ``~/`` 或者 ``/usr/share/vim`` 目录下.
+> **3.** 将除了``_vimrc``文件之外的所有文件都Copy到``~/``,也就是Linux Home 根目录下 
 
-> 更多具体的位置，可以输入``:version``查看Vim默认配置文件的几个路径.
-
-> 启动 ``GVim`` 即可
+> 更多具体的位置信息，可以输入``:version``查看Vim默认配置文件的几个路径.
 
 <br/>
 
@@ -208,32 +189,5 @@
 
 ## Date 日志
 
--- update 2015.7.12  重大更新,重新打包YVIM for Neocomplete
-
--- update 2015.7.11  加入TMUX配置文件，将statusline单独独立成.aixline文件.
-
--- update 2015.6.29  更新Linux Neovim && Vim
-
--- update 2015.6.24  全部更新,重新打包Windows YVIM,增加 vim-table-mode 插件
-
--- update 2015.6.23  全部更新,增加强化搜索插件insearch, 强化原生按键. 重新打包 YVIM with NeoComplete
-
--- update 2015.6.20  更新Windows \_vimrc Fix emmet <S-Tab> confilct
-
--- updata 2015.6.18  上传 Windows Gvim 第二版, 完美支持 [NeoComplete](https://github.com/Shougo/neocomplete.vim) 补全神器2
-
--- update 2015.6.17  重新上传 Windows Gvim 文件, 完美支持 [YouCompleteMe](https://github.com/Valloric/YouCompleteMe)补全神器
-
--- update 2015.6.13  Linux NeoVim 优化
-
--- update 2015.6.12  强化 NeoVim 配置文件
-
--- update 2015.6.10  增加了 Neovim的配置文件
-
--- update 2015.6.8   更新插件
-
--- update 2015.6.4   解决 Windows 下中文字符乱码的问题 , 增加了 CtrlP 插件
-
--- update 2015.5.29  上传项目
-
+-- update 2015.7.21 重构vim配置，Aix-Vim
 
