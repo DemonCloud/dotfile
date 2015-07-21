@@ -2,7 +2,7 @@
 
 ## Introduction 简介
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y1.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y1.png" alt="Aix-Vim Neo previews"/>
 <hr>
 
 <a href="#screen" rel="#screen">Screen Shot ::BOOM! </a>
@@ -10,7 +10,7 @@
 这些配置文件做了如下事情：
 
 >	1. 使用 [Vundle](https://github.com/gmarik/Vundle.vim) 管理插件
->	2. 最新版本YVIM编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
+>	2. 最新版本Aix-Vim编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
 >	3. 包含了各种流行实用的插件，包含通用配置（最佳实践,深度优化，适配原生Vim 和 NeoVim）
 >	4. 修复了Tmux Bash 中 Vim 不支持 Alt 组合键的问题
 >	5. 解决了部分插件按键冲突，某些插件加载后相互冲突导致Gvim顿卡
@@ -23,29 +23,12 @@
 
 #### 配置文件
 
-下载项目 ： [dofile-YVIM](https://github.com/DemonCloud/dotfile-YVIM/archive/master.zip)
+下载项目 ： [[Aix-Vim]](https://github.com/DemonCloud/Aix-Vim/archive/master.zip)
 
-或Clone项目 ： ``git clone https://github.com/DemonCloud/dotfile-YVIM.git``
+或Clone项目 ： ``git clone https://github.com/DemonCloud/Aix-Vim.git``
 
 更新项目 ： ``git pull -u``
 
-
-
-<br>
-
-#### Windows
-
-下载 ：
-
-[[YCIM for Windows](http://pan.baidu.com/s/1i3ImvyP) -- Update 2015.7.14 集成 NeoComplete 和 YoucompleteMe 支持 Ultisnips\(强力推荐，请看下面，安装Lua\)
-
-> 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
->
-> 注意：请运行 ``Vim\vim74\gvim.exe`` 文件. 此文件重新编译 最新版本YVIM 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
->
-> Window 2015.7.1 之后不再更新
-
-<br>
 
 #### Linux
 
@@ -55,29 +38,35 @@
 
 >	``sudo apt-get install vim vim-gnome vim-gtk``
 
-<br/>
-> **2.** 安装 [Vundle](https://github.com/gmarik/Vundle.vim)
+> 然后运行  Aix-Vim  项目目录下的 ``install.sh``进行安装.
 
-<br/>
-> **3.** 将除了``_vimrc``文件之外的所有文件都Copy到``~/``,也就是Linux Home 根目录下 
+```Shell
+ 	$ ./install.sh
+```
 
-> 更多具体的位置信息，可以输入``:version``查看Vim默认配置文件的几个路径.
+> 如果``install.sh``文件没有执行权限，请使用``sudo chmod +x install.sh``
 
-<br/>
 
-> **4.** 一般来说。 插件会安装在 ``～/.vim/bundle/`` 目录下，因为要取得 Linux 文件读写权限。
+#### Windows
 
-> 如果插件位置不在 ``/home/用户/`` 路径下，一般不会获得读写自由的权限。 可以使用 Linux ``chmod`` 命令解决读写权限问题
+下载 ：
 
-> ``sudo chmod +777 -R  path to/files/target``
+[[Aix-Vim for Windows]](http://pan.baidu.com/s/1i3ImvyP) -- Update 2015.7.22 集成 NeoComplete 和 YoucompleteMe 支持 Ultisnips\(强力推荐，请看下面，安装Lua\)
 
-<br/>
+> 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
+>
+> 注意：请运行 ``Vim\vim74\gvim.exe`` 文件. 此文件重新编译 最新版本Aix-Vim 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
+>
+> Window 2015.8.1 之后不再更新
 
-> **5.** 很多插件是需要第三方外部组件的支持.以下我列出一些依赖列表:
+
+#### 配置说明
+
+> **##** 很多插件是需要第三方外部组件的支持.以下我列出一些依赖列表:
 
 - [Lua](http://lua.org) (neocomplete)
 
-	- 最新版本YVIM编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
+	- 最新版本Aix-Vim编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
 
 	- 所以Windows 和 Linux 下都需要安装 Lua ， 用于支持 Neocomplete 智能补全插件.
 
@@ -110,6 +99,13 @@
 
 	- ``npm insatll -g tern``     JavaScript 智能提示扩展
 
+- [Vimproc](https://github.com/Shougo/vimproc.vim) (Neocomplete,VimShell,Unite)
+
+	- 主要是用来完成一些异步调用和异步任务的.
+
+	- Linux 环境下可以直接进入``vimproc.vim`` 文件夹目录，执行``make``即可编译 
+
+	- Windows 环境下有点蛋疼，先安装MinGW项目，然后安装gcc和g++ 以及cmake, 然后至目录编译，详情请看一下项目的Markdown
 
 - [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher) (ag.vim)
 
@@ -136,53 +132,53 @@
 
 #### Preview
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y2.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y2.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y3.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y3.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y4.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y4.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y5.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y5.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y6.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y6.png" alt="Aix-Vim Neo previews"/>
 
 #### GitView
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y7.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y7.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y8.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y8.png" alt="Aix-Vim Neo previews"/>
 
 #### HTML
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yhtml1.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yhtml1.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yhtml2.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yhtml2.png" alt="Aix-Vim Neo previews"/>
 
 #### CSS
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ycss1.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ycss1.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ycss2.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ycss2.png" alt="Aix-Vim Neo previews"/>
 
 #### JavaScript
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjs1.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjs1.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjs2.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjs2.png" alt="Aix-Vim Neo previews"/>
 
 #### PHP
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yphp1.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yphp1.png" alt="Aix-Vim Neo previews"/>
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yphp2.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yphp2.png" alt="Aix-Vim Neo previews"/>
 
 #### JSON
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjson.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjson.png" alt="Aix-Vim Neo previews"/>
 
 #### MarkDown
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ymkd.png" alt="YVIM Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ymkd.png" alt="Aix-Vim Neo previews"/>
 
 
 ## Date 日志
