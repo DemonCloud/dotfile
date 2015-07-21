@@ -8,11 +8,10 @@ runtime! debian.vim
 " Not complete with Vi Mode
 set nocompatible
 set regexpengine=1
-set history=8888
+set history=9888
 
 " @Replace <leader> key map to <space>
 let mapleader=" "
-let g:deoplete#enable_at_startup = 1
 
 " ========================= Vundle Plugin Manager =========================
 
@@ -54,27 +53,23 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
+Plugin 'tpope/vim-obsession'
 
 " @ Plugin --- [ Code Sreach ]
 Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
-Plugin 'junegunn/fzf'
 Plugin 'junegunn/limelight.vim'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'tacahiroy/ctrlp-funky'
-Plugin 'ompugao/ctrlp-locate'
-Plugin 'JazzCore/ctrlp-cmatcher'
 
 " @ Plugin --- [ |Google| Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
-"Plugin 'Valloric/YouCompleteMe'
-"Plugin 'rdnetto/YCM-Generator'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'ebfe/vim-racer'
+Plugin 'rdnetto/YCM-Generator'
 "Plugin 'Shougo/neocomplete.vim'
 "Plugin 'Shougo/neocomplcache.vim'
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'JazzCore/neocomplcache-ultisnips'
+"Plugin 'JazzCore/neocomplcache-ultisnips'
 
 " @ Plugin --- [ Code Complete Unity ]
 Plugin 'SirVer/ultisnips'
@@ -97,6 +92,9 @@ Plugin 'bruno-/vim-man'
 Plugin 'dhruvasagar/vim-table-mode'
 
 " @ Plugin --- [ Syntax ] 
+Plugin 'justinmk/vim-syntax-extra' "Extra C Flex Syntax
+Plugin 'WolfgangMehner/c.vim'
+Plugin 'Kris2k/A.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'ap/vim-css-color'
 Plugin 'groenewege/vim-less'
@@ -106,7 +104,9 @@ Plugin 'chrisbra/csv.vim'
 Plugin 'StanAngeloff/php.vim'
 Plugin 'tmux-plugins/vim-tmux'
 Plugin 'plasticboy/vim-markdown'
-"Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'rust-lang/rust.vim'
+Plugin 'guns/xterm-color-table.vim'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
@@ -207,39 +207,40 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
 "-------------------- YouCompleteMe -------------------
-" let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-" let g:ycm_collect_identifiers_from_tags_files = 1
-" let g:ycm_min_num_of_chars_for_completion = 2
-" let g:ycm_add_preview_to_completeopt = 1
-" let g:ycm_use_ultisnips_completer = 1
-" let g:ycm_cache_omnifunc = 1
-" let g:ycm_disable_for_files_larger_than_kb = 10000
-" let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
-" let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
-" let g:ycm_filetype_blacklist = {
-" 			\ 'tagbar' : 1,
-" 			\ 'qf' : 1,
-" 			\ 'notes' : 1,
-" 			\ 'markdown' : 1,
-" 			\ 'unite' : 1,
-" 			\ 'text' : 1,
-" 			\ 'vimwiki' : 1,
-" 			\ 'pandoc' : 1,
-" 			\ 'infolog' : 1,
-" 			\ 'mail' : 1,
-" 			\ 'mundo': 1,
-" 			\ 'fzf': 1,
-" 			\ 'ctrlp' : 1
-" 			\}
+let g:ycm_global_ycm_extra_conf = ".vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_min_num_of_chars_for_completion = 2
+let g:ycm_add_preview_to_completeopt = 1
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_cache_omnifunc = 1
+let g:ycm_disable_for_files_larger_than_kb = 10000
+let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
+let g:ycm_filetype_blacklist = {
+			\ 'tagbar' : 1,
+			\ 'qf' : 1,
+			\ 'notes' : 1,
+			\ 'markdown' : 1,
+			\ 'unite' : 1,
+			\ 'text' : 1,
+			\ 'vimwiki' : 1,
+			\ 'pandoc' : 1,
+			\ 'infolog' : 1,
+			\ 'mail' : 1,
+			\ 'mundo': 1,
+			\ 'fzf': 1,
+			\ 'ctrlp' : 1
+			\}
 
-" let g:ycm_error_symbol = '>>'
-" let g:ycm_warning_symbol = '>*'
+let g:ycm_error_symbol = '>>'
+let g:ycm_warning_symbol = '>*'
 
-" nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-" nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-" nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "-------------------- NeoComplete ---------------------
+"
 " Disable AutoComplPop.
 " let g:acp_enableAtStartup = 1
 " " Use neocomplete.
@@ -257,13 +258,13 @@ let g:syntastic_javascript_checkers = ['jshint']
 " 			\ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
 " 			\ }
 
-" Define keyword.
+" " Define keyword.
 " if !exists('g:neocomplete#keyword_patterns')
 " 	let g:neocomplete#keyword_patterns = {}
 " endif
 " let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
-" <C-h>, <BS>: close popup and delete backword char.
+" " <C-h>, <BS>: close popup and delete backword char.
 " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
 " inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
 " function! s:my_cr_function()
@@ -272,35 +273,35 @@ let g:syntastic_javascript_checkers = ['jshint']
 " 	return pumvisible() ? neocomplete#close_popup() : "\<CR>"
 " endfunction
 
-"let g:neocomplete#enable_cursor_hold_i = 1
-" Or set this.
-let g:neocomplete#enable_insert_char_pre = 1
-let g:neocomplete#enable_auto_select = 1
+" "let g:neocomplete#enable_cursor_hold_i = 1
+" " Or set this.
+" let g:neocomplete#enable_insert_char_pre = 1
+" let g:neocomplete#enable_auto_select = 1
 
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteVim
+" " Enable omni completion.
+" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+" autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteVim
 
-" Enable heavy omni completion.
-"if !exists('g:neocomplete#sources#omni#input_patterns')
-""	let g:neocomplete#sources#omni#input_patterns = {}
-"endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
+" " Enable heavy omni completion.
+" if !exists('g:neocomplete#sources#omni#input_patterns')
+" 	let g:neocomplete#sources#omni#input_patterns = {}
+" endif
+" let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
+" let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
+" let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-" Noconflict NeoComplete With Vim Multiple Cursors
-"function! Multiple_cursors_before()
-"	exe 'NeoCompleteLock'
-"endfunction
-"
-"function! Multiple_cursors_after()
-"	exe 'NeoCompleteUnlock'
-"endfunction
+" " Noconflict NeoComplete With Vim Multiple Cursors
+" function! Multiple_cursors_before()
+" 	exe 'NeoCompleteLock'
+" endfunction
+" "
+" function! Multiple_cursors_after()
+" 	exe 'NeoCompleteUnlock'
+" endfunction
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -392,7 +393,6 @@ let g:vimfiler_marked_file_icon = '*'
 " Windows only and require latest vimproc.
 let g:unite_kind_file_use_trashbox = 1
 
-" CtrlP Settings
 set wildignore=*.o,*.obj,*~ "stuff to ignore when tab completing
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*DS_Store*
@@ -404,19 +404,6 @@ set wildignore+=tmp/**
 set wildignore+=*.png,*.jpg,*.gif
 set wildignore+=*.so,*.swp,*.zip,*/.Trash/**,*.pdf,*.dmg,*/Library/**,*/.rbenv/**
 set wildignore+=*/.nx/**,*.app,*.git,.git
-
-let g:ctrlp_map = '<C-\>'
-"let g:ctrlp_user_command = 'find %s -type f'        " MacOSX/Linux
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-			\ --ignore .git
-			\ --ignore .svn
-			\ --ignore .hg
-			\ --ignore .DS_Store
-			\ --ignore .idea
-			\ --ignore "**/*.pyc"
-			\ -g ""'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
 
 " Ack Settings
 if executable('ag')
@@ -452,29 +439,7 @@ set tags=~/.vim/tags;
 
 " DevIcons Config
 " ColorFul NERDTree
-function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
-	exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
-	exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
-endfunction
-
-call NERDTreeHighlightFile('jade'        , '202' , '232' , '#F27221' , '#080808')
-call NERDTreeHighlightFile('ini'         , '15'  , '232' , '#FFFFFF' , '#080808')
-call NERDTreeHighlightFile('md'          , '238' , '232' , '#444444' , '#080808')
-call NERDTreeHighlightFile('yml'         , '241' , '232' , '#606060' , '#080808')
-call NERDTreeHighlightFile('config'      , '15'  , '232' , '#FFFFFF' , '#080808')
-call NERDTreeHighlightFile('conf'        , '15'  , '232' , '#FFFFFF' , '#080808')
-call NERDTreeHighlightFile('json'        , '63'  , '232' , '#255899' , '#080808')
-call NERDTreeHighlightFile('html'        , '202' , '232' , '#F27221' , '#080808')
-call NERDTreeHighlightFile('styl'        , '144' , '232' , '#C0C280' , '#080808')
-call NERDTreeHighlightFile('css'         , '144' , '232' , '#C0C280' , '#080808')
-call NERDTreeHighlightFile('coffee'      , '88'  , '232' , '#870000' , '#080808')
-call NERDTreeHighlightFile('js'          , '88'  , '232' , '#870000' , '#080808')
-call NERDTreeHighlightFile('php'         , '63'  , '232' , '#255899' , '#080808')
-call NERDTreeHighlightFile('ds_store'    , '23'  , '232' , '#005F5F' , '#080808')
-call NERDTreeHighlightFile('gitconfig'   , '15'  , '232' , '#FFFFFF' , '#080808')
-call NERDTreeHighlightFile('gitignore'   , '15'  , '232' , '#FFFFFF' , '#080808')
-call NERDTreeHighlightFile('bashrc'      , '15'  , '232' , '#FFFFFF' , '#080808')
-call NERDTreeHighlightFile('bashprofile' , '15'  , '232' , '#FFFFFF' , '#080808')
+let g:NERDTreeRespectWildIgnore=1
 
 let g:NERDTreeDirArrows=0
 let g:webdevicons_enable = 1
@@ -739,8 +704,6 @@ nnoremap <leader>hs :MRU<CR>
 " Command
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cx :%s///gm
-nnoremap <leader>cf :CtrlPFunky<CR>
-nnoremap <Leader>cs :CtrlPLocate<CR>
 
 noremap <silent> <C-v> <ESC>"+gpi
 " repeat Prev Command
@@ -803,9 +766,6 @@ nnoremap <leader>gs : Gstatus<CR>
 nnoremap <leader>gc : Gcommit
 nnoremap <leader>gb : Gblame
 nnoremap <leader>gv : Gitv<CR>
-nnoremap <leader>gr : Gremove
-nnoremap <leader>gl : Glog<CR>
-nnoremap <leader>gt : Git
 nnoremap <leader>gp : Git push origin master<CR>
 nnoremap <leader>gu : Git pull -u<CR>
 
