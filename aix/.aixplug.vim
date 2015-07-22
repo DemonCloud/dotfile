@@ -28,6 +28,7 @@ Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'yegappan/mru'
 Plugin 'danro/rename.vim'
+Plugin 'junegunn/fzf'
 
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plugin 'simnalamburt/vim-mundo'
@@ -116,6 +117,5 @@ syntax enable
 filetype on
 filetype plugin on
 filetype plugin indent on
-
 
 " ========================= Vundle Plugin Setup End =========================
