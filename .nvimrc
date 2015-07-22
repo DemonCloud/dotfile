@@ -5,6 +5,8 @@
 
 " - Basic
 source $HOME/aix/.aix.vim
+" - Ignore
+source $HOME/aix/.aixignore.vim
 " - Plug
 source $HOME/aix/.aixplug.vim
 source $HOME/aix/.aixplug.conf.vim
@@ -15,5 +17,4 @@ source $HOME/aix/.aixkeymap.vim
 " - Style
 source $HOME/aix/.aixstyle.vim
 source $HOME/aix/.aixline.vim
-" - Prefix
-"source $VIMRUNTIME/mswin.vim
+
