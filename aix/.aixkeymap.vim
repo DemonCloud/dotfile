@@ -50,6 +50,8 @@ nnoremap <F6> :SyntasticToggleMode <CR>
 nnoremap <F7> :GundoToggle<CR>
 nnoremap <F8> mzgg=G`z
 nnoremap <F9> ggVG:RetabIndent<CR>
+" Full Fucking Window ^M ending line file!
+nnoremap <F10> :%s////g
 
 " Normal Key Map
 nnoremap U :redo<CR>
@@ -164,7 +166,6 @@ vnoremap <leader>y "+y
 vnoremap <Leader>d "+d
 nnoremap <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
 			\ path '".expand("%:p")."' to clipboard"<CR>
-inoremap <C-v> <ESC>"+gpi
 
 " Vundle keyfire
 nnoremap <leader>vi :PluginInstall<CR>
