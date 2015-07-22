@@ -1,5 +1,8 @@
+# --- Aix Vim Install Shell ---
+
 # Shell for Install Aix Vim config
 # Require Git and Auto Install Vundle
+
 printf "\033[33mChecking Start...\033[0m\n"
 
 printf "\033[36mChecking Git install...\033[0m\n"
@@ -9,7 +12,6 @@ printf "\033[36mChecking Git Completed!\033[0m\n"
 
 printf "\033[33mChecking Dir\033[0m\n"
 if [ ! -d "$HOME/.vim" ]; then
-	printf "\n"
 	echo "Make ALL with $HOME Directory PATH"
 	printf "\n"
 	echo " [- .vim"
@@ -58,6 +60,7 @@ fi
 printf "\033[33mChecking Completed!\033[0m\n"
 
 printf "\033[36mCopy new files to the HOME PATH...\033[0m\n"
+
 printf "\n"
 echo " [- $HOME/"
 echo "   |- .vimrc       [ -- Vim config -- ]"
@@ -66,11 +69,21 @@ echo "   |- .tmux.conf   [ -- Tmux config -- ]"
 echo "   |- .fonts.conf  [ -- Fonts support -- ]"
 echo " -] "
 printf "\n"
+
+# Copy file in to path
 cp -rf aix $HOME/
-cp -f .fonts.conf $HOME/
+
+if [ ! -f "$HOME/.fonts.conf" ]; then
+	cp -f .fonts.conf $HOME/
+fi
+
 cp -f .vimrc $HOME/
 cp -f .nvimrc $HOME/
-cp -f .tmux.conf $HOME/
+
+if [ ! -f "$HOME/.tmux.conf" ]; then
+	cp -f .tmux.conf $HOME/
+fi
+
 printf "\033[36mCopy Completed, Finish Install !\033[0m\n"
 exit 1;
 
