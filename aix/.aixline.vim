@@ -1,83 +1,193 @@
-" ----------------------------------
-" AixLine
+" ###  AixLine  ###
+"
 " YiJun -- :: Boom!!!
 " Start Status Line
 " Normal Setting for Vim StatuLine
 " So you not need Vim powerline or anthor status line plugin
 " Formats the statusline
 
-hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230 gui=NONE cterm=NONE term=NONE
-hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52 gui=NONE cterm=NONE term=NONE
-hi f2 guibg=#080808 guifg=#C0C280 ctermbg=232 ctermfg=230 gui=NONE cterm=NONE term=NONE
+" ===================== UTIL ===================
+" Aix Line Call Prototype
+function! s:AixLineSet(prop,gfg,gbg,tfg,tbg,stl)
+	let hstr='hi ' . a:prop . ' guifg=' . a:gfg . ' guibg=' . a:gbg
+	if strlen(a:tfg)
+		let hstr .=' ctermfg=' . a:tfg . ' ctermbg=' . a:tbg
+		let hstr .=' gui=' . a:stl . ' cterm=' . a:stl . ' term=' . a:stl
+	endif
 
-hi f3 guibg=#121212 guifg=#888888 ctermbg=233 ctermfg=242 gui=NONE cterm=NONE term=NONE
-hi f3r guibg=#080808 guifg=#121212 ctermbg=232 ctermfg=233 gui=NONE cterm=NONE term=NONE
+	exec hstr
+endfunction
 
-hi f4 guibg=#181818 guifg=#af0000 ctermbg=234 ctermfg=124 gui=NONE cterm=NONE term=NONE
-hi f4r guibg=#121212 guifg=#181818 ctermbg=233 ctermfg=234 gui=NONE cterm=NONE term=NONE
+function! s:AixLineLink(prop,linker)
+	let lstr='hi link '. a:prop . ' ' . a:linker
+	exec lstr
+endfunction
 
-hi f5g guibg=#000000 guifg=#181818 ctermbg=16 ctermfg=234 gui=NONE cterm=NONE term=NONE
+" ===================== COLOR ===================
+" --- StatusLine Left ---
+" Normal Status                  #1-block
+call s:AixLineSet('aixLeft1'       , '#C0C280' , '#5F0000' , '143' , '52'  , 'NONE')
+call s:AixLineSet('aixLeft1Larrow' , '#5F0000' , '#121212' , '52'  , '233' , 'NONE')
 
+" Git Status Require [#fugitive] #2-block
+call s:AixLineSet('aixLeft2'       , '#C0C280' , '#121212' , '143' , '233' , 'NONE')
+call s:AixLineSet('aixLeft2Larrow' , '#121212' , '#181818' , '233' , '234' , 'NONE')
+
+" File Path Status               #3-block
+call s:AixLineSet('aixLeft3'       , '#AF0000' , '#181818' , '124' , '234' , 'NONE')
+call s:AixLineSet('aixLeft3Larrow' , '#181818' , '#262626' , '234' , '235' , 'NONE')
+
+" File Type && Chmod - Chown     #4-block
+call s:AixLineSet('aixLeft4'       , '#8A8A8A' , '#262626' , '245' , '235' , 'NONE')
+call s:AixLineSet('aixLeft4Larrow' , '#262626' , '#080808' , '235' , '232' , 'NONE')
+
+" --- StatusLine Middle ---
+" Emptye Middle vertical         #empty
+call s:AixLineSet('aixMiddle' , '#080808' , '#080808' , '232' , '232' , 'NONE')
+
+" --- StatusLine Right ---
+" ANSI C code Status             #4-block
+call s:AixLineLink('aixRight4Rarrow' , 'aixLeft4Larrow')
+call s:AixLineLink('aixRight4'       , 'aixLeft4')
+
+" Line / Number Counter Status   #3-block
+call s:AixLineLink('aixRight3Rarrow' , 'aixLeft3Larrow')
+call s:AixLineLink('aixRight3'       , 'aixLeft3')
+
+" Buff type Status               #1-block
+call s:AixLineSet('aixRight1Rarrow' , '#5F0000'   , '#181818' , '52' , '234' , 'NONE')
+call s:AixLineLink('aixRight1'      , 'aixLeft1')
+
+
+" ===================== Function ===================
 " Observer
-"hi f1 guibg=#C0C280 guifg=#080808 gui=NONE 
-" Inserter
-"hi f1 guibg=#79BE61 guifg=#181818 gui=NONE
-" Command
-"hi f1 guibg=#981000 guifg=#ffffff gui=NONE
 let g:last_mode = 'n'
-function! StatuslineModeColor()
-	let l:Status=mode()	
+let g:Flags="NORMAL"
+function! AixStatuslineMode()
+	let l:Status=mode()
 
 	if l:Status !=# g:last_mode
 		let g:last_mode = l:Status
 
-	  if l:Status == 'n'
-			hi f1 guibg=#591010 guifg=#C0C280 ctermbg=52 ctermfg=230 
-			hi f1r guibg=#181818 guifg=#591010 ctermbg=234 ctermfg=52
-	  elseif l:Status == 'i'
-			hi f1 guibg=#79BE61 guifg=#181818 ctermbg=83 ctermfg=16 
-			hi f1r guibg=#181818 guifg=#79BE61 ctermbg=234 ctermfg=83
+		" Normal Model
+		if l:Status ==# 'n'
+			call s:AixLineSet('aixLeft1'        , '#C0C280' , '#5F0000' , '143' , '52'  , 'NONE')
+			call s:AixLineSet('aixLeft1Larrow'  , '#5F0000' , '#121212' , '52'  , '233' , 'NONE')
+			call s:AixLineSet('aixRight1Rarrow' , '#5F0000' , '#181818' , '52'  , '234' , 'NONE')
+			let g:Flags="NORMAL"
+
+			" Insert Model
+		elseif l:Status ==# 'i'
+			call s:AixLineSet('aixLeft1'        , '#181818' , '#79BE61' , '232' , '83'  , 'NONE')
+			call s:AixLineSet('aixLeft1Larrow'  , '#79BE61' , '#121212' , '83'  , '233' , 'NONE')
+			call s:AixLineSet('aixRight1Rarrow' , '#79BE61' , '#181818' , '83'  , '234' , 'NONE')
+			let g:Flags="INSERT"
+
+			" Visual Model
 		elseif l:Status == 'v'
-			hi f1 guibg=#276888 guifg=#FFFFFF ctermbg=32 ctermfg=15
-			hi f1r guibg=#181818 guifg=#276888 ctermbg=234 ctermfg=32
+			call s:AixLineSet('aixLeft1'        , '#FFFFFF' , '#276888' , '15' , '32'  , 'NONE')
+			call s:AixLineSet('aixLeft1Larrow'  , '#276888' , '#121212' , '32' , '233' , 'NONE')
+			call s:AixLineSet('aixRight1Rarrow' , '#276888' , '#181818' , '32' , '234' , 'NONE')
+
+			if l:Status ==# "v"
+				let g:Flags="VISUAL"
+			elseif l:Status ==# "V"
+				let g:Flags="V·LINE"
+			endif
+
+			" Command Model
+		elseif l:Status == 'c'
+			call s:AixLineSet('aixLeft1'        , '#BCBCBC' , '#000000' , '250' , '0'   , 'NONE')
+			call s:AixLineSet('aixLeft1Larrow'  , '#000000' , '#121212' , '0'   , '233' , 'NONE')
+			call s:AixLineSet('aixRight1Rarrow' , '#000000' , '#181818' , '0'   , '234' , 'NONE')
+			let g:Flags="COMMAND"
+
+			" Command Model
+		elseif l:Status == 't'
+			call s:AixLineSet('aixLeft1'        , '#BCBCBC' , '#000000' , '250' , '0'   , 'NONE')
+			call s:AixLineSet('aixLeft1Larrow'  , '#000000' , '#121212' , '0'   , '233' , 'NONE')
+			call s:AixLineSet('aixRight1Rarrow' , '#000000' , '#181818' , '0'   , '234' , 'NONE')
+			let g:Flags="SHELL"
+
+			" Replace Model
+		elseif l:Status == 'R'
+			call s:AixLineSet('aixLeft1'        , '#AF0000' , '#DF5F00' , '124' , '166' , 'NONE')
+			call s:AixLineSet('aixLeft1Larrow'  , '#DF5F00' , '#121212' , '166' , '233' , 'NONE')
+			call s:AixLineSet('aixRight1Rarrow' , '#DF5F00' , '#181818' , '166' , '234' , 'NONE')
+			let g:Flags="REPLACE"
+
+		elseif l:Status == "s"
+			call s:AixLineSet('aixLeft1'        , '#FFFFFF' , '#005FAF' , '15' , '25'  , 'NONE')
+			call s:AixLineSet('aixLeft1Larrow'  , '#005FAF' , '#121212' , '25' , '233' , 'NONE')
+			call s:AixLineSet('aixRight1Rarrow' , '#005FAF' , '#181818' , '25' , '234' , 'NONE')
+			if l:Status ==# "s"
+				let g:Flags="SELECT"
+			elseif l:Status ==# "S"
+				let g:Flags="SELEALL"
+			endif
+
 		else
-			hi f1 guibg=#C0C280 guifg=#181818 ctermbg=230 ctermfg=16 
-			hi f1r guibg=#181818 guifg=#C0C280 ctermbg=234 ctermfg=230
-	  endif
+			call s:AixLineSet('aixLeft1'        , '#181818' , '#C0C280' , '232' , '143' , 'NONE')
+			call s:AixLineSet('aixLeft1Larrow'  , '#C0C280' , '#121212' , '143' , '233' , 'NONE')
+			call s:AixLineSet('aixRight1Rarrow' , '#C0C280' , '#181818' , '143' , '234' , 'NONE')
+			if l:Status ==# ""
+				let g:Flags="V·BLOCK"
+			else
+				let g:Flags=l:Status
+			endif
+		endif
 	endif
 
-	if l:Status ==# "n"
-		return "NORMAL"
-	elseif l:Status ==# "i"
-		return "INSERT"
-	elseif l:Status ==# "c"
-		return "COMMAND"
-	elseif l:Status ==# "R"
-		return "REPLACE"
-	elseif l:Status ==# "t"
-		return "TERMINAL"
-	elseif l:Status ==# "v"
-		return "VISUAL"
-	elseif l:Status ==# "V"
-		return "V·LINE"
-	elseif l:Status ==# "s"
-		return "SELECT"
-	elseif l:Status ==# "S"
-		return "SELEALL"
-	elseif l:Status ==# ""
-		return "V·BLOCK"
-	else
-		return l:Status
-	endif
-endfunc
+	return g:Flags
+endfunction
 
-set statusline=%#f1#\ %{StatuslineModeColor()}%#f1r#◣\ 
+" Git Status Prototype [ # require fugitive ]
+function! GitStatusChecker()
+	let s:gitstatus = fugitive#statusline()
+
+	if(strlen(s:gitstatus))
+		return "Git "
+	endif
+	return "" 
+endfunction
+
+
+" Use Their Characters
 "⮀⮂ ◣  ◢%
-set statusline+=\ %#f4#%f\ %#f4r#◣\ %#f3#\ %{WebDevIconsGetFileTypeSymbol()}%h%m%r%#f3r#◣\ %#f2#\ %{fugitive#statusline()}\  
-" right align laststatus
-set statusline+=%=%#f2#%#f3r#\ ◢%#f3#\ [%b][0x%B]\ 
-set statusline+=%#f4r#\ ◢%#f4#\ ⭡\ %l/%L\ 
-set statusline+=%#f1r#\ ◢%#f1#\ ✹\ BUFF:%n\ 
+" ================= Building Aix StatusLine ===============
 
-" End Status Line
-" -----------------------------
+
+" ---- Format Aix StatusLine Left ----
+" #1-Block [ Observer ]
+" [ Normal ] + Arrow >
+set statusline=%#aixLeft1#\ %{AixStatuslineMode()}%#aixLeft1Larrow#◣\ \ 
+
+" #2-Block [ GitChecker ]
+" [ #Fugitive ] || Empty
+set statusline+=%#aixLeft2#%{GitStatusChecker()}%#aixLeft2Larrow#◣\ 
+
+" #3-Block [ File Path ]
+" [ Absolute Current Path ]
+set statusline+=%#aixLeft3#\ %f\ %#aixLeft3Larrow#◣\ 
+
+" #4-Block [ File Type ]
+" [ File Type format ] #require [ vim-devicons ]
+set statusline+=%#aixLeft4#\ %{WebDevIconsGetFileTypeSymbol()}\ %h%m%r%#aixLeft4Larrow#◣\ \ 
+
+set statusline+=%#aixMiddle#\ ◣
+" ---- Format Aix StatusLine Empty ----
+set statusline+=%=%#aixMiddle#\ ◢
+
+
+" ---- Format Aix StatusLine Right ----
+" #4-Block [ Char Code ]
+" [ ANSI C char code ]
+set statusline+=%#aixRight4Rarrow#\ \ ◢%#aixRight4#\ [%b][0x%B]\ 
+
+" #3-Block [ Line Number ]
+" [ Line Counter && Number ]
+set statusline+=%#aixRight3Rarrow#\ ◢%#aixRight3#\ ⭡\ %l/%L\ 
+
+set statusline+=%#aixRight1Rarrow#\ ◢%#aixRight1#✹\ BUFF:%n\ 
+
+" ================= Building End ===============
