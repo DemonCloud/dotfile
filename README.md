@@ -2,7 +2,7 @@
 
 ## Introduction 简介
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y1.png" alt="Aix-Vim Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/AixVim.gif" alt="Aix-Vim Neo previews"/>
 <hr>
 
 <a href="#screen" rel="#screen">Screen Shot ::BOOM! </a>
