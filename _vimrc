@@ -246,9 +246,9 @@ Plugin 'JazzCore/ctrlp-cmatcher'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
-"Plugin 'Valloric/YouCompleteMe'
-Plugin 'xleng/YCM_WIN_X86'
-Plugin 'rdnetto/YCM-Generator'
+" Plugin 'Valloric/YouCompleteMe'
+" Plugin 'xleng/YCM_WIN_X86'
+" Plugin 'rdnetto/YCM-Generator'
 Plugin 'Shougo/neocomplete.vim'
 Plugin 'Shougo/neocomplcache.vim'
 Plugin 'JazzCore/neocomplcache-ultisnips'
@@ -897,22 +897,6 @@ map g# <Plug>(incsearch-nohl-g#)zzzv
 " Mark vim Plugin
 nnoremap <Leader>M <Plug>MarkToggle
 nnoremap <Leader>N <Plug>MarkAllClear
-
-"Sneak
-"replace 'f' with 1-char Sneak
-"nmap f <Plug>Sneak_f
-"nmap F <Plug>Sneak_F
-"xmap f <Plug>Sneak_f
-"xmap F <Plug>Sneak_F
-"omap f <Plug>Sneak_f
-"omap F <Plug>Sneak_F
-"replace 't' with 1-char Sneak
-"nmap t <Plug>Sneak_t
-"nmap T <Plug>Sneak_T
-"xmap t <Plug>Sneak_t
-"xmap T <Plug>Sneak_T
-"omap t <Plug>Sneak_t
-"omap T <Plug>Sneak_T
 
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
