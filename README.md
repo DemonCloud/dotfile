@@ -29,6 +29,15 @@
 
 更新项目 ： ``git pull -u``
 
+#### 字体
+
+修改 ``aix/.aixinit.vim`` 中 ``guifont`` 的设置，
+
+下载可用字体：https://github.com/ryanoasis/nerd-fonts
+
+相关插件：https://github.com/ryanoasis/vim-devicons
+
+关于Aix-Vim中我所用的字体 ``Aix`` , 很抱歉，由本人自己制定的``BitMap``点阵字体，为开源，有可能在完善之后开源 
 
 #### Linux
 
