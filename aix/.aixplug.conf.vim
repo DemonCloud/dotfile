@@ -4,10 +4,10 @@
 
 " AirLine Settings
 " alrLine && PowerLine Config
-"let g:Powerline_symbols = 'fancy'
-"let g:airline_powerline_fonts = 1
-"let g:Powerline_symbols = 'compatible'
-"let g:airline_theme = 'solarized'
+" let g:Powerline_symbols = 'fancy'
+" let g:airline_powerline_fonts = 1
+" let g:Powerline_symbols = 'compatible'
+" let g:airline_theme = 'badwolf'
 
 " fzf Plugin config
 set rtp+=~/.fzf
