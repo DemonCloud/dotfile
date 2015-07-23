@@ -11,6 +11,7 @@ call vundle#begin()
 " # Plugins Beginning #
 " @ Plugin --- [ Base Require Lib & Prefix ]
 Plugin 'gmarik/Vundle.vim'
+Plugin 'google/vim-maktaba'
 Plugin 'L9'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'romainl/vim-qf'
@@ -24,8 +25,10 @@ Plugin 'ap/vim-buftabline'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neossh.vim'
+Plugin 'Shougo/unite-outline'
 Plugin 'Shougo/vimfiler.vim'
+Plugin 'Shougo/neossh.vim'
+Plugin 'Shougo/neomru.vim'
 Plugin 'yegappan/mru'
 Plugin 'danro/rename.vim'
 Plugin 'junegunn/fzf'
@@ -95,11 +98,13 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'rust-lang/rust.vim'
+"Plugin '13k/vim-nginx'
 Plugin 'guns/xterm-color-table.vim'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
-Plugin 'dimasg/vim-mark'
+"Plugin 'dimasg/vim-mark'
+Plugin 't9md/vim-quickhl' 
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
