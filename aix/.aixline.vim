@@ -73,7 +73,7 @@ endfunc
 
 set statusline=%#f1#\ %{StatuslineModeColor()}%#f1r#◣\ 
 "⮀⮂ ◣  ◢%
-set statusline+=\ %#f4#%f\ %#f4r#◣\ %#f3#\ %{WebDevIconsGetFileTypeSymbol()}\ %h%m%r%#f3r#◣\ %#f2#\ %{fugitive#statusline()}\  
+set statusline+=\ %#f4#%f\ %#f4r#◣\ %#f3#\ %{WebDevIconsGetFileTypeSymbol()}%h%m%r%#f3r#◣\ %#f2#\ %{fugitive#statusline()}\  
 " right align laststatus
 set statusline+=%=%#f2#%#f3r#\ ◢%#f3#\ [%b][0x%B]\ 
 set statusline+=%#f4r#\ ◢%#f4#\ ⭡\ %l/%L\ 
