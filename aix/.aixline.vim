@@ -45,11 +45,11 @@ call s:AixLineSet('aixLeft3Larrow' , '#181818' , '#262626' , '234' , '235' , 'NO
 
 " File Type && Chmod - Chown     #4-block
 call s:AixLineSet('aixLeft4'       , '#8A8A8A' , '#262626' , '245' , '235' , 'NONE')
-call s:AixLineSet('aixLeft4Larrow' , '#262626' , '#080808' , '235' , '232' , 'NONE')
+call s:AixLineSet('aixLeft4Larrow' , '#262626' , '#585858' , '235' , '0' , 'NONE')
 
 " --- StatusLine Middle ---
 " Emptye Middle vertical         #empty
-call s:AixLineSet('aixMiddle' , '#080808' , '#080808' , '232' , '232' , 'NONE')
+call s:AixLineSet('aixMiddle' , '#585858' , '#585858' , '0' , '0' , 'NONE')
 
 " --- StatusLine Right ---
 " ANSI C code Status             #4-block
