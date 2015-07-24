@@ -2,10 +2,22 @@
 
 ## Introduction 简介
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/AixVim.gif" alt="Aix-Vim Neo previews"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix1.gif" alt="Aix">
 <hr>
 
-<a href="#screen" rel="#screen">Screen Shot ::BOOM! </a>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix2.gif" alt="Aix">
+<hr>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix3.gif" alt="Aix">
+<hr>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix4.gif" alt="Aix">
+<hr>
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix5.gif" alt="Aix">
+<hr>
+
+<a href="#screen" rel="#screen">Click to More Static Screen Shot ::BOOM! </a>
 
 这些配置文件做了如下事情：
 
