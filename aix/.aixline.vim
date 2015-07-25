@@ -91,9 +91,9 @@ function! AixStatuslineMode()
 
 			" Visual Model
 		elseif l:Status == 'v'
-			call s:AixFastChange('aixLeft1'        , '#FFFFFF' , '#276888' , '15' , '32' )
-			call s:AixFastChange('aixLeft1Larrow'  , '#276888' , '#121212' , '32' , '233')
-			call s:AixFastChange('aixRight1Rarrow' , '#276888' , '#181818' , '32' , '234')
+			call s:AixFastChange('aixLeft1'        , '#FFFFFF' , '#276888' , '15' , '25' )
+			call s:AixFastChange('aixLeft1Larrow'  , '#276888' , '#121212' , '25' , '233')
+			call s:AixFastChange('aixRight1Rarrow' , '#276888' , '#181818' , '25' , '234')
 
 			if l:Status ==# "v"
 				let g:Flags="VISUAL"
