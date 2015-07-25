@@ -143,6 +143,9 @@ set spelllang=en_us                      " spelling options
 set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
 set dictionary+=/usr/share/dict/words
 
+" Fix Fucking Vim Prefix for GTK
+set backspace=indent,eol,start
+
 " setting the tabs like that
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 

@@ -1,13 +1,11 @@
 " ========================= Plugin Config Start =========================
 
-" For Plugin Setting Require
-
 " AirLine Settings
-" alrLine && PowerLine Config
 " let g:Powerline_symbols = 'fancy'
 " let g:airline_powerline_fonts = 1
 " let g:Powerline_symbols = 'compatible'
 " let g:airline_theme = 'badwolf'
+" let g:ariline_theme = 'base16'
 
 " fzf Plugin config
 set rtp+=~/.fzf
@@ -54,18 +52,20 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
-"-------------------- YouCompleteMe -------------------
-"-------------------- Deoplete --------------------
 if(has('nvim'))
+	"------------------ Deoplete --------------------
 	let g:deoplete#enable_at_startup=1
 else
+	"------------------ YouCompleteMe -------------------
+	let g:ycm_auto_trigger = 1
 	let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 	let g:ycm_collect_identifiers_from_tags_files = 1
-	let g:ycm_min_num_of_chars_for_completion = 2
+	let g:ycm_min_num_of_chars_for_completion = 3
 	let g:ycm_add_preview_to_completeopt = 1
 	let g:ycm_use_ultisnips_completer = 1
 	let g:ycm_cache_omnifunc = 1
-	let g:ycm_disable_for_files_larger_than_kb = 10000
+	let g:ycm_max_diagnostics_to_display=18
+	let g:ycm_disable_for_files_larger_than_kb = 50000
 	let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
 	let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
 	let g:ycm_filetype_blacklist = {
@@ -90,71 +90,55 @@ else
 	nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
 	nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 	nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+	"-------------------- NeoComplete ---------------------
+	" set rtp+=~/.vim/bundle/neocomplete.vim/
+	" let g:acp_enableAtStartup=1
+	" let g:neocomplete#enable_at_startup=1
+	" let g:neocomplete#enable_smart_case=1
+	" let g:neocomplete#enable_insert_char_pre=1
+	" let g:neocomplete#enable_multibyte_completion=1
+	" let g:neocomplete#sources#syntax#min_keyword_length=2
+	" let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
+	" let g:neocomplete#enable_auto_select=1
+	" let g:neocomplete#enable_auto_delimiter=1
+	" let g:marching_enable_neocomplete=1
+	" let g:neocomplete#max_list=18
+	" let g:neocomplete#max_keyword_width=58
+	" if !exists('g:neocomplete#keyword_patterns')
+	"   let g:neocomplete#keyword_patterns = {}
+	" endif
+	" let g:neocomplete#keyword_patterns['default']='\h\w*'
+  " inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+  " inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+	" inoremap <silent><CR> <C-r>=<SID>my_cr_function()<CR>
+	" function! s:my_cr_function()
+	"   " return neocomplete#close_popup() . "\<CR>"
+	"   " For no inserting <CR> key.
+	"   return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+	" endfunction
+	" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	" autocmd FileType javascript setlocal omnifunc=javacriptcomplete#CompleteJS
+	" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+	" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+	" if !exists('g:neocomplete#sources#omni#input_patterns')
+	"   let g:neocomplete#sources#omni#input_patterns={}
+	" endif
+	" let g:neocomplete#ctags_command="ctags"
+	" let g:neocomplete#sources#omni#input_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
+	" let g:neocomplete#sources#omni#input_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::\w*'
+	" " Called once right before you start selecting multiple cursors
+	" function! Multiple_cursors_before()
+	"   echo '- Lock NeoComplete'
+	"   exe 'NeoCompleteLock'
+	" endfunction
+	
+	" " Called once only when the multiple selection is canceled (default <Esc>)
+	" function! Multiple_cursors_after()
+	"   echo '- UnLock NeoComplete'
+	"   exe 'NeoCompleteUnlock'
+	" endfunction
 endif
-
-"-------------------- NeoComplete ---------------------
-"
-" Disable AutoComplPop.
-" let g:acp_enableAtStartup = 1
-" " Use neocomplete.
-" let g:neocomplete#enable_at_startup = 1
-" " Use smartcase.
-" let g:neocomplete#enable_smart_case = 1
-" " Set minimum syntax keyword length.
-" let g:neocomplete#sources#syntax#min_keyword_length = 2
-" let g:neocomplete#lock_buffer_name_pattern = '\*ku\*'
-
-" " Define dictionary.
-" let g:neocomplete#sources#dictionary#dictionaries = {
-" 			\ 'default' : '',
-" 			\ 'vimshell' : $VIMRUNTIME.'/vimfile/bundle/vimshell.vim/.vimshell_hist',
-" 			\ 'scheme' : $VIMRUNTIME.'/vimfile/bundle/gosh/.gosh_completions'
-" 			\ }
-
-" " Define keyword.
-" if !exists('g:neocomplete#keyword_patterns')
-" 	let g:neocomplete#keyword_patterns = {}
-" endif
-" let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" " <C-h>, <BS>: close popup and delete backword char.
-" inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function()
-" 	"return neocomplete#close_popup() . "\<CR>"
-" 	" For no inserting <CR> key.
-" 	return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-" endfunction
-
-" "let g:neocomplete#enable_cursor_hold_i = 1
-" " Or set this.
-" let g:neocomplete#enable_insert_char_pre = 1
-" let g:neocomplete#enable_auto_select = 1
-
-" " Enable omni completion.
-" autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-" autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-" autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-" autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-" autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-" autocmd FileType vim setlocal omnifunc=vimcomplete#CompleteVim
-
-" " Enable heavy omni completion.
-" if !exists('g:neocomplete#sources#omni#input_patterns')
-" 	let g:neocomplete#sources#omni#input_patterns = {}
-" endif
-" let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-" let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-" let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" " Noconflict NeoComplete With Vim Multiple Cursors
-" function! Multiple_cursors_before()
-" 	exe 'NeoCompleteLock'
-" endfunction
-" "
-" function! Multiple_cursors_after()
-" 	exe 'NeoCompleteUnlock'
-" endfunction
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.

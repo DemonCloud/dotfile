@@ -89,66 +89,47 @@ nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 " Cursor Moving
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-
-inoremap <M-h> <Left>
-inoremap <M-j> <Down>
-inoremap <M-k> <Up>
-inoremap <M-l> <Right>
-
 cnoremap <A-j> <Down>
 cnoremap <A-k> <Up>
 cnoremap <A-h> <Left>
 cnoremap <A-l> <Right>
+inoremap <A-j> <Down>
+inoremap <A-k> <Up>
+inoremap <A-h> <Left>
+inoremap <A-l> <Right>
 
 cnoremap <M-j> <Down>
 cnoremap <M-k> <Up>
 cnoremap <M-h> <Left>
 cnoremap <M-l> <Right>
+inoremap <M-j> <Down>
+inoremap <M-k> <Up>
+inoremap <M-h> <Left>
+inoremap <M-l> <Right>
 
 " Like Emacs
 inoremap <C-e> <End>
 inoremap <C-b> <Home>
 
-inoremap <M-e> <End>
-inoremap <M-b> <Home>
-
 " Buftabline Config
-nnoremap <A-j> :bnext<CR>
-nnoremap <A-k> :bprev<CR>
-nnoremap <A-l> :bnext<CR>
-nnoremap <A-h> :bprev<CR>
-nnoremap <A-x> :bdelete<CR>
-nnoremap <A-w> :bwipeout<CR>
-
-nnoremap <M-j> :bnext<CR>
-nnoremap <M-k> :bprev<CR>
-nnoremap <M-l> :bnext<CR>
-nnoremap <M-h> :bprev<CR>
-nnoremap <M-x> :bdelete<CR>
-nnoremap <M-w> :bwipeout<CR>
+nnoremap <C-l> :bnext<CR>
+nnoremap <C-h> :bprev<CR>
+nnoremap <C-x> :bdelete<CR>
+nnoremap <C-w> :bwipeout<CR>
 
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
 nnoremap <leader>q  :q<CR>
-nnoremap <leader>hs :MRU<CR>
+nnoremap <silent><C-v> <ESC>"+gpi
 
-" Command
-nnoremap <leader>cd :cd %:p:h<CR>
-nnoremap <leader>cx :%s///gm
-
-noremap <silent> <C-v> <ESC>"+gpi
-" repeat Prev Command
+" repeat Preview Command
 nnoremap <leader>. @:
 vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
-" Ag searcher
 nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
+nnoremap <leader>uh :Unite neomru/file -complete -start-insert -buffer-name=files<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
 nnoremap <leader>ub :Unite file buffer<CR>
 nnoremap <leader>vf :VimFiler<CR>
@@ -156,14 +137,13 @@ nnoremap <leader>vf :VimFiler<CR>
 " Split faster
 nnoremap <leader>\ :vs<CR>
 nnoremap <leader>- :sp<CR>
-" End Split
 
-" first to copy files path
-" copy path
+" Fast to copy files path
 nnoremap <leader>p "+gp
-vnoremap <Leader>p "+p
+vnoremap <leader>p "+p
 vnoremap <leader>y "+y
-vnoremap <Leader>d "+d
+vnoremap <leader>d "+d
+nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
 			\ path '".expand("%:p")."' to clipboard"<CR>
 
@@ -186,8 +166,6 @@ nnoremap <leader>sk [szz
 nnoremap <leader>sa zg]szz
 nnoremap <leader>sd 1z=
 nnoremap <leader>sf z=
-"Vim Shell Faster
-nnoremap <leader>sh :VimShell<CR>
 
 " Multi Cursor Find
 vnoremap <leader>mf :MultipleCursorsFind 
@@ -197,12 +175,12 @@ map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
 " For Git fire
-nnoremap <leader>gs : Gstatus<CR>
-nnoremap <leader>gc : Gcommit
-nnoremap <leader>gb : Gblame
-nnoremap <leader>gv : Gitv<CR>
-nnoremap <leader>gp : Git push origin master<CR>
-nnoremap <leader>gu : Git pull -u<CR>
+nnoremap <leader>gs :Gstatus<CR>
+nnoremap <leader>gc :Gcommit
+nnoremap <leader>gb :Gblame
+nnoremap <leader>gv :Gitv<CR>
+nnoremap <leader>gp :Git push origin master<CR>
+nnoremap <leader>gu :Git pull -u<CR>
 
 " For SVN fire
 nnoremap <leader>sc :!svn ci -m ""<CR>
@@ -220,14 +198,10 @@ map g/ <Plug>(incsearch-stay)
 
 map n <Plug>(incsearch-nohl-n)zzzv
 map N <Plug>(incsearch-nohl-N)zzzv
-"map * <Plug>(incsearch-nohl-*)zzzv
-"map # <Plug>(incsearch-nohl-#)zzzv
+map * <Plug>(incsearch-nohl-*)zzzv
+map # <Plug>(incsearch-nohl-#)zzzv
 map g* <Plug>(incsearch-nohl-g*)zzzv
 map g# <Plug>(incsearch-nohl-g#)zzzv
-
-" Mark vim Plugin
-nnoremap <Leader>M <Plug>MarkToggle
-nnoremap <Leader>N <Plug>MarkAllClear
 
 "Sneak
 "replace 'f' with 1-char Sneak

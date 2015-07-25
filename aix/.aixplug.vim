@@ -1,8 +1,5 @@
-
 " ========================= Aix Plugin Manager =========================
-
 " Vundle Plugin Manager
-
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -23,25 +20,19 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ap/vim-buftabline'
 Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/unite-outline'
 Plugin 'Shougo/vimfiler.vim'
 Plugin 'Shougo/neossh.vim'
 Plugin 'Shougo/neomru.vim'
-Plugin 'yegappan/mru'
 Plugin 'danro/rename.vim'
 Plugin 'junegunn/fzf'
 
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
-"Plugin 'xolox/vim-misc'
-"Plugin 'xolox/vim-easytags'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'justinmk/vim-sneak'
-"Plugin 'goldfeld/vim-seek'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
@@ -52,27 +43,27 @@ Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'junegunn/limelight.vim'
 
-" @ Plugin --- [ |Google| Geeks Plugin ]
+" @ Plugin --- [ | Google | Geeks Plugin ]
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
 Plugin 'ebfe/vim-racer'
+" Complete Eng
 if (has('nvim'))
+	Plugin 'Shougo/neoinclude.vim'
+	Plugin 'Shougo/neco-vim'
  	Plugin 'Shougo/deoplete.nvim'
 else
 	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'rdnetto/YCM-Generator'
+	Plugin 'SirVer/ultisnips'
+	Plugin 'honza/vim-snippets'
 endif
-"Plugin 'Shougo/neocomplete.vim'
-"Plugin 'Shougo/neocomplcache.vim'
-"Plugin 'JazzCore/neocomplcache-ultisnips'
 
 " @ Plugin --- [ Code Complete Unity ]
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
+Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/livestyle-vim'
-Plugin 'Raimondi/delimitMate'
 
 " @ Plugin --- [ Geeks Plugin ]
 Plugin 'tpope/vim-git'
@@ -102,22 +93,19 @@ Plugin 'tmux-plugins/vim-tmux'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'rust-lang/rust.vim'
-"Plugin '13k/vim-nginx'
+Plugin '13k/vim-nginx'
 Plugin 'guns/xterm-color-table.vim'
 
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
-"Plugin 'dimasg/vim-mark'
 Plugin 't9md/vim-quickhl' 
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
-Plugin 'DemonCloud/vim-aixinde'
 "Plugin 'bling/vim-airline'
 Plugin 'ryanoasis/vim-devicons'
 
 " ---- Plugin List Complete ----
-
 call vundle#end()
 
 syntax on
@@ -126,5 +114,4 @@ syntax enable
 filetype on
 filetype plugin on
 filetype plugin indent on
-
 " ========================= Vundle Plugin Setup End =========================
