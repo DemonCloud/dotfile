@@ -84,9 +84,9 @@ function! AixStatuslineMode()
 
 			" Insert Model
 		elseif l:Status ==# 'i'
-			call s:AixFastChange('aixLeft1'        , '#181818' , '#79BE61' , '232' , '83' )
-			call s:AixFastChange('aixLeft1Larrow'  , '#79BE61' , '#121212' , '83'  , '233')
-			call s:AixFastChange('aixRight1Rarrow' , '#79BE61' , '#181818' , '83'  , '234')
+			call s:AixFastChange('aixLeft1'        , '#181818' , '#5FAF87' , '232' , '72' )
+			call s:AixFastChange('aixLeft1Larrow'  , '#5FAF87' , '#121212' , '72'  , '233')
+			call s:AixFastChange('aixRight1Rarrow' , '#5FAF87' , '#181818' , '72'  , '234')
 			let g:Flags="INSERT"
 
 			" Visual Model
