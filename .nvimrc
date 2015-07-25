@@ -1,8 +1,7 @@
 "                              YiJun Aix Vim 
-"                                2015.7.18
 
-" @ Source My Source
-
+" 2015-07-24
+" @ Source 
 " - Basic
 source $HOME/aix/.aix.vim
 " - Ignore
@@ -17,4 +16,3 @@ source $HOME/aix/.aixkeymap.vim
 " - Style
 source $HOME/aix/.aixstyle.vim
 source $HOME/aix/.aixline.vim
-
