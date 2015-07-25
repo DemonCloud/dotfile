@@ -56,9 +56,13 @@ Plugin 'junegunn/limelight.vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
-Plugin 'Valloric/YouCompleteMe'
 Plugin 'ebfe/vim-racer'
-Plugin 'rdnetto/YCM-Generator'
+if (has('nvim'))
+ 	Plugin 'Shougo/deoplete.nvim'
+else
+	Plugin 'Valloric/YouCompleteMe'
+	Plugin 'rdnetto/YCM-Generator'
+endif
 "Plugin 'Shougo/neocomplete.vim'
 "Plugin 'Shougo/neocomplcache.vim'
 "Plugin 'JazzCore/neocomplcache-ultisnips'

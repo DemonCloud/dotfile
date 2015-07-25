@@ -55,37 +55,42 @@ let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_cpp_checkers        = ['cpp']
 
 "-------------------- YouCompleteMe -------------------
-let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_min_num_of_chars_for_completion = 2
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_use_ultisnips_completer = 1
-let g:ycm_cache_omnifunc = 1
-let g:ycm_disable_for_files_larger_than_kb = 10000
-let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
-let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
-let g:ycm_filetype_blacklist = {
-			\ 'tagbar' : 1,
-			\ 'qf' : 1,
-			\ 'notes' : 1,
-			\ 'markdown' : 1,
-			\ 'unite' : 1,
-			\ 'text' : 1,
-			\ 'vimwiki' : 1,
-			\ 'pandoc' : 1,
-			\ 'infolog' : 1,
-			\ 'mail' : 1,
-			\ 'mundo': 1,
-			\ 'fzf': 1,
-			\ 'ctrlp' : 1
-			\}
+"-------------------- Deoplete --------------------
+if(has('nvim'))
+	let g:deoplete#enable_at_startup=1
+else
+	let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
+	let g:ycm_collect_identifiers_from_tags_files = 1
+	let g:ycm_min_num_of_chars_for_completion = 2
+	let g:ycm_add_preview_to_completeopt = 1
+	let g:ycm_use_ultisnips_completer = 1
+	let g:ycm_cache_omnifunc = 1
+	let g:ycm_disable_for_files_larger_than_kb = 10000
+	let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
+	let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
+	let g:ycm_filetype_blacklist = {
+				\ 'tagbar' : 1,
+				\ 'qf' : 1,
+				\ 'notes' : 1,
+				\ 'markdown' : 1,
+				\ 'unite' : 1,
+				\ 'text' : 1,
+				\ 'vimwiki' : 1,
+				\ 'pandoc' : 1,
+				\ 'infolog' : 1,
+				\ 'mail' : 1,
+				\ 'mundo': 1,
+				\ 'fzf': 1,
+				\ 'ctrlp' : 1
+				\}
 
-let g:ycm_error_symbol = '>>'
-let g:ycm_warning_symbol = '>*'
+	let g:ycm_error_symbol = '>>'
+	let g:ycm_warning_symbol = '>*'
 
-nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+	nnoremap <leader>gl :YcmCompleter GoToDeclaration<CR>
+	nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+	nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
+endif
 
 "-------------------- NeoComplete ---------------------
 "
