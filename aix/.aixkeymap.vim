@@ -59,13 +59,9 @@ nnoremap Q :q!<CR>
 nnoremap W :w!<CR>
 
 " Window VertSplit switcher
-nnoremap <leader>h  <C-w>h
 nnoremap <leader>hh <C-w>h
-nnoremap <leader>j  <C-w>j
 nnoremap <leader>jj <C-w>j
-nnoremap <leader>k  <C-w>k
 nnoremap <leader>kk <C-w>k
-nnoremap <leader>l  <C-w>l
 nnoremap <leader>ll <C-w>l
 
 " Set as toggle foldcomment
@@ -132,7 +128,6 @@ nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
 nnoremap <leader>uh :Unite neomru/file -complete -start-insert -buffer-name=files<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
 nnoremap <leader>ub :Unite file buffer<CR>
-nnoremap <leader>vf :VimFiler<CR>
 
 " Split faster
 nnoremap <leader>\ :vs<CR>
