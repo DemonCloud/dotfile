@@ -208,19 +208,6 @@ call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
 call unite#filters#matcher_default#use(['matcher_fuzzy'])
 call unite#filters#sorter_default#use(['sorter_rank'])
 
-" VimFiler Settings
-let g:vimfiler_safe_mode_by_default = 0
-let g:vimfiler_ignore_pattern = '^\%(.git\|.idea\|.DS_Store\)$'
-call vimfiler#set_execute_file('txt', 'notepad')
-call vimfiler#set_execute_file('c', ['gvim', 'notepad'])
-let g:vimfiler_as_default_explorer = 1
-" Enable file operation commands.
-" Edit file by tabedit.
-call vimfiler#custom#profile('default', 'context', {
-			\ 'safe' : 0,
-			\ 'edit_action' : 'tabopen',
-			\ })
-
 " Like Textmate icons.
 let g:vimfiler_tree_leaf_icon = ' '
 let g:vimfiler_tree_opened_icon = '-'
@@ -246,21 +233,9 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
-" Sneak Vim
-let g:sneak#streak = 1
-
 " Vim incsearch
 let g:vim_search_pulse_disable_auto_mappings = 1
 let g:incsearch#auto_nohlsearch = 1
-
-" Mark config
-let g:mwDefaultHighlightingPalette = 'maximum'
-let g:mwAutoLoadMarks = 1
-
-" Vim-EasyTags 
-"let g:easytags_cmd = '/usr/bin/ctags'
-let g:easytags_async = 1
-set tags=~/.vim/tags;
 
 " DevIcons Config
 " ColorFul NERDTree
@@ -279,9 +254,4 @@ let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
 let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
 
-" Vim-quickhl 
-nmap <Space>m <Plug>(quickhl-manual-this)
-xmap <Space>m <Plug>(quickhl-manual-this)
-nmap <Space>M <Plug>(quickhl-manual-reset)
-xmap <Space>M <Plug>(quickhl-manual-reset)
 " ========================= Plugin Config End =========================

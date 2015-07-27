@@ -16,3 +16,5 @@ source $HOME/aix/.aixkeymap.vim
 " - Style
 source $HOME/aix/.aixstyle.vim
 source $HOME/aix/.aixline.vim
+" - System Source
+source $VIMRUNTIME/menu.vim

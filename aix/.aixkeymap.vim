@@ -125,7 +125,7 @@ vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
 nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
-nnoremap <leader>uh :Unite neomru/file -complete -start-insert -buffer-name=files<CR>
+nnoremap <leader>uh :Unite neomru/file -buffer -auto-quit -focus<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
 nnoremap <leader>ub :Unite file buffer<CR>
 
@@ -197,6 +197,12 @@ map * <Plug>(incsearch-nohl-*)zzzv
 map # <Plug>(incsearch-nohl-#)zzzv
 map g* <Plug>(incsearch-nohl-g*)zzzv
 map g# <Plug>(incsearch-nohl-g#)zzzv
+
+" Vim-quickhl 
+nmap <Space>m <Plug>(quickhl-manual-this)
+xmap <Space>m <Plug>(quickhl-manual-this)
+nmap <Space>M <Plug>(quickhl-manual-reset)
+xmap <Space>M <Plug>(quickhl-manual-reset)
 
 "Sneak
 "replace 'f' with 1-char Sneak
