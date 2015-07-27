@@ -71,6 +71,10 @@ elseif(has('win32'))
 	Plugin 'Shougo/neco-syntax'
 	Plugin 'Shougo/neocomplcache.vim'
 	Plugin 'Shougo/neocomplete.vim'
+	Plugin 'xleng/YCM_WIN_X86'
+	Plugin 'SirVer/ultisnips'
+	Plugin 'honza/vim-snippets'
+	Plugin 'skeept/Ultisnips-neocomplete-unite'
 else
 " For Linux Vim @ Gvim
 	Plugin 'Valloric/YouCompleteMe'

@@ -92,13 +92,12 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 "-------------------- NeoComplete ---------------------
 " If in Windows System Using Neocomplete
 if(has('win32'))
-	set rtp+=$VIM/vimfiles/bundle/neocomplete.vim/
 	let g:acp_enableAtStartup=1
 	let g:neocomplete#enable_at_startup=1
 	let g:neocomplete#enable_smart_case=1
 	let g:neocomplete#enable_insert_char_pre=1
 	let g:neocomplete#enable_multibyte_completion=1
-	let g:neocomplete#sources#syntax#min_keyword_length=2
+	let g:neocomplete#sources#syntax#min_keyword_length=3
 	let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
 	let g:neocomplete#enable_auto_select=1
 	let g:neocomplete#enable_auto_delimiter=1

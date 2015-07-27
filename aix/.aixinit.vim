@@ -93,7 +93,11 @@ set fileformats=unix,dos,mac
 
 " set Undo file
 set undofile
-set undodir=~/.vim/undo
+if(has('win32'))
+	set undodir=$VIM/vimfiles/undo
+else
+	set undodir=~/.vim/undo
+endif
 set viminfo+=!
 
 " Diff GUI Vim with NVim
@@ -116,7 +120,11 @@ if has("gui_running")
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10
-	set guifont=Aix\ 9
+	if(has('win32')) 
+		set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
+	else
+		set guifont=Aix\ 9
+	endif
 
 	map <silent> <F1> :if &guioptions =~# 'T' <Bar>
 				\set guioptions-=T <Bar>
@@ -141,9 +149,7 @@ endif
 
 " Setting Spell Checker
 set spelllang=en_us                      " spelling options
-if(has('win32'))
-	set spellfile=$VIMRUNTIME/spell/en.utf-8.spl  " spell files added with `zg`
-else
+if(!has('win32'))
 	set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
 	set dictionary+=/usr/share/dict/words
 endif
