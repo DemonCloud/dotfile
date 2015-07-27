@@ -2,8 +2,14 @@
 " Vundle Plugin Manager
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" Different Path between Windows and Linux
+if(has('win32'))
+	set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+	call vundle#begin()
+else
+	set rtp+=~/.vim/bundle/Vundle.vim
+	call vundle#begin()
+endif
 
 " # Plugins Beginning #
 " @ Plugin --- [ Base Require Lib & Prefix ]
