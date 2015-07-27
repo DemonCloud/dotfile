@@ -5,7 +5,7 @@ filetype off
 " Different Path between Windows and Linux
 if(has('win32'))
 	set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-	call vundle#begin($VIM.'/vimfiles/bundle')
+	call vundle#rc('$VIM/vimfiles/bundle')
 else
 	set rtp+=~/.vim/bundle/Vundle.vim
 	call vundle#begin()

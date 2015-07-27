@@ -73,9 +73,9 @@ printf "\n"
 # Copy file in to path
 cp -rf aix $HOME/
 
-if [ ! -f "$HOME/.fonts.conf" ]; then
-	cp -f .fonts.conf $HOME/
-fi
+# if [ ! -f "$HOME/.fonts.conf" ]; then
+# 	cp -f .fonts.conf $HOME/
+# fi
 
 cp -f .vimrc $HOME/
 cp -f .nvimrc $HOME/
