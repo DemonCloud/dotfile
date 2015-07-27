@@ -142,7 +142,7 @@ endif
 " Setting Spell Checker
 set spelllang=en_us                      " spelling options
 if(has('win32'))
-	set spellfile=~$VIMRUNTIME/spell/en.utf-8.spl  " spell files added with `zg`
+	set spellfile=$VIMRUNTIME/spell/en.utf-8.spl  " spell files added with `zg`
 else
 	set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
 	set dictionary+=/usr/share/dict/words
