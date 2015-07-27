@@ -68,7 +68,7 @@ call s:AixLineLink('aixRight1'      , 'aixLeft1')
 " ===================== Function ===================
 " Observer
 let g:last_mode = 'n'
-let g:Flags="AIX•NORMAL"
+let g:Flags="NORMAL•"
 function! AixStatuslineMode()
 	let l:Status=mode()
 
@@ -80,14 +80,14 @@ function! AixStatuslineMode()
 			call s:AixFastChange('aixLeft1'        , '#C0C280' , '#5F0000' , '143' , '52'  ,)
 			call s:AixFastChange('aixLeft1Larrow'  , '#5F0000' , '#121212' , '52'  , '233' ,)
 			call s:AixFastChange('aixRight1Rarrow' , '#5F0000' , '#181818' , '52'  , '234' ,)
-			let g:Flags="AIX•NORMAL"
+			let g:Flags="NORMAL•"
 
 			" Insert Model
 		elseif l:Status ==# 'i'
 			call s:AixFastChange('aixLeft1'        , '#181818' , '#5FAF87' , '232' , '72' )
 			call s:AixFastChange('aixLeft1Larrow'  , '#5FAF87' , '#121212' , '72'  , '233')
 			call s:AixFastChange('aixRight1Rarrow' , '#5FAF87' , '#181818' , '72'  , '234')
-			let g:Flags="AIX•INSERT"
+			let g:Flags="INSERT•"
 
 			" Visual Model
 		elseif l:Status == 'v'
@@ -96,9 +96,9 @@ function! AixStatuslineMode()
 			call s:AixFastChange('aixRight1Rarrow' , '#276888' , '#181818' , '25' , '234')
 
 			if l:Status ==# "v"
-				let g:Flags="AIX•VISUAL"
+				let g:Flags="VISUAL•"
 			elseif l:Status ==# "V"
-				let g:Flags="AIX•V-LINE"
+				let g:Flags="V-LINE•"
 			endif
 
 			" Command Model
@@ -106,30 +106,30 @@ function! AixStatuslineMode()
 			call s:AixFastChange('aixLeft1'        , '#BCBCBC' , '#000000' , '250' , '0'  )
 			call s:AixFastChange('aixLeft1Larrow'  , '#000000' , '#121212' , '0'   , '233')
 			call s:AixFastChange('aixRight1Rarrow' , '#000000' , '#181818' , '0'   , '234')
-			let g:Flags="AIX•COMMAND"
+			let g:Flags="COMMAND•"
 
 			" Command Model
 		elseif l:Status == 't'
 			call s:AixFastChange('aixLeft1'        , '#BCBCBC' , '#000000' , '250' , '0'  )
 			call s:AixFastChange('aixLeft1Larrow'  , '#000000' , '#121212' , '0'   , '233')
 			call s:AixFastChange('aixRight1Rarrow' , '#000000' , '#181818' , '0'   , '234')
-			let g:Flags="AIX•SHELL"
+			let g:Flags="SHELL•"
 
 			" Replace Model
 		elseif l:Status == 'R'
 			call s:AixFastChange('aixLeft1'        , '#AF0000' , '#DF5F00' , '124' , '166')
 			call s:AixFastChange('aixLeft1Larrow'  , '#DF5F00' , '#121212' , '166' , '233')
 			call s:AixFastChange('aixRight1Rarrow' , '#DF5F00' , '#181818' , '166' , '234')
-			let g:Flags="AIX•REPLACE"
+			let g:Flags="REPLACE•"
 
 		elseif l:Status == "s"
 			call s:AixFastChange('aixLeft1'        , '#FFFFFF' , '#005FAF' , '15' , '25' )
 			call s:AixFastChange('aixLeft1Larrow'  , '#005FAF' , '#121212' , '25' , '233')
 			call s:AixFastChange('aixRight1Rarrow' , '#005FAF' , '#181818' , '25' , '234')
 			if l:Status ==# "s"
-				let g:Flags="AIX•SELECT"
+				let g:Flags="SELECT•"
 			elseif l:Status ==# "S"
-				let g:Flags="AIX•SELECT-ALL"
+				let g:Flags="SELECT-ALL•"
 			endif
 
 		else
@@ -137,7 +137,7 @@ function! AixStatuslineMode()
 			call s:AixFastChange('aixLeft1Larrow'  , '#C0C280' , '#121212' , '143' , '233')
 			call s:AixFastChange('aixRight1Rarrow' , '#C0C280' , '#181818' , '143' , '234')
 			if l:Status ==# ""
-				let g:Flags="AIX•V·BLOCK"
+				let g:Flags="V-BLOCK•"
 			else
 				let g:Flags=l:Status
 			endif
