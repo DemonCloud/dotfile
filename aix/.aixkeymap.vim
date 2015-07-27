@@ -127,6 +127,7 @@ vnoremap <leader>. :normal .<CR>
 nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
 nnoremap <leader>uh :Unite neomru/file -buffer -auto-quit -focus<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
+nnoremap <leader>uo :Unite outline -focus<CR>
 nnoremap <leader>ub :Unite file buffer<CR>
 
 " Split faster

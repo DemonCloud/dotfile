@@ -15,6 +15,7 @@ endif
 " @ Plugin --- [ Base Require Lib & Prefix ]
 Plugin 'gmarik/Vundle.vim'
 Plugin 'google/vim-maktaba'
+Plugin 'thinca/vim-quickrun'
 Plugin 'L9'
 Plugin 'Lokaltog/vim-distinguished'
 Plugin 'romainl/vim-qf'
@@ -77,10 +78,16 @@ elseif(has('win32'))
 	Plugin 'skeept/Ultisnips-neocomplete-unite'
 else
 " For Linux Vim @ Gvim
+	Plugin 'Shougo/neoinclude.vim'
+	Plugin 'Shougo/neco-vim'
+	Plugin 'Shougo/neco-syntax'
+	Plugin 'Shougo/neocomplcache.vim'
+	Plugin 'Shougo/neocomplete.vim'
 	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'rdnetto/YCM-Generator'
 	Plugin 'SirVer/ultisnips'
 	Plugin 'honza/vim-snippets'
+	Plugin 'skeept/Ultisnips-neocomplete-unite'
 endif
 
 " @ Plugin --- [ Code Complete Unity ]
