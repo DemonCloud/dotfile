@@ -130,19 +130,23 @@ else
 	set showtabline=2
 	set noimd
 	set ttimeoutlen=0
+	if len($TMUX) > 0
+		" set screen title to vim $PWD folder name - format 'v:folder'
+		set titlestring=v:%(%{fnamemodify(expand(\"$PWD\"),\":t\")}%)
+		set t_ts=k
+		set t_fs=\
+		set title
+	endif
 endif
 
-if len($TMUX) > 0
-	" set screen title to vim $PWD folder name - format 'v:folder'
-	set titlestring=v:%(%{fnamemodify(expand(\"$PWD\"),\":t\")}%)
-	set t_ts=k
-	set t_fs=\
-	set title
-endif
-
+" Setting Spell Checker
 set spelllang=en_us                      " spelling options
-set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
-set dictionary+=/usr/share/dict/words
+if(has('win32'))
+	set spellfile=~$VIMRUNTIME/spell/en.utf-8.spl  " spell files added with `zg`
+else
+	set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
+	set dictionary+=/usr/share/dict/words
+endif
 
 " Fix Fucking Vim Prefix for GTK
 set backspace=indent,eol,start

@@ -5,7 +5,7 @@ filetype off
 " Different Path between Windows and Linux
 if(has('win32'))
 	set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-	call vundle#begin()
+	call vundle#begin($VIM.'/vimfiles/bundle')
 else
 	set rtp+=~/.vim/bundle/Vundle.vim
 	call vundle#begin()
@@ -55,13 +55,24 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'ebfe/vim-racer'
 " Complete Eng
 if (has('nvim'))
+" For NeoVim
 	Plugin 'Shougo/neoinclude.vim'
 	Plugin 'Shougo/neco-vim'
 	Plugin 'Shougo/neco-syntax'
  	Plugin 'Shougo/deoplete.nvim'
+	Plugin 'Valloric/YouCompleteMe'
+	Plugin 'rdnetto/YCM-Generator'
 	Plugin 'SirVer/ultisnips'
 	Plugin 'honza/vim-snippets'
+elseif(has('win32'))
+" For Windows
+	Plugin 'Shougo/neoinclude.vim'
+	Plugin 'Shougo/neco-vim'
+	Plugin 'Shougo/neco-syntax'
+	Plugin 'Shougo/neocomplcache.vim'
+	Plugin 'Shougo/neocomplete.vim'
 else
+" For Linux Vim @ Gvim
 	Plugin 'Valloric/YouCompleteMe'
 	Plugin 'rdnetto/YCM-Generator'
 	Plugin 'SirVer/ultisnips'
