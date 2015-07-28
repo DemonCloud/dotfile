@@ -176,10 +176,6 @@ let g:C_UseTool_cmake='yes'
 let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
 
-" Vimshell Settings
-let g:vimshell_prompt = "AIX>> "
-let g:vimshell_user_prompt = 'fnamemodify(getcwd(), ":~")'
-
 " Unite Settings
 let g:unite_prompt=">>"
 let g:unite_source_file_rec_max_cache_files = 0
