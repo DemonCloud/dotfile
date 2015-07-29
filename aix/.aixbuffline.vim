@@ -5,6 +5,7 @@
 " Require Plugin
 "   -- vim-devicons
 
+set tabpagemax=8
 set showtabline=2
 set tabline=%!MyTabLine()  " custom tab pages line
 function MyTabLine()
@@ -72,7 +73,7 @@ function MyTabLine()
 	let s .= '%#TabLineFill#%T'
 	" right-align the label to close the current tab page
 	if tabpagenr('$') > 0
-		let s .= '%=%#TabLineFill#%999X>>AIX-BUFF | '.WebDevIconsGetFileTypeSymbol().' '
+		let s .= '%=%#TabLineFill#%999X>>AIX-BUFF '.WebDevIconsGetFileTypeSymbol()
 	endif
 	return s
 endfunction
