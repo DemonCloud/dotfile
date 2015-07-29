@@ -107,7 +107,18 @@ inoremap <M-l> <Right>
 inoremap <C-e> <End>
 inoremap <C-b> <Home>
 
-" Buftabline Config
+" TabLine Tab configure KeyFire
+nnoremap <leader>t :tabnew<CR>
+nnoremap <leader>tn :tabnew<CR>
+nnoremap <leader>tl :tabnext<CR>
+nnoremap <leader>th :tabprevious<CR>
+nnoremap <leader>tx :tabclose<CR>
+nnoremap <leader>tc :tabclose<CR>
+
+" Buffers KeyFire 
+nnoremap <leader>b :buffers<CR>
+
+" Buftabline Config Manager
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-x> :bdelete<CR>
@@ -125,7 +136,7 @@ vnoremap <leader>. :normal .<CR>
 
 " Unite file configure
 nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
-nnoremap <leader>uh :Unite neomru/file -buffer -auto-quit -focus<CR>
+nnoremap <leader>uh :Unite neomru/file -buffer -focus<CR>
 nnoremap <leader>ug :Unite grep:.<CR>
 nnoremap <leader>uo :Unite outline -focus<CR>
 nnoremap <leader>ub :Unite file buffer<CR>
