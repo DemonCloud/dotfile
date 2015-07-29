@@ -35,7 +35,8 @@ function MyTabLine()
 			elseif getbufvar( b, "&buftype" ) == 'quickfix'
 				let n .= '[Q]'
 			else
-				let n .= pathshorten(bufname(b))
+				" let n .= pathshorten(bufname(b))
+				let n .= fnamemodify(bufname(b),':t')
 			endif
 			" check and ++ tab's &modified count
 			if getbufvar( b, "&modified" )
@@ -43,7 +44,7 @@ function MyTabLine()
 			endif
 			" no final ' ' added...formatting looks better done later
 			if bc > 1
-				let n = ' ['.n.']'
+				let n.=' '
 			endif
 			let bc -= 1
 		endfor
@@ -61,7 +62,7 @@ function MyTabLine()
 		endif
 		" add buffer names
 		if n == ''
-			let s.= '[New]'
+			let s.= '[new]'
 		else
 			let s .= n
 		endif
