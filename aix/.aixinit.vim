@@ -189,4 +189,5 @@ if(has('win32'))
 		silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 	endfunction
 endif
+
 " ========================= Normal Setting End =========================
