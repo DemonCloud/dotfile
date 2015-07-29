@@ -2,6 +2,9 @@
 
 ## Introduction 简介
 
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y0.png" alt="Aix-Vim Crazy!"/>
+<hr>
+
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix1.gif" alt="Aix">
 <hr>
 
@@ -152,6 +155,8 @@
 
 
 #### Preview
+
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y1.png" alt="Aix-Vim Neo previews"/>
 
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/y2.png" alt="Aix-Vim Neo previews"/>
 
