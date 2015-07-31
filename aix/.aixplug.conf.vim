@@ -232,6 +232,9 @@ let g:multi_cursor_quit_key='<Esc>'
 let g:vim_search_pulse_disable_auto_mappings = 1
 let g:incsearch#auto_nohlsearch = 1
 
+" Python snytax configure
+let python_self_cls_highlight = 1
+
 " DevIcons Config
 " ColorFul NERDTree
 let g:NERDTreeRespectWildIgnore=1

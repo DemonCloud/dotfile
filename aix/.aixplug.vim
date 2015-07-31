@@ -113,6 +113,8 @@ Plugin 'justinmk/vim-syntax-extra' "Extra C Flex Syntax
 Plugin 'WolfgangMehner/c.vim'
 Plugin 'Kris2k/A.vim'
 Plugin 'othree/html5.vim'
+"Plugin 'hdima/python-syntax'
+Plugin 'kh3phr3n/python-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'ap/vim-css-color'
