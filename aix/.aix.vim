@@ -1,3 +1,8 @@
+"  --------------  Aix Vim --------------
+"  
+"               Version 0.8
+
+
 " Set Linux Debian Desktop
 runtime! debian.vim
 

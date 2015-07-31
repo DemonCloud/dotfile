@@ -40,6 +40,26 @@ command! -nargs=? -range=% Space2Tab call IndentConvert(<line1>,<line2>,0,<q-arg
 command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-args>)
 command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q-args>)
 
+function! VisualSelection(direction, extra_filter) range
+    let l:saved_reg = @"
+    execute "normal! vgvy"
+
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
+
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'ag'
+        call CmdLine("Ag \"" . l:pattern . "\" " )
+    elseif a:direction == 'replace'
+        call CmdLine("%s" . '/'. l:pattern . '/')
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
+
+    let @/ = l:pattern
+    let @" = l:saved_reg
+endfunction
 " -------------- Tooling Function Ending ------------------
 
 nnoremap <F2> :NERDTreeToggle<CR>
@@ -128,7 +148,8 @@ nnoremap <C-w> :bwipeout<CR>
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 nnoremap <leader>w  :w!<CR>
 nnoremap <leader>q  :q<CR>
-nnoremap <silent><C-v> <ESC>"+gpi
+nnoremap <C-v> <ESC>"+gpa
+cnoremap <C-v> <C-R>+
 
 " repeat Preview Command
 nnoremap <leader>. @:
@@ -176,6 +197,7 @@ nnoremap <leader>sf z=
 
 " Multi Cursor Find
 vnoremap <leader>mf :MultipleCursorsFind 
+vnoremap <leader>s :call VisualSelection('ag', '')<CR>
 
 " Multi Expand Region
 map K <Plug>(expand_region_expand)

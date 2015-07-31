@@ -52,7 +52,7 @@ set whichwrap+=<,>,h,l
 set wildmenu
 set wildmode=longest,full
 set completeopt=menu,menuone,longest
-set completeopt-=preview
+set completeopt+=preview
 set switchbuf=useopen,usetab
 set shortmess=a
 
@@ -77,6 +77,7 @@ set autoread
 "set showmatch
 set laststatus=2
 set cmdheight=1
+set modelines=1
 
 " No surround sound
 set noerrorbells
@@ -90,6 +91,10 @@ set foldenable
 " misc settings
 set fileformat=unix     " file mode is unix
 set fileformats=unix,dos,mac
+
+" Set Spliter
+set splitright
+set splitbelow
 
 " set Undo file
 set undofile
@@ -136,7 +141,7 @@ if has("gui_running")
 else
 	set t_Co=256
 	set showtabline=2
-	set noimd
+		set noimd
 	set ttimeoutlen=0
 	if len($TMUX) > 0
 		" set screen title to vim $PWD folder name - format 'v:folder'
@@ -189,5 +194,13 @@ if(has('win32'))
 		silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
 	endfunction
 endif
+
+func! DeleteTrailingWS()
+  exe "normal mz"
+  %s/\s\+$//ge
+  exe "normal `z"
+endfunc
+autocmd BufWrite *.py :call DeleteTrailingWS()
+autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " ========================= Normal Setting End =========================

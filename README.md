@@ -1,6 +1,6 @@
 # Aix-Vim 
 
-## Introduction 简介
+## Introduction ( Version 0.8 )
 
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/y0.png" alt="Aix-Vim Crazy!"/>
 <hr>
