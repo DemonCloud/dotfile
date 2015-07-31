@@ -125,7 +125,11 @@ inoremap <M-l> <Right>
 
 " Like Emacs
 inoremap <C-e> <End>
-inoremap <C-b> <Home>
+inoremap <C-f> <Home>
+inoremap <C-d> <Esc>VypA
+inoremap <C-w> <C-o>w
+inoremap <C-b> <C-o>b
+vnoremap <C-c> "+y 
 
 " TabLine Tab configure KeyFire
 nnoremap <leader>t :tabnew<CR>
@@ -142,7 +146,6 @@ nnoremap <leader>b :buffers<CR>
 nnoremap <C-l> :bnext<CR>
 nnoremap <C-h> :bprev<CR>
 nnoremap <C-x> :bdelete<CR>
-nnoremap <C-w> :bwipeout<CR>
 
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
@@ -158,7 +161,8 @@ vnoremap <leader>. :normal .<CR>
 " Unite file configure
 nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
 nnoremap <leader>uh :Unite neomru/file -buffer -focus<CR>
-nnoremap <leader>ug :Unite grep:.<CR>
+nnoremap <leader>us :Unite grep:.<CR>
+nnoremap <leader>uw :Unite grep:.<CR><C-R>=expand("<cword>")<CR><CR>
 nnoremap <leader>uo :Unite outline -focus<CR>
 nnoremap <leader>ub :Unite file buffer<CR>
 
