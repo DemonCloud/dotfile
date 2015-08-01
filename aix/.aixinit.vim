@@ -4,6 +4,9 @@
 set lines=42
 set columns=118
 
+" Prefix GTK borders
+set guiheadroom=0
+
 " ## Make its Gvim Like Windows behave ##
 " So you can use
 " @ CTRL+S save the file
