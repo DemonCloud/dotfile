@@ -22,17 +22,6 @@
 
 <a href="#screen" rel="#screen">Click to More Static Screen Shot ::BOOM! </a>
 
-这些配置文件做了如下事情：
-
->	1. 使用 [Vundle](https://github.com/gmarik/Vundle.vim) 管理插件
->	2. 最新版本Aix-Vim编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
->	3. 包含了各种流行实用的插件，包含通用配置（最佳实践,深度优化，适配原生Vim 和 NeoVim）
->	4. 修复了Tmux Bash 中 Vim 不支持 Alt 组合键的问题
->	5. 解决了部分插件按键冲突，某些插件加载后相互冲突导致Gvim顿卡
->	6. 解决了Gvim 去除了右边下边GUI白边的问题,详情: [issue1](https://stackoverflow.com/questions/9265984/strange-gvim-inner-borders) [issue2](https://groups.google.com/forum/#!topic/vim_dev/hfN-kMZDAEY)
->	7. Windows 和 Linux 下的原生按键配置均做了强化处理
->	8. 原生制定的 Statusline 配合主题 J, 不喜可自己更换XXXLine系列插件
-
 
 ## Install 安装
 
