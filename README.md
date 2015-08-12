@@ -41,7 +41,7 @@
 
 相关插件：https://github.com/ryanoasis/vim-devicons
 
-关于Aix-Vim中我所用的字体 ``Aix`` , 很抱歉，由本人自己制定的``BitMap``点阵字体，为开源，有可能在完善之后开源 
+关于Aix-Vim中我所用的字体 ``Aix`` , 很抱歉，由本人自己制定的``BitMap``点阵字体，未开源，有可能在完善之后开源 
 
 #### Linux
 
@@ -64,7 +64,7 @@
 
 下载 ：
 
-[[Aix-Vim for Windows]](http://pan.baidu.com/s/1i3ImvyP) -- Update 2015.7.22 集成 NeoComplete 和 YoucompleteMe 支持 Ultisnips\(强力推荐，请看下面，安装Lua\)
+[[Aix-Vim for Windows]](http://pan.baidu.com/s/1gdi05O3) -- 更新于 2015.8.12
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 >
