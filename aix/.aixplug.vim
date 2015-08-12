@@ -133,6 +133,7 @@ Plugin 'guns/xterm-color-table.vim'
 " @ Plugin --- [ Code Format ]
 Plugin 'godlygeek/tabular'
 Plugin 't9md/vim-quickhl' 
+Plugin 'Chiel92/vim-autoformat'
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
