@@ -33,15 +33,17 @@
 
 更新项目 ： ``git pull -u``
 
-#### 字体
+#### 字体(已开源，项目的fonts文件夹中)
 
-修改 ``aix/.aixinit.vim`` 中 ``guifont`` 的设置，
+``我已经开源了自己的Aix字体，可以在项目的fonts文件夹中找到``
 
-下载可用字体：https://github.com/ryanoasis/nerd-fonts
+没用过OSX，所以我不知道点阵字体MAC是不是支持，bdf格式的点阵字体目前测试可以在Linux下使用，有些Linux默认是不开启点阵字体的支持的，具体可以百度或者谷歌如何在Linux上安装点阵字体，有些Linux默认就支持点阵字体，可以直接安装使用。
+
+可用支持字体：https://github.com/ryanoasis/nerd-fonts
 
 相关插件：https://github.com/ryanoasis/vim-devicons
 
-关于Aix-Vim中我所用的字体 ``Aix`` , 很抱歉，由本人自己制定的``BitMap``点阵字体，未开源，有可能在完善之后开源 
+修改 ``aix/.aixinit.vim`` 中 ``guifont`` 的设置，
 
 #### Linux
 
@@ -197,6 +199,8 @@
 
 
 ## Date 日志
+
+-- update 2015.10.15 开源点阵字体
 
 -- update 2015.7.21 重构vim配置，Aix-Vim
 
