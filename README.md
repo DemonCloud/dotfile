@@ -66,13 +66,14 @@
 
 下载 ：
 
-[[Aix-Vim for Windows]](http://pan.baidu.com/s/1gdi05O3) -- 更新于 2015.8.12
+Vim version: 7.4.898 x86
+
+Used libraries: Perl 5.22.1, Python 2.7.10, Python 3.5.0, Ruby 2.2.3, Lua 5.3.0, Tcl 8.6.4, libXpm
+[[Aix-Vim for Windows x86]](http://yunpan.cn/cFc2kWiqxSpIw) -- **(提取码：000e）** 更新于 2015.10.15 插件全部跟新到最新
 
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 >
-> 注意：请运行 ``Vim\vim74\gvim.exe`` 文件. 此文件重新编译 最新版本Aix-Vim 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
->
-> Window 2015.8.1 之后不再更新
+> 注意：请运行 ``Vim\vim74\gvim.exe`` 文件.
 
 
 #### 配置说明
