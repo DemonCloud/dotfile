@@ -43,7 +43,7 @@
 
 相关插件：https://github.com/ryanoasis/vim-devicons
 
-修改 ``aix/.aixinit.vim`` 中 ``guifont`` 的设置，
+安装字体完成之后，修改 ``aix/.aixinit.vim`` 中 ``guifont`` 的设置，
 
 #### Linux
 
@@ -59,7 +59,7 @@
  	$ ./install.sh
 ```
 
-> 如果``install.sh``文件没有执行权限，请使用``sudo chmod +x install.sh``
+> 如果``install.sh``文件没有执行权限，请使用``sudo chmod 777 install.sh``
 
 
 #### Windows
@@ -74,6 +74,13 @@ Used libraries: Perl 5.22.1, Python 2.7.10, Python 3.5.0, Ruby 2.2.3, Lua 5.3.0,
 > 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
 >
 > 注意：请运行 ``Vim\vim74\gvim.exe`` 文件.
+
+#### 关于neovim
+
+NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变动。
+``.nvimrc``已经不生效了，具体到做法是，打开nvim之后输入``:version`` 可以看到nvim当前版本加载配置文件的名字以及具体路径。
+例如，在version中我看到 neovim 加载了`` example.vim`` 作为配置文件，那么，你需要做工作就是：
+将 aix文件夹中的 ``.aix.vim`` 的代码，copy到``example.vim`` 中，这样 Aix-Vim 就可以正常加载了
 
 
 #### 配置说明
@@ -200,6 +207,7 @@ Used libraries: Perl 5.22.1, Python 2.7.10, Python 3.5.0, Ruby 2.2.3, Lua 5.3.0,
 
 
 ## Date 日志
+-- update 2016.3.21 增加修改，支持neovim
 
 -- update 2015.10.15 开源点阵字体
 

@@ -225,16 +225,16 @@ nnoremap <leader>en :e! ~/.nvimrc<CR>
 nnoremap <leader>ev :e! ~/.vimrc<CR>
 
 " Incsearch
-map / <Plug>(incsearch-forward)
-map ? <Plug>(incsearch-backward)
-map g/ <Plug>(incsearch-stay)
+" map / <Plug>(incsearch-forward)
+" map ? <Plug>(incsearch-backward)
+" map g/ <Plug>(incsearch-stay)
 
-map n <Plug>(incsearch-nohl-n)zzzv
-map N <Plug>(incsearch-nohl-N)zzzv
-map * <Plug>(incsearch-nohl-*)zzzv
-map # <Plug>(incsearch-nohl-#)zzzv
-map g* <Plug>(incsearch-nohl-g*)zzzv
-map g# <Plug>(incsearch-nohl-g#)zzzv
+" map n <Plug>(incsearch-nohl-n)zzzv
+" map N <Plug>(incsearch-nohl-N)zzzv
+" map * <Plug>(incsearch-nohl-*)zzzv
+" map # <Plug>(incsearch-nohl-#)zzzv
+" map g* <Plug>(incsearch-nohl-g*)zzzv
+" map g# <Plug>(incsearch-nohl-g#)zzzv
 
 " Vim-quickhl 
 nmap <Space>m <Plug>(quickhl-manual-this)
