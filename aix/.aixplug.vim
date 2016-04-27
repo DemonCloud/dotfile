@@ -14,7 +14,6 @@ endif
 " # Plugins Beginning #
 " @ Plugin --- [ Base Require Lib & Prefix ]
 Plugin 'gmarik/Vundle.vim'
-Plugin 'google/vim-maktaba'
 Plugin 'thinca/vim-quickrun'
 Plugin 'L9'
 Plugin 'Lokaltog/vim-distinguished'
@@ -38,7 +37,6 @@ Plugin 'simnalamburt/vim-mundo'
 Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
-"Plugin 'haya14busa/incsearch.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
 Plugin 'tpope/vim-obsession'
@@ -53,6 +51,8 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'terryma/vim-smooth-scroll'
 Plugin 'terryma/vim-expand-region'
 Plugin 'ebfe/vim-racer'
+Plugin 'haya14busa/incsearch.vim'
+
 " Complete Eng
 if (has('nvim'))
 " For NeoVim

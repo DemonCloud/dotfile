@@ -44,7 +44,7 @@ function MyTabLine()
 			endif
 			" no final ' ' added...formatting looks better done later
 			if bc > 1
-				let n.=' '
+				let n.=' | '
 			endif
 			let bc -= 1
 		endfor
