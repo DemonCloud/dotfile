@@ -172,6 +172,9 @@ set backspace=indent,eol,start
 set list listchars=tab:-\ ,extends:>,precedes:<
 
 if(has('win32'))
+	" Windows system using Directx to rendering
+	set renderoptions=type:directx,renmode:5,taamode:1
+
 	set diffexpr=MyDiff()
 	function MyDiff()
 		let opt = '-a --binary '
