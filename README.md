@@ -1,26 +1,10 @@
 # Aix-Vim 
 
-## Introduction ( Version 0.8 )
+## Introduction ( Version 1.0 release )
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y0.png" alt="Aix-Vim Crazy!"/>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/Screenshot%20from%202016-06-22%2010-32-50.png" alt="Aix-Vim Crazy!"/>
 <hr>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix1.gif" alt="Aix">
-<hr>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix2.gif" alt="Aix">
-<hr>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix3.gif" alt="Aix">
-<hr>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix4.gif" alt="Aix">
-<hr>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/aix5.gif" alt="Aix">
-<hr>
-
-<a href="#screen" rel="#screen">Click to More Static Screen Shot ::BOOM! </a>
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/Screenshot%20from%202016-06-22%2010-37-02.png" alt="Aix-Vim Preview">
 
 
 ## Install 安装
@@ -31,7 +15,7 @@
 
 或Clone项目 ： ``git clone https://github.com/DemonCloud/Aix-Vim.git``
 
-更新项目 ： ``git pull -u``
+更新项目 ： ``git pull``
 
 #### 字体(已开源，项目的fonts文件夹中)
 
@@ -39,7 +23,9 @@
 
 没用过OSX，所以我不知道点阵字体MAC是不是支持，bdf格式的点阵字体目前测试可以在Linux下使用，有些Linux默认是不开启点阵字体的支持的，具体可以百度或者谷歌如何在Linux上安装点阵字体，有些Linux默认就支持点阵字体，可以直接安装使用。
 
-可用支持字体：https://github.com/ryanoasis/nerd-fonts
+Windows是完全不支持bdf字体的，所以大家可以死心了，有一种想法是把bdf转化成ttf，目前我没有找到方法，能转ttf的朋友麻烦提交以下issue分享给大家.
+
+Windows可用支持字体：https://github.com/ryanoasis/nerd-fonts
 
 相关插件：https://github.com/ryanoasis/vim-devicons
 
@@ -64,28 +50,22 @@
 
 #### Windows
 
-下载 ：
-
-Vim version: 7.4.898 x86
-
-Used libraries: Perl 5.22.1, Python 2.7.10, Python 3.5.0, Ruby 2.2.3, Lua 5.3.0, Tcl 8.6.4, libXpm
-[[Aix-Vim for Windows x86]](http://yunpan.cn/cFc2kWiqxSpIw) -- **(提取码：000e）** 更新于 2015.10.15 插件全部跟新到最新
-
-> 解压即可直接使用. 已经集成的 [Vundle](https://github.com/gmarik/Vundle.vim), 包含最新的配置文件``_vimrc``
->
-> 注意：请运行 ``Vim\vim74\gvim.exe`` 文件.
-
-#### 关于neovim
-
-NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变动。
-``.nvimrc``已经不生效了，具体到做法是，打开nvim之后输入``:version`` 可以看到nvim当前版本加载配置文件的名字以及具体路径。
-例如，在version中我看到 neovim 加载了`` example.vim`` 作为配置文件，那么，你需要做工作就是：
-将 aix文件夹中的 ``.aix.vim`` 的代码，copy到``example.vim`` 中，这样 Aix-Vim 就可以正常加载了
+> 过几日更新Windows可以使用的版本
 
 
-#### 配置说明
+#### 配置说明(新手请详细看)
 
 > **##** 很多插件是需要第三方外部组件的支持.以下我列出一些依赖列表:
+
+- [Vundle](https://github.com/VundleVim/Vundle.vim) (插件管理器)
+
+	- Vundle 是Vim最流行的插件管理器，
+
+	- Linux 下项目中的 ``install.sh`` Shell默认会帮你安装好 Vundle 
+
+	- 用Aix配置之前请先详细看下如何安装Vundle，否则Vim启动时报错
+
+	- 安装好 Vundle 之后首次进入 Vim 请运行 `` :VundleInstall `` 安装所有插件
 
 - [Lua](http://lua.org) (neocomplete)
 
@@ -111,6 +91,7 @@ NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变�
 
 			- 最后在Path中增加Lua文件夹位置的环境变量，就搞定了 : C:\Program Files (x86)\Lua;
 
+	- 需要注意的是，在Windows下，支持Lua之前必须安装好MinGW，也就是必须有g++和gcc的PATH 支持，否则配置Lua也不会生效
 
 - [NodeJS](http://nodejs.org) (syntastic)
 
@@ -124,6 +105,8 @@ NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变�
 
 - [Vimproc](https://github.com/Shougo/vimproc.vim) (Neocomplete,VimShell,Unite)
 
+	- Vimproc 默认在 vim/bundle/vimproc.vim/ 文件夹中
+
 	- 主要是用来完成一些异步调用和异步任务的.
 
 	- Linux 环境下可以直接进入``vimproc.vim`` 文件夹目录，执行``make``即可编译 
@@ -132,6 +115,8 @@ NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变�
 
 - [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher) (ag.vim)
 
+	- Vim 代码搜索必须依赖的项目，1G的项目文件所有代码搜索基本是秒搜
+
 	- 安装 Ag.vim 的依赖, Ag 代码搜索需要 the\_silver\_searcher Python组件的支持
 
 	- Linux Ubuntu  下直接 ``sudo apt-get install silversearcher-ag`` 安装依赖, 也可以自己编译源码（推荐自己编译）
@@ -139,74 +124,18 @@ NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变�
 	- Windows 下比较麻烦. 先安装 [Chocolatey](https://chocolatey.org) 安装完成之后CMD中使用命令:``choco install ag`` 就可以了.
 
 
+#### 关于NEOVIM
 
-## Update Plugin 更新插件
-
-在安装完成 Vundle 之后。重启 GVim
-
-输入 ``:BundleInstall``  安装插件
-
-输入 ``:BundleUpdate``  更新插件
-
-注意：``:BundleClean`` 清理插件请慎用.
-
-## Screen Shot 截图
-
-
-#### Preview
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y1.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y2.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y3.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y4.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y5.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y6.png" alt="Aix-Vim Neo previews"/>
-
-#### GitView
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y7.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/y8.png" alt="Aix-Vim Neo previews"/>
-
-#### HTML
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yhtml1.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yhtml2.png" alt="Aix-Vim Neo previews"/>
-
-#### CSS
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ycss1.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ycss2.png" alt="Aix-Vim Neo previews"/>
-
-#### JavaScript
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjs1.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjs2.png" alt="Aix-Vim Neo previews"/>
-
-#### PHP
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yphp1.png" alt="Aix-Vim Neo previews"/>
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yphp2.png" alt="Aix-Vim Neo previews"/>
-
-#### JSON
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/yjson.png" alt="Aix-Vim Neo previews"/>
-
-#### MarkDown
-
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/ymkd.png" alt="Aix-Vim Neo previews"/>
+NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变动。
+``.nvimrc``已经不生效了，具体到做法是，打开nvim之后输入``:version`` 可以看到nvim当前版本加载配置文件的名字以及具体路径。
+例如，在version中我看到 neovim 加载了`` example.vim`` 作为配置文件，那么，你需要做工作就是：
+将 aix文件夹中的 ``.aix.vim`` 的代码，copy到``example.vim`` 中，这样 Aix-Vim 就可以正常加载了
 
 
 ## Date 日志
+
+-- update 2016.6.22 测试基本完成，发布1.0版本
+
 -- update 2016.3.21 增加修改，支持neovim
 
 -- update 2015.10.15 开源点阵字体
