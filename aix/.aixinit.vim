@@ -1,8 +1,8 @@
 " ========================= Normal Setting Start =========================
 
 "Set windows pos and resize
-set lines=42
-set columns=118
+set lines=32
+set columns=88
 
 " Prefix GTK borders
 set guiheadroom=0
@@ -121,8 +121,8 @@ if has("gui_running")
 	set go=
 	set guitablabel=
 	set paste
-	set mousemodel=popup_setpos
-	set mouse-=a
+	" set mousemodel=popup_setpos
+	" set mouse-=a
 	"set guitablabel=%M\ %t
 
 	" Fonts Settings

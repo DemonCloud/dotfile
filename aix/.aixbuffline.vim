@@ -44,7 +44,7 @@ function MyTabLine()
 			endif
 			" no final ' ' added...formatting looks better done later
 			if bc > 1
-				let n.=' | '
+				let n.=' \ '
 			endif
 			let bc -= 1
 		endfor
@@ -73,7 +73,7 @@ function MyTabLine()
 	let s .= '%#TabLineFill#%T'
 	" right-align the label to close the current tab page
 	if tabpagenr('$') > 0
-		let s .= '%=%#TabLineFill#%999X>>AIX-BUFF '.WebDevIconsGetFileTypeSymbol()
+		let s .= '%=%#TabLineFill#%999X %#TabLineExp#% '.' TYPE>>'.WebDevIconsGetFileTypeSymbol().' '
 	endif
 	return s
 endfunction

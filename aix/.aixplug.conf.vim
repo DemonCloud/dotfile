@@ -92,56 +92,59 @@ nnoremap <leader>gg :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "-------------------- NeoComplete ---------------------
 " If in Windows System Using Neocomplete
-"if(!has('nvim'))
-""	let g:acp_enableAtStartup=1
-""	let g:neocomplete#enable_at_startup=1
-""	let g:neocomplete#enable_smart_case=1
-""	let g:neocomplete#enable_insert_char_pre=1
-""	let g:neocomplete#enable_multibyte_completion=1
-""	let g:neocomplete#sources#syntax#min_keyword_length=3
-""	let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
-""	let g:neocomplete#enable_auto_select=1
-""	let g:neocomplete#enable_auto_delimiter=1
-""	let g:marching_enable_neocomplete=1
-""	let g:neocomplete#max_list=16
-""	let g:neocomplete#max_keyword_width=58
-""	if !exists('g:neocomplete#keyword_patterns')
-""		let g:neocomplete#keyword_patterns = {}
-""	endif
-""	let g:neocomplete#keyword_patterns['default']='\h\w*'
-"	inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
-"	inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-"	inoremap <silent><CR> <C-r>=<SID>my_cr_function()<CR>
-""	function! s:my_cr_function()
-"		" return neocomplete#close_popup() . "\<CR>"
-"		" For no inserting <CR> key.
-"		return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-""	endfunction
-"	" FileType Cheacker
-""	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-""	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-""	autocmd FileType javascript setlocal omnifunc=javacriptcomplete#CompleteJS
-""	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-""	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-""
-""	if !exists('g:neocomplete#sources#omni#input_patterns')
-""		let g:neocomplete#sources#omni#input_patterns={}
-""	endif
-"	let g:neocomplete#ctags_command="ctags"
-""	let g:neocomplete#sources#omni#input_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
-""	let g:neocomplete#sources#omni#input_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::\w*'
-"	" Called once right before you start selecting multiple cursors
-""	function! Multiple_cursors_before()
-""		echo '- Lock NeoComplete'
-""		exe 'NeoCompleteLock'
-""	endfunction
-""
-"	" Called once only when the multiple selection is canceled (default <Esc>)
-""	function! Multiple_cursors_after()
-""		echo '- UnLock NeoComplete'
-""		exe 'NeoCompleteUnlock'
-""	endfunction
-"endif
+if(!has('nvim'))
+	let g:acp_enableAtStartup=1
+	let g:neocomplete#enable_at_startup=1
+	let g:neocomplete#enable_smart_case=1
+	let g:neocomplete#enable_insert_char_pre=1
+	let g:neocomplete#enable_multibyte_completion=1
+	let g:neocomplete#sources#syntax#min_keyword_length=3
+	let g:neocomplete#lock_buffer_name_pattern='\*ku\*'
+	let g:neocomplete#enable_auto_select=1
+	let g:neocomplete#enable_auto_delimiter=1
+	let g:marching_enable_neocomplete=1
+	let g:neocomplete#max_list=16
+	let g:neocomplete#max_keyword_width=58
+	if !exists('g:neocomplete#keyword_patterns')
+		let g:neocomplete#keyword_patterns = {}
+	endif
+	let g:neocomplete#keyword_patterns['default']='\h\w*'
+	inoremap <expr><C-h> neocomplete#smart_close_popup()."\<C-h>"
+	inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
+	inoremap <silent><CR> <C-r>=<SID>my_cr_function()<CR>
+	
+	function! s:my_cr_function()
+		"return neocomplete#close_popup() . "\<CR>"
+		"For no inserting <CR> key.
+		return pumvisible() ? neocomplete#close_popup() : "\<CR>"
+	endfunction
+	
+	" FileType Cheacker
+	autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+	autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+	" autocmd FileType javascript setlocal omnifunc=javacriptcomplete#CompleteJS
+	autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+	autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+
+	if !exists('g:neocomplete#sources#omni#input_patterns')
+		let g:neocomplete#sources#omni#input_patterns={}
+	endif
+	let g:neocomplete#ctags_command="ctags"
+	let g:neocomplete#sources#omni#input_patterns.c='[^.[:digit:] *\t]\%(\.\|->\)'
+	let g:neocomplete#sources#omni#input_patterns.cpp='[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::\w*'
+
+	" Called once right before you start selecting multiple cursors
+	function! Multiple_cursors_before()
+		echo '- Lock NeoComplete'
+		exe 'NeoCompleteLock'
+	endfunction
+
+	" Called once only when the multiple selection is canceled (default <Esc>)
+	function! Multiple_cursors_after()
+		echo '- UnLock NeoComplete'
+		exe 'NeoCompleteUnlock'
+	endfunction
+endif
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
@@ -153,7 +156,15 @@ let g:UltiSnipsEditSplit="vertical"
 
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
-let g:user_emmet_expandabbr_key ='<S-Tab>'
+
+if(has('win32'))
+	" On windows . Shift+Tab can trigger emmet
+	let g:user_emmet_expandabbr_key ='<S-Tab>'
+else
+	" But on Linux. it not trigger easy
+	let g:user_emmet_expandabbr_key ='<S-Tab>e'
+endif
+
 let g:user_emmet_settings = {
 			\ 'php'     : {
 			\ 'extends' : 'html',
@@ -165,6 +176,9 @@ let g:user_emmet_settings = {
 			\ 'haml'    : {
 			\ 'extends' : 'html',
 			\ },
+			\ 'phtml'    : {
+			\ 'extends' : 'html',
+			\ }
 			\}
 
 " GitGutter Setting
