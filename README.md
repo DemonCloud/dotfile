@@ -4,7 +4,7 @@
 
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/Screenshot%20from%202016-06-22%2010-32-50.png" alt="Aix-Vim Crazy!"/>
 <hr>
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/Screenshot%20from%202016-06-22%2010-37-02.png" alt="Aix-Vim Preview">
+<img src="http://7j1zwt.com1.z0.glb.clouddn.com/Screenshot%20from%202016-06-22%2012-32-56.png" alt="Aix-Vim Preview">
 
 
 ## Install 安装

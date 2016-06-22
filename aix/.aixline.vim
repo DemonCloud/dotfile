@@ -162,74 +162,87 @@ endfunction
 "⮀⮂ ◣  ◢%
 " ================= Building Aix StatusLine ===============
 
+function! AixLineHide()
+	setlocal statusline=%r%*
+endfunction
 
 if has("win32")
-	" ---Consolas for Powerline- Format Aix StatusLine Left ----
-	" #1-Block [ Observer ]
-	" [ Normal ] + Arrow >
-	set statusline=%#aixLeft1#\ %{AixStatuslineMode()}%#aixLeft1Larrow#⮀\ 
+	function! AixLineFire()
+		" ---Consolas for Powerline- Format Aix StatusLine Left ----
+		" #1-Block [ Observer ]
+		" [ Normal ] + Arrow >
+		setlocal statusline=%#aixLeft1#\ %{AixStatuslineMode()}%#aixLeft1Larrow#⮀\ 
+	
+		" #2-Block [ GitChecker ]
+		" [ #Fugitive ] || Empty
+		setlocal statusline+=%#aixLeft2#%{GitStatusChecker()}%#aixLeft2Larrow#⮀\ 
+	
+		" #3-Block [ File Path ]
+		" [ Absolute Current Path ]
+		setlocal statusline+=%#aixLeft3#\ %f\ %#aixLeft3Larrow#⮀\ 
+	
+		" #4-Block [ File Type ]
+		" [ File Type format ] #require [ vim-devicons ]
+		setlocal statusline+=%#aixLeft4#\ %{WebDevIconsGetFileTypeSymbol()}\ %h%m%r%#aixLeft4Larrow#⮀\ \ 
+	
+		setlocal statusline+=%#aixMiddle#\ 
+		" ---- Format Aix StatusLine Empty ----
+		setlocal statusline+=%=%#aixMiddle#\ 
+	
+	
+		" ---- Format Aix StatusLine Right ----
+		" #4-Block [ Char Code ]
+		" [ ANSI C char code ]
+		setlocal statusline+=%#aixRight4Rarrow#\ ⮂%#aixRight4#\ [%b][0x%B]\ 
+	
+		" #3-Block [ Line Number ]
+		" [ Line Counter && Number ]
+		setlocal statusline+=%#aixRight3Rarrow#\ ⮂%#aixRight3#\ ⭡\ %l/%L\ 
+	
+		setlocal statusline+=%#aixRight1Rarrow#\ ⮂%#aixRight1#✹\ BUFF:%n\ 
 
-	" #2-Block [ GitChecker ]
-	" [ #Fugitive ] || Empty
-	set statusline+=%#aixLeft2#%{GitStatusChecker()}%#aixLeft2Larrow#⮀\ 
-
-	" #3-Block [ File Path ]
-	" [ Absolute Current Path ]
-	set statusline+=%#aixLeft3#\ %f\ %#aixLeft3Larrow#⮀\ 
-
-	" #4-Block [ File Type ]
-	" [ File Type format ] #require [ vim-devicons ]
-	set statusline+=%#aixLeft4#\ %{WebDevIconsGetFileTypeSymbol()}\ %h%m%r%#aixLeft4Larrow#⮀\ \ 
-
-	set statusline+=%#aixMiddle#\ 
-	" ---- Format Aix StatusLine Empty ----
-	set statusline+=%=%#aixMiddle#\ 
-
-
-	" ---- Format Aix StatusLine Right ----
-	" #4-Block [ Char Code ]
-	" [ ANSI C char code ]
-	set statusline+=%#aixRight4Rarrow#\ ⮂%#aixRight4#\ [%b][0x%B]\ 
-
-	" #3-Block [ Line Number ]
-	" [ Line Counter && Number ]
-	set statusline+=%#aixRight3Rarrow#\ ⮂%#aixRight3#\ ⭡\ %l/%L\ 
-
-	set statusline+=%#aixRight1Rarrow#\ ⮂%#aixRight1#✹\ BUFF:%n\ 
-
+		exec ":".ln."<CR>"
+	endfunction
 else
-	" ---Consolas for Powerline- Format Aix StatusLine Left ----
-	" #1-Block [ Observer ]
-	" [ Normal ] + Arrow >
-	set statusline=%#aixLeft1#\ %{AixStatuslineMode()}%#aixLeft1Larrow#◣\ \ 
-
-	" #2-Block [ GitChecker ]
-	" [ #Fugitive ] || Empty
-	set statusline+=%#aixLeft2#%{GitStatusChecker()}%#aixLeft2Larrow#◣\ 
-
-	" #3-Block [ File Path ]
-	" [ Absolute Current Path ]
-	set statusline+=%#aixLeft3#\ %f\ %#aixLeft3Larrow#◣\ 
-
-	" #4-Block [ File Type ]
-	" [ File Type format ] #require [ vim-devicons ]
-	set statusline+=%#aixLeft4#\ %{WebDevIconsGetFileTypeSymbol()}\ %h%m%r%#aixLeft4Larrow#◣\ \ 
-
-	set statusline+=%#aixMiddle#\ ◣
-	" ---- Format Aix StatusLine Empty ----
-	set statusline+=%=%#aixMiddle#\ ◢
-
-
-	" ---- Format Aix StatusLine Right ----
-	" #4-Block [ Char Code ]
-	" [ ANSI C char code ]
-	set statusline+=%#aixRight4Rarrow#\ \ ◢%#aixRight4#\ [%b][0x%B]\ 
-
-	" #3-Block [ Line Number ]
-	" [ Line Counter && Number ]
-	set statusline+=%#aixRight3Rarrow#\ ◢%#aixRight3#\ ⭡\ %l/%L\ 
-
-	set statusline+=%#aixRight1Rarrow#\ ◢%#aixRight1#✹\ BUFF:%n\ 
+	function! AixLineFire()
+		" ---Consolas for Powerline- Format Aix StatusLine Left ----
+		" #1-Block [ Observer ]
+		" [ Normal ] + Arrow >
+		setlocal statusline=%#aixLeft1#\ %{AixStatuslineMode()}%#aixLeft1Larrow#◣\ \ 
+	
+		" #2-Block [ GitChecker ]
+		" [ #Fugitive ] || Empty
+		setlocal statusline+=%#aixLeft2#%{GitStatusChecker()}%#aixLeft2Larrow#◣\ 
+	
+		" #3-Block [ File Path ]
+		" [ Absolute Current Path ]
+		setlocal statusline+=%#aixLeft3#\ %f\ %#aixLeft3Larrow#◣\ 
+	
+		" #4-Block [ File Type ]
+		" [ File Type format ] #require [ vim-devicons ]
+		setlocal statusline+=%#aixLeft4#\ %{WebDevIconsGetFileTypeSymbol()}\ %h%m%r%#aixLeft4Larrow#◣\ \ 
+	
+		setlocal statusline+=%#aixMiddle#\ ◣
+		" ---- Format Aix StatusLine Empty ----
+		setlocal statusline+=%=%#aixMiddle#\ ◢
+	
+	
+		" ---- Format Aix StatusLine Right ----
+		" #4-Block [ Char Code ]
+		" [ ANSI C char code ]
+		setlocal statusline+=%#aixRight4Rarrow#\ \ ◢%#aixRight4#\ [%b][0x%B]\ 
+	
+		" #3-Block [ Line Number ]
+		" [ Line Counter && Number ]
+		setlocal statusline+=%#aixRight3Rarrow#\ ◢%#aixRight3#\ ⭡\ %l/%L\ 
+	
+		setlocal statusline+=%#aixRight1Rarrow#\ ◢%#aixRight1#✹\ BUFF:%n\ 
+	endfunction
 endif
+
+au WinEnter * exec AixLineFire()
+au WinLeave * exec AixLineHide()
+
+exec AixLineFire()
 
 " ================= Building End ===============
