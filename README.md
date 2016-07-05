@@ -50,8 +50,14 @@ Windows可用支持字体：https://github.com/ryanoasis/nerd-fonts
 
 #### Windows
 
-> 过几日更新Windows可以使用的版本
+> 2016.7.5 更新Window可用版本
 
+> 下载地址： [Aix-Vim for Windows](http://pan.baidu.com/s/1c2nztio)
+
+> 使用之前请读 README.txt 简短说明
+
+
+<br>
 
 #### 配置说明(新手请详细看)
 
