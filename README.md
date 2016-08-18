@@ -31,6 +31,16 @@ Windows可用支持字体：https://github.com/ryanoasis/nerd-fonts
 
 安装字体完成之后，修改 ``aix/.aixinit.vim`` 中 ``guifont`` 的设置，
 
+Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点阵字体的系统(Ubuntu)
+
+``cd /etc/fonts/conf.d``
+
+``rm 70-no-bitmaps.conf``
+
+``ln -s ../conf.avail/70-yes-bitmaps.conf .``
+
+``fc-cache -f``
+
 #### Linux
 
 > **1.** 一般来说，Linux 下都会自带 Vim, 但是不一定会自带 Gvim. 以 Ubuntu 为例，先安装Gvim：
