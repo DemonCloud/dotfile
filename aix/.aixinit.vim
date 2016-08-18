@@ -78,7 +78,7 @@ set hidden
 "set autochdir
 set autoread
 "set showmatch
-set laststatus=2
+set laststatus=0
 set cmdheight=1
 set modelines=1
 
