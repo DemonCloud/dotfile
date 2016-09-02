@@ -7,15 +7,30 @@
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/Screenshot%20from%202016-06-22%2012-32-56.png" alt="Aix-Vim Preview">
 
 
+## Date 日志
+
+-- update 2016.9.2 增加了完整的对NeoVim的支持
+
+-- update 2016.6.22 测试基本完成，发布1.0版本
+
+-- update 2016.3.21 增加修改，支持neovim
+
+-- update 2015.10.15 开源点阵字体
+
+-- update 2015.7.21 重构vim配置，Aix-Vim
+
+
 ## Install 安装
 
 #### 配置文件
+
 
 下载项目 ： [[Aix-Vim]](https://github.com/DemonCloud/Aix-Vim/archive/master.zip)
 
 或Clone项目 ： ``git clone https://github.com/DemonCloud/Aix-Vim.git``
 
 更新项目 ： ``git pull``
+
 
 #### 字体(已开源，项目的fonts文件夹中)
 
@@ -31,6 +46,7 @@ Windows可用支持字体：https://github.com/ryanoasis/nerd-fonts
 
 安装字体完成之后，修改 ``aix/.aixinit.vim`` 中 ``guifont`` 的设置，
 
+
 Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点阵字体的系统(Ubuntu)
 
 ``cd /etc/fonts/conf.d``
@@ -40,6 +56,7 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 ``ln -s ../conf.avail/70-yes-bitmaps.conf .``
 
 ``fc-cache -f``
+
 
 #### Linux
 
@@ -52,20 +69,23 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 > 然后运行  Aix-Vim  项目目录下的 ``install.sh``进行安装.
 
 ```Shell
- 	$ ./install.sh
+ 	$ sudo ./install.sh
 ```
 
 > 如果``install.sh``文件没有执行权限，请使用``sudo chmod 777 install.sh``
 
+> 第一次开启Vim的时候请使用 ``:VundleInstall`` 指令 安装所有依赖插件
+
 
 #### Windows
 
-> 2016.7.5 更新Window可用版本
+> 2016.7.5 更新Window可用版本 （不定期更新）
 
 > 下载地址： [Aix-Vim for Windows](http://pan.baidu.com/s/1c2nztio)
 
 > 使用之前请读 README.txt 简短说明
 
+> 第一次开启Vim的时候请使用 ``:VundleInstall`` 指令 安装所有依赖插件
 
 <br>
 
@@ -85,9 +105,9 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 
 - [Lua](http://lua.org) (neocomplete)
 
-	- 最新版本Aix-Vim编译时 支持Perl 5.22.1, Python 2.7.10, Python 3.4.3, Ruby 2.2.2, Lua 5.3.0, Tcl 8.6.4, libXpm
+	- 需要注意的是，在Windows下，支持Lua之前必须安装好MinGW，用MinGW来安装g++和gcc的支持，如果自己配置好了g++和gcc可以跳过此步骤，否则配置Lua也不会生效
 
-	- 所以Windows 和 Linux 下都需要安装 Lua ， 用于支持 Neocomplete 智能补全插件.
+	- Windows 和 Linux 下都需要安装 Lua ， 用于支持 Neocomplete 智能补全插件.
 
 	- Linux 安装太简单了，可以自己查找资料， Ubuntu下直接有源： ``sudo apt-get install lua5.3``
 
@@ -107,7 +127,6 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 
 			- 最后在Path中增加Lua文件夹位置的环境变量，就搞定了 : C:\Program Files (x86)\Lua;
 
-	- 需要注意的是，在Windows下，支持Lua之前必须安装好MinGW，也就是必须有g++和gcc的PATH 支持，否则配置Lua也不会生效
 
 - [NodeJS](http://nodejs.org) (syntastic)
 
@@ -144,17 +163,9 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 
 NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变动。
 ``.nvimrc``已经不生效了，具体到做法是，打开nvim之后输入``:version`` 可以看到nvim当前版本加载配置文件的名字以及具体路径。
-例如，在version中我看到 neovim 加载了`` example.vim`` 作为配置文件，那么，你需要做工作就是：
-将 aix文件夹中的 ``.aix.vim`` 的代码，copy到``example.vim`` 中，这样 Aix-Vim 就可以正常加载了
+例如，在version中我看到 neovim 加载了`` sysinit.vim`` 作为配置文件，那么，你需要做工作就是：
+将 aix文件夹中的 ``.aix.vim`` 的代码，copy到``sysinit.vim`` 中，这样 Aix-Vim 就可以正常加载了
 
 
-## Date 日志
 
--- update 2016.6.22 测试基本完成，发布1.0版本
-
--- update 2016.3.21 增加修改，支持neovim
-
--- update 2015.10.15 开源点阵字体
-
--- update 2015.7.21 重构vim配置，Aix-Vim
 
