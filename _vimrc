@@ -3,20 +3,20 @@
 " 2015-07-24
 " @ Source 
 " - Basic
-source $VIM/aix/.aix.vim
+source $VIM/.aix/.aix.vim
 " - Ignore
-source $VIM/aix/.aixignore.vim
+source $VIM/.aix/.aixignore.vim
 " - Plug
-source $VIM/aix/.aixplug.vim
-source $VIM/aix/.aixplug.conf.vim
+source $VIM/.aix/.aixplug.vim
+source $VIM/.aix/.aixplug.conf.vim
 " - Init
-source $VIM/aix/.aixinit.vim
+source $VIM/.aix/.aixinit.vim
 " - KeyMapping
-source $VIM/aix/.aixkeymap.vim
+source $VIM/.aix/.aixkeymap.vim
 " - Style
-source $VIM/aix/.aixstyle.vim
-source $VIM/aix/.aixline.vim
+source $VIM/.aix/.aixstyle.vim
+source $VIM/.aix/.aixline.vim
 " - Buffer
-source $VIM/aix/.aixbuffline.vim
+source $VIM/.aix/.aixbuffline.vim
 " - System Source
 source $VIMRUNTIME/menu.vim

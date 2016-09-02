@@ -53,6 +53,8 @@ printf "\033[33mChecking Vundle Exist?\033[0m\n"
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
 	echo "Clone Vundle Plugin..."
 	git clone https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/Vundle.vim
+	echo "Clone Icons Plugin"
+	git clone https://github.com/ryanoasis/vim-devicons
 	echo "Clone J ColorSheme..."
 	git clone https://github.com/DemonCloud/J $HOME/.vim/bundle/J
 	printf "\033[33mVundle has Install && Exist\033[0m\n"
@@ -64,26 +66,31 @@ printf "\033[36mCopy new files to the HOME PATH...\033[0m\n"
 printf "\n"
 echo " [- $HOME/"
 echo "   |- .vimrc       [ -- Vim config -- ]"
-echo "   |- .nvimrc      [ -- NeoVim config -- ]"
+echo "   |- sysinit.vim  [ -- NeoVim config in /usr/share/nvim -- ]"
 echo "   |- .tmux.conf   [ -- Tmux config -- ]"
 echo "   |- .fonts.conf  [ -- Fonts support -- ]"
 echo " -] "
 printf "\n"
 
 # Copy file in to path
-cp -rf aix $HOME/
+cp -rf .aix $HOME/
 
 # if [ ! -f "$HOME/.fonts.conf" ]; then
 # 	cp -f .fonts.conf $HOME/
 # fi
 
 cp -f .vimrc $HOME/
-cp -f .nvimrc $HOME/
+# support NeoVim
+sudo cp -f sysinit.vim /usr/share/nvim/
 
 if [ ! -f "$HOME/.tmux.conf" ]; then
+	printf "\033[36mCopy tmux.conf!\033[0m\n"
 	cp -f .tmux.conf $HOME/
 fi
 
 printf "\033[36mCopy Completed, Finish Install !\033[0m\n"
+printf "\033[33mPlease Checking Completed!\033[0m\n"
+printf "\033[33mIf you use NeoVim, You should Install [ xclip ] to support system clipcord!\033[0m\n"
+printf "\n"
 exit 1;
 
