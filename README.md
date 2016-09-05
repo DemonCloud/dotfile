@@ -69,7 +69,7 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 > 然后运行  Aix-Vim  项目目录下的 ``install.sh``进行安装.
 
 ```Shell
- 	$ sudo ./install.sh
+ 	$ ./install.sh
 ```
 
 > 如果``install.sh``文件没有执行权限，请使用``sudo chmod 777 install.sh``
