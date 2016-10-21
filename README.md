@@ -125,7 +125,7 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 
 			- LUA_PATH : ?.lua;%LUA_DIR%\lua\?.lua
 
-			- 最后在Path中增加Lua文件夹位置的环境变量，就搞定了 : C:\Program Files (x86)\Lua;
+			- PATH 末尾增加 : C:\Program Files (x86)\Lua;
 
 
 - [NodeJS](http://nodejs.org) (syntastic)
