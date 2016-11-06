@@ -8,6 +8,7 @@
 set tabpagemax=8
 set showtabline=2
 set tabline=%!MyTabLine()  " custom tab pages line
+
 function MyTabLine()
 	let s = '' " complete tabline goes here
 	" loop through each tab page
@@ -18,10 +19,7 @@ function MyTabLine()
 		else
 			let s .= '%#TabLine#'
 		endif
-		" set the tab page number (for mouse clicks)
-		let s .= '%' . (t + 1) . 'T'
-		" set page number string
-		let s .= ' ['.(t + 1). ']'
+		let s .= ' '
 		" get buffer names and statuses
 		let n = ''      "temp string for buffer names while we loop and check buftype
 		let m = 0       " &modified counter
@@ -44,7 +42,7 @@ function MyTabLine()
 			endif
 			" no final ' ' added...formatting looks better done later
 			if bc > 1
-				let n.=' \ '
+				let n.=' | '
 			endif
 			let bc -= 1
 		endfor
@@ -64,7 +62,7 @@ function MyTabLine()
 		if n == ''
 			let s.= '[new]'
 		else
-			let s .= n
+			let s .= WebDevIconsGetFileTypeSymbol().n
 		endif
 		" switch to no underlining and add final space to buffer list
 		let s .= ' '
@@ -73,7 +71,7 @@ function MyTabLine()
 	let s .= '%#TabLineFill#%T'
 	" right-align the label to close the current tab page
 	if tabpagenr('$') > 0
-		let s .= '%=%#TabLineFill#%999X %#TabLineExp#% '.' TYPE>>'.WebDevIconsGetFileTypeSymbol().' '
+		let s .= '%=%#TabLineFill#%999X %#TabLineExp#% '
 	endif
 	return s
 endfunction
