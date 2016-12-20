@@ -35,8 +35,7 @@
 #### 字体(已开源，项目的fonts文件夹中)
 
 ``我已经开源了自己的Aix字体，可以在项目的fonts文件夹中找到``
-
-没用过OSX，所以我不知道点阵字体MAC是不是支持，bdf格式的点阵字体目前测试可以在Linux下使用，有些Linux默认是不开启点阵字体的支持的，具体可以百度或者谷歌如何在Linux上安装点阵字体，有些Linux默认就支持点阵字体，可以直接安装使用。
+bdf格式的点阵字体目前测试可以在Linux下使用（mac下使用dfont），有些Linux默认是不开启点阵字体的支持的，具体可以百度或者谷歌如何在Linux上安装点阵字体，有些Linux默认就支持点阵字体，可以直接安装使用。
 
 Windows是完全不支持bdf字体的，所以大家可以死心了，有一种想法是把bdf转化成ttf，目前我没有找到方法，能转ttf的朋友麻烦提交以下issue分享给大家.
 
@@ -58,15 +57,10 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 ``fc-cache -f``
 
 
+
 #### Linux
 
-> **1.** 一般来说，Linux 下都会自带 Vim, 但是不一定会自带 Gvim. 以 Ubuntu 为例，先安装Gvim：
-
-> ``sudo apt-get install gvim``
-
->	``sudo apt-get install vim vim-gnome vim-gtk``
-
-> 然后运行  Aix-Vim  项目目录下的 ``install.sh``进行安装.
+项目目录下的 ``install.sh``进行安装.
 
 ```Shell
  	$ ./install.sh
