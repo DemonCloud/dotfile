@@ -37,9 +37,9 @@ let g:tagbar_type_css = {
 			\ }
 
 " Syntastic Config
-set statusline+=%#f1#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#f1#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 let g:syntastic_error_symbol = 'x'
 let g:syntastic_warning_symbol = '!'
 let g:syntastic_always_populate_loc_list = 1

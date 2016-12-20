@@ -1,8 +1,8 @@
 " ========================= Normal Setting Start =========================
 
 "Set windows pos and resize
-set lines=32
-set columns=88
+set lines=38
+set columns=80
 
 " Prefix GTK borders
 set guiheadroom=0
@@ -78,7 +78,7 @@ set hidden
 "set autochdir
 set autoread
 "set showmatch
-set laststatus=2
+set laststatus=0
 set cmdheight=1
 set modelines=1
 
@@ -130,6 +130,8 @@ if has("gui_running")
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10
 	if(has('win32')) 
 		set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
+	elseif(has('osx'))
+		set guifont=Aix:h14
 	else
 		set guifont=Aix\ 9
 	endif

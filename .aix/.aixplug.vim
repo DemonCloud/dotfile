@@ -31,7 +31,6 @@ Plugin 'junegunn/fzf'
 
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plugin 'simnalamburt/vim-mundo'
-Plugin 'scrooloose/syntastic'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'mhinz/vim-signify'
@@ -87,29 +86,18 @@ endif
 " @ Plugin --- [ Code Complete Unity ]
 Plugin 'Raimondi/delimitMate'
 Plugin 'mattn/emmet-vim'
-Plugin 'mattn/livestyle-vim'
 
 " @ Plugin --- [ Geeks Plugin ]
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-commentary'
 Plugin 'gregsexton/gitv'
-Plugin 'dhruvasagar/vim-table-mode'
 
 " @ Plugin --- [ Syntax ] 
-Plugin 'justinmk/vim-syntax-extra' "Extra C Flex Syntax
-Plugin 'othree/html5.vim'
 Plugin 'kh3phr3n/python-syntax'
 Plugin 'pangloss/vim-javascript'
-Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'ap/vim-css-color'
-Plugin 'groenewege/vim-less'
-Plugin 'digitaltoad/vim-jade'
 Plugin 'elzr/vim-json'
 Plugin 'plasticboy/vim-markdown'
 
@@ -120,9 +108,9 @@ Plugin 'Chiel92/vim-autoformat'
 
 " @ Plugin --- [ ColorScheme ]
 Plugin 'DemonCloud/J'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'ryanoasis/vim-devicons'
+" Plugin 'vim-airline/vim-airline'
+" Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'ryanoasis/vim-devicons'
 
 " ---- Plugin List Complete ----
 call vundle#end()
