@@ -64,11 +64,9 @@ endfunction
 
 nnoremap <F2> :NERDTreeToggle<CR>
 nnoremap <F3> :TableModeToggle<CR>
-nnoremap <F4> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-nnoremap <F5> :TagbarToggle<CR>
-nnoremap <F6> :SyntasticToggleMode <CR>
-nnoremap <F7> :GundoToggle<CR>
-nnoremap <F8> mzgg=G`z
+nnoremap <F3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+nnoremap <F4> mzgg=G`z
+
 nnoremap <F9> ggVG:RetabIndent<CR>
 " Full Fucking Window ^M ending line file!
 nnoremap <F10> :%s////g
@@ -86,8 +84,8 @@ nnoremap <leader>ll <C-w>l
 
 " Set as toggle foldcomment
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
-nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
 nnoremap zr zR
+
 " Fast searcher
 nnoremap z, :FZF --no-mouse .<CR>
 
@@ -154,17 +152,12 @@ nnoremap <leader>q  :q<CR>
 nnoremap <C-v> <ESC>"+gpa
 cnoremap <C-v> <C-R>+
 
-" repeat Preview Command
+" Repeat Preview Command
 nnoremap <leader>. @:
 vnoremap <leader>. :normal .<CR>
 
-" Unite file configure
-nnoremap <leader>uf :Unite -buffer-name=files -start-insert file_rec/async:!<CR>
-nnoremap <leader>uh :Unite neomru/file -buffer -focus<CR>
-nnoremap <leader>us :Unite grep:.<CR>
-nnoremap <leader>uw :Unite grep:.<CR><C-R>=expand("<cword>")<CR><CR>
-nnoremap <leader>uo :Unite outline -focus<CR>
-nnoremap <leader>ub :Unite file buffer<CR>
+" MRU
+nnoremap <leader>uh :MRU<CR>
 
 " Split faster
 nnoremap <leader>\ :vs<CR>
@@ -208,33 +201,24 @@ map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
 " For Git fire
-nnoremap <leader>gs :Gstatus<CR>
-nnoremap <leader>gc :Gcommit
-nnoremap <leader>gb :Gblame
 nnoremap <leader>gv :Gitv<CR>
-nnoremap <leader>gp :Git push origin master<CR>
-nnoremap <leader>gu :Git pull -u<CR>
 
 " For SVN fire
 nnoremap <leader>sc :!svn ci -m ""<CR>
 nnoremap <leader>su :!svn up<CR>
 nnoremap <leader>st :!svn st<CR>
 
-" Editor dotfile
-nnoremap <leader>en :e! ~/.nvimrc<CR>
-nnoremap <leader>ev :e! ~/.vimrc<CR>
-
 " Incsearch
-" map / <Plug>(incsearch-forward)
-" map ? <Plug>(incsearch-backward)
-" map g/ <Plug>(incsearch-stay)
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
-" map n <Plug>(incsearch-nohl-n)zzzv
-" map N <Plug>(incsearch-nohl-N)zzzv
-" map * <Plug>(incsearch-nohl-*)zzzv
-" map # <Plug>(incsearch-nohl-#)zzzv
-" map g* <Plug>(incsearch-nohl-g*)zzzv
-" map g# <Plug>(incsearch-nohl-g#)zzzv
+map n <Plug>(incsearch-nohl-n)zzzv
+map N <Plug>(incsearch-nohl-N)zzzv
+map * <Plug>(incsearch-nohl-*)zzzv
+map # <Plug>(incsearch-nohl-#)zzzv
+map g* <Plug>(incsearch-nohl-g*)zzzv
+map g# <Plug>(incsearch-nohl-g#)zzzv
 
 " Vim-quickhl 
 nmap <Space>m <Plug>(quickhl-manual-this)
@@ -242,20 +226,20 @@ xmap <Space>m <Plug>(quickhl-manual-this)
 nmap <Space>M <Plug>(quickhl-manual-reset)
 xmap <Space>M <Plug>(quickhl-manual-reset)
 
-"Sneak
-"replace 'f' with 1-char Sneak
-"nmap f <Plug>Sneak_f
-"nmap F <Plug>Sneak_F
-"xmap f <Plug>Sneak_f
-"xmap F <Plug>Sneak_F
-"omap f <Plug>Sneak_f
-"omap F <Plug>Sneak_F
-"replace 't' with 1-char Sneak
-"nmap t <Plug>Sneak_t
-"nmap T <Plug>Sneak_T
-"xmap t <Plug>Sneak_t
-"xmap T <Plug>Sneak_T
-"omap t <Plug>Sneak_t
-"omap T <Plug>Sneak_T
+Sneak
+" replace 'f' with 1-char Sneak
+nmap f <Plug>Sneak_f
+nmap F <Plug>Sneak_F
+xmap f <Plug>Sneak_f
+xmap F <Plug>Sneak_F
+omap f <Plug>Sneak_f
+omap F <Plug>Sneak_F
+" replace 't' with 1-char Sneak
+nmap t <Plug>Sneak_t
+nmap T <Plug>Sneak_T
+xmap t <Plug>Sneak_t
+xmap T <Plug>Sneak_T
+omap t <Plug>Sneak_t
+omap T <Plug>Sneak_T
 
 " ========================= KeyFire Setting End =========================
