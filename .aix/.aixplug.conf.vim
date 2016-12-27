@@ -1,4 +1,7 @@
 " ========================= Plugin Config Start =========================
+" Set Ale Cheacker
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '*'
 
 " AirLine Settings
 " let g:Powerline_symbols = 'fancy'
@@ -14,43 +17,43 @@ set rtp+=~/.fzf
 
 " TagBar Config
 " Just configure and [make] ctags file
-let g:tagbar_ctags_bin = "/usr/bin/ctags"
-let g:tagbar_iconchars = ['+', '-']
+" let g:tagbar_ctags_bin = "/usr/bin/ctags"
+" let g:tagbar_iconchars = ['+', '-']
 " for coffeeScript
-let g:tagbar_type_coffee = {
-			\ 'ctagstype' : 'coffee',
-			\ 'kinds'     : [
-			\ 'c:classes',
-			\ 'm:methods',
-			\ 'f:functions',
-			\ 'v:variables',
-			\ 'f:fields',
-			\ ]
-			\ }
-let g:tagbar_type_css = {
-			\ 'ctagstype' : 'Css',
-			\ 'kinds'     : [
-			\ 'c:classes',
-			\ 's:selectors',
-			\ 'i:identities'
-			\ ]
-			\ }
+" let g:tagbar_type_coffee = {
+" 			\ 'ctagstype' : 'coffee',
+" 			\ 'kinds'     : [
+" 			\ 'c:classes',
+" 			\ 'm:methods',
+" 			\ 'f:functions',
+" 			\ 'v:variables',
+" 			\ 'f:fields',
+" 			\ ]
+" 			\ }
+" let g:tagbar_type_css = {
+" 			\ 'ctagstype' : 'Css',
+" 			\ 'kinds'     : [
+" 			\ 'c:classes',
+" 			\ 's:selectors',
+" 			\ 'i:identities'
+" 			\ ]
+" 			\ }
 
 " Syntastic Config
 " set statusline+=%#f1#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
-let g:syntastic_error_symbol = 'x'
-let g:syntastic_warning_symbol = '!'
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list            = 1
-let g:syntastic_check_on_open            = 1
-let g:syntastic_check_on_wq              = 0
+" let g:syntastic_error_symbol = 'x'
+" let g:syntastic_warning_symbol = '!'
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_auto_loc_list            = 1
+" let g:syntastic_check_on_open            = 1
+" let g:syntastic_check_on_wq              = 0
 
 " set Syntastic Cheacker engine
 " example JavaScript use JSHint [ NodeJS ]
-let g:syntastic_php_checkers        = ['php', 'phpcs', 'phpmd']
-let g:syntastic_javascript_checkers = ['jshint']
+" let g:syntastic_php_checkers        = ['php', 'phpcs', 'phpmd']
+" let g:syntastic_javascript_checkers = ['jshint']
 "let g:syntastic_java_checkers       = ['java', 'jsp']
 "let g:syntastic_c_checkers          = ['c', 'h']
 "let g:syntastic_cpp_checkers        = ['cpp']
@@ -192,41 +195,14 @@ let g:C_UseTool_cmake='yes'
 let g:C_UseTool_doxygen = 'yes'
 "let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
 
-" Unite Settings
-let g:unite_prompt=">>"
-let g:unite_source_file_rec_max_cache_files = 0
-let g:unite_source_history_yank_enable      = 1
-let g:unite_source_rec_async_command        = 1
-let g:unite_source_grep_command             = 'ag'
-let g:unite_source_grep_default_opts        = '--nocolor --nogroup --column'
-let g:unite_source_grep_recursive_opt       = ''
-let g:unite_source_history_yank_enable      = 1
-let g:unite_split_rule                      = "botright"
-let g:unite_update_time                     = 100
-call unite#custom_source('file_rec,file_rec/async,file_mru,file,buffer,grep',
-			\ 'ignore_pattern', join([
-			\ '\.git/',
-			\ 'git5/.*/review/',
-			\ 'google/obj/',
-			\ 'tmp/',
-			\ '.sass-cache',
-			\ 'node_modules/',
-			\ 'bower_components/',
-			\ 'dist/',
-			\ '.git5_specs/',
-			\ '.pyc',
-			\ ], '\|'))
-call unite#filters#matcher_default#use(['matcher_fuzzy'])
-call unite#filters#sorter_default#use(['sorter_rank'])
-
 " Like Textmate icons.
-let g:vimfiler_tree_leaf_icon = ' '
-let g:vimfiler_tree_opened_icon = '-'
-let g:vimfiler_tree_closed_icon = '>'
-let g:vimfiler_marked_file_icon = '*'
+" let g:vimfiler_tree_leaf_icon = ' '
+" let g:vimfiler_tree_opened_icon = '-'
+" let g:vimfiler_tree_closed_icon = '>'
+" let g:vimfiler_marked_file_icon = '*'
 " Use trashbox.
 " Windows only and require latest vimproc.
-let g:unite_kind_file_use_trashbox = 1
+" let g:unite_kind_file_use_trashbox = 1
 
 " Ack Settings
 if executable('ag')
@@ -256,16 +232,16 @@ let python_self_cls_highlight = 1
 let g:NERDTreeRespectWildIgnore=1
 
 let g:NERDTreeDirArrows=0
-let g:webdevicons_enable = 1
-let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_unite = 1
-let g:webdevicons_enable_vimfiler = 1
-let g:WebDevIconsUnicodeDecorateFileNodes = 1
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
-let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
-let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
+" let g:webdevicons_enable = 1
+" let g:webdevicons_enable_nerdtree = 1
+" let g:webdevicons_enable_unite = 1
+" let g:webdevicons_enable_vimfiler = 1
+" let g:WebDevIconsUnicodeDecorateFileNodes = 1
+" let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" let g:WebDevIconsUnicodeDecorateFolderNodesExactMatches = 1
+" let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+" let g:webdevicons_conceal_nerdtree_brackets = 1
+" let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+" let g:WebDevIconsNerdTreeGitPluginForceVAlign=1
 
 " ========================= Plugin Config End =========================

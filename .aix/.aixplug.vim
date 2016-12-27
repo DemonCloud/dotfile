@@ -42,6 +42,7 @@ Plugin 'terryma/vim-expand-region'
 Plugin 'haya14busa/incsearch.vim'
 Plugin 'justinmk/vim-sneak'
 
+
 " Complete Eng
 if (has('nvim'))
 " For NeoVim
@@ -91,6 +92,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-commentary'
+Plugin 'tpope/vim-git'
+Plugin 'tpope/vim-fugitive'
 Plugin 'gregsexton/gitv'
 
 " @ Plugin --- [ Syntax ] 
