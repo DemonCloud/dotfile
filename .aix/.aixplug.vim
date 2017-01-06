@@ -1,121 +1,126 @@
-" ========================= Aix Plugin Manager =========================
-" Vundle Plugin Manager
+" ========================= Aix Plug Manager =========================
+" Vim-Plug update Manager
+" * Expert Vundle Plugin Manager
 filetype off
 
+" Vundle Path Config
 " Different Path between Windows and Linux
-if(has('win32'))
-	set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-	call vundle#rc('$VIM/vimfiles/bundle')
-else
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
-endif
+" if(has('win32'))
+" 	set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+" 	call vundle#rc('$VIM/vimfiles/bundle')
+" else
+" 	set rtp+=~/.vim/bundle/Vundle.vim
+" 	call vundle#begin()
+" endif
+"
+call plug#begin('~/.vim/bundle/')
 
 " # Plugins Beginning #
 " @ Plugin --- [ Base Require Lib & Prefix ]
-Plugin 'gmarik/Vundle.vim'
+" Plug 'gmarik/Vundle.vim'
 
 " @ Plugin --- [ File Buffer Manager ]
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'w0rp/ale'
-Plugin 'yegappan/mru'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'danro/rename.vim'
-Plugin 'junegunn/fzf'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'w0rp/ale'
+Plug 'yegappan/mru'
+Plug 'Shougo/vimproc.vim' , { 'do': 'make' }
+Plug 'danro/rename.vim'
+Plug 'junegunn/fzf'
 
 " @ Plugin --- [ Code Cheacker Viewer ] 
-Plugin 'simnalamburt/vim-mundo'
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'simnalamburt/vim-mundo'
+Plug 'Lokaltog/vim-easymotion'
 " For SVN status
-" Plugin 'mhinz/vim-signify'
-Plugin 'airblade/vim-gitgutter'
+" Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 
 " @ Plugin --- [ Code Sreach ]
-Plugin 'rking/ag.vim'
-Plugin 'junegunn/limelight.vim'
+Plug 'rking/ag.vim'
+Plug 'junegunn/limelight.vim'
 
-" @ Plugin --- [ | Google | Geeks Plugin ]
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'terryma/vim-smooth-scroll'
-Plugin 'terryma/vim-expand-region'
-Plugin 'haya14busa/incsearch.vim'
-Plugin 'justinmk/vim-sneak'
+" @ Plugin --- [ | Google | Geeks Plug ]
+Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-smooth-scroll'
+Plug 'terryma/vim-expand-region'
+Plug 'haya14busa/incsearch.vim'
+Plug 'justinmk/vim-sneak'
 
 
 " Complete Eng
 if (has('nvim'))
 " For NeoVim
-	Plugin 'Shougo/neoinclude.vim'
-	Plugin 'Shougo/neco-vim'
-	Plugin 'Shougo/neco-syntax'
- 	Plugin 'Shougo/deoplete.nvim'
-	" Plugin 'Valloric/YouCompleteMe'
-	" Plugin 'rdnetto/YCM-Generator'
-	Plugin 'SirVer/ultisnips'
-	Plugin 'honza/vim-snippets'
+	Plug 'Shougo/neoinclude.vim'
+	Plug 'Shougo/neco-vim'
+	Plug 'Shougo/neco-syntax'
+ 	Plug 'Shougo/deoplete.nvim'
+	" Plug 'Valloric/YouCompleteMe'
+	" Plug 'rdnetto/YCM-Generator'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
 elseif(has('win32'))
 " For Windows
-	Plugin 'bruno-/vim-alt-mappings'
-	Plugin 'Shougo/neoinclude.vim'
-	Plugin 'Shougo/neco-vim'
-	Plugin 'Shougo/neco-syntax'
-	Plugin 'Shougo/neocomplcache.vim'
-	Plugin 'Shougo/neocomplete.vim'
-	Plugin 'SirVer/ultisnips'
-	Plugin 'honza/vim-snippets'
-	Plugin 'skeept/Ultisnips-neocomplete-unite'
+	Plug 'bruno-/vim-alt-mappings'
+	Plug 'Shougo/neoinclude.vim'
+	Plug 'Shougo/neco-vim'
+	Plug 'Shougo/neco-syntax'
+	Plug 'Shougo/neocomplcache.vim'
+	Plug 'Shougo/neocomplete.vim'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+	Plug 'skeept/Ultisnips-neocomplete-unite'
 else
 " For Linux Vim @ Gvim
-	" Plugin 'bruno-/vim-alt-mappings'
-	Plugin 'Shougo/neoinclude.vim'
-	Plugin 'Shougo/neco-vim'
-	Plugin 'Shougo/neco-syntax'
-	Plugin 'Shougo/neocomplcache.vim'
-	Plugin 'Shougo/neocomplete.vim'
-	Plugin 'skeept/Ultisnips-neocomplete-unite'
- 	" Plugin 'Shougo/deoplete.nvim'
-	" Plugin 'ternjs/tern_for_vim'
-	" Plugin 'Valloric/YouCompleteMe'
-	" Plugin 'rdnetto/YCM-Generator'
-	Plugin 'SirVer/ultisnips'
-	Plugin 'honza/vim-snippets'
+	" Plug 'bruno-/vim-alt-mappings'
+	Plug 'Shougo/neoinclude.vim'
+	Plug 'Shougo/neco-vim'
+	Plug 'Shougo/neco-syntax'
+	Plug 'Shougo/neocomplcache.vim'
+	Plug 'Shougo/neocomplete.vim'
+	Plug 'skeept/Ultisnips-neocomplete-unite'
+ 	" Plug 'Shougo/deoplete.nvim'
+	" Plug 'ternjs/tern_for_vim'
+	" Plug 'Valloric/YouCompleteMe'
+	" Plug 'rdnetto/YCM-Generator'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
 endif
 
 " @ Plugin --- [ Code Complete Unity ]
-Plugin 'Raimondi/delimitMate'
-Plugin 'mattn/emmet-vim'
-Plugin 'rstacruz/vim-hyperstyle'
+Plug 'Raimondi/delimitMate'
+Plug 'mattn/emmet-vim'
 
-" @ Plugin --- [ Geeks Plugin ]
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-commentary'
-Plugin 'tpope/vim-git'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
+" @ Plugin --- [ Geeks Plug ]
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-commentary'
+" Git all famliy
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
 
 " @ Plugin --- [ Syntax ] 
-Plugin 'kh3phr3n/python-syntax'
-Plugin 'pangloss/vim-javascript'
-" Plugin 'ap/vim-css-color'
-Plugin 'elzr/vim-json'
-Plugin 'plasticboy/vim-markdown'
+Plug 'kh3phr3n/python-syntax'
+Plug 'pangloss/vim-javascript'
+Plug 'ap/vim-css-color'
+Plug 'elzr/vim-json'
+Plug 'plasticboy/vim-markdown'
 
 " @ Plugin --- [ Code Format ]
-Plugin 'godlygeek/tabular'
-Plugin 't9md/vim-quickhl' 
-Plugin 'Chiel92/vim-autoformat'
+Plug 'godlygeek/tabular'
+Plug 't9md/vim-quickhl' 
+Plug 'Chiel92/vim-autoformat'
 
 " @ Plugin --- [ ColorScheme ]
-Plugin 'DemonCloud/J'
-" Plugin 'vim-airline/vim-airline'
-" Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'ryanoasis/vim-devicons'
+Plug 'DemonCloud/J'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'ryanoasis/vim-devicons'
 
-" ---- Plugin List Complete ----
-call vundle#end()
+" ---- Plug List Complete ----
+" call vundle#end()
+call plug#end()
 
 syntax on
 syntax enable
@@ -123,4 +128,4 @@ syntax enable
 filetype on
 filetype plugin on
 filetype plugin indent on
-" ========================= Vundle Plugin Setup End =========================
+" ========================= Vundle Plug Setup End =========================

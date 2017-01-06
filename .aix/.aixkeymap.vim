@@ -173,8 +173,8 @@ nnoremap <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
 			\ path '".expand("%:p")."' to clipboard"<CR>
 
 " Vundle keyfire
-nnoremap <leader>vi :PluginInstall<CR>
-nnoremap <leader>vu :PluginUpdate<CR>
+nnoremap <leader>vi :PlugInstall<CR>
+nnoremap <leader>vu :PlugUpdate<CR>
 
 " Tabluer Format
 vnoremap <leader>t :Tabularize/

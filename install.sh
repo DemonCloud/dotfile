@@ -27,6 +27,7 @@ if [ ! -d "$HOME/.vim" ]; then
 	mkdir $HOME/.vim/undo
 	mkdir $HOME/.vim/tags
 	mkdir $HOME/.vim/session
+	mkdir $HOME/.vim/autoload
 fi
 
 if [ ! -d "$HOME/.vim/bundle" ]; then
@@ -49,12 +50,16 @@ if [ ! -d "$HOME/.vim/session" ]; then
 	mkdir $HOME/.vim/session
 fi
 
+if [ ! -d "$HOME/.vim/autoload/" ]; then
+	echo "Make dir -- [ session ]"
+	mkdir $HOME/.vim/autoload/
+fi
+
 printf "\033[33mChecking Vundle Exist?\033[0m\n"
 if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-	echo "Clone Vundle Plugin..."
-	git clone https://github.com/VundleVim/Vundle.vim $HOME/.vim/bundle/Vundle.vim
-	echo "Clone Icons Plugin"
-	git clone https://github.com/ryanoasis/vim-devicons
+	echo "Clone Vim-Plug Plugin..."
+	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	echo "Clone J ColorSheme..."
 	git clone https://github.com/DemonCloud/J $HOME/.vim/bundle/J
 	printf "\033[33mVundle has Install && Exist\033[0m\n"
