@@ -137,22 +137,15 @@ endif
 
 " UltiSnips Config
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger       = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<leader><Tab>"
+let g:UltiSnipsExpandTrigger       = "<S-Tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<S-Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<leader><S-Tab>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
-
-if(has('win32'))
-	" On windows . Shift+Tab can trigger emmet
-	let g:user_emmet_expandabbr_key ='<S-Tab>'
-else
-	" But on Linux. it not trigger easy
-	let g:user_emmet_expandabbr_key ='<S-Tab>e'
-endif
+let g:user_emmet_expandabbr_key ='<Tab>'
 
 let g:user_emmet_settings = {
 			\ 'php'     : {

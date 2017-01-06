@@ -87,7 +87,6 @@ else
 endif
 
 " @ Plugin --- [ Code Complete Unity ]
-Plug 'Raimondi/delimitMate'
 Plug 'mattn/emmet-vim'
 
 " @ Plugin --- [ Geeks Plug ]
@@ -113,6 +112,7 @@ Plug 't9md/vim-quickhl'
 Plug 'Chiel92/vim-autoformat'
 
 " @ Plugin --- [ ColorScheme ]
+Plug 'DemonCloud/vim-autoclose'
 Plug 'DemonCloud/J'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
