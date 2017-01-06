@@ -117,7 +117,7 @@ $ ./install.sh
 			- PATH 末尾增加 : C:\Program Files (x86)\Lua;
 
 
-- [NodeJS](http://nodejs.org) (syntastic)
+- [NodeJS](http://nodejs.org) (ale,syntastic)
 
 	- 安装完成 NodeJS 以后使用 npm 安装依赖
 
