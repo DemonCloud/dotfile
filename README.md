@@ -24,6 +24,7 @@
 
 ## Install 安装
 
+
 #### 配置文件
 
 
@@ -32,6 +33,8 @@
 或Clone项目 ： ``git clone https://github.com/DemonCloud/Aix-Vim.git``
 
 更新项目 ： ``git pull``
+
+<br>
 
 
 #### 字体(已开源，项目的fonts文件夹中)
@@ -59,6 +62,7 @@ Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点
 
 ``fc-cache -f``
 
+<br>
 
 
 #### Unix
@@ -73,6 +77,8 @@ $ ./install.sh
 
 > 第一次开启Vim的时候请使用 ``:PlugInstall`` 指令 安装所有依赖插件
 
+<br>
+
 
 #### Windows
 
@@ -83,6 +89,8 @@ $ ./install.sh
 > 使用之前请读 README.txt 简短说明
 
 > 第一次开启Vim的时候请使用 ``:VundleInstall`` 指令 安装所有依赖插件
+
+
 
 <br>
 
@@ -157,6 +165,5 @@ NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变�
 例如，在version中我看到 neovim 加载了`` sysinit.vim`` 作为配置文件，那么，你需要做工作就是：
 将 aix文件夹中的 ``.aix.vim`` 的代码，copy到``sysinit.vim`` 中，这样 Aix-Vim 就可以正常加载了
 
-
-
+<br>
 
