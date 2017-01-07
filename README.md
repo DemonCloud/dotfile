@@ -1,9 +1,7 @@
 # Aix-Vim 
 
-## Introduction ( Version 1.0 release )
-
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-01-06%20%E4%B8%8B%E5%8D%882.53.26.png" alt="Aix-Vim Crazy!"/>
-<hr>
+
 <img src="http://7j1zwt.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-01-06%20%E4%B8%8B%E5%8D%882.56.19.png" alt="Aix-Vim Preview">
 
 
