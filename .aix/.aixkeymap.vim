@@ -242,4 +242,7 @@ xmap T <Plug>Sneak_T
 omap t <Plug>Sneak_t
 omap T <Plug>Sneak_T
 
+"Emmet
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+
 " ========================= KeyFire Setting End =========================

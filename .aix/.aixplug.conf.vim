@@ -15,6 +15,10 @@ let g:airline_right_sep=''
 " let g:airline#extensions#tabline#right_sep = ''
 " let g:airline#extensions#tabline#right_alt_sep = ''
 
+" Gitv Gitview
+let g:Gitv_OpenHorizontal = 1
+let g:Gitv_WrapLines = 1
+
 " fzf Plugin config
 set rtp+=~/.fzf
 
