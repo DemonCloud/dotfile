@@ -31,9 +31,6 @@ Plug 'junegunn/fzf'
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plug 'simnalamburt/vim-mundo'
 Plug 'Lokaltog/vim-easymotion'
-" For SVN status
-" Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter'
 
 " @ Plugin --- [ Code Sreach ]
 Plug 'rking/ag.vim'
@@ -43,38 +40,30 @@ Plug 'junegunn/limelight.vim'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'terryma/vim-expand-region'
+Plug 'kana/vim-operator-user'
+Plug 'haya14busa/vim-operator-flashy'
 Plug 'haya14busa/incsearch.vim'
 Plug 'justinmk/vim-sneak'
 
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
-" Complete Eng
+" Complete Engine
 if (has('nvim'))
 " For NeoVim
-	Plug 'Shougo/neoinclude.vim'
-	Plug 'Shougo/neco-vim'
-	Plug 'Shougo/neco-syntax'
  	Plug 'Shougo/deoplete.nvim'
 	" Plug 'Valloric/YouCompleteMe'
 	" Plug 'rdnetto/YCM-Generator'
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
 elseif(has('win32'))
-" For Windows
-	Plug 'bruno-/vim-alt-mappings'
-	Plug 'Shougo/neoinclude.vim'
-	Plug 'Shougo/neco-vim'
-	Plug 'Shougo/neco-syntax'
+	" For Windows
 	Plug 'Shougo/neocomplcache.vim'
 	Plug 'Shougo/neocomplete.vim'
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
 	Plug 'skeept/Ultisnips-neocomplete-unite'
 else
 " For Linux Vim @ Gvim
-	" Plug 'bruno-/vim-alt-mappings'
-	Plug 'Shougo/neoinclude.vim'
-	Plug 'Shougo/neco-vim'
-	Plug 'Shougo/neco-syntax'
 	Plug 'Shougo/neocomplcache.vim'
 	Plug 'Shougo/neocomplete.vim'
 	Plug 'skeept/Ultisnips-neocomplete-unite'
@@ -82,22 +71,24 @@ else
 	" Plug 'ternjs/tern_for_vim'
 	" Plug 'Valloric/YouCompleteMe'
 	" Plug 'rdnetto/YCM-Generator'
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
 endif
 
 " @ Plugin --- [ Code Complete Unity ]
 Plug 'mattn/emmet-vim'
 
 " @ Plugin --- [ Geeks Plug ]
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
+
 " Git all famliy
-Plug 'tpope/vim-git'
-Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
+" Plug 'airblade/vim-gitgutter'
+" For SVN status
+Plug 'mhinz/vim-signify'
 
 " @ Plugin --- [ Syntax ] 
 Plug 'kh3phr3n/python-syntax'

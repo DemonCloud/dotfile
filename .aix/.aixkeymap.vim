@@ -245,4 +245,9 @@ omap T <Plug>Sneak_T
 "Emmet
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
+" vim-operator-flashy
+" Highlight yanked area
+map y <Plug>(operator-flashy)
+nmap Y <Plug>(operator-flashy)$
+
 " ========================= KeyFire Setting End =========================

@@ -15,7 +15,5 @@ source $HOME/.aix/.aixinit.vim
 source $HOME/.aix/.aixkeymap.vim
 " - Style
 source $HOME/.aix/.aixstyle.vim
-" - Buffer
-source $HOME/.aix/.aixbuffline.vim
 " - System Source
 source $VIMRUNTIME/menu.vim
