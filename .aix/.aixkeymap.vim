@@ -102,24 +102,29 @@ nnoremap <silent> g: g:zz
 nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
-" Cursor Moving
-cnoremap <A-j> <Down>
-cnoremap <A-k> <Up>
-cnoremap <A-h> <Left>
-cnoremap <A-l> <Right>
-inoremap <A-j> <Down>
-inoremap <A-k> <Up>
-inoremap <A-h> <Left>
-inoremap <A-l> <Right>
 
-cnoremap <M-j> <Down>
-cnoremap <M-k> <Up>
-cnoremap <M-h> <Left>
-cnoremap <M-l> <Right>
-inoremap <M-j> <Down>
-inoremap <M-k> <Up>
-inoremap <M-h> <Left>
-inoremap <M-l> <Right>
+if(has('mac'))
+
+else
+	" Cursor Moving
+	cnoremap <A-j> <Down>
+	cnoremap <A-k> <Up>
+	cnoremap <A-h> <Left>
+	cnoremap <A-l> <Right>
+	inoremap <A-j> <Down>
+	inoremap <A-k> <Up>
+	inoremap <A-h> <Left>
+	inoremap <A-l> <Right>
+
+	cnoremap <M-j> <Down>
+	cnoremap <M-k> <Up>
+	cnoremap <M-h> <Left>
+	cnoremap <M-l> <Right>
+	inoremap <M-j> <Down>
+	inoremap <M-k> <Up>
+	inoremap <M-h> <Left>
+	inoremap <M-l> <Right>
+endif
 
 " Like Emacs
 inoremap <C-e> <End>

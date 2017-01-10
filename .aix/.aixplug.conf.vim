@@ -4,7 +4,6 @@ let g:ale_sign_error = 'x'
 let g:ale_sign_warning = '*'
 
 " AirLine Settings
-let g:Powerline_symbols = 'fancy'
 let g:airline_powerline_fonts = 1
 let g:airline_theme='serene'
 let g:airline_left_sep=''
@@ -15,11 +14,11 @@ let g:airline_right_sep=''
 " let g:airline#extensions#tabline#right_sep = ''
 " let g:airline#extensions#tabline#right_alt_sep = ''
 
-" Gitv Gitview
+" Gitv Gitview Setting
 let g:Gitv_OpenHorizontal = 1
 let g:Gitv_WrapLines = 1
 
-" fzf Plugin config
+" fzf Setting
 set rtp+=~/.fzf
 
 " TagBar Config
@@ -171,21 +170,7 @@ let g:user_emmet_settings = {
 let g:gitgutter_sign_column_always = 0
 let g:gitgutter_max_signs = 99999
 
-" c.vim Building Config for C/C++ Vim
-" let g:C_UseTool_cmake='yes'
-" let g:C_UseTool_doxygen = 'yes'
-"let  g:C_LocalTemplateFile = $VIM.'/vimfiles/c-support/templates/Templates'
-
-" Like Textmate icons.
-" let g:vimfiler_tree_leaf_icon = ' '
-" let g:vimfiler_tree_opened_icon = '-'
-" let g:vimfiler_tree_closed_icon = '>'
-" let g:vimfiler_marked_file_icon = '*'
-" Use trashbox.
-" Windows only and require latest vimproc.
-" let g:unite_kind_file_use_trashbox = 1
-
-" Ack Settings
+" Ag.vim Settings
 if executable('ag')
 	let g:ackprg = "ag --nocolor --nogroup --column"
 elseif executable('ack-grep')
@@ -208,11 +193,11 @@ let g:incsearch#auto_nohlsearch = 1
 " Python snytax configure
 let python_self_cls_highlight = 1
 
-" DevIcons Config
-" ColorFul NERDTree
+" ColorFul NERDTree Settings
 let g:NERDTreeRespectWildIgnore=1
-
 let g:NERDTreeDirArrows=0
+
+" DevIcons Config
 " let g:webdevicons_enable = 1
 " let g:webdevicons_enable_nerdtree = 1
 " let g:webdevicons_enable_unite = 1

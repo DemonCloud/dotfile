@@ -4,9 +4,6 @@
 set lines=38
 set columns=80
 
-" Prefix GTK borders
-set guiheadroom=0
-
 " ## Make its Gvim Like Windows behave ##
 " So you can use
 " @ CTRL+S save the file
@@ -102,9 +99,9 @@ set splitbelow
 " set Undo file
 set undofile
 if(has('win32'))
-	set undodir=$VIM/vimfiles/undo
+	set undodir=$VIM/vimfiles/undo/
 else
-	set undodir=~/.vim/undo
+	set undodir=~/.vim/undo/
 endif
 set viminfo+=!
 

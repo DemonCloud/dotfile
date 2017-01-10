@@ -2,22 +2,9 @@
 " Vim-Plug update Manager
 " * Expert Vundle Plugin Manager
 filetype off
-
-" Vundle Path Config
-" Different Path between Windows and Linux
-" if(has('win32'))
-" 	set rtp+=$VIM/vimfiles/bundle/Vundle.vim
-" 	call vundle#rc('$VIM/vimfiles/bundle')
-" else
-" 	set rtp+=~/.vim/bundle/Vundle.vim
-" 	call vundle#begin()
-" endif
 "
+" # Plugins Beginning 
 call plug#begin('~/.vim/bundle/')
-
-" # Plugins Beginning #
-" @ Plugin --- [ Base Require Lib & Prefix ]
-" Plug 'gmarik/Vundle.vim'
 
 " @ Plugin --- [ File Buffer Manager ]
 Plug 'scrooloose/nerdtree'
@@ -50,31 +37,27 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
+" @ Plugin --- [ Code Complete Unity ]
+Plug 'mattn/emmet-vim'
+" Plug 'Valloric/YouCompleteMe'
+" Plug 'rdnetto/YCM-Generator'
+
 
 " Complete Engine
 if (has('nvim'))
 " For NeoVim
  	Plug 'Shougo/deoplete.nvim'
-	" Plug 'Valloric/YouCompleteMe'
-	" Plug 'rdnetto/YCM-Generator'
 elseif(has('win32'))
 	" For Windows
 	Plug 'Shougo/neocomplcache.vim'
 	Plug 'Shougo/neocomplete.vim'
 	Plug 'skeept/Ultisnips-neocomplete-unite'
 else
-" For Linux Vim @ Gvim
+" For Linux Vim @ Gvim @ MacVim
 	Plug 'Shougo/neocomplcache.vim'
 	Plug 'Shougo/neocomplete.vim'
 	Plug 'skeept/Ultisnips-neocomplete-unite'
- 	" Plug 'Shougo/deoplete.nvim'
-	" Plug 'ternjs/tern_for_vim'
-	" Plug 'Valloric/YouCompleteMe'
-	" Plug 'rdnetto/YCM-Generator'
 endif
-
-" @ Plugin --- [ Code Complete Unity ]
-Plug 'mattn/emmet-vim'
 
 " @ Plugin --- [ Geeks Plug ]
 Plug 'tpope/vim-git'
@@ -86,7 +69,7 @@ Plug 'tpope/vim-commentary'
 
 " Git all famliy
 Plug 'gregsexton/gitv'
-" Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " For SVN status
 Plug 'mhinz/vim-signify'
 
@@ -110,7 +93,6 @@ Plug 'vim-airline/vim-airline-themes'
 " Plug 'ryanoasis/vim-devicons'
 
 " ---- Plug List Complete ----
-" call vundle#end()
 call plug#end()
 
 syntax on
@@ -119,4 +101,4 @@ syntax enable
 filetype on
 filetype plugin on
 filetype plugin indent on
-" ========================= Vundle Plug Setup End =========================
+" ========================= Plug Setup End =========================
