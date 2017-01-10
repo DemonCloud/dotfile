@@ -104,7 +104,15 @@ nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
 
 if(has('mac'))
-
+	cnoremap <D-j> <Down>
+	cnoremap <D-k> <Up>
+	" cnoremap <D-h> <Left>
+	" cnoremap <D-l> <Right>
+	inoremap <D-j> <Down>
+	inoremap <D-k> <Up>
+	inoremap <D-[> <ESC>
+	" inoremap <D-h> <Left>
+	" inoremap <D-l> <Right>
 else
 	" Cursor Moving
 	cnoremap <A-j> <Down>
