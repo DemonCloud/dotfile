@@ -41,35 +41,44 @@ command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-arg
 command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q-args>)
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
+	let l:saved_reg = @"
+	execute "normal! vgvy"
 
-    let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+	let l:pattern = escape(@", '\\/.*$^~[]')
+	let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'ag'
-        call CmdLine("Ag \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
-    endif
+	if a:direction == 'b'
+		execute "normal ?" . l:pattern . "^M"
+	elseif a:direction == 'ag'
+		call CmdLine("Ag \"" . l:pattern . "\" " )
+	elseif a:direction == 'replace'
+		call CmdLine("%s" . '/'. l:pattern . '/')
+	elseif a:direction == 'f'
+		execute "normal /" . l:pattern . "^M"
+	endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+	let @/ = l:pattern
+	let @" = l:saved_reg
 endfunction
 " -------------- Tooling Function Ending ------------------
 
-nnoremap <F2> :NERDTreeToggle<CR>
-nnoremap <F3> :TableModeToggle<CR>
-nnoremap <F3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-nnoremap <F4> mzgg=G`z
+if(has("mac"))
+	nnoremap <D-2> :NERDTreeToggle<CR>
+	nnoremap <D-3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+	nnoremap <D-4> mzgg=G`z
 
-nnoremap <F9> ggVG:RetabIndent<CR>
-" Full Fucking Window ^M ending line file!
-nnoremap <F10> :%s////g
+	nnoremap <D-5> ggVG:RetabIndent<CR>
+	" Full Fucking Window ^M ending line file!
+	nnoremap <D-6> :%s////g
+else
+	nnoremap <F2> :NERDTreeToggle<CR>
+	nnoremap <F3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+	nnoremap <F4> mzgg=G`z
+
+	nnoremap <F9> ggVG:RetabIndent<CR>
+	" Full Fucking Window ^M ending line file!
+	nnoremap <F10> :%s////g
+endif
 
 " Normal Key Map
 nnoremap U :redo<CR>
