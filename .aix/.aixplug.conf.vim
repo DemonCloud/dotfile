@@ -6,6 +6,7 @@ let g:ale_sign_warning = '*'
 " AirLine Settings
 let g:airline_powerline_fonts = 1
 let g:airline_theme='serene'
+" let g:airline_theme='jellybeans'
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " let g:airline#extensions#tabline#enabled = 1
@@ -13,6 +14,29 @@ let g:airline_right_sep=''
 " let g:airline#extensions#tabline#left_alt_sep = ''
 " let g:airline#extensions#tabline#right_sep = ''
 " let g:airline#extensions#tabline#right_alt_sep = ''
+
+" CTRLP
+let g:ctrlp_map = '<c-p>'
+" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ --ignore .git
+      \ --ignore .svn
+      \ --ignore .hg
+      \ --ignore .DS_Store
+      \ --ignore .logs
+      \ --ignore .log
+      \ --ignore .idea
+      \ --ignore .swp
+      \ --ignore "**/*.pyc"
+      \ -g ""'
+
+" ag is fast enough that CtrlP doesn't need to cache
+let g:ctrlp_use_caching = 0
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " Gitv Gitview Setting
 let g:Gitv_OpenHorizontal = 1
@@ -171,13 +195,9 @@ let g:gitgutter_sign_column_always = 0
 let g:gitgutter_max_signs = 99999
 
 " Ag.vim Settings
-if executable('ag')
-	let g:ackprg = "ag --nocolor --nogroup --column"
-elseif executable('ack-grep')
-	let g:ackprg = "ack-grep --nocolor --nogroup --column"
-elseif executable('ack')
-	let g:ackprg = "ack --nocolor --nogroup --column"
-endif
+let g:ackprg = "ag --nocolor --nogroup --column"
+set grepprg=ag\ --nogroup\ --nocolor
+command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 
 " Multip Cursor
 " Default mapping

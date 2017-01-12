@@ -13,7 +13,10 @@ Plug 'w0rp/ale'
 Plug 'yegappan/mru'
 Plug 'Shougo/vimproc.vim' , { 'do': 'make' }
 Plug 'danro/rename.vim'
-Plug 'junegunn/fzf'
+
+" MacVim 'n use fzf
+" Plug 'junegunn/fzf'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " @ Plugin --- [ Code Cheacker Viewer ] 
 Plug 'simnalamburt/vim-mundo'
