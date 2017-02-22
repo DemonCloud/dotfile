@@ -15,12 +15,8 @@ Plug 'Shougo/vimproc.vim' , { 'do': 'make' }
 Plug 'danro/rename.vim'
 
 " MacVim 'n use fzf
-" Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'ctrlpvim/ctrlp.vim'
-
-" @ Plugin --- [ Code Cheacker Viewer ] 
-Plug 'simnalamburt/vim-mundo'
-Plug 'Lokaltog/vim-easymotion'
 
 " @ Plugin --- [ Code Sreach ]
 Plug 'rking/ag.vim'
@@ -33,13 +29,10 @@ Plug 'terryma/vim-expand-region'
 Plug 'kana/vim-operator-user'
 Plug 'haya14busa/vim-operator-flashy'
 Plug 'haya14busa/incsearch.vim'
-Plug 'justinmk/vim-sneak'
 
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 " @ Plugin --- [ Code Complete Unity ]
 Plug 'mattn/emmet-vim'
 " Plug 'Valloric/YouCompleteMe'
@@ -67,11 +60,9 @@ Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-commentary'
 
 " Git all famliy
-Plug 'gregsexton/gitv'
 Plug 'airblade/vim-gitgutter'
 " For SVN status
 Plug 'mhinz/vim-signify'
