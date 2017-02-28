@@ -11,18 +11,16 @@ Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'w0rp/ale'
 Plug 'yegappan/mru'
-Plug 'Shougo/vimproc.vim' , { 'do': 'make' }
 Plug 'danro/rename.vim'
 
 " MacVim 'n use fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlpvim/ctrlp.vim'
 
 " @ Plugin --- [ Code Sreach ]
 Plug 'rking/ag.vim'
-Plug 'junegunn/limelight.vim'
 
-" @ Plugin --- [ | Google | Geeks Plug ]
+" @ Plugin --- [ View ]
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-smooth-scroll'
 Plug 'terryma/vim-expand-region'
@@ -30,32 +28,15 @@ Plug 'kana/vim-operator-user'
 Plug 'haya14busa/vim-operator-flashy'
 Plug 'haya14busa/incsearch.vim'
 
-Plug 'Shougo/neoinclude.vim'
-Plug 'Shougo/neco-vim'
-Plug 'Shougo/neco-syntax'
 " @ Plugin --- [ Code Complete Unity ]
 Plug 'mattn/emmet-vim'
-" Plug 'Valloric/YouCompleteMe'
-" Plug 'rdnetto/YCM-Generator'
+" Plug 'maralla/completor.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator'
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 
-
-" Complete Engine
-if (has('nvim'))
-" For NeoVim
- 	Plug 'Shougo/deoplete.nvim'
-elseif(has('win32'))
-	" For Windows
-	Plug 'Shougo/neocomplcache.vim'
-	Plug 'Shougo/neocomplete.vim'
-	Plug 'skeept/Ultisnips-neocomplete-unite'
-else
-" For Linux Vim @ Gvim @ MacVim
-	Plug 'Shougo/neocomplcache.vim'
-	Plug 'Shougo/neocomplete.vim'
-	Plug 'skeept/Ultisnips-neocomplete-unite'
-endif
-
-" @ Plugin --- [ Geeks Plug ]
+" @ Plugin --- [ VC Plug ]
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -63,8 +44,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 
 " Git all famliy
-Plug 'airblade/vim-gitgutter'
 " For SVN status
+Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 
 " @ Plugin --- [ Syntax ] 
