@@ -44,29 +44,29 @@ let g:Gitv_WrapLines = 1
 " fzf Setting
 set rtp+=~/.fzf
 
-" TagBar Config
-" Just configure and [make] ctags file
-" let g:tagbar_ctags_bin = "/usr/bin/ctags"
-" let g:tagbar_iconchars = ['+', '-']
-" for coffeeScript
-" let g:tagbar_type_coffee = {
-" 			\ 'ctagstype' : 'coffee',
-" 			\ 'kinds'     : [
-" 			\ 'c:classes',
-" 			\ 'm:methods',
-" 			\ 'f:functions',
-" 			\ 'v:variables',
-" 			\ 'f:fields',
-" 			\ ]
-" 			\ }
-" let g:tagbar_type_css = {
-" 			\ 'ctagstype' : 'Css',
-" 			\ 'kinds'     : [
-" 			\ 'c:classes',
-" 			\ 's:selectors',
-" 			\ 'i:identities'
-" 			\ ]
-" 			\ }
+"TagBar Config
+"Just configure and [make] ctags file
+let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
+let g:tagbar_iconchars = ['+', '-']
+"for coffeeScript
+let g:tagbar_type_coffee = {
+			\ 'ctagstype' : 'coffee',
+			\ 'kinds'     : [
+			\ 'c:classes',
+			\ 'm:methods',
+			\ 'f:functions',
+			\ 'v:variables',
+			\ 'f:fields',
+			\ ]
+			\ }
+let g:tagbar_type_css = {
+			\ 'ctagstype' : 'Css',
+			\ 'kinds'     : [
+			\ 'c:classes',
+			\ 's:selectors',
+			\ 'i:identities'
+			\ ]
+			\ }
 
 "------------------ YouCompleteMe -------------------
 " Linux vim && NeoVim Using YouCompleteMe

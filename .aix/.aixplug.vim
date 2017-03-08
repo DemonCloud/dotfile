@@ -12,6 +12,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'w0rp/ale'
 Plug 'yegappan/mru'
 Plug 'danro/rename.vim'
+Plug 'majutsushi/tagbar'
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 " MacVim 'n use fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -32,7 +34,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'mattn/emmet-vim'
 " Plug 'maralla/completor.vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 
@@ -54,6 +56,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'plasticboy/vim-markdown'
+Plug 'jeaye/color_coded'
 
 " @ Plugin --- [ Code Format ]
 Plug 'godlygeek/tabular'
