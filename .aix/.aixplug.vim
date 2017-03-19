@@ -12,8 +12,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'w0rp/ale'
 Plug 'yegappan/mru'
 Plug 'danro/rename.vim'
-Plug 'majutsushi/tagbar'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
 " MacVim 'n use fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -53,10 +51,11 @@ Plug 'mhinz/vim-signify'
 " @ Plugin --- [ Syntax ] 
 Plug 'kh3phr3n/python-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'plasticboy/vim-markdown'
-Plug 'jeaye/color_coded'
+" Plug 'jeaye/color_coded'
 
 " @ Plugin --- [ Code Format ]
 Plug 'godlygeek/tabular'

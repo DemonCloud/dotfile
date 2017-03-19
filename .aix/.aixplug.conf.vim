@@ -1,6 +1,6 @@
 " ========================= Plugin Config Start =========================
 " Set Ale Cheacker
-let g:ale_sign_error = 'x'
+let g:ale_sign_error = 'o'
 let g:ale_sign_warning = '*'
 
 " AirLine Settings
@@ -15,58 +15,8 @@ let g:airline_right_sep=''
 " let g:airline#extensions#tabline#right_sep = ''
 " let g:airline#extensions#tabline#right_alt_sep = ''
 
-" CTRLP
-let g:ctrlp_map = '<c-p>'
-" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ --ignore .git
-      \ --ignore .svn
-      \ --ignore .hg
-      \ --ignore .DS_Store
-      \ --ignore .logs
-      \ --ignore .log
-      \ --ignore .idea
-      \ --ignore .swp
-      \ --ignore "**/*.pyc"
-      \ -g ""'
-
-" ag is fast enough that CtrlP doesn't need to cache
-let g:ctrlp_use_caching = 0
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
-
-" Gitv Gitview Setting
-let g:Gitv_OpenHorizontal = 1
-let g:Gitv_WrapLines = 1
-
 " fzf Setting
 set rtp+=~/.fzf
-
-"TagBar Config
-"Just configure and [make] ctags file
-let g:tagbar_ctags_bin = "/usr/local/bin/ctags"
-let g:tagbar_iconchars = ['+', '-']
-"for coffeeScript
-let g:tagbar_type_coffee = {
-			\ 'ctagstype' : 'coffee',
-			\ 'kinds'     : [
-			\ 'c:classes',
-			\ 'm:methods',
-			\ 'f:functions',
-			\ 'v:variables',
-			\ 'f:fields',
-			\ ]
-			\ }
-let g:tagbar_type_css = {
-			\ 'ctagstype' : 'Css',
-			\ 'kinds'     : [
-			\ 'c:classes',
-			\ 's:selectors',
-			\ 'i:identities'
-			\ ]
-			\ }
 
 "------------------ YouCompleteMe -------------------
 " Linux vim && NeoVim Using YouCompleteMe
@@ -174,6 +124,8 @@ let g:completor_gocode_binary = '/usr/local/bin/go'
 let g:UltiSnipsExpandTrigger="<S-Tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+let g:jsx_ext_required = 0
 "========================= Plugin Config End =========================
 
 

@@ -1,7 +1,6 @@
 " ========================= KeyFire Setting Start =========================
 
 " -------------- Tooling Function Binding ------------------
-
 " Lookup HighLight Syntax Define
 function! <SID>SynStack()
 	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
@@ -111,7 +110,6 @@ nnoremap <silent> g: g:zz
 nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 
-
 if(has('mac'))
 	cnoremap <D-j> <Down>
 	cnoremap <D-k> <Up>
@@ -220,14 +218,6 @@ vnoremap <leader>s :call VisualSelection('ag', '')<CR>
 map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
-" For Git fire
-nnoremap <leader>gv :Gitv<CR>
-
-" For SVN fire
-nnoremap <leader>sc :!svn ci -m ""<CR>
-nnoremap <leader>su :!svn up<CR>
-nnoremap <leader>st :!svn st<CR>
-
 " Incsearch
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
@@ -256,5 +246,4 @@ nmap Y <Plug>(operator-flashy)$
 
 "Ag bind \ (backward slash) to grep shortcut
 nnoremap \ :Ag<SPACE>
-
 " ========================= KeyFire Setting End =========================
