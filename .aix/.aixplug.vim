@@ -67,6 +67,7 @@ Plug 'DemonCloud/vim-autoclose'
 Plug 'DemonCloud/J'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'rizzatti/dash.vim'
 " Plug 'ryanoasis/vim-devicons'
 
 " ---- Plug List Complete ----
