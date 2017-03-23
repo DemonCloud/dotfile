@@ -98,11 +98,7 @@ set splitbelow
 
 " set Undo file
 set undofile
-if(has('win32'))
-	set undodir=$VIM/vimfiles/undo/
-else
-	set undodir=~/.vim/undo/
-endif
+set undodir=~/.vim/undo/
 set viminfo+=!
 
 " Diff GUI Vim with NVim
@@ -156,10 +152,8 @@ endif
 
 " Setting Spell Checker
 set spelllang=en_us                      " spelling options
-if(!has('win32'))
-	set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
-	set dictionary+=/usr/share/dict/words
-endif
+set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
+set dictionary+=/usr/share/dict/words
 
 " Fix Fucking Vim Prefix for GTK
 set backspace=indent,eol,start
@@ -169,43 +163,5 @@ set backspace=indent,eol,start
 " set list listchars=tab:▸\ 
 "set list listchars=tab:-\ ,trail:\ 
 set list listchars=tab:-\ ,extends:>,precedes:<
-
-if(has('win32'))
-	" Windows system using Directx to rendering
-	set renderoptions=type:directx,renmode:5,taamode:1
-
-	set diffexpr=MyDiff()
-	function MyDiff()
-		let opt = '-a --binary '
-		if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-		if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-		let arg1 = v:fname_in
-		if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-		let arg2 = v:fname_new
-		if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-		let arg3 = v:fname_out
-		if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-		let eq = ''
-		if $VIMRUNTIME =~ ' '
-			if &sh =~ '\<cmd'
-				let cmd = '""' . $VIMRUNTIME . '\diff"'
-				let eq = '"'
-			else
-				let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-			endif
-		else
-			let cmd = $VIMRUNTIME . '\diff'
-		endif
-		silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-	endfunction
-endif
-
-func! DeleteTrailingWS()
-  exe "normal mz"
-  %s/\s\+$//ge
-  exe "normal `z"
-endfunc
-autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " ========================= Normal Setting End =========================

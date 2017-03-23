@@ -20,7 +20,6 @@ set rtp+=~/.fzf
 
 "------------------ YouCompleteMe -------------------
 " Linux vim && NeoVim Using YouCompleteMe
-let g:deoplete#enable_at_startup=1
 let g:ycm_auto_trigger = 1
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 let g:ycm_collect_identifiers_from_tags_files = 1
@@ -117,10 +116,6 @@ let g:NERDTreeDirArrows=0
 "
 
 " auto complete
-let g:completor_node_binary = '/usr/local/bin/node'
-let g:completor_clang_binary = '/usr/bin/clang'
-let g:completor_gocode_binary = '/usr/local/bin/go'
-
 let g:UltiSnipsExpandTrigger="<S-Tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"

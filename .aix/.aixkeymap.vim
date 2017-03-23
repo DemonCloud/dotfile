@@ -49,9 +49,9 @@ function! VisualSelection(direction, extra_filter) range
 	if a:direction == 'b'
 		execute "normal ?" . l:pattern . "^M"
 	elseif a:direction == 'ag'
-		call CmdLine("Ag \"" . l:pattern . "\" " )
+		execute 'Ag '.l:pattern
 	elseif a:direction == 'replace'
-		call CmdLine("%s" . '/'. l:pattern . '/')
+		execut  "%s" . '/'. l:pattern . '/'
 	elseif a:direction == 'f'
 		execute "normal /" . l:pattern . "^M"
 	endif
@@ -104,7 +104,7 @@ nnoremap <silent> zk O<ESC>j
 
 " Format Jump
 nnoremap <silent> g; g;zz
-nnoremap <silent> g: g:zz
+nnoremap <silent> g, g,zz
 
 " Smooth Scroll the terminal
 nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
@@ -219,6 +219,8 @@ map K <Plug>(expand_region_expand)
 map J <Plug>(expand_region_shrink)
 
 " Incsearch
+" nnoremap / /\v
+" vnoremap / /\v
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
