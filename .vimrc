@@ -1,19 +1,15 @@
-"                              YiJun Aix Vim 
-
-" 2015-07-24
+" 2017-04-07
 " @ Source 
 " - Basic
-source $HOME/.aix/.aix.vim
+source $HOME/.aix/.vim
 " - Ignore
-source $HOME/.aix/.aixignore.vim
+source $HOME/.aix/.ignore.vim
 " - Plug
-source $HOME/.aix/.aixplug.vim
-source $HOME/.aix/.aixplug.conf.vim
+source $HOME/.aix/.plug.vim
+source $HOME/.aix/.plug.conf.vim
 " - Init
-source $HOME/.aix/.aixinit.vim
+source $HOME/.aix/.init.vim
 " - KeyMapping
-source $HOME/.aix/.aixkeymap.vim
+source $HOME/.aix/.keymap.vim
 " - Style
-source $HOME/.aix/.aixstyle.vim
-" - System Source
-source $VIMRUNTIME/menu.vim
+source $HOME/.aix/.style.vim
