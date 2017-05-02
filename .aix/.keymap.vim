@@ -232,6 +232,8 @@ map # <Plug>(incsearch-nohl-#)zzzv
 map g* <Plug>(incsearch-nohl-g*)zzzv
 map g# <Plug>(incsearch-nohl-g#)zzzv
 
+nnoremap <leader>gm :!sh -xc 'git status \| fpp'<CR> 
+
 " Vim-quickhl 
 nmap <Space>m <Plug>(quickhl-manual-this)
 xmap <Space>m <Plug>(quickhl-manual-this)

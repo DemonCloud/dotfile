@@ -15,7 +15,8 @@ Plug 'danro/rename.vim'
 
 " MacVim 'n use fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'ctrlpvim/ctrlp.vim'
+Plug 'wincent/command-t', { 'do': 'cd ruby/command-t && ruby extconf.rb && make' }
+Plug 'ctrlpvim/ctrlp.vim'
 
 " @ Plugin --- [ Code Sreach ]
 Plug 'rking/ag.vim'
@@ -35,6 +36,14 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
+Plug 'Shougo/vimproc', { 'do': 'make' }
+Plug 'Shougo/neoinclude.vim'
+Plug 'Shougo/neco-vim'
+Plug 'Shougo/neco-syntax'
+Plug 'Shougo/neocomplete'
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/vimshell'
 
 " @ Plugin --- [ VC Plug ]
 Plug 'tpope/vim-git'
@@ -69,6 +78,7 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'rizzatti/dash.vim'
+Plug 'gregsexton/gitv'
 " Plug 'ryanoasis/vim-devicons'
 
 " ---- Plug List Complete ----
