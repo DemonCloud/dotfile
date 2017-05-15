@@ -100,13 +100,13 @@ endfunction
 " Linux vim && NeoVim Using YouCompleteMe
 let g:ycm_auto_trigger = 0
 let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_add_preview_to_completeopt = 1
-let g:ycm_use_ultisnips_completer = 1
+let g:ycm_collect_identifiers_from_tags_files = 0
+let g:ycm_add_preview_to_completeopt = 5
+let g:ycm_use_ultisnips_completer = 0
 let g:ycm_error_symbol = '>>'
 let g:ycm_warning_symbol = '>*'
 let g:ycm_cache_omnifunc = 1
-let g:ycm_max_diagnostics_to_display=10
+let g:ycm_max_diagnostics_to_display=0
 let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
 let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
 let g:ycm_filetype_blacklist = {
