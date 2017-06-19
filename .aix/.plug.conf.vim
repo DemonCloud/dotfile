@@ -6,6 +6,8 @@ let g:ale_sign_warning = '*'
 " AirLine Settings
 let g:airline_powerline_fonts = 1
 let g:airline_theme='serene'
+" let g:airline_theme='zenburn'
+" let g:airline_theme='simple'
 " let g:airline_theme='jellybeans'
 let g:airline_left_sep=''
 let g:airline_right_sep=''

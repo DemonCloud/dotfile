@@ -33,7 +33,6 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'mattn/emmet-vim'
 " Plug 'maralla/completor.vim'
 Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
 Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
@@ -60,6 +59,7 @@ Plug 'mhinz/vim-signify'
 " @ Plugin --- [ Syntax ] 
 Plug 'kh3phr3n/python-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'groenewege/vim-less'
 Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
