@@ -1,167 +1,138 @@
-# Aix-Vim 
+# DOTFILE
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-01-06%20%E4%B8%8B%E5%8D%882.53.26.png" alt="Aix-Vim Crazy!"/>
+![YiJun's Vim](http://7j1zwt.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-01-06%20%E4%B8%8B%E5%8D%882.56.19.png)
 
-<img src="http://7j1zwt.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-01-06%20%E4%B8%8B%E5%8D%882.56.19.png" alt="Aix-Vim Preview">
+<br>
 
+![YiJun's Vim](http://7j1zwt.com1.z0.glb.clouddn.com/2017-06-20_081950.png)
 
-## Date 日志
+<br>
 
--- update 2017.1.6 配置文件全面迁移支持MacVim
+## INTRODUCTION
 
--- update 2016.9.2 增加了完整的对NeoVim的支持
+**dotfile** 是从我刚接触Vim开始一直维护至今的，模块化的维护思路，汲取众多强人的按键经验，提供诸位参考与学习。
 
--- update 2016.6.22 测试基本完成，发布1.0版本
+**字体为Aix**，是由我通过font forge制订的点阵字体(BITMAP FONTS)，**已经无偿开源, 如果你从中受益，请赏赐一个star**。
 
--- update 2016.3.21 增加修改，支持neovim
+字体格式：
 
--- update 2015.10.15 开源点阵字体
+* Mac OSX -> Aix.dfont
+* Windows -> Aix.fon
+* Linux -> Aix.bdf
 
--- update 2015.7.21 重构vim配置，Aix-Vim
-
-
-## Install 安装
-
-
-#### 配置文件
-
-
-下载项目 ： [[Aix-Vim]](https://github.com/DemonCloud/Aix-Vim/archive/master.zip)
-
-或Clone项目 ： ``git clone https://github.com/DemonCloud/Aix-Vim.git``
-
-更新项目 ： ``git pull``
 
 <br>
 
 
-#### 字体(已开源，项目的fonts文件夹中)
-
-``我已经开源了自己的Aix字体，可以在项目的fonts文件夹中找到``
-
-bdf格式的点阵字体目前测试可以在Linux下使用（mac下使用dfont），有些Linux默认是不开启点阵字体的支持的,有些Linux默认就支持点阵字体，可以直接安装使用。
-
-Windows是完全不支持bdf字体的，所以大家可以死心了，有一种想法是把bdf转化成ttf，目前我没有找到方法，能转ttf的朋友麻烦提交以下issue分享给大家.
-
-Windows可用支持字体：https://github.com/ryanoasis/nerd-fonts
-
-相关插件：https://github.com/ryanoasis/vim-devicons
-
-安装字体完成之后，修改 ``aix/.aixinit.vim`` 中 ``guifont`` 的设置，
-
-
-Linux 下开启 点阵字体(bitmap fonts)的方法, 适用于默认禁用了点阵字体的系统(Ubuntu)
-
-``cd /etc/fonts/conf.d``
-
-``rm 70-no-bitmaps.conf``
-
-``ln -s ../conf.avail/70-yes-bitmaps.conf .``
-
-``fc-cache -f``
-
-<br>
-
+## INSTALL
 
 #### Unix
 
-项目目录下的 ``install.sh``进行安装.
+> Unix环境下直接执行 ``./install.sh`` 即可. 
 
-```Shell
-$ ./install.sh
-```
-
-> 如果``install.sh``文件没有执行权限，请使用``sudo chmod 777 install.sh``
-
-> 第一次开启Vim的时候请使用 ``:PlugInstall`` 指令 安装所有依赖插件
+> 首次进入Vim时，执行 ``:PlugInstall`` 便可以轻松安装依赖，完成配置.
 
 <br>
 
+#### Window 
 
-#### Windows
+> 通常来说， Win下的Vim配置和Unix下的会有所不同
 
-> 2016.7.5 更新Window可用版本 （不定期更新）
+> 于是我单独维护了一个Win的版本，在家中做开发时候需要用到。
 
-> 下载地址： [Aix-Vim for Windows](http://pan.baidu.com/s/1c2nztio)
+> **后期会发布打包版本**
 
-> 使用之前请读 README.txt 简短说明
 
-> 第一次开启Vim的时候请使用 ``:VundleInstall`` 指令 安装所有依赖插件
 
 
 
 <br>
 
-#### 配置说明(新手请详细看)
+## HOW TO CONFIGURE
 
-> **##** 很多插件是需要第三方外部组件的支持.以下我列出一些依赖列表:
+在开始配置Vim之前，我们需要知道，许多插件都需要有外部组件，开发环境的支持,
 
-- [Lua](http://lua.org) (neocomplete)
+如何配置这些环境，下面给出了一些非常简单有效的办法:
 
-	- 需要注意的是，在Windows下，支持Lua之前必须安装好MinGW，用MinGW来安装g++和gcc的支持，如果自己配置好了g++和gcc可以跳过此步骤，否则配置Lua也不会生效
+<br>
 
-	- Windows 和 Linux 下都需要安装 Lua ， 用于支持 Neocomplete 智能补全插件.
+#### Python (Ultisnip, YouCompleteMe)
 
-	- Linux 安装太简单了，可以自己查找资料， Ubuntu下直接有源： ``sudo apt-get install lua5.3``
+Python 是Vim开发中必备的开发环境之一，因为大多数著名的插件都是用Python写的.
 
-	- Mac 下 ``brew install lua``
+Windows系统只需要去Python官网下载一个安装文件即可，一键安装.
 
-	- 本人已经在windows下的Lua5.2 和 Lua5.3 都做了整合,使用哪个版本的Lua需要根据Vim具体支持的Lua版本，下载后加入Windows环境变量就可以直接使用：
-
-	- Download [Lua5.3](http://pan.baidu.com/s/1eQB6I2m) , [Lua5.2](http://pan.baidu.com/s/1eQrnRJs)
-
-	- 将 Lua RAR 解压出来（推荐是C盘里，因为要设置环境变量,和方便管理，当然其他盘也是可以的）
-
-	- 添加环境变量：（以C盘为例，我将Lua解压至 C:\Program Files (x86)\ 文件夹下，不同盘，``LUA_DIR`` 路径不同）
-
-			- LUA_DIR : C:\Program Files (x86)\Lua
-
-			- LUA_CPATH : ?.dll;%LUA_DIR%\?.dll
-
-			- LUA_PATH : ?.lua;%LUA_DIR%\lua\?.lua
-
-			- PATH 末尾增加 : C:\Program Files (x86)\Lua;
+<br>
 
 
-- [NodeJS](http://nodejs.org) (ale,syntastic)
+#### [Lua](http://lua.org) (neocomplete)
 
-	- 安装完成 NodeJS 以后使用 npm 安装依赖
+安装Lua只要是用于支持 neocomplete的只能补全.
 
-	- ``npm install -g jshint``   JSHint 语法检测
+- Linux 下直接使用包管理安装即可 ``sudo apt-get install lua5.3``
 
-	- ``npm install -g csslint``  CSSLint 语法检测
+- Mac 下可以使用brew包管理直接进行安装 ``brew install lua``
 
-	- ``npm insatll -g tern``     JavaScript 智能提示扩展
+- Windows 下比较麻烦，首先必须安装MinGW，然后配置环境变量，指向MinGW\bin 目录（里面包含g++,gcc）
 
-- [Vimproc](https://github.com/Shougo/vimproc.vim) (Neocomplete,VimShell,Unite)
+本人已经在windows下的Lua5.2 和 Lua5.3 都做了整合,
 
-	- Vimproc 默认在 vim/bundle/vimproc.vim/ 文件夹中
+使用哪个版本的Lua需要根据Vim具体支持的Lua版本 Download: [Lua5.3](http://pan.baidu.com/s/1eQB6I2m) , [Lua5.2](http://pan.baidu.com/s/1eQrnRJs)
 
-	- 主要是用来完成一些异步调用和异步任务的.
+1. 将 Lua RAR 解压出来（推荐是C盘里，因为要设置环境变量,和方便管理，当然其他盘也是可以的）
 
-	- Unix 环境下可以直接进入``vimproc.vim`` 文件夹目录，执行``make``即可编译 
+2. 添加环境变量：（以C盘为例，我将Lua解压至 C:\Program Files (x86)\ 文件夹下，不同盘，``LUA_DIR`` 路径不同）
 
-	- Windows 环境下有点蛋疼，先安装MinGW项目，然后安装gcc和g++ 以及cmake, 然后至目录编译，详情请看一下项目的Markdown
+   LUA_DIR : C:\Program Files (x86)\Lua
 
-- [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher) (ag.vim)
+   LUA_CPATH : ?.dll;%LUA_DIR%\?.dll
 
-	- Vim 代码搜索必须依赖的项目，1G的项目文件所有代码搜索基本是秒搜
+   LUA_PATH : ?.lua;%LUA_DIR%\lua\?.lua
 
-	- 安装 Ag.vim 的依赖, Ag 代码搜索需要 the\_silver\_searcher Python组件的支持
+   最后在 PATH 环境变量末尾增加 : C:\Program Files (x86)\Lua;
 
-	- Linux Ubuntu  下直接 ``sudo apt-get install silversearcher-ag`` 安装依赖, 也可以自己编译源码（推荐自己编译）
-
-	- mac  下直接 ``brew install ag`` 安装依赖
-
-	- Windows 下比较麻烦. 先安装 [Chocolatey](https://chocolatey.org) 安装完成之后CMD中使用命令:``choco install ag`` 就可以了.
+<br>
 
 
-#### 关于NEOVIM
+#### [NodeJS](http://nodejs.org) (ale,syntastic)
+
+安装NodeJS的主要目的是可以配合 ale 这样的代码检测插件做语法检测。
+
+当然NodeJS中的tern_for_javascript 也能扩展Vim Javascript的智能补全
+
+使用 npm 安装**全局依赖**
+
+- ``npm install -g jshint``   JSHint 语法检测
+
+- ``npm install -g csslint``  CSSLint 语法检测
+
+- ``npm insatll -g tern``     JavaScript 智能提示扩展
+
+
+<br>
+
+
+#### [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher) (ag.vim)
+
+Vim 代码搜索必须依赖的项目，1G的项目文件中代码搜索基本是秒搜
+
+首先需要安装 ag.vim , 再安装这个搜索器
+
+- Linux 下直接包管理安装 ``sudo apt-get install silversearcher-ag`` , 也可以自己编译源码（推荐）
+
+- Mac  下直接使用brew包管理安装 ``brew install ag``
+
+- Windows 下比较麻烦. 先安装 [Chocolatey](https://chocolatey.org) , 之后CMD中使用命令:``choco install ag``
+
+
+<br>
+
+## ABOUT NEOVIM
 
 NeoVim 由于正处于开发阶段，所以，配置文件到位置会时常变动。
-``.nvimrc``已经不生效了，具体到做法是，打开nvim之后输入``:version`` 可以看到nvim当前版本加载配置文件的名字以及具体路径。
-例如，在version中我看到 neovim 加载了`` sysinit.vim`` 作为配置文件，那么，你需要做工作就是：
-将 aix文件夹中的 ``.aix.vim`` 的代码，copy到``sysinit.vim`` 中，这样 Aix-Vim 就可以正常加载了
 
-<br>
+``.nvimrc``已经不生效了，具体到做法是，打开nvim之后输入 ``:version`` 可以看到nvim当前版本加载配置文件的名字以及具体路径。
 
+例如，在version中我看到 neovim 加载了 ``sysinit.vim`` 作为配置文件，**那么，你需要做工作就是：**
+
+ - 将 ``.vimrc`` 中的代码， copy到 ``sysinit.vim`` (注意路径) 这样就可以完美使用NeoVim了
