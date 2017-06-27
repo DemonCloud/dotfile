@@ -67,7 +67,7 @@ Windows系统只需要去Python官网下载一个安装文件即可，一键安�
 
 #### [Lua](http://lua.org) (neocomplete)
 
-安装Lua只要是用于支持 neocomplete的只能补全.
+安装Lua主要是用于支持 neocomplete的智能补全.
 
 - Linux 下直接使用包管理安装即可 ``sudo apt-get install lua5.3``
 
