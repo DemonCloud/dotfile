@@ -1,6 +1,7 @@
 " @ COLOR Themes
 try
-	colorscheme J
+	colorscheme ayu
+	"colorscheme J
 	"colorscheme monochrome
 	"colorscheme seoul256
 	"colorscheme distinguished

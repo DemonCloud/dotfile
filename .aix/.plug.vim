@@ -15,7 +15,8 @@ Plug 'danro/rename.vim'
 
 " MacVim 'n use fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'wincent/command-t', { 'do': 'cd ruby/command-t && ruby extconf.rb && make' }
+Plug 'junegunn/fzf.vim'
+Plug 'tweekmonster/fzf-filemru'
 Plug 'ctrlpvim/ctrlp.vim'
 
 " @ Plugin --- [ Code Sreach ]
@@ -31,9 +32,6 @@ Plug 'haya14busa/incsearch.vim'
 
 " @ Plugin --- [ Code Complete Unity ]
 Plug 'mattn/emmet-vim'
-" Plug 'maralla/completor.vim'
-Plug 'Valloric/YouCompleteMe'
-Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'Shougo/neoinclude.vim'
@@ -42,7 +40,6 @@ Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neocomplete'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
-" Plug 'Shougo/vimshell'
 
 " @ Plugin --- [ VC Plug ]
 Plug 'tpope/vim-git'
@@ -60,6 +57,8 @@ Plug 'mhinz/vim-signify'
 Plug 'kh3phr3n/python-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'groenewege/vim-less'
+Plug 'posva/vim-vue'
+Plug 'hail2u/vim-css3-syntax'
 Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
@@ -75,11 +74,9 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'DemonCloud/vim-autoclose'
 Plug 'DemonCloud/J'
 Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'ayu-theme/ayu-vim'
 Plug 'rizzatti/dash.vim'
 Plug 'gregsexton/gitv'
-" Plug 'ryanoasis/vim-devicons'
 
 " ---- Plug List Complete ----
 call plug#end()
