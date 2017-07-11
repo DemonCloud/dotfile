@@ -3,7 +3,7 @@
 let g:ale_sign_error = '-'
 let g:ale_sign_warning = '*'
 
-set termguicolors
+" set termguicolors
 let ayucolor="dark"   " for dark version of theme
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
@@ -27,6 +27,18 @@ let g:airline_right_sep=''
 set rtp+=~/.fzf
 
 "------------------ NeoComplete -------------------
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+let g:tern_request_timeout = 1
+let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
+
+"Add extra filetypes
+let g:tern#filetypes = [
+                \ 'jsx',
+                \ 'javascript.jsx',
+                \ 'vue',
+                \ '...'
+                \ ]
 " Enable snipMate compatibility feature.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -66,6 +78,7 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
+let g:neosnippet#enable_completed_snippet = 1
 let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
@@ -163,7 +176,9 @@ let g:gitgutter_max_signs = 99999
 " Ag.vim Settings
 let g:ackprg = "ag --nocolor --nogroup --column"
 set grepprg=ag\ --nogroup\ --nocolor
+if(!has('nvim'))
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+endif
 
 " Multip Cursor
 " Default mapping
@@ -184,8 +199,8 @@ let g:NERDTreeRespectWildIgnore=1
 let g:NERDTreeDirArrows=0
 let g:NERDTreeIndicatorMapCustom = {
     \ "Modified"  : "o",
-    \ "Staged"    : "+",
-    \ "Untracked" : "$",
+    \ "Staged"    : "*",
+    \ "Untracked" : "+",
     \ "Renamed"   : ">",
     \ "Unmerged"  : "=",
     \ "Deleted"   : "-",
@@ -204,5 +219,5 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
 
-let g:jsx_ext_required = 0
+let g:jsx_ext_required = 1
 "========================= Plugin Config End =========================

@@ -164,4 +164,6 @@ set backspace=indent,eol,start
 "set list listchars=tab:-\ ,trail:\ 
 set list listchars=tab:-\ ,extends:>,precedes:<
 
+au BufNewFile,BufRead *.vue set filetype=html
+
 " ========================= Normal Setting End =========================

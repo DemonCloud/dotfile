@@ -37,7 +37,14 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
+if(has('nvim'))
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
+Plug 'wokalski/autocomplete-flow'
+else
 Plug 'Shougo/neocomplete'
+Plug 'wokalski/autocomplete-flow'
+endif
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
@@ -57,12 +64,13 @@ Plug 'mhinz/vim-signify'
 Plug 'kh3phr3n/python-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'groenewege/vim-less'
-Plug 'posva/vim-vue'
 Plug 'hail2u/vim-css3-syntax'
+Plug 'othree/html5.vim'
 Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'plasticboy/vim-markdown'
+" Plug 'Yggdroot/indentLine'
 " Plug 'jeaye/color_coded'
 
 " @ Plugin --- [ Code Format ]
