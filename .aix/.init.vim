@@ -1,5 +1,4 @@
 " ========================= Normal Setting Start =========================
-
 "Set windows pos and resize
 set lines=38
 set columns=80
@@ -86,7 +85,11 @@ set t_vb=
 
 " Set Fold config
 " set foldmethod=syntax
+set foldmethod=indent   
+set foldnestmax=10
 set foldenable
+set nofoldenable
+set foldlevel=2
 
 " misc settings
 set fileformat=unix     " file mode is unix
@@ -165,5 +168,4 @@ set backspace=indent,eol,start
 set list listchars=tab:-\ ,extends:>,precedes:<
 
 au BufNewFile,BufRead *.vue set filetype=html
-
 " ========================= Normal Setting End =========================
