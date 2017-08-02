@@ -59,6 +59,9 @@ Plug 'tpope/vim-commentary'
 " For SVN status
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
+" Plug 'chrisbra/changesPlugin'
+Plug 'chrisbra/vim-zsh'
+Plug 'chrisbra/vim-diff-enhanced'
 
 " @ Plugin --- [ Syntax ] 
 Plug 'kh3phr3n/python-syntax'
@@ -77,6 +80,9 @@ Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
 Plug 't9md/vim-quickhl' 
 Plug 'Chiel92/vim-autoformat'
+" Plug 'pseewald/vim-anyfold'
+" Plug 'kopischke/vim-stay'
+" Plug 'Konfekt/FastFold'
 
 " @ Plugin --- [ ColorScheme ]
 Plug 'DemonCloud/vim-autoclose'

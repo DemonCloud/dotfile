@@ -25,6 +25,7 @@ let g:airline_right_sep=''
 
 " fzf Setting
 set rtp+=~/.fzf
+set rtp+=/usr/local/opt/fzf
 
 "------------------ NeoComplete -------------------
 " Use deoplete.
@@ -214,10 +215,26 @@ let g:NERDTreeIndicatorMapCustom = {
 " let g:UltiSnipsExpandTrigger="<S-Tab>"
 " let g:UltiSnipsJumpForwardTrigger="<c-b>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
 " Command-T
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
+
+" anyFold
+" let anyfold_activate=1
+" let anyfold_fold_comments=1
+" set foldlevel=0
+
+" FastFold
+" let g:tex_fold_enabled=1
+" let g:vimsyn_folding='af'
+" let g:xml_syntax_folding = 1
+" let g:php_folding = 1
+" let g:perl_fold = 1
+" let g:javascript_fold = 1
+" nmap zuz <Plug>(FastFoldUpdate)
+" let g:fastfold_savehook = 1
+" let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
+" let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 
 let g:jsx_ext_required = 1
 "========================= Plugin Config End =========================

@@ -85,6 +85,7 @@ set t_vb=
 
 " Set Fold config
 " set foldmethod=syntax
+" - - - - 
 set foldmethod=indent   
 set foldnestmax=10
 set foldenable
