@@ -38,8 +38,8 @@ set rtp+=/usr/local/opt/fzf
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 let g:tern_request_timeout = 1
-let g:tern_show_signature_in_pum = '0'  " This do disable full signature type on autocomplete
-
+" This do disable full signature type on autocomplete
+let g:tern_show_signature_in_pum = '0'  
 "Add extra filetypes
 let g:tern#filetypes = [
                 \ 'jsx',
@@ -47,6 +47,8 @@ let g:tern#filetypes = [
                 \ 'vue',
                 \ '...'
                 \ ]
+
+if(!has('nvim'))
 " Enable snipMate compatibility feature.
 let g:acp_enableAtStartup = 0
 " Use neocomplete.
@@ -120,6 +122,8 @@ endfunction
 function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
 endfunction
+
+endif
 
 "------------------ YouCompleteMe -------------------
 " Linux vim && NeoVim Using YouCompleteMe
@@ -226,6 +230,10 @@ let g:NERDTreeIndicatorMapCustom = {
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
 
+let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+let g:lastplace_open_folds = 0
+
 " anyFold
 " let anyfold_activate=1
 " let anyfold_fold_comments=1
@@ -243,5 +251,6 @@ let g:CommandTAcceptSelectionTabMap = '<CR>'
 " let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
 " let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
 
-let g:jsx_ext_required = 1
+let g:jsx_ext_required = 0
+" let g:xml_syntax_folding = 1
 "========================= Plugin Config End =========================

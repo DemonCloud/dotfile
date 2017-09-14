@@ -12,6 +12,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'w0rp/ale'
 Plug 'yegappan/mru'
 Plug 'danro/rename.vim'
+Plug 'simnalamburt/vim-mundo'
 
 " MacVim 'n use fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -93,6 +94,9 @@ Plug 'morhetz/gruvbox'
 Plug 'ayu-theme/ayu-vim'
 Plug 'rizzatti/dash.vim'
 Plug 'gregsexton/gitv'
+Plug 'farmergreg/vim-lastplace'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " ---- Plug List Complete ----
 call plug#end()
