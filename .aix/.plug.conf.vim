@@ -22,13 +22,15 @@ let g:airline_theme='serene'
 " let g:airline_theme='zenburn'
 " let g:airline_theme='simple'
 " let g:airline_theme='jellybeans'
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#left_sep = ''
 " let g:airline#extensions#tabline#left_alt_sep = ''
 " let g:airline#extensions#tabline#right_sep = ''
 " let g:airline#extensions#tabline#right_alt_sep = ''
+
+let g:airline_left_sep=''
+let g:airline_right_sep=''
 
 " fzf Setting
 set rtp+=~/.fzf
@@ -250,6 +252,11 @@ let g:lastplace_open_folds = 0
 " let g:fastfold_savehook = 1
 " let g:fastfold_fold_command_suffixes =  ['x','X','a','A','o','O','c','C']
 " let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+
+
+" ListToggle Plug
+let g:lt_location_list_toggle_map = '<leader>w'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 let g:jsx_ext_required = 0
 " let g:xml_syntax_folding = 1

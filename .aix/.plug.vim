@@ -38,6 +38,8 @@ Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'Shougo/neoinclude.vim'
 Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
+" Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
+
 if(has('nvim'))
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
@@ -83,6 +85,10 @@ Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
 Plug 't9md/vim-quickhl' 
 Plug 'Chiel92/vim-autoformat'
+Plug 'majutsushi/tagbar'
+Plug 'Valloric/ListToggle'
+Plug 'mattn/webapi-vim'
+Plug 'jbgutierrez/vim-babel'
 " Plug 'pseewald/vim-anyfold'
 " Plug 'kopischke/vim-stay'
 " Plug 'Konfekt/FastFold'

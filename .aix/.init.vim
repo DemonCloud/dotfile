@@ -1,7 +1,9 @@
 " ========================= Normal Setting Start =========================
-"Set windows pos and resize
-set lines=38
-set columns=80
+"Set windows pos and resize init
+if(has('gui'))
+	set lines=38
+	set columns=80
+endif
 
 " ## Make its Gvim Like Windows behave ##
 " So you can use
@@ -13,12 +15,14 @@ set columns=80
 
 " Format
 set nu
-set noexpandtab
 set copyindent
 set preserveindent
 set tabstop=2 "4
 set shiftwidth=2 "4
 set softtabstop=0 "4
+" set expandtab
+set noexpandtab
+
 set autowrite
 set display=lastline
 
@@ -129,6 +133,7 @@ if has("gui_running")
 		set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
 	elseif(has('osx'))
 		set guifont=Aix:h14
+		" set guifont=PragmataPro\ Mono:h12
 	else
 		set guifont=Aix\ 9
 	endif
