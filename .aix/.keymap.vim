@@ -147,7 +147,7 @@ inoremap <C-f> <Home>
 inoremap <C-d> <Esc>VypA
 inoremap <C-w> <C-o>w
 inoremap <C-b> <C-o>b
-vnoremap <C-c> "+y 
+vnoremap <C-c> "+y
 
 " TabLine Tab configure KeyFire
 nnoremap <leader>t :tabnew<CR>
@@ -157,8 +157,8 @@ nnoremap <leader>th :tabprevious<CR>
 nnoremap <leader>tx :tabclose<CR>
 nnoremap <leader>tc :tabclose<CR>
 
-" Buffers KeyFire 
-nnoremap <leader>b :buffers<CR>
+" Buffers KeyFire
+nnoremap <leader>b :Buffers<CR>
 
 " Buftabline Config Manager
 nnoremap <C-k> :bnext<CR>
@@ -211,7 +211,7 @@ nnoremap <leader>sd 1z=
 nnoremap <leader>sf z=
 
 " Multi Cursor Find
-vnoremap <leader>mf :MultipleCursorsFind 
+vnoremap <leader>mf :MultipleCursorsFind
 vnoremap <leader>s :call VisualSelection('ag', '')<CR>
 
 " Multi Expand Region
@@ -232,9 +232,9 @@ map # <Plug>(incsearch-nohl-#)zzzv
 map g* <Plug>(incsearch-nohl-g*)zzzv
 map g# <Plug>(incsearch-nohl-g#)zzzv
 
-nnoremap <leader>gm :!sh -xc 'git status \| fpp'<CR> 
+nnoremap <leader>gm :!sh -xc 'git status \| fpp'<CR>
 
-" Vim-quickhl 
+" Vim-quickhl
 nmap <Space>m <Plug>(quickhl-manual-this)
 xmap <Space>m <Plug>(quickhl-manual-this)
 nmap <Space>M <Plug>(quickhl-manual-reset)
