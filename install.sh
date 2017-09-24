@@ -22,7 +22,7 @@ if [ ! -d "$HOME/.vim" ]; then
 	echo "   |- autoload [ -- autoload directory -- ]"
 	echo " -] "
 	printf "\n"
-	
+
 	mkdir $HOME/.vim
 	mkdir $HOME/.vim/bundle
 	mkdir $HOME/.vim/undo
@@ -88,5 +88,4 @@ printf "\033[36mCopy Completed, Finish Install !\033[0m\n"
 printf "\033[33mPlease Checking Completed!\033[0m\n"
 printf "\033[33mIf you use NeoVim, You use command :version to see the .vimrc position and install [ xclip ] to support system clipcord!\033[0m\n"
 printf "\n"
-exit 1;
-
+exit 0;

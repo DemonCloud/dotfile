@@ -41,7 +41,7 @@ set rtp+=/usr/local/opt/fzf
 let g:deoplete#enable_at_startup = 1
 let g:tern_request_timeout = 1
 " This do disable full signature type on autocomplete
-let g:tern_show_signature_in_pum = '0'  
+let g:tern_show_signature_in_pum = '0'
 "Add extra filetypes
 let g:tern#filetypes = [
                 \ 'jsx',
@@ -127,17 +127,25 @@ endfunction
 
 endif
 
+if(has("nvim"))
+function! Multiple_cursors_before()
+  let b:deoplete_disable_auto_complete = 1
+endfunction
+
+function! Multiple_cursors_after()
+  let b:deoplete_disable_auto_complete = 0
+endfunction
+endif
+
 "------------------ YouCompleteMe -------------------
 " Linux vim && NeoVim Using YouCompleteMe
 " let g:ycm_auto_trigger = 0
 " let g:ycm_global_ycm_extra_conf = "~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
-" let g:ycm_collect_identifiers_from_tags_files = 0
-" let g:ycm_add_preview_to_completeopt = 5
+" let g:ycm_collect_identifiers_from_tags_files = 10
+" let g:ycm_add_preview_to_completeopt = 0
 " let g:ycm_use_ultisnips_completer = 0
-" let g:ycm_error_symbol = '>>'
-" let g:ycm_warning_symbol = '>*'
 " let g:ycm_cache_omnifunc = 1
-" let g:ycm_max_diagnostics_to_display=0
+" let g:ycm_min_num_of_chars_for_completion = 99999
 " let g:ycm_key_list_select_completion = ['<C-n>', '<C-j>']
 " let g:ycm_key_list_previous_completion = ['<C-p>', '<C-k>']
 " let g:ycm_filetype_blacklist = {
