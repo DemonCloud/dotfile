@@ -71,8 +71,9 @@ let g:neocomplete#sources#dictionary#dictionaries = {
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
-    let g:neocomplete#keyword_patterns = {}
+  let g:neocomplete#keyword_patterns = {}
 endif
+
 let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Enable omni completion.
@@ -96,9 +97,9 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " Plugin key-mappings.
-imap <S-Tab> <Plug>(neosnippet_expand_or_jump)
-smap <S-Tab> <Plug>(neosnippet_expand_or_jump)
-xmap <S-Tab> <Plug>(neosnippet_expand_target)
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 inoremap <expr><C-g> neocomplete#undo_completion()
 inoremap <expr><C-l> neocomplete#complete_common_string()
@@ -128,6 +129,7 @@ endfunction
 endif
 
 if(has("nvim"))
+
 function! Multiple_cursors_before()
   let b:deoplete_disable_auto_complete = 1
 endfunction
@@ -135,6 +137,7 @@ endfunction
 function! Multiple_cursors_after()
   let b:deoplete_disable_auto_complete = 0
 endfunction
+
 endif
 
 "------------------ YouCompleteMe -------------------

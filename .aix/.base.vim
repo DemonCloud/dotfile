@@ -1,6 +1,5 @@
 "  --------------  Aix Vim --------------
-"  
-"               Version 0.8
+"  VERSION 1.0
 
 
 " Set Linux Debian Desktop

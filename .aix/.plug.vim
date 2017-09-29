@@ -2,7 +2,7 @@
 " Vim-Plug update Manager
 " * Expert Vundle Plugin Manager
 filetype off
-"
+
 " # Plugins Beginning
 call plug#begin('~/.vim/bundle/')
 
@@ -44,11 +44,14 @@ Plug 'Shougo/neco-syntax'
 if(has('nvim'))
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
-Plug 'wokalski/autocomplete-flow'
+Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deol.nvim'
+Plug 'zchee/deoplete-go', { 'do': 'make' }
+Plug 'zchee/deoplete-zsh'
 else
 Plug 'Shougo/neocomplete'
-Plug 'wokalski/autocomplete-flow'
 endif
+Plug 'wokalski/autocomplete-flow'
 Plug 'Shougo/neosnippet'
 Plug 'Shougo/neosnippet-snippets'
 
@@ -67,7 +70,8 @@ Plug 'mhinz/vim-signify'
 Plug 'chrisbra/vim-zsh'
 Plug 'chrisbra/vim-diff-enhanced'
 
-" @ Plugin --- [ Syntax ] 
+" @ Plugin --- [ Syntax ]
+Plug 'fatih/vim-go'
 Plug 'kh3phr3n/python-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'groenewege/vim-less'
