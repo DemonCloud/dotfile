@@ -248,6 +248,9 @@ imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
 
+" Prettier
+nmap <Leader>py <Plug>(Prettier)
+
 "Ag bind \ (backward slash) to grep shortcut
 nnoremap \ :Ag<SPACE>
 " ========================= KeyFire Setting End =========================

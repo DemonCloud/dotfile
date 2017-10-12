@@ -91,18 +91,18 @@ endif
 "let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
 "let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
 
-let g:neosnippet#enable_completed_snippet = 1
-let g:neosnippet#enable_snipmate_compatibility = 1
+" let g:neosnippet#enable_completed_snippet = 1
+" let g:neosnippet#enable_snipmate_compatibility = 1
 " Tell Neosnippet about the other snippets
-let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
+" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
 
 " Plugin key-mappings.
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
+" imap <C-k> <Plug>(neosnippet_expand_or_jump)
+" smap <C-k> <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k> <Plug>(neosnippet_expand_target)
 
-inoremap <expr><C-g> neocomplete#undo_completion()
-inoremap <expr><C-l> neocomplete#complete_common_string()
+" inoremap <expr><C-g> neocomplete#undo_completion()
+" inoremap <expr><C-l> neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -236,9 +236,10 @@ let g:NERDTreeIndicatorMapCustom = {
     \ }
 
 " auto complete
-" let g:UltiSnipsExpandTrigger="<S-Tab>"
-" let g:UltiSnipsJumpForwardTrigger="<c-b>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsExpandTrigger="<S-Tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
 " Command-T
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
@@ -268,6 +269,13 @@ let g:lastplace_open_folds = 0
 " ListToggle Plug
 let g:lt_location_list_toggle_map = '<leader>w'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
+
+"HandleBar syntax
+let g:mustache_abbreviations = 1
+
+"Prettier
+let g:prettier#autoformat = 0
+let g:prettier#exec_cmd_async = 1
 
 let g:jsx_ext_required = 0
 " let g:xml_syntax_folding = 1

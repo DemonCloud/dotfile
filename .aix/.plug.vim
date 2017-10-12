@@ -34,6 +34,9 @@ Plug 'haya14busa/incsearch.vim'
 " @ Plugin --- [ Code Complete Unity ]
 " Plug 'Valloric/YouCompleteMe'
 Plug 'mattn/emmet-vim'
+Plug 'SirVer/ultisnips'
+" Currently, es6 version of snippets is available in es6 branch only
+Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
 Plug 'honza/vim-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
 Plug 'Shougo/neoinclude.vim'
@@ -52,8 +55,8 @@ else
 Plug 'Shougo/neocomplete'
 endif
 Plug 'wokalski/autocomplete-flow'
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
+" Plug 'Shougo/neosnippet'
+" Plug 'Shougo/neosnippet-snippets'
 
 " @ Plugin --- [ VC Plug ]
 Plug 'tpope/vim-git'
@@ -78,6 +81,7 @@ Plug 'groenewege/vim-less'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/html5.vim'
 Plug 'mxw/vim-jsx'
 Plug 'ap/vim-css-color'
@@ -94,6 +98,7 @@ Plug 'majutsushi/tagbar'
 Plug 'Valloric/ListToggle'
 Plug 'mattn/webapi-vim'
 Plug 'jbgutierrez/vim-babel'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 " Plug 'pseewald/vim-anyfold'
 " Plug 'kopischke/vim-stay'
 " Plug 'Konfekt/FastFold'
