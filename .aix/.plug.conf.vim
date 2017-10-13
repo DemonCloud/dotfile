@@ -1,12 +1,14 @@
 " ========================= Plugin Config Start =========================
 " Set Ale Cheacker
-let g:ale_sign_error = '-'
+let g:ale_sign_error = '×'
 let g:ale_sign_warning = '*'
 " Set this if you want to.
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
 let g:ale_linters = {
 \   'javascript': ['eslint'],
+\   'html': ['htmlhint'],
+\   'css': ['stylelint'],
 \}
 let g:airline#extensions#ale#enabled = 0
 
