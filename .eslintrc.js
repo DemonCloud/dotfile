@@ -5,6 +5,10 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
+  parser: "babel-eslint",
+  plugins: [
+  	"react"
+  ],
   globals: {
     ax: true,
     test: true,
@@ -13,7 +17,7 @@ module.exports = {
     require: true,
     exports: true,
   },
-  extends: 'eslint:recommended',
+  extends: ["eslint:recommended", "plugin:react/recommended"],
   parserOptions: {
     sourceType: 'module',
   },

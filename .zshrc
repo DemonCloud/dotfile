@@ -103,6 +103,7 @@ export PATH="/usr/local/opt/go/libexec/bin:$PATH"
 export PATH="/usr/local/opt/make/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/apr/bin:$PATH"
 export PATH="/usr/local/opt/apr-util/bin:$PATH"
+export PATH="/usr/local/opt/curl/bin:$PATH"
 export PAGER=vimpager
 
 export GOROOT="/usr/local/opt/go/libexec"

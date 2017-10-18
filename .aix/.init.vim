@@ -89,8 +89,8 @@ set t_vb=
 
 " Set Fold config
 " set foldmethod=syntax
-" - - - - 
-set foldmethod=indent   
+" - - - -
+set foldmethod=indent
 set foldnestmax=10
 set foldenable
 set nofoldenable
@@ -129,11 +129,11 @@ if has("gui_running")
 	" Fonts Settings
 	"set guifont=ProfontWindows\ 9
 	"set guifont=IBM\ 3270\ Narrow\ Medium\ 10
-	if(has('win32')) 
+	if(has('win32'))
 		set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
 	elseif(has('osx'))
-		set guifont=Aix:h14
-		" set guifont=PragmataPro\ Mono:h12
+		" set guifont=Aix:h14
+		set guifont=PragmataPro:h12
 	else
 		set guifont=Aix\ 9
 	endif
