@@ -44,19 +44,15 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
 " Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
-if(has('nvim'))
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
 Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deol.nvim'
 Plug 'zchee/deoplete-go', { 'do': 'make' }
 Plug 'zchee/deoplete-zsh'
-else
-Plug 'Shougo/neocomplete'
-endif
 Plug 'wokalski/autocomplete-flow'
-" Plug 'Shougo/neosnippet'
-" Plug 'Shougo/neosnippet-snippets'
 
 " @ Plugin --- [ VC Plug ]
 Plug 'tpope/vim-git'
@@ -69,15 +65,16 @@ Plug 'tpope/vim-commentary'
 " For SVN status
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
-" Plug 'chrisbra/changesPlugin'
 Plug 'chrisbra/vim-zsh'
 Plug 'chrisbra/vim-diff-enhanced'
+" Plug 'chrisbra/changesPlugin'
 
 " @ Plugin --- [ Syntax ]
 Plug 'fatih/vim-go'
 Plug 'kh3phr3n/python-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'groenewege/vim-less'
+Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
@@ -92,13 +89,13 @@ Plug 'plasticboy/vim-markdown'
 
 " @ Plugin --- [ Code Format ]
 Plug 'godlygeek/tabular'
+Plug 'wellle/targets.vim'
 Plug 't9md/vim-quickhl'
 Plug 'Chiel92/vim-autoformat'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/ListToggle'
-Plug 'mattn/webapi-vim'
-Plug 'jbgutierrez/vim-babel'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+
 " Plug 'pseewald/vim-anyfold'
 " Plug 'kopischke/vim-stay'
 " Plug 'Konfekt/FastFold'
@@ -115,8 +112,6 @@ Plug 'ap/vim-buftabline'
 Plug 'simeji/winresizer'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'MarcWeber/vim-addon-mw-utils'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 
 " ---- Plug List Complete ----
 call plug#end()

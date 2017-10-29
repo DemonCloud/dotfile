@@ -177,4 +177,5 @@ let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 au BufNewFile,BufRead *.vue set filetype=html
+au BufNewFile,BufRead *.ax,*.doom set filetype=mustache
 " ========================= Normal Setting End =========================

@@ -10,127 +10,18 @@ let g:ale_linters = {
 \   'html': ['htmlhint'],
 \   'css': ['stylelint'],
 \}
-let g:airline#extensions#ale#enabled = 0
-
 " set termguicolors
 let ayucolor="dark"   " for dark version of theme
 " let ayucolor="light"  " for light version of theme
 " let ayucolor="mirage" " for mirage version of theme
 
-" AirLine Settings
-let g:airline_powerline_fonts = 1
-let g:airline_theme='serene'
-" let g:airline_theme='fairyfloss'
-" let g:airline_theme='zenburn'
-" let g:airline_theme='simple'
-" let g:airline_theme='jellybeans'
-
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ''
-" let g:airline#extensions#tabline#left_alt_sep = ''
-" let g:airline#extensions#tabline#right_sep = ''
-" let g:airline#extensions#tabline#right_alt_sep = ''
-
-let g:airline_left_sep=''
-let g:airline_right_sep=''
-
 " fzf Setting
 set rtp+=~/.fzf
 set rtp+=/usr/local/opt/fzf
 
-"------------------ NeoComplete -------------------
+"------------------ Deopelete -------------------
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-let g:tern_request_timeout = 1
-" This do disable full signature type on autocomplete
-let g:tern_show_signature_in_pum = '0'
-"Add extra filetypes
-let g:tern#filetypes = [
-                \ 'jsx',
-                \ 'javascript.jsx',
-                \ 'vue',
-                \ '...'
-                \ ]
-
-if(!has('nvim'))
-" Enable snipMate compatibility feature.
-let g:acp_enableAtStartup = 0
-" Use neocomplete.
-let g:neocomplete#enable_at_startup = 1
-" AutoComplPop like behavior.
-let g:neocomplete#enable_auto_select = 1
-" Use smartcase.
-let g:neocomplete#enable_smart_case = 1
-" Set minimum syntax keyword length.
-let g:neocomplete#sources#syntax#min_keyword_length = 2
-
-" Define dictionary.
-let g:neocomplete#sources#dictionary#dictionaries = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
-
-" Define keyword.
-if !exists('g:neocomplete#keyword_patterns')
-  let g:neocomplete#keyword_patterns = {}
-endif
-
-let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-" Enable omni completion.
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType tpl,html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType typescript,javascript setlocal omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-
-" Enable heavy omni completion.
-if !exists('g:neocomplete#sources#omni#input_patterns')
-  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-"let g:neocomplete#sources#omni#input_patterns.php = '[^. \t]->\h\w*\|\h\w*::'
-"let g:neocomplete#sources#omni#input_patterns.c = '[^.[:digit:] *\t]\%(\.\|->\)'
-"let g:neocomplete#sources#omni#input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\|\h\w*::'
-
-" let g:neosnippet#enable_completed_snippet = 1
-" let g:neosnippet#enable_snipmate_compatibility = 1
-" Tell Neosnippet about the other snippets
-" let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets'
-
-" Plugin key-mappings.
-" imap <C-k> <Plug>(neosnippet_expand_or_jump)
-" smap <C-k> <Plug>(neosnippet_expand_or_jump)
-" xmap <C-k> <Plug>(neosnippet_expand_target)
-
-" inoremap <expr><C-g> neocomplete#undo_completion()
-" inoremap <expr><C-l> neocomplete#complete_common_string()
-
-" Recommended key-mappings.
-" <CR>: close popup and save indent.
-inoremap <silent><CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return (pumvisible() ? "\<C-y>" : "" ).(pumvisible() ? "" : "\<CR>")
-  " For no inserting <CR> key.
-  "return pumvisible() ? "\<C-y>" : "\<CR>"
-endfunction
-" <TAB>: completion.
-" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
-" <C-h>, <BS>: close popup and delete backword char.
-inoremap <expr><BS> neocomplete#smart_close_popup()."\<C-h>"
-" Close popup by <Space>.
-"inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-endfunction
-
-endif
-
-if(has("nvim"))
 
 function! Multiple_cursors_before()
   let b:deoplete_disable_auto_complete = 1
@@ -140,7 +31,6 @@ function! Multiple_cursors_after()
   let b:deoplete_disable_auto_complete = 0
 endfunction
 
-endif
 
 "------------------ YouCompleteMe -------------------
 " Linux vim && NeoVim Using YouCompleteMe
