@@ -107,8 +107,16 @@ nnoremap <silent> g; g;zz
 nnoremap <silent> g, g,zz
 
 " Smooth Scroll the terminal
-nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
-nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+" nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
+" nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
+
+nnoremap <silent> <C-f> :call comfortable_motion#flick(200)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(-200)<CR>
+
+noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
+noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
 
 if(has('mac'))
 	cnoremap <D-j> <Down>
@@ -225,12 +233,20 @@ map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
 
-map n <Plug>(incsearch-nohl-N)zzzv
-map N <Plug>(incsearch-nohl-n)zzzv
-map * <Plug>(incsearch-nohl-*)zzzv
-map # <Plug>(incsearch-nohl-#)zzzv
-map g* <Plug>(incsearch-nohl-g*)zzzv
-map g# <Plug>(incsearch-nohl-g#)zzzv
+map n <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
+map N <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
+
+map *  <Plug>(asterisk-z*)<Plug>(is-nohl-1)
+map g* <Plug>(asterisk-gz*)<Plug>(is-nohl-1)
+map #  <Plug>(asterisk-z#)<Plug>(is-nohl-1)
+map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
+
+" map n <Plug>(incsearch-nohl-N)zzzv
+" map N <Plug>(incsearch-nohl-n)zzzv
+" map * <Plug>(incsearch-nohl-*)zzzv
+" map # <Plug>(incsearch-nohl-#)zzzv
+" map g* <Plug>(incsearch-nohl-g*)zzzv
+" map g# <Plug>(incsearch-nohl-g#)zzzv
 
 nnoremap <leader>gm :!sh -xc 'git status \| fpp'<CR>
 

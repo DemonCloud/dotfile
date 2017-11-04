@@ -132,8 +132,8 @@ if has("gui_running")
 	if(has('win32'))
 		set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
 	elseif(has('osx'))
-		" set guifont=Aix:h14
-		set guifont=PragmataPro:h12
+		set guifont=Aix:h14
+		" set guifont=PragmataPro:h12
 	else
 		set guifont=Aix\ 9
 	endif

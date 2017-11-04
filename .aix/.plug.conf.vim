@@ -170,5 +170,6 @@ let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
 
 let g:jsx_ext_required = 0
+let g:tsuquyomi_disable_quickfix = 1
 " let g:xml_syntax_folding = 1
 "========================= Plugin Config End =========================
