@@ -23,17 +23,17 @@ Plug 'ctrlpvim/ctrlp.vim'
 
 " @ Plugin --- [ Code Sreach ]
 Plug 'rking/ag.vim'
+Plug 'brooth/far.vim'
 
 " @ Plugin --- [ View ]
+" Plug 'terryma/vim-smooth-scroll'
 Plug 'yuttie/comfortable-motion.vim'
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'terryma/vim-smooth-scroll'
 Plug 'terryma/vim-expand-region'
 Plug 'kana/vim-operator-user'
+Plug 'osyo-manga/vim-anzu'
 Plug 'haya14busa/vim-operator-flashy'
 Plug 'haya14busa/incsearch.vim'
-Plug 'thinca/vim-quickrun'
-Plug 'osyo-manga/vim-anzu'
 Plug 'haya14busa/vim-asterisk'
 Plug 'haya14busa/is.vim'
 
@@ -41,7 +41,6 @@ Plug 'haya14busa/is.vim'
 " Plug 'Valloric/YouCompleteMe'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
-" Currently, es6 version of snippets is available in es6 branch only
 Plug 'letientai299/vim-react-snippets', { 'branch': 'es6' }
 Plug 'honza/vim-snippets'
 Plug 'Shougo/vimproc', { 'do': 'make' }
@@ -53,11 +52,11 @@ Plug 'Shougo/neco-syntax'
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
 Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deol.nvim'
 Plug 'zchee/deoplete-go', { 'do': 'make' }
 Plug 'zchee/deoplete-zsh'
+Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
 Plug 'wokalski/autocomplete-flow'
 
 " @ Plugin --- [ VC Plug ]
@@ -70,11 +69,11 @@ Plug 'tpope/vim-commentary'
 
 " Git all famliy
 " For SVN status
-Plug 'airblade/vim-gitgutter'
 " Plug 'mhinz/vim-signify'
+" Plug 'chrisbra/changesPlugin'
+Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/vim-zsh'
 Plug 'chrisbra/vim-diff-enhanced'
-" Plug 'chrisbra/changesPlugin'
 
 " @ Plugin --- [ Syntax ]
 Plug 'fatih/vim-go'
@@ -84,9 +83,10 @@ Plug 'groenewege/vim-less'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
 Plug 'leafgarland/typescript-vim'
-Plug 'Quramy/tsuquyomi'
 Plug 'HerringtonDarkholme/yats.vim'
+Plug 'Quramy/tsuquyomi'
 Plug 'mustache/vim-mustache-handlebars'
+Plug 'othree/xml.vim'
 Plug 'othree/html5.vim'
 Plug 'mxw/vim-jsx'
 " Plug 'chemzqm/vim-jsx-improve'
@@ -101,9 +101,11 @@ Plug 'plasticboy/vim-markdown'
 Plug 'godlygeek/tabular'
 Plug 'wellle/targets.vim'
 Plug 't9md/vim-quickhl'
+Plug 'kshenoy/vim-signature'
 Plug 'Chiel92/vim-autoformat'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/ListToggle'
+Plug 'Valloric/MatchTagAlways'
 Plug 'jordwalke/VimAutoMakeDirectory'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
@@ -120,6 +122,7 @@ Plug 'DemonCloud/J'
 
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
+" Plug 'ryanss/vim-hackernews'
 Plug 'ap/vim-buftabline'
 Plug 'rizzatti/dash.vim'
 Plug 'farmergreg/vim-lastplace'
@@ -128,6 +131,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'reedes/vim-pencil'
 
 " ---- Plug List Complete ----
 call plug#end()

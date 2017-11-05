@@ -149,9 +149,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:CommandTAcceptSelectionMap = '<C-t>'
 let g:CommandTAcceptSelectionTabMap = '<CR>'
 
-let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
-let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,FAR,far_vim"
+let g:lastplace_ignore_buftype = "quickfix,nofile,help,FAR,far_vim"
 let g:lastplace_open_folds = 0
+
+let g:better_whitespace_filetypes_blacklist = ['FAR', 'far_vim', 'diff', 'gitcommit', 'unite', 'qf', 'help', '.ignore', 'node_modules']
 
 " anyFold
 " let anyfold_activate=1
@@ -187,6 +189,16 @@ let g:prettier#exec_cmd_async = 1
 let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 let g:tagbar_jsctags_bin = '/usr/local/bin/jsctags'
 let g:tagbar_iconchars = ['+', '-']
+
+"Far.vim Mutilp Replace
+let g:far#source = 'ag'
+let g:far#auto_preview = 0
+
+" " ag is fast enough that CtrlP doesn't need to cache
+" Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+set grepprg=ag\ --nogroup\ --nocolor
+let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+let g:ctrlp_use_caching = 0
 
 " let g:xml_syntax_folding = 1
 "========================= Plugin Config End =========================
