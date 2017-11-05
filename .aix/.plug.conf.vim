@@ -171,5 +171,12 @@ let g:prettier#exec_cmd_async = 1
 
 let g:jsx_ext_required = 0
 let g:tsuquyomi_disable_quickfix = 1
+
+let g:easytags_dynamic_files = 1
+let g:easytags_file = '~/.vim/tags'
+let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+let g:tagbar_jsctags_bin = '/usr/local/bin/jsctags'
+let g:easytags_cmd = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
+let g:tagbar_iconchars = ['+', '-']
 " let g:xml_syntax_folding = 1
 "========================= Plugin Config End =========================

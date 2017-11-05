@@ -17,6 +17,7 @@ Plug 'simnalamburt/vim-mundo'
 " MacVim 'n use fzf
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'junegunn/gv.vim'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -115,10 +116,11 @@ Plug 'DemonCloud/J'
 " Plug 'ayu-theme/ayu-vim'
 " Plug 'rakr/vim-one'
 
-Plug 'rizzatti/dash.vim'
-Plug 'gregsexton/gitv'
-Plug 'farmergreg/vim-lastplace'
+" Plug 'gregsexton/gitv'
+" Plug 'bagrat/vim-workspace'
 Plug 'ap/vim-buftabline'
+Plug 'rizzatti/dash.vim'
+Plug 'farmergreg/vim-lastplace'
 Plug 'simeji/winresizer'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'MarcWeber/vim-addon-mw-utils'
