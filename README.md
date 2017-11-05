@@ -41,19 +41,19 @@ vimrc has been maintained until now when I first started learning Vim, I used to
 
 Colorscheme supports most languages and plugins syntax:
 
-<input type="checkbox" checked disabled> HTML
-<input type="checkbox" checked disabled> CSS
-<input type="checkbox" checked disabled> Less
-<input type="checkbox" checked disabled> Sass
-<input type="checkbox" checked disabled> JavaScript
-<input type="checkbox" checked disabled> TypeScript
-<input type="checkbox" checked disabled> JSON
-<input type="checkbox" checked disabled> C
-<input type="checkbox" checked disabled> Python
-<input type="checkbox" checked disabled> Go
-<input type="checkbox" disabled> PHP (unfinished)
-<input type="checkbox" checked disabled> Shell
-<input type="checkbox" checked disabled> VimL
+- [x] HTML
+- [x] CSS
+- [x] Less
+- [x] Sass
+- [x] JavaScript
+- [x] TypeScript
+- [x] JSON
+- [x] C
+- [x] Python
+- [x] Go
+- [x] Shell
+- [x] VimL
+- [ ] PHP (unfinished)
 
 <br>
 
@@ -92,7 +92,9 @@ start Vim and run ``:PlugInstall`` at first time
 ## Reuqire
 
  \+ Python3
+
  \+ Ruby
+
  \+ NodeJS
 
 <br>
