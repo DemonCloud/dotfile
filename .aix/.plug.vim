@@ -66,6 +66,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-markdown'
 
 " Git all famliy
 " For SVN status
@@ -103,6 +104,7 @@ Plug 't9md/vim-quickhl'
 Plug 'Chiel92/vim-autoformat'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/ListToggle'
+Plug 'jordwalke/VimAutoMakeDirectory'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
 " Plug 'pseewald/vim-anyfold'
@@ -124,6 +126,8 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'simeji/winresizer'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'MarcWeber/vim-addon-mw-utils'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " ---- Plug List Complete ----
 call plug#end()

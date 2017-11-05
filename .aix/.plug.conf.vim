@@ -1,4 +1,18 @@
 " ========================= Plugin Config Start =========================
+
+" AirLine
+let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
+let g:airline#extensions#branch#enabled = 0
+let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
+" let g:airline_theme = "zenburn"
+
+" use Aix.font
+if(has("gui_running"))
+	let g:airline_left_sep='◣'
+	let g:airline_right_sep='◥'
+endif
+
 " Set Ale Cheacker
 let g:ale_sign_error = '×'
 let g:ale_sign_warning = '*'
@@ -94,7 +108,7 @@ let g:gitgutter_max_signs = 99999
 let g:ackprg = "ag --nocolor --nogroup --column"
 set grepprg=ag\ --nogroup\ --nocolor
 if(!has('nvim'))
-command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+	command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
 
 " Multip Cursor
@@ -107,7 +121,6 @@ let g:multi_cursor_quit_key='<Esc>'
 " Vim incsearch
 let g:vim_search_pulse_disable_auto_mappings = 1
 let g:incsearch#auto_nohlsearch = 1
-
 " Python snytax configure
 let python_self_cls_highlight = 1
 
@@ -164,19 +177,16 @@ let g:lt_quickfix_list_toggle_map = '<leader>q'
 
 "HandleBar syntax
 let g:mustache_abbreviations = 1
+let g:jsx_ext_required = 0
+let g:tsuquyomi_disable_quickfix = 1
 
 "Prettier
 let g:prettier#autoformat = 0
 let g:prettier#exec_cmd_async = 1
 
-let g:jsx_ext_required = 0
-let g:tsuquyomi_disable_quickfix = 1
-
-let g:easytags_dynamic_files = 1
-let g:easytags_file = '~/.vim/tags'
 let g:tagbar_ctags_bin = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 let g:tagbar_jsctags_bin = '/usr/local/bin/jsctags'
-let g:easytags_cmd = '/usr/local/Cellar/ctags/5.8_1/bin/ctags'
 let g:tagbar_iconchars = ['+', '-']
+
 " let g:xml_syntax_folding = 1
 "========================= Plugin Config End =========================

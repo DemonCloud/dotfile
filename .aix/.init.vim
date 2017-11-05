@@ -178,4 +178,5 @@ let g:python3_host_prog = '/usr/local/bin/python3'
 
 au BufNewFile,BufRead *.vue set filetype=html
 au BufNewFile,BufRead *.ax,*.doom set filetype=mustache
+au BufNewFile,BufReadPost *.md set filetype=markdown
 " ========================= Normal Setting End =========================
