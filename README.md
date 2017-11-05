@@ -47,6 +47,8 @@ Colorscheme supports most languages and plugins syntax:
 - [x] Sass
 - [x] JavaScript
 - [x] TypeScript
+- [x] JSX
+- [x] XML
 - [x] JSON
 - [x] C
 - [x] Python
@@ -89,7 +91,7 @@ start Vim and run ``:PlugInstall`` at first time
 
 <br>
 
-## Reuqire
+## Required
 
  \+ Python3
 
