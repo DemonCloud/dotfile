@@ -14,8 +14,6 @@
 
 ## INTRODUCTION
 
-<br>
-
 #### Vimrc
 
 vimrc has been maintained until now when I first started learning Vim, I used to distribute files for maintenance work, and make the configuration simpler than the messy folders of other people's dotfiles, which makes it hard to imagine and find where you really need to make changes. These configurations have been carefully sanitized for a long time to become best practices in my personal daily development, incorporating many of Geek's configuration experiences and key mapping settings, keep it simple and fast at the same time
@@ -72,8 +70,6 @@ Find in `fonts` directory：
 <br>
 
 ## QUICK INSTALL
-
-<br>
 
 #### OSX & Linux
 
