@@ -256,7 +256,7 @@ xmap <Space>m <Plug>(quickhl-manual-this)
 nmap <Space>M <Plug>(quickhl-manual-reset)
 xmap <Space>M <Plug>(quickhl-manual-reset)
 
-"Emmet
+" Emmet
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " vim-operator-flashy
@@ -267,6 +267,6 @@ nmap Y <Plug>(operator-flashy)$
 " Prettier
 nmap <Leader>py <Plug>(Prettier)
 
-"Ag bind \ (backward slash) to grep shortcut
+" Ag bind \ (backward slash) to grep shortcut
 nnoremap \ :Ag<SPACE>
 " ========================= KeyFire Setting End =========================

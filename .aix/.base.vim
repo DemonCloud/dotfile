@@ -9,6 +9,8 @@ runtime! debian.vim
 set nocompatible
 
 set regexpengine=1
+
+" History
 set history=9888
 
 " @ Replace <leader> key map to <space>

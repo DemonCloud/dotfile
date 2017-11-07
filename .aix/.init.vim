@@ -171,7 +171,7 @@ set backspace=indent,eol,start
 " set list listchars=tab:→\ ,trail:\ 
 " set list listchars=tab:▸\ 
 "set list listchars=tab:-\ ,trail:\ 
-set list listchars=tab:-\ ,extends:>,precedes:<
+set list listchars=tab:▸\ ,extends:>,precedes:<
 
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'

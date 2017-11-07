@@ -8,7 +8,7 @@ try
 	"colorscheme jellybeans
 	"colorscheme hybrid
 	"colorscheme solarized
-	" colorscheme gruvbox
+	"colorscheme gruvbox
 	"colorscheme darktango
 	"colorscheme hybrid-light
 	"colorscheme badwolf

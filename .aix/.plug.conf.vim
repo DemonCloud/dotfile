@@ -200,5 +200,15 @@ set grepprg=ag\ --nogroup\ --nocolor
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
 
+" webdevicons
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_nerdtree = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_ctrlp = 1
+let g:WebDevIconsUnicodeDecorateFileNodes = 1
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+let g:WebDevIconsOS = 'Darwin'
+
 " let g:xml_syntax_folding = 1
 "========================= Plugin Config End =========================

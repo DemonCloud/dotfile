@@ -114,6 +114,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typ
 " Plug 'Konfekt/FastFold'
 
 " @ Plugin --- [ ColorScheme ]
+Plug 'DemonCloud/vim-buftabline'
 Plug 'DemonCloud/vim-autoclose'
 Plug 'DemonCloud/J'
 " Plug 'morhetz/gruvbox'
@@ -123,7 +124,7 @@ Plug 'DemonCloud/J'
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
 " Plug 'ryanss/vim-hackernews'
-Plug 'ap/vim-buftabline'
+" Plug 'ap/vim-buftabline'
 Plug 'rizzatti/dash.vim'
 Plug 'farmergreg/vim-lastplace'
 Plug 'simeji/winresizer'
@@ -132,6 +133,7 @@ Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'reedes/vim-pencil'
+" Plug 'ryanoasis/vim-devicons'
 
 " ---- Plug List Complete ----
 call plug#end()
