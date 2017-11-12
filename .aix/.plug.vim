@@ -20,6 +20,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/gv.vim'
 Plug 'tweekmonster/fzf-filemru'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tacahiroy/ctrlp-funky'
 
 " @ Plugin --- [ Code Sreach ]
 Plug 'rking/ag.vim'
@@ -70,10 +71,9 @@ Plug 'tpope/vim-commentary'
 " Git all famliy
 " For SVN status
 " Plug 'mhinz/vim-signify'
-" Plug 'chrisbra/changesPlugin'
 Plug 'airblade/vim-gitgutter'
-Plug 'chrisbra/vim-zsh'
 Plug 'chrisbra/vim-diff-enhanced'
+" Plug 'chrisbra/changesPlugin'
 
 " @ Plugin --- [ Syntax ]
 Plug 'fatih/vim-go'
@@ -109,7 +109,9 @@ Plug 'Valloric/MatchTagAlways'
 Plug 'jordwalke/VimAutoMakeDirectory'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
-" Plug 'pseewald/vim-anyfold'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'arecarn/vim-fold-cycle'
+Plug 'pseewald/vim-anyfold'
 " Plug 'kopischke/vim-stay'
 " Plug 'Konfekt/FastFold'
 
@@ -123,7 +125,6 @@ Plug 'DemonCloud/J'
 
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
-" Plug 'ryanss/vim-hackernews'
 " Plug 'ap/vim-buftabline'
 Plug 'rizzatti/dash.vim'
 Plug 'farmergreg/vim-lastplace'
