@@ -9,6 +9,7 @@ call plug#begin('~/.vim/bundle/')
 " @ Plugin --- [ File Buffer Manager ]
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'unkiwii/vim-nerdtree-sync'
 Plug 'w0rp/ale'
 Plug 'yegappan/mru'
 Plug 'danro/rename.vim'
@@ -89,7 +90,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/xml.vim'
 Plug 'othree/html5.vim'
 Plug 'mxw/vim-jsx'
-" Plug 'chemzqm/vim-jsx-improve'
+Plug 'neoclide/vim-jsx-improve'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'bcicen/vim-jfmt' " brew install jq
@@ -106,7 +107,8 @@ Plug 'Chiel92/vim-autoformat'
 Plug 'majutsushi/tagbar'
 Plug 'Valloric/ListToggle'
 Plug 'Valloric/MatchTagAlways'
-Plug 'jordwalke/VimAutoMakeDirectory'
+Plug 'pbrisbin/vim-mkdir'
+" Plug 'jordwalke/VimAutoMakeDirectory'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
 Plug 'michaeljsmith/vim-indent-object'
