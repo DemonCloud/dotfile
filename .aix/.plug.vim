@@ -26,6 +26,7 @@ Plug 'tacahiroy/ctrlp-funky'
 " @ Plugin --- [ Code Sreach ]
 Plug 'rking/ag.vim'
 Plug 'brooth/far.vim'
+Plug 'rhysd/clever-f.vim'
 
 " @ Plugin --- [ View ]
 " Plug 'terryma/vim-smooth-scroll'
@@ -67,6 +68,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-unimpaired'
 " Plug 'tpope/vim-markdown'
 
 " Git all famliy
@@ -90,7 +92,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'othree/xml.vim'
 Plug 'othree/html5.vim'
 Plug 'mxw/vim-jsx'
-Plug 'neoclide/vim-jsx-improve'
+" Plug 'neoclide/vim-jsx-improve'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'bcicen/vim-jfmt' " brew install jq
@@ -108,7 +110,6 @@ Plug 'majutsushi/tagbar'
 Plug 'Valloric/ListToggle'
 Plug 'Valloric/MatchTagAlways'
 Plug 'pbrisbin/vim-mkdir'
-" Plug 'jordwalke/VimAutoMakeDirectory'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
 Plug 'michaeljsmith/vim-indent-object'
@@ -116,6 +117,11 @@ Plug 'arecarn/vim-fold-cycle'
 Plug 'pseewald/vim-anyfold'
 " Plug 'kopischke/vim-stay'
 " Plug 'Konfekt/FastFold'
+
+" @ Plugin --- [ TextObject ]
+Plug 'kana/vim-textobj-user'
+Plug 'kana/vim-textobj-entire' " ae, ie
+Plug 'kana/vim-textobj-line'
 
 " @ Plugin --- [ ColorScheme ]
 Plug 'DemonCloud/vim-buftabline'
