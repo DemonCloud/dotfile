@@ -20,7 +20,7 @@ vimrc has been maintained until now when I first started learning Vim, I used to
 **Imperfect support** for Vim and Neovim in **Terminal** or **Xterm**
 
 * `.vimrc | sysinit.vim`  -  [ entry ]
-* `.base.vim` - [ base universal config ] 
+* `.base.vim` - [ base universal config ]
 * `.ignore.vim` - [ ignore files ]
 * `.init.vim` - [ initialize config ]
 * `.keymap.vim` - [ Shortcut keymap config ]
@@ -60,9 +60,10 @@ Colorscheme supports most languages and plugins syntax
 
 Find in `fonts` directory：
 
-* `Aix.MacBookPro15.dfont`             - Mac OSX
-* `Aix.fon`                                         - Windows 7, 8, 10
-* `Aix.bdf`                                         - Linux
+* `Aix.MacBookPro15.dfont` - Mac OSX
+* `Aix.dfont`              - Mac OSX
+* `Aix.fon`                - Windows 7, 8, 10
+* `Aix.bdf`                - Linux
 
 <br>
 
@@ -76,7 +77,7 @@ start Vim and run ``:PlugInstall`` at first time
 
 <br>
 
-#### Window 
+#### Windows
 
 > by default, I do not intend to merge it to Windows, you can change the dotfile manual for need:
 
