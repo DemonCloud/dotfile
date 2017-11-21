@@ -5,10 +5,8 @@ module.exports = {
     commonjs: true,
     es6: true,
   },
-  parser: "babel-eslint",
-  plugins: [
-  	"react"
-  ],
+  parser: 'babel-eslint',
+  plugins: ['react'],
   globals: {
     ax: true,
     test: true,
@@ -17,11 +15,14 @@ module.exports = {
     require: true,
     exports: true,
   },
-  extends: ["eslint:recommended", "plugin:react/recommended"],
+  extends: ['eslint:recommended', 'plugin:react/recommended'],
   parserOptions: {
     sourceType: 'module',
   },
   rules: {
+    'react/no-string-refs': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'object-curly-spacing': 'off',
     'accessor-pairs': 'error',
     'array-bracket-newline': 'off',
     'array-bracket-spacing': 'off',
