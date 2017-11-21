@@ -79,6 +79,7 @@ start Vim and run ``:PlugInstall`` at first time
 #### Windows
 
 > by default, I do not intend to merge it to Windows
+
 > you can change the dotfile manual for need:
 
 <br>
@@ -104,6 +105,8 @@ start Vim and run ``:PlugInstall`` at first time
 `npm install -g eslint`
 
 `npm install -g eslint-plugn-react`
+
+`npm install -g eslint-config-google`
 
 `npm install -g stylelint`
 
