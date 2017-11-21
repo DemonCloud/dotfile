@@ -9,7 +9,7 @@ call plug#begin('~/.vim/bundle/')
 " @ Plugin --- [ File Buffer Manager ]
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'unkiwii/vim-nerdtree-sync'
+" Plug 'unkiwii/vim-nerdtree-sync'
 Plug 'w0rp/ale'
 Plug 'yegappan/mru'
 Plug 'danro/rename.vim'
