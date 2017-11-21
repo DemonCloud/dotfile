@@ -15,7 +15,7 @@ module.exports = {
     require: true,
     exports: true,
   },
-  extends: ['eslint:recommended', 'plugin:react/recommended'],
+  extends: ['eslint:recommended','google','plugin:react/recommended'],
   parserOptions: {
     sourceType: 'module',
   },
@@ -176,7 +176,6 @@ module.exports = {
     'no-with': 'error',
     'nonblock-statement-body-position': ['error', 'any'],
     'object-curly-newline': 'off',
-    'object-curly-spacing': ['error', 'always'],
     'object-property-newline': [
       'error',
       {
