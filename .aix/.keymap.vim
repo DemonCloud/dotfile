@@ -65,18 +65,18 @@ if(has("mac"))
 	nnoremap <D-2> :NERDTreeToggle<CR>
 	nnoremap <D-3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
 	nnoremap <D-4> mzgg=G`z
-
 	nnoremap <D-5> ggVG:RetabIndent<CR>
+	nnoremap <D-6> ggVG:Tab2Space<CR>
 	" Full Fucking Window ^M ending line file!
-	nnoremap <D-6> :%s////g
+	nnoremap <D-7> :%s////g<CR>
 else
 	nnoremap <F2> :NERDTreeToggle<CR>
 	nnoremap <F3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
 	nnoremap <F4> mzgg=G`z
-
-	nnoremap <F9> ggVG:RetabIndent<CR>
+	nnoremap <F8> ggVG:RetabIndent<CR>
+	nnoremap <F9> ggVG:Tab2Space<CR>
 	" Full Fucking Window ^M ending line file!
-	nnoremap <F10> :%s////g
+	nnoremap <F10> :%s////g<CR>
 endif
 
 " Normal Key Map
@@ -85,10 +85,10 @@ nnoremap Q :q!<CR>
 nnoremap W :w!<CR>
 
 " Window VertSplit switcher
-nnoremap <leader>hh <C-w>h
-nnoremap <leader>jj <C-w>j
-nnoremap <leader>kk <C-w>k
-nnoremap <leader>ll <C-w>l
+nnoremap <leader>h <C-w>h
+nnoremap <leader>j <C-w>j
+nnoremap <leader>k <C-w>k
+nnoremap <leader>l <C-w>l
 
 " Set as toggle foldcomment
 nnoremap zc @=((foldclosed(line('.')) < 0) ? 'zc' :'zo')<CR>
@@ -111,7 +111,6 @@ nnoremap <silent> g, g,zz
 " nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
 nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
 nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
-
 nnoremap <silent> <C-f> :call comfortable_motion#flick(200)<CR>
 nnoremap <silent> <C-b> :call comfortable_motion#flick(-200)<CR>
 
@@ -119,15 +118,15 @@ noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
 
 if(has('mac'))
-	cnoremap <D-j> <Down>
-	cnoremap <D-k> <Up>
-	" cnoremap <D-h> <Left>
-	" cnoremap <D-l> <Right>
-	inoremap <D-j> <Down>
-	inoremap <D-k> <Up>
-	inoremap <D-[> <ESC>
-	" inoremap <D-h> <Left>
-	" inoremap <D-l> <Right>
+	cnoremap <A-j> <Down>
+	cnoremap <A-k> <Up>
+	cnoremap <A-h> <Left>
+	cnoremap <A-l> <Right>
+	inoremap <A-j> <Down>
+	inoremap <A-k> <Up>
+	inoremap <A-[> <ESC>
+	inoremap <A-h> <Left>
+	inoremap <A-l> <Right>
 else
 	" Cursor Moving
 	cnoremap <A-j> <Down>
@@ -155,11 +154,9 @@ inoremap <C-f> <Home>
 inoremap <C-d> <Esc>VypA
 inoremap <C-w> <C-o>w
 inoremap <C-b> <C-o>b
-vnoremap <C-c> "+y
 
 " TabLine Tab configure KeyFire
 nnoremap <leader>t :tabnew<CR>
-nnoremap <leader>tn :tabnew<CR>
 nnoremap <leader>tl :tabnext<CR>
 nnoremap <leader>th :tabprevious<CR>
 nnoremap <leader>tx :tabclose<CR>
@@ -175,10 +172,8 @@ nnoremap <C-x> :bdelete<CR>
 
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
-nnoremap <C-v> <ESC>"+gpa
-cnoremap <C-v> <C-R>+
 
-" Repeat Preview Command
+" Repeat Preview 
 nnoremap <leader>. @:
 vnoremap <leader>. :normal .<CR>
 
@@ -206,8 +201,10 @@ nnoremap <leader>vu :PlugUpdate<CR>
 vnoremap <leader>t :Tabularize/
 vnoremap <leader>t= :Tabularize/=<CR>
 vnoremap <leader>t, :Tabularize/,<CR>
+vnoremap <leader>t. :Tabularize/.<CR>
 vnoremap <leader>t: :Tabularize/:<CR>
 vnoremap <leader>t; :Tabularize/;<CR>
+vnoremap <leader>t\ :Tabularize/\|<CR>
 
 " <leader>s: Spell checking shortcuts
 " fold enable settings
@@ -229,9 +226,11 @@ map J <Plug>(expand_region_shrink)
 " Incsearch
 " nnoremap / /\v
 " vnoremap / /\v
+" Ag bind \ (backward slash) to grep shortcut
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
 map g/ <Plug>(incsearch-stay)
+map \ :Ag<SPACE>
 
 map n <Plug>(is-nohl)<Plug>(anzu-N-with-echo)
 map N <Plug>(is-nohl)<Plug>(anzu-n-with-echo)
@@ -247,8 +246,6 @@ map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 " map # <Plug>(incsearch-nohl-#)zzzv
 " map g* <Plug>(incsearch-nohl-g*)zzzv
 " map g# <Plug>(incsearch-nohl-g#)zzzv
-
-nnoremap <leader>gm :!sh -xc 'git status \| fpp'<CR>
 
 " Vim-quickhl
 nmap <Space>m <Plug>(quickhl-manual-this)
@@ -267,6 +264,4 @@ nmap Y <Plug>(operator-flashy)$
 " Prettier
 nmap <Leader>py <Plug>(Prettier)
 
-" Ag bind \ (backward slash) to grep shortcut
-nnoremap \ :Ag<SPACE>
 " ========================= KeyFire Setting End =========================

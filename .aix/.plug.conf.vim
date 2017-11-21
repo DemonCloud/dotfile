@@ -23,6 +23,10 @@ let g:ale_linters = {
 \   'javascript': ['eslint'],
 \   'html': ['htmlhint'],
 \   'css': ['stylelint'],
+\   'md': ['mdl'],
+\   'markdown': ['mdl'],
+\   'sass' : ['scss_lint'],
+\   'scss' : ['scss_lint'],
 \}
 " set termguicolors
 let ayucolor="dark"   " for dark version of theme
@@ -83,7 +87,6 @@ endfunction
 " Emmet Config
 " change <Tab> config , if use [YouCompleteMe]
 let g:user_emmet_expandabbr_key ='<Tab>'
-
 let g:user_emmet_settings = {
 			\ 'php'     : {
 			\ 'extends' : 'html',
@@ -121,6 +124,7 @@ let g:multi_cursor_quit_key='<Esc>'
 " Vim incsearch
 let g:vim_search_pulse_disable_auto_mappings = 1
 let g:incsearch#auto_nohlsearch = 1
+
 " Python snytax configure
 let python_self_cls_highlight = 1
 
@@ -146,8 +150,8 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " Command-T
-let g:CommandTAcceptSelectionMap = '<C-t>'
-let g:CommandTAcceptSelectionTabMap = '<CR>'
+" let g:CommandTAcceptSelectionMap = '<C-t>'
+" let g:CommandTAcceptSelectionTabMap = '<CR>'
 
 let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit,FAR,far_vim"
 let g:lastplace_ignore_buftype = "quickfix,nofile,help,FAR,far_vim"
@@ -199,8 +203,6 @@ let g:far#auto_preview = 0
 set grepprg=ag\ --nogroup\ --nocolor
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
 let g:ctrlp_use_caching = 0
-
-let g:nerdtree_sync_cursorline = 1
 let g:xml_syntax_folding = 1
 
 " webdevicons
