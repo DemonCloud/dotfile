@@ -124,7 +124,7 @@ Plug 'kana/vim-textobj-entire' " ae, ie
 Plug 'kana/vim-textobj-line'
 
 " @ Plugin --- [ ColorScheme ]
-Plug 'DemonCloud/vim-buftabline'
+
 Plug 'DemonCloud/vim-autoclose'
 Plug 'DemonCloud/J'
 " Plug 'morhetz/gruvbox'
@@ -133,7 +133,7 @@ Plug 'DemonCloud/J'
 
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
-" Plug 'ap/vim-buftabline'
+Plug 'ap/vim-buftabline'
 Plug 'rizzatti/dash.vim'
 Plug 'farmergreg/vim-lastplace'
 Plug 'simeji/winresizer'

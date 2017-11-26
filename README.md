@@ -98,7 +98,7 @@ start Vim and run ``:PlugInstall`` at first time
 
 <br>
 
-> install package
+> Install package
 
 `pip3 install neovim`
 
@@ -115,3 +115,5 @@ start Vim and run ``:PlugInstall`` at first time
 `gem install mdl`
 
 `gem install scss_lint`
+
+`brew install jq`
