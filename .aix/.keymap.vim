@@ -264,4 +264,7 @@ nmap Y <Plug>(operator-flashy)$
 " Prettier
 nmap <Leader>py <Plug>(Prettier)
 
+" jsDoc
+nmap <silent> <C-l> <Plug>(jsdoc)
+
 " ========================= KeyFire Setting End =========================
