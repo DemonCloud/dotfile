@@ -52,13 +52,14 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
 " Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
+if !exists("g:gui_oni")
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+endif
 Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deol.nvim'
 Plug 'zchee/deoplete-go', { 'do': 'make' }
-Plug 'zchee/deoplete-zsh'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
 Plug 'wokalski/autocomplete-flow'
 
@@ -92,7 +93,7 @@ Plug 'mustache/vim-mustache-handlebars'
 Plug 'mxw/vim-jsx'
 Plug 'othree/xml.vim'
 Plug 'othree/html5.vim'
-" Plug 'neoclide/vim-jsx-improve'
+Plug 'neoclide/vim-jsx-improve'
 Plug 'ap/vim-css-color'
 Plug 'elzr/vim-json'
 Plug 'bcicen/vim-jfmt' " brew install jq
@@ -115,6 +116,7 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typ
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'arecarn/vim-fold-cycle'
 Plug 'pseewald/vim-anyfold'
+Plug 'ConradIrwin/vim-bracketed-paste'
 " Plug 'kopischke/vim-stay'
 " Plug 'Konfekt/FastFold'
 
@@ -126,23 +128,25 @@ Plug 'kana/vim-textobj-line'
 " @ Plugin --- [ ColorScheme ]
 
 Plug 'DemonCloud/vim-autoclose'
+
 Plug 'DemonCloud/J'
 " Plug 'morhetz/gruvbox'
 " Plug 'ayu-theme/ayu-vim'
-" Plug 'rakr/vim-one'
 
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
 Plug 'heavenshell/vim-jsdoc'
-Plug 'ap/vim-buftabline'
 Plug 'rizzatti/dash.vim'
 Plug 'farmergreg/vim-lastplace'
 Plug 'simeji/winresizer'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'MarcWeber/vim-addon-mw-utils'
+if !exists("g:gui_oni")
+" Plug 'ton/vim-bufsurf'
+Plug 'ap/vim-buftabline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'reedes/vim-pencil'
+endif
 " Plug 'ryanoasis/vim-devicons'
 
 " ---- Plug List Complete ----

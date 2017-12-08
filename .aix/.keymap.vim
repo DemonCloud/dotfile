@@ -3,20 +3,20 @@
 " -------------- Tooling Function Binding ------------------
 " Lookup HighLight Syntax Define
 function! <SID>SynStack()
-	echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
+    echo map(synstack(line('.'),col('.')),'synIDattr(v:val, "name")')
 endfunc
 
 " Return indent (all whitespace at start of a line), converted from
 " tabs to spaces if what = 1, or from spaces to tabs otherwise.
 " When converting to tabs, result has no redundant spaces.
 function! Indenting(indent, what, cols)
-	let spccol = repeat(' ', a:cols)
-	let result = substitute(a:indent, spccol, '\t', 'g')
-	let result = substitute(result, ' \+\ze\t', '', 'g')
-	if a:what == 1
-		let result = substitute(result, '\t', spccol, 'g')
-	endif
-	return result
+    let spccol = repeat(' ', a:cols)
+    let result = substitute(a:indent, spccol, '\t', 'g')
+    let result = substitute(result, ' \+\ze\t', '', 'g')
+    if a:what == 1
+        let result = substitute(result, '\t', spccol, 'g')
+    endif
+    return result
 endfunction
 
 " Convert whitespace used for indenting (before first non-whitespace).
@@ -25,11 +25,11 @@ endfunction
 " The cursor position is restored, but the cursor will be in a different
 " column when the number of characters in the indent of the line is changed.
 function! IndentConvert(line1, line2, what, cols)
-	let savepos = getpos('.')
-	let cols = empty(a:cols) ? &tabstop : a:cols
-	execute a:line1 . ',' . a:line2 . 's/^\s\+/\=Indenting(submatch(0), a:what, cols)/e'
-	call histdel('search', -1)
-	call setpos('.', savepos)
+    let savepos = getpos('.')
+    let cols = empty(a:cols) ? &tabstop : a:cols
+    execute a:line1 . ',' . a:line2 . 's/^\s\+/\=Indenting(submatch(0), a:what, cols)/e'
+    call histdel('search', -1)
+    call setpos('.', savepos)
 endfunction
 
 " Space2Tab
@@ -40,43 +40,43 @@ command! -nargs=? -range=% Tab2Space call IndentConvert(<line1>,<line2>,1,<q-arg
 command! -nargs=? -range=% RetabIndent call IndentConvert(<line1>,<line2>,&et,<q-args>)
 
 function! VisualSelection(direction, extra_filter) range
-	let l:saved_reg = @"
-	execute "normal! vgvy"
+    let l:saved_reg = @"
+    execute "normal! vgvy"
 
-	let l:pattern = escape(@", '\\/.*$^~[]')
-	let l:pattern = substitute(l:pattern, "\n$", "", "")
+    let l:pattern = escape(@", '\\/.*$^~[]')
+    let l:pattern = substitute(l:pattern, "\n$", "", "")
 
-	if a:direction == 'b'
-		execute "normal ?" . l:pattern . "^M"
-	elseif a:direction == 'ag'
-		execute 'Ag '.l:pattern
-	elseif a:direction == 'replace'
-		execut  "%s" . '/'. l:pattern . '/'
-	elseif a:direction == 'f'
-		execute "normal /" . l:pattern . "^M"
-	endif
+    if a:direction == 'b'
+        execute "normal ?" . l:pattern . "^M"
+    elseif a:direction == 'ag'
+        execute 'Ag '.l:pattern
+    elseif a:direction == 'replace'
+        execut  "%s" . '/'. l:pattern . '/'
+    elseif a:direction == 'f'
+        execute "normal /" . l:pattern . "^M"
+    endif
 
-	let @/ = l:pattern
-	let @" = l:saved_reg
+    let @/ = l:pattern
+    let @" = l:saved_reg
 endfunction
 " -------------- Tooling Function Ending ------------------
 
 if(has("mac"))
-	nnoremap <D-2> :NERDTreeToggle<CR>
-	nnoremap <D-3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-	nnoremap <D-4> mzgg=G`z
-	nnoremap <D-5> ggVG:RetabIndent<CR>
-	nnoremap <D-6> ggVG:Tab2Space<CR>
-	" Full Fucking Window ^M ending line file!
-	nnoremap <D-7> :%s////g<CR>
+    nnoremap <D-2> :NERDTreeToggle<CR>
+    nnoremap <D-3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+    nnoremap <D-4> mzgg=G`z
+    nnoremap <D-5> ggVG:RetabIndent<CR>
+    nnoremap <D-6> ggVG:Tab2Space<CR>
+    " Full Fucking Window ^M ending line file!
+    nnoremap <D-7> :%s////g<CR>
 else
-	nnoremap <F2> :NERDTreeToggle<CR>
-	nnoremap <F3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-	nnoremap <F4> mzgg=G`z
-	nnoremap <F8> ggVG:RetabIndent<CR>
-	nnoremap <F9> ggVG:Tab2Space<CR>
-	" Full Fucking Window ^M ending line file!
-	nnoremap <F10> :%s////g<CR>
+    nnoremap <F2> :NERDTreeToggle<CR>
+    nnoremap <F3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+    nnoremap <F4> mzgg=G`z
+    nnoremap <F8> ggVG:RetabIndent<CR>
+    nnoremap <F9> ggVG:Tab2Space<CR>
+    " Full Fucking Window ^M ending line file!
+    nnoremap <F10> :%s////g<CR>
 endif
 
 " Normal Key Map
@@ -118,34 +118,34 @@ noremap <silent> <ScrollWheelDown> :call comfortable_motion#flick(40)<CR>
 noremap <silent> <ScrollWheelUp>   :call comfortable_motion#flick(-40)<CR>
 
 if(has('mac'))
-	cnoremap <A-j> <Down>
-	cnoremap <A-k> <Up>
-	cnoremap <A-h> <Left>
-	cnoremap <A-l> <Right>
-	inoremap <A-j> <Down>
-	inoremap <A-k> <Up>
-	inoremap <A-[> <ESC>
-	inoremap <A-h> <Left>
-	inoremap <A-l> <Right>
+    cnoremap <A-j> <Down>
+    cnoremap <A-k> <Up>
+    cnoremap <A-h> <Left>
+    cnoremap <A-l> <Right>
+    inoremap <A-j> <Down>
+    inoremap <A-k> <Up>
+    inoremap <A-[> <ESC>
+    inoremap <A-h> <Left>
+    inoremap <A-l> <Right>
 else
-	" Cursor Moving
-	cnoremap <A-j> <Down>
-	cnoremap <A-k> <Up>
-	cnoremap <A-h> <Left>
-	cnoremap <A-l> <Right>
-	inoremap <A-j> <Down>
-	inoremap <A-k> <Up>
-	inoremap <A-h> <Left>
-	inoremap <A-l> <Right>
+    " Cursor Moving
+    cnoremap <A-j> <Down>
+    cnoremap <A-k> <Up>
+    cnoremap <A-h> <Left>
+    cnoremap <A-l> <Right>
+    inoremap <A-j> <Down>
+    inoremap <A-k> <Up>
+    inoremap <A-h> <Left>
+    inoremap <A-l> <Right>
 
-	cnoremap <M-j> <Down>
-	cnoremap <M-k> <Up>
-	cnoremap <M-h> <Left>
-	cnoremap <M-l> <Right>
-	inoremap <M-j> <Down>
-	inoremap <M-k> <Up>
-	inoremap <M-h> <Left>
-	inoremap <M-l> <Right>
+    cnoremap <M-j> <Down>
+    cnoremap <M-k> <Up>
+    cnoremap <M-h> <Left>
+    cnoremap <M-l> <Right>
+    inoremap <M-j> <Down>
+    inoremap <M-k> <Up>
+    inoremap <M-h> <Left>
+    inoremap <M-l> <Right>
 endif
 
 " Like Emacs
@@ -191,7 +191,7 @@ vnoremap <leader>y "+y
 vnoremap <leader>d "+d
 nnoremap <leader>cd :cd %:p:h<CR>
 nnoremap <leader>cp :let @+=expand("%:p")<CR>:echo "Copied current file
-			\ path '".expand("%:p")."' to clipboard"<CR>
+            \ path '".expand("%:p")."' to clipboard"<CR>
 
 " Vundle keyfire
 nnoremap <leader>vi :PlugInstall<CR>
