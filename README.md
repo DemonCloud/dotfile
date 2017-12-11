@@ -6,22 +6,30 @@
 
 vimrc has been maintained until now when I first started learning Vim, I used to distribute files for maintenance work, and make the configuration simpler than the messy folders of other people's dotfiles, which makes it hard to imagine and find where you really need to make changes. These configurations have been carefully sanitized for a long time to become best practices in my personal daily development, incorporating many of Geek's configuration experiences and key mapping settings, keep it simple and fast at the same time
 
-**Mainly perfect support** [**MacVim**](https://github.com/macvim-dev/macvim) and [**vimR(Neovim+Swift GUI)**](https://github.com/qvacua/vimr)
+**Mainly perfect support:**
 
-**Imperfect support** for Vim and Neovim in **Terminal** or **Xterm**
+[**MacVim**](https://github.com/macvim-dev/macvim)
 
-It just only focus **Mac OSX** platform, half-baked support **Linux**
+[**vimR(Neovim+Swift GUI)**](https://github.com/qvacua/vimr)
+
+[**Oni(Neovim+Electron GUI)**](https://github.com/onivim/oni)
+
+**Imperfect support** for **Vim 8.0+** and **Neovim** in **Terminal** or **Xterm**
+
+It just only focus **Mac OSX** platform, half-baked support **Linux**, if you care about **Windows7,8,10**, Maybe you just need to make some modifications to the configuration file.
 
 <br>
 
-* `.vimrc | sysinit.vim`  -  [ entry ]
-* `.base.vim` - [ base universal config ]
-* `.ignore.vim` - [ ignore files ]
-* `.init.vim` - [ initialize config ]
-* `.keymap.vim` - [ Shortcut keymap config ]
-* `.plug.vim` - [ plugin list ]
-* `.plug.conf.vim` - [ plugin config ]
-* `.style.vim` - [ colorscheme ]
+| File                  | annotation                 |
+| ----------------      | ----------------           |
+| `.vimrc, sysinit.vim` | [ entry ]                  |
+| `.base.vim`           | [ base universal config ]  |
+| `.ignore.vim`         | [ ignore files ]           |
+| `.init.vim`           | [ initialize config ]      |
+| `.keymap.vim`         | [ Shortcut keymap config ] |
+| `.plug.vim`           | [ plugin list ]            |
+| `.plug.conf.vim`      | [ plugin config ]          |
+| `.style.vim`          | [ colorscheme ]            |
 
 <br>
 
@@ -98,7 +106,7 @@ start Vim and run ``:PlugInstall`` at first time
 
 <br>
 
-> Install package
+> Install compatibility packages
 
 `pip3 install neovim`
 
