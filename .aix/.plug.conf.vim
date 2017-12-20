@@ -9,11 +9,11 @@ let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
 
 " use Aix.font
 if(has("gui_running"))
-    let g:airline_left_sep='◣'
-    let g:airline_right_sep='◥'
+  let g:airline_left_sep='◣'
+  let g:airline_right_sep='◥'
 else
-    let g:airline_left_sep=''
-    let g:airline_right_sep=''
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
 endif
 
 " Set Ale Cheacker
@@ -23,14 +23,14 @@ let g:ale_sign_warning = '*'
 " This can be useful if you are combining ALE with
 " some other plugin which sets quickfix errors, etc.
 let g:ale_linters = {
-\   'javascript': ['eslint'],
-\   'html': ['htmlhint'],
-\   'css': ['stylelint'],
-\   'md': ['mdl'],
-\   'markdown': ['mdl'],
-\   'sass' : ['scss_lint'],
-\   'scss' : ['scss_lint'],
-\}
+			\   'javascript': ['eslint'],
+			\   'html': ['htmlhint'],
+			\   'css': ['stylelint'],
+			\   'md': ['mdl'],
+			\   'markdown': ['mdl'],
+			\   'sass' : ['scss_lint'],
+			\   'scss' : ['scss_lint'],
+			\}
 " set termguicolors
 let ayucolor="dark"   " for dark version of theme
 " let ayucolor="light"  " for light version of theme
@@ -91,20 +91,20 @@ endfunction
 " change <Tab> config , if use [YouCompleteMe]
 let g:user_emmet_expandabbr_key ='<Tab>'
 let g:user_emmet_settings = {
-            \ 'php'     : {
-            \ 'extends' : 'html',
-            \ 'filters' : 'c',
-            \ },
-            \ 'xml'     : {
-            \ 'extends' : 'html',
-            \ },
-            \ 'haml'    : {
-            \ 'extends' : 'html',
-            \ },
-            \ 'phtml'    : {
-            \ 'extends' : 'html',
-            \ }
-            \}
+      \ 'php'     : {
+      \ 'extends' : 'html',
+      \ 'filters' : 'c',
+      \ },
+      \ 'xml'     : {
+      \ 'extends' : 'html',
+      \ },
+      \ 'haml'    : {
+      \ 'extends' : 'html',
+      \ },
+      \ 'phtml'    : {
+      \ 'extends' : 'html',
+      \ }
+      \}
 
 " GitGutter Setting
 let g:gitgutter_sign_column_always = 0
@@ -114,7 +114,7 @@ let g:gitgutter_max_signs = 99999
 let g:ackprg = "ag --nocolor --nogroup --column"
 set grepprg=ag\ --nogroup\ --nocolor
 if(!has('nvim'))
-    command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+  command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 endif
 
 " Multip Cursor
@@ -134,20 +134,20 @@ let python_self_cls_highlight = 1
 " ColorFul NERDTree Settings
 let g:NERDTreeRespectWildIgnore=1
 let g:NERDTreeDirArrows=0
-let g:NERDTreeDirArrowExpandable = '◌'
-let g:NERDTreeDirArrowCollapsible = '-'
+let g:NERDTreeDirArrowExpandable = '▷'
+let g:NERDTreeDirArrowCollapsible = '▼'
 let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "o",
-    \ "Staged"    : "*",
-    \ "Untracked" : "+",
-    \ "Renamed"   : ">",
-    \ "Unmerged"  : "=",
-    \ "Deleted"   : "-",
-    \ "Dirty"     : "×",
-    \ "Clean"     : "@",
-    \ 'Ignored'   : '☒',
-    \ "Unknown"   : "?"
-    \ }
+    	\ "Modified"  : "o",
+    	\ "Staged"    : "*",
+    	\ "Untracked" : "+",
+    	\ "Renamed"   : ">",
+    	\ "Unmerged"  : "=",
+    	\ "Deleted"   : "-",
+    	\ "Dirty"     : "×",
+    	\ "Clean"     : "@",
+    	\ 'Ignored'   : '☒',
+    	\ "Unknown"   : "?"
+    	\ }
 
 " auto complete
 let g:UltiSnipsExpandTrigger="<S-Tab>"

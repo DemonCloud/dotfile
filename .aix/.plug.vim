@@ -60,6 +60,7 @@ endif
 Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deol.nvim'
 Plug 'zchee/deoplete-go', { 'do': 'make' }
+Plug 'zchee/deoplete-zsh'
 Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
 Plug 'wokalski/autocomplete-flow'
 
@@ -136,6 +137,7 @@ Plug 'DemonCloud/J'
 
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
+" Plug 'ryanoasis/vim-devicons'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'rizzatti/dash.vim'
 Plug 'farmergreg/vim-lastplace'

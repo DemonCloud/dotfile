@@ -1,9 +1,12 @@
 " ========================= Normal Setting Start =========================
 "Set windows pos and resize init
 if(has('gui'))
-    set lines=38
-    set columns=80
+  set lines=38
+  set columns=80
 endif
+
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " ## Make its Gvim Like Windows behave ##
 " So you can use
@@ -114,51 +117,51 @@ set viminfo+=!
 " Diff GUI Vim with NVim
 " Set No Top Menu and Scroll
 if has("gui_running")
-    set guioptions-=e
-    set guioptions-=m
-    set guioptions-=T
-    set guioptions-=L
-    set guioptions-=r
-    set guioptions-=B
-    set guioptions-=0
-    set go=
-    set guitablabel=
-    set paste
-    " set mousemodel=popup_setpos
-    " set mouse-=a
-    "set guitablabel=%M\ %t
+  set guioptions-=e
+  set guioptions-=m
+  set guioptions-=T
+  set guioptions-=L
+  set guioptions-=r
+  set guioptions-=B
+  set guioptions-=0
+  set go=
+  set guitablabel=
+  set paste
+  " set mousemodel=popup_setpos
+  " set mouse-=a
+  "set guitablabel=%M\ %t
 
-    " Fonts Settings
-    "set guifont=ProfontWindows\ 9
-    "set guifont=IBM\ 3270\ Narrow\ Medium\ 10
-    if(has('win32'))
-        set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
-    elseif(has('osx'))
-        set guifont=Aix:h14
-        " set guifont=PragmataPro:h12
-    else
-        set guifont=Aix\ 9
-    endif
+  " Fonts Settings
+  "set guifont=ProfontWindows\ 9
+  "set guifont=IBM\ 3270\ Narrow\ Medium\ 10
+  if(has('win32'))
+    set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
+  elseif(has('osx'))
+    set guifont=Aix:h14
+    " set guifont=PragmataPro:h12
+  else
+    set guifont=Aix\ 9
+  endif
 
-    map <silent> <F1> :if &guioptions =~# 'T' <Bar>
-                \set guioptions-=T <Bar>
-                \set guioptions-=m <bar>
-                \else <Bar>
-                \set guioptions+=T <Bar>
-                \set guioptions+=m <Bar>
-                \endif<CR>
+  map <silent> <F1> :if &guioptions =~# 'T' <Bar>
+        \set guioptions-=T <Bar>
+        \set guioptions-=m <bar>
+        \else <Bar>
+        \set guioptions+=T <Bar>
+        \set guioptions+=m <Bar>
+        \endif<CR>
 else
-    set t_Co=256
-    set showtabline=2
-        set noimd
-    set ttimeoutlen=0
-    if len($TMUX) > 0
-        " set screen title to vim $PWD folder name - format 'v:folder'
-        set titlestring=v:%(%{fnamemodify(expand(\"$PWD\"),\":t\")}%)
-        set t_ts=k
-        set t_fs=\
-        set title
-    endif
+  set t_Co=256
+  set showtabline=2
+  set noimd
+  set ttimeoutlen=0
+  if len($TMUX) > 0
+    " set screen title to vim $PWD folder name - format 'v:folder'
+    set titlestring=v:%(%{fnamemodify(expand(\"$PWD\"),\":t\")}%)
+    set t_ts=k
+    set t_fs=\
+    set title
+  endif
 endif
 
 " Setting Spell Checker
@@ -176,10 +179,6 @@ set backspace=indent,eol,start
 " set list listchars=tab:▸\ ,extends:>,precedes:<
 set list listchars=tab:→\ ,extends:>,precedes:<
 
-let g:python2_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 au BufNewFile,BufRead *.vue set filetype=html
-au BufNewFile,BufRead *.ax,*.doom,*.handlebar,*.mustache set filetype=mustache
-au BufNewFile,BufReadPost *.md set filetype=markdown
+au BufNewFile,BufRead *.ax,*.handlebar,*.mustache set filetype=mustache
 " ========================= Normal Setting End =========================
