@@ -135,6 +135,7 @@ if has("gui_running")
   "set guifont=ProfontWindows\ 9
   "set guifont=IBM\ 3270\ Narrow\ Medium\ 10
   if(has('win32'))
+    " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
     set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
   elseif(has('osx'))
     set guifont=Aix:h14
@@ -180,5 +181,5 @@ set backspace=indent,eol,start
 set list listchars=tab:→\ ,extends:>,precedes:<
 
 au BufNewFile,BufRead *.vue set filetype=html
-au BufNewFile,BufRead *.ax,*.handlebar,*.mustache set filetype=mustache
+au BufNewFile,BufRead *.ax,*.handlebar,*.mustache,*.tpl,*.vm set filetype=mustache
 " ========================= Normal Setting End =========================
