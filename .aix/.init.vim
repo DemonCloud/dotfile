@@ -180,6 +180,7 @@ set backspace=indent,eol,start
 " set list listchars=tab:▸\ ,extends:>,precedes:<
 set list listchars=tab:→\ ,extends:>,precedes:<
 
-au BufNewFile,BufRead *.vue set filetype=html
-au BufNewFile,BufRead *.ax,*.handlebar,*.mustache,*.tpl,*.vm set filetype=mustache
+au BufNewFile,BufRead *.vue set ft=html
+au BufNewFile,BufRead *.ax,*.handlebar,*.mustache,*.tpl set ft=mustache
+au BufNewFile,BufRead *.vm,*.stm set ft=velocity
 " ========================= Normal Setting End =========================
