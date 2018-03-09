@@ -12,9 +12,9 @@ let g:airline_theme = "ayu_mirage"
 if(has("gui_running"))
   let g:airline_left_sep='◣'
   let g:airline_right_sep='◥'
-" else
-"   let g:airline_left_sep=''
-"   let g:airline_right_sep=''
+else
+  let g:airline_left_sep=''
+  let g:airline_right_sep=''
 endif
 
 " Set Ale Cheacker
