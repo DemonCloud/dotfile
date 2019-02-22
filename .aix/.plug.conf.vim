@@ -5,11 +5,12 @@ let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#branch#enabled = 0
 let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
-" let g:airline_theme = "zenburn"
 let g:airline_theme = "ayu_mirage"
+" let g:airline_theme = "zenburn"
+" let g:airline_theme = "onedark"
 
 " use Aix.font
-if(has("gui_running"))
+if(has("gui"))
   let g:airline_left_sep='◣'
   let g:airline_right_sep='◥'
 else
@@ -44,15 +45,6 @@ set rtp+=/usr/local/opt/fzf
 "------------------ Deopelete -------------------
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
-
-function! Multiple_cursors_before()
-  let b:deoplete_disable_auto_complete = 1
-endfunction
-
-function! Multiple_cursors_after()
-  let b:deoplete_disable_auto_complete = 0
-endfunction
-
 
 "------------------ YouCompleteMe -------------------
 " Linux vim && NeoVim Using YouCompleteMe
@@ -221,4 +213,14 @@ let g:xml_syntax_folding = 1
 " let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
 " let g:WebDevIconsOS = 'Darwin'
 
+" vim-closetag
+let g:closetag_filetypes = 'html,xhtml,phtml,ax,vue,jsx,js,ts,tsx,cubec,handlebars,mustache'
+
+function g:Multiple_cursors_before()
+  call deoplete#custom#buffer_option('auto_complete', v:false)
+endfunction
+
+function g:Multiple_cursors_after()
+  call deoplete#custom#buffer_option('auto_complete', v:true)
+endfunction
 "========================= Plugin Config End =========================

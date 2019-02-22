@@ -12,7 +12,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'unkiwii/vim-nerdtree-sync'
 Plug 'w0rp/ale'
 Plug 'yegappan/mru'
-Plug 'danro/rename.vim'
 Plug 'simnalamburt/vim-mundo'
 
 " MacVim 'n use fzf
@@ -52,17 +51,19 @@ Plug 'Shougo/neco-vim'
 Plug 'Shougo/neco-syntax'
 " Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 
-if !exists("g:gui_oni")
+" if !exists("g:gui_oni")
 Plug 'roxma/nvim-yarp'
 Plug 'roxma/vim-hug-neovim-rpc'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-endif
 Plug 'Shougo/deoppet.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deol.nvim'
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 Plug 'zchee/deoplete-go', { 'do': 'make' }
+Plug 'Shougo/deoplete-clang2'
 Plug 'zchee/deoplete-zsh'
-Plug 'carlitux/deoplete-ternjs', { 'do': 'yarn global upgrade tern' }
+" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm upgrade tern -g' }
 Plug 'wokalski/autocomplete-flow'
+" endif
 
 " @ Plugin --- [ VC Plug ]
 Plug 'tpope/vim-git'
@@ -71,6 +72,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-eunuch'
 " Plug 'tpope/vim-markdown'
 
 " Git all famliy
@@ -82,8 +84,10 @@ Plug 'chrisbra/vim-diff-enhanced'
 
 " @ Plugin --- [ Syntax ]
 Plug 'fatih/vim-go'
+Plug 'ajswis/vim-colorful-go'
 Plug 'kh3phr3n/python-syntax'
 Plug 'pangloss/vim-javascript'
+Plug 'Quramy/vim-js-pretty-template'
 Plug 'groenewege/vim-less'
 Plug 'lepture/vim-velocity'
 Plug 'cakebaker/scss-syntax.vim'
@@ -114,7 +118,7 @@ Plug 'majutsushi/tagbar'
 Plug 'Valloric/ListToggle'
 Plug 'Valloric/MatchTagAlways'
 Plug 'pbrisbin/vim-mkdir'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
+Plug 'prettier/vim-prettier', { 'do': 'npm install', 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql'] }
 
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'arecarn/vim-fold-cycle'
@@ -128,13 +132,14 @@ Plug 'kana/vim-textobj-user'
 Plug 'kana/vim-textobj-entire' " ae, ie
 Plug 'kana/vim-textobj-line'
 
-" @ Plugin --- [ ColorScheme ]
-
-Plug 'DemonCloud/vim-autoclose'
-
+" Plug 'DemonCloud/vim-autoclose'
+Plug 'alvan/vim-closetag'
+Plug 'Raimondi/delimitMate'
 Plug 'DemonCloud/J'
+Plug 'joshdick/onedark.vim'
+Plug 'ayu-theme/ayu-vim'
+
 " Plug 'morhetz/gruvbox'
-" Plug 'ayu-theme/ayu-vim'
 
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
@@ -145,12 +150,10 @@ Plug 'farmergreg/vim-lastplace'
 Plug 'simeji/winresizer'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'MarcWeber/vim-addon-mw-utils'
-if !exists("g:gui_oni")
 " Plug 'ton/vim-bufsurf'
 Plug 'ap/vim-buftabline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-endif
 " Plug 'ryanoasis/vim-devicons'
 
 " ---- Plug List Complete ----

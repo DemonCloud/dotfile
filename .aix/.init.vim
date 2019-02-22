@@ -136,12 +136,18 @@ if has("gui_running")
   "set guifont=IBM\ 3270\ Narrow\ Medium\ 10
   if(has('win32'))
     " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
-    set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
+    " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
+    set guifont=PragmataPro:h10
   elseif(has('osx'))
     set guifont=Aix:h14
     " set guifont=PragmataPro:h12
   else
     set guifont=Aix\ 9
+  endif
+
+  if exists('g:vv')
+    VVset fontfamily=PragmataPro
+    VVset fontsize=14
   endif
 
   map <silent> <F1> :if &guioptions =~# 'T' <Bar>
@@ -180,7 +186,16 @@ set backspace=indent,eol,start
 " set list listchars=tab:▸\ ,extends:>,precedes:<
 set list listchars=tab:→\ ,extends:>,precedes:<
 
+if exists("g:gui_oni")
+  let s:hidden_all = 1
+  set noshowmode
+  set noruler
+  set laststatus=0
+  set noshowcmd
+endif
+
+
 au BufNewFile,BufRead *.vue set ft=html
-au BufNewFile,BufRead *.ax,*.handlebar,*.mustache,*.tpl set ft=mustache
+au BufNewFile,BufRead *.cubec,*.ax,*.handlebar,*.mustache,*.tpl set ft=mustache
 au BufNewFile,BufRead *.vm,*.stm set ft=velocity
 " ========================= Normal Setting End =========================

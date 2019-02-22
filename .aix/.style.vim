@@ -2,6 +2,7 @@
 try
     " colorscheme ayu
     colorscheme J
+    " colorscheme onedark
     "colorscheme monochrome
     "colorscheme seoul256
     "colorscheme distinguished
