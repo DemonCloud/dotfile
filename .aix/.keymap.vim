@@ -61,23 +61,14 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 " -------------- Tooling Function Ending ------------------
 
-if(has("mac"))
-  nnoremap <D-2> :NERDTreeToggle<CR>
-  nnoremap <D-3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-  nnoremap <D-4> mzgg=G`z
-  nnoremap <D-5> ggVG:RetabIndent<CR>
-  nnoremap <D-6> ggVG:Tab2Space<CR>
-  " Full Fucking Window ^M ending line file!
-  nnoremap <D-7> :%s////g<CR>
-else
-  nnoremap <F2> :NERDTreeToggle<CR>
-  nnoremap <F3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
-  nnoremap <F4> mzgg=G`z
-  nnoremap <F8> ggVG:RetabIndent<CR>
-  nnoremap <F9> ggVG:Tab2Space<CR>
-  " Full Fucking Window ^M ending line file!
-  nnoremap <F10> :%s////g<CR>
-endif
+" use vimR without keymap
+" if(has("mac"))
+"   nnoremap <D-2> :NERDTreeToggle<CR>
+"   nnoremap <D-3> :exec exists('syntax_on') ? 'syn off': 'syn on'<CR>
+"   nnoremap <D-4> mzgg=G`z
+"   nnoremap <D-5> ggVG:RetabIndent<CR>
+"   nnoremap <D-6> ggVG:Tab2Space<CR>
+" endif
 
 " Normal Key Map
 nnoremap U :redo<CR>
@@ -174,7 +165,7 @@ nnoremap <C-x> :bdelete<CR>
 " Check Vim Syntax name Fn
 nnoremap <leader>yi :call <SID>SynStack()<CR>
 
-" Repeat Preview 
+" Repeat Preview
 nnoremap <leader>. @:
 vnoremap <leader>. :normal .<CR>
 
@@ -219,6 +210,7 @@ nnoremap <leader>sf z=
 " Multi Cursor Find
 vnoremap <leader>mf :MultipleCursorsFind
 vnoremap <leader>f :call VisualSelection('ag', '')<CR>
+nnoremap <leader>ff ggVG:Tab2Space<CR>
 
 " Multi Expand Region
 map K <Plug>(expand_region_expand)
@@ -249,13 +241,10 @@ map g# <Plug>(asterisk-gz#)<Plug>(is-nohl-1)
 " map g# <Plug>(incsearch-nohl-g#)zzzv
 
 " Vim-quickhl
-nmap <Space>m <Plug>(quickhl-manual-this)
-xmap <Space>m <Plug>(quickhl-manual-this)
-nmap <Space>M <Plug>(quickhl-manual-reset)
-xmap <Space>M <Plug>(quickhl-manual-reset)
-
-" Emmet
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+nmap <leader>m <Plug>(quickhl-manual-this)
+xmap <leader>m <Plug>(quickhl-manual-this)
+nmap <leader>M <Plug>(quickhl-manual-reset)
+xmap <leader>M <Plug>(quickhl-manual-reset)
 
 " vim-operator-flashy
 " Highlight yanked area
@@ -263,9 +252,26 @@ map y <Plug>(operator-flashy)
 nmap Y <Plug>(operator-flashy)$
 
 " Prettier
-nmap <Leader>py <Plug>(Prettier)
+" nmap <Leader>py <Plug>(Prettier)
 
 " jsDoc
 nmap <silent> <C-l> <Plug>(jsdoc)
 
+" coc
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+vmap <leader>py  <Plug>(coc-format-selected)
+xmap <leader>py  <Plug>(coc-format-selected)
+nmap <leader>py  <Plug>(coc-format)
 " ========================= KeyFire Setting End =========================

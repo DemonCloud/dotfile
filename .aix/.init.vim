@@ -5,7 +5,7 @@ if(has('gui'))
   set columns=80
 endif
 
-let g:python2_host_prog = '/usr/local/bin/python'
+let g:python_host_prog = '/usr/local/bin/python2'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
 " ## Make its Gvim Like Windows behave ##
@@ -26,6 +26,7 @@ set shiftwidth=2 "4
 set softtabstop=0 "4
 " set expandtab
 set noexpandtab
+" set modifiable
 
 set autowrite
 set display=lastline
@@ -134,21 +135,16 @@ if has("gui_running")
   " Fonts Settings
   "set guifont=ProfontWindows\ 9
   "set guifont=IBM\ 3270\ Narrow\ Medium\ 10
-  if(has('win32'))
-    " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
-    " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
-    set guifont=PragmataPro:h10
-  elseif(has('osx'))
-    set guifont=Aix:h14
-    " set guifont=PragmataPro:h12
-  else
-    set guifont=Aix\ 9
-  endif
-
-  if exists('g:vv')
-    VVset fontfamily=PragmataPro
-    VVset fontsize=14
-  endif
+  " if(has('win32'))
+  "   " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
+  "   " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
+  "   set guifont=PragmataPro:h10
+  " elseif(has('osx'))
+  "   set guifont=Aix:h14
+  "   " set guifont=PragmataPro:h12
+  " else
+  "   set guifont=Aix\ 9
+  " endif
 
   map <silent> <F1> :if &guioptions =~# 'T' <Bar>
         \set guioptions-=T <Bar>
@@ -174,7 +170,7 @@ endif
 " Setting Spell Checker
 set spelllang=en_us                      " spelling options
 set spellfile=~/.vim/spell/en.utf-8.add  " spell files added with `zg`
-set dictionary+=/usr/share/dict/words
+"set dictionary+=/usr/share/dict/words
 
 " Fix Fucking Vim Prefix for GTK
 set backspace=indent,eol,start
@@ -186,16 +182,9 @@ set backspace=indent,eol,start
 " set list listchars=tab:▸\ ,extends:>,precedes:<
 set list listchars=tab:→\ ,extends:>,precedes:<
 
-if exists("g:gui_oni")
-  let s:hidden_all = 1
-  set noshowmode
-  set noruler
-  set laststatus=0
-  set noshowcmd
-endif
-
-
 au BufNewFile,BufRead *.vue set ft=html
 au BufNewFile,BufRead *.cubec,*.ax,*.handlebar,*.mustache,*.tpl set ft=mustache
 au BufNewFile,BufRead *.vm,*.stm set ft=velocity
+au BufRead *.ts set ft=typescript
+au BufRead *.rs set ft=rust
 " ========================= Normal Setting End =========================

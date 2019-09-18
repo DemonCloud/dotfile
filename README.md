@@ -8,13 +8,7 @@ vimrc has been maintained until now when I first started learning Vim, I used to
 
 **Mainly perfect support:**
 
-[**MacVim**](https://github.com/macvim-dev/macvim)
-
 [**vimR(Neovim+Swift GUI)**](https://github.com/qvacua/vimr)
-
-[**Oni(Neovim+Electron GUI)**](https://github.com/onivim/oni)
-
-**Imperfect support** for **Vim 8.0+** and **Neovim** in **Terminal** or **Xterm**
 
 It just only focus **Mac OSX** platform, half-baked support **Linux**, if you care about **Windows7,8,10**, Maybe you just need to make some modifications to the configuration file.
 
@@ -33,49 +27,6 @@ It just only focus **Mac OSX** platform, half-baked support **Linux**, if you ca
 
 <br>
 
-#### Theme
-
-[J - The Yijun's Vim ColorScheme](https://github.com/DemonCloud/J)
-
-> Full Screen Preview
-
-![YiJun's Vim](http://7j1zwt.com1.z0.glb.clouddn.com/%E5%B1%8F%E5%B9%95%E5%BF%AB%E7%85%A7%202017-11-05%20%E4%B8%8B%E5%8D%883.21.32.png)
-
-The ColorScheme supports most languages and plugins syntax
-
-- [x] HTML
-- [x] CSS
-- [x] Less
-- [x] Sass
-- [x] JavaScript
-- [x] TypeScript
-- [x] JSX
-- [x] XML
-- [x] JSON
-- [x] C
-- [x] Python
-- [x] Go
-- [x] Shell
-- [x] VimL
-- [ ] PHP (unfinished)
-
-<br>
-
-#### Font
-
-**Aix** is my personal collection of font.
-
-Find in `fonts` directory：
-
-* `Aix.MacBookPro15.dfont` - Mac OSX
-* `Aix.dfont`              - Mac OSX
-* `Aix.fon`                - Windows 7, 8, 10
-* `Aix.bdf`                - Linux
-
-<br>
-
-## QUICK INSTALL
-
 #### OSX & Linux
 
 run ``./install.sh``
@@ -92,10 +43,6 @@ start Vim and run ``:PlugInstall`` at first time
 
 <br>
 
-![YiJun's Vim](http://7j1zwt.com1.z0.glb.clouddn.com/2017-06-20_081950.png)
-
-<br>
-
 ## Required
 
  \+ Python3
@@ -108,20 +55,16 @@ start Vim and run ``:PlugInstall`` at first time
 
 > Install compatibility packages
 
+`pip2 install neovim`
+
 `pip3 install neovim`
+
+`npm install -g neovim`
 
 `npm install -g eslint`
 
-`npm install -g eslint-plugn-react`
-
-`npm install -g eslint-config-google`
-
-`npm install -g stylelint`
-
-`npm install -g tern`
+`gem install neovim`
 
 `gem install mdl`
-
-`gem install scss_lint`
 
 `brew install jq`

@@ -3,7 +3,7 @@
 
 
 " Set Linux Debian Desktop
-runtime! debian.vim
+" runtime! debian.vim
 
 " Not complete with Vi Mode
 set nocompatible
