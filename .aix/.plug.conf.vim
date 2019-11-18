@@ -5,10 +5,11 @@ let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
 let g:airline#extensions#branch#enabled = 0
 let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
-let g:airline_theme = "distinguished"
+" let g:airline_theme = "ayu-dark"
+" let g:airline_theme = "distinguished"
 " let g:airline_theme = "zenburn"
-" let g:airline_theme = "onedark"
-  
+let g:airline_theme = "onedark"
+
 let g:airline_left_sep=''
 let g:airline_right_sep=''
 " use Aix.font
@@ -330,4 +331,23 @@ let g:coc_snippet_next = '<tab>'
 let g:coc_snippet_prev = '<s-tab>'
 let g:vim_jsx_pretty_colorful_config = 1 " default 0
 
+let g:markdown_fenced_languages = [
+      \ 'vim',
+      \ 'help'
+      \]
+
+" bagrat/vim-buffet
+let g:buffet_always_show_tabline = 1
+let g:buffet_use_devicons = 1
+let g:buffet_tab_icon = "≡"
+" let g:buffet_max_plug = 3
+let g:buffet_new_buffer_name = "⇲"
+
+function! g:BuffetSetCustomColors()
+  hi! link BuffetTrunc TablineExp
+  hi! link BuffetCurrentBuffer TabLineExp
+  hi! link BuffetActiveBuffer TabLine
+  hi! link BuffetTab TablineSel
+  hi! link BuffetBuffer TablineFill
+endfunction
 "========================= Plugin Config End =========================

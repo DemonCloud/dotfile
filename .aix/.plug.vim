@@ -46,6 +46,10 @@ Plug 'haya14busa/is.vim'
 " Plug 'markonm/traces.vim'
 
 " @ Plugin --- [ Code Complete Unity ]
+if(has('gui'))
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+endif
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Plug 'Raimondi/delimitMate'
@@ -61,8 +65,6 @@ Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
 " Plug 'ycm-core/YouCompleteMe'
 " Plug 'mattn/emmet-vim'
 
-" Plug 'roxma/nvim-yarp'
-" Plug 'roxma/vim-hug-neovim-rpc'
 " Plug 'Shougo/vimproc', { 'do': 'make' }
 " Plug 'Shougo/context_filetype.vim'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -167,6 +169,9 @@ Plug 'ayu-theme/ayu-vim'
 
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
+Plug 'ap/vim-buftabline'
+" Plug 'bagrat/vim-buffet'
+Plug 'thaerkh/vim-workspace'
 Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/goyo.vim'
 Plug 'rizzatti/dash.vim'
@@ -175,7 +180,6 @@ Plug 'simeji/winresizer'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'ton/vim-bufsurf'
-Plug 'ap/vim-buftabline'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
