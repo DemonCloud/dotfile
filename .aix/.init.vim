@@ -35,7 +35,7 @@ set display=lastline
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,latin1
-set termencoding=utf-8
+set termguicolors
 language messages en_US.utf-8
 
 " For indent
@@ -79,7 +79,9 @@ set winaltkeys=no
 " Advance config
 set magic
 set lazyredraw
-" set ttyfast
+" set redrawtime=100000
+set synmaxcol=0
+set ttyfast
 set hidden
 "set autochdir
 set autoread
@@ -117,55 +119,19 @@ set viminfo+=!
 
 " Diff GUI Vim with NVim
 " Set No Top Menu and Scroll
-if has("gui_running")
-  set guioptions-=e
-  set guioptions-=m
-  set guioptions-=T
-  set guioptions-=L
-  set guioptions-=r
-  set guioptions-=B
-  set guioptions-=0
-  set go=
-  set guitablabel=
-  set paste
-  " set mousemodel=popup_setpos
-  " set mouse-=a
-  "set guitablabel=%M\ %t
+set guioptions-=e
+set guioptions-=m
+set guioptions-=T
+set guioptions-=L
+set guioptions-=r
+set guioptions-=B
+set guioptions-=0
+set go=
+set guitablabel=
+" set paste
 
-  " Fonts Settings
-  "set guifont=ProfontWindows\ 9
-  "set guifont=IBM\ 3270\ Narrow\ Medium\ 10
-  " if(has('win32'))
-  "   " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
-  "   " set guifont=Consolas_for_Powerline_FixedD:h10:cANSI
-  "   set guifont=PragmataPro:h10
-  " elseif(has('osx'))
-  "   set guifont=Aix:h14
-  "   " set guifont=PragmataPro:h12
-  " else
-  "   set guifont=Aix\ 9
-  " endif
-
-  map <silent> <F1> :if &guioptions =~# 'T' <Bar>
-        \set guioptions-=T <Bar>
-        \set guioptions-=m <bar>
-        \else <Bar>
-        \set guioptions+=T <Bar>
-        \set guioptions+=m <Bar>
-        \endif<CR>
-else
-  set t_Co=256
-  set showtabline=2
-  set noimd
-  set ttimeoutlen=0
-  if len($TMUX) > 0
-    " set screen title to vim $PWD folder name - format 'v:folder'
-    set titlestring=v:%(%{fnamemodify(expand(\"$PWD\"),\":t\")}%)
-    set t_ts=k
-    set t_fs=\
-    set title
-  endif
-endif
+" set guifont=PragmataProMono\ Nerd\ Font:h15
+" set guifont=VictorMono\ Nerd\ Font\ Mono:h14
 
 " Setting Spell Checker
 set spelllang=en_us                      " spelling options

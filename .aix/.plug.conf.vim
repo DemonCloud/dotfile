@@ -3,15 +3,20 @@
 " AirLine
 let g:airline_powerline_fonts = 1
 let g:airline_skip_empty_sections = 1
-let g:airline#extensions#branch#enabled = 0
-let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
+let g:airline#extensions#branch#enabled = 1
+" let g:airline#parts#ffenc#skip_expected_string = 'utf-8[unix]'
+let g:airline_theme = "onedark"
 " let g:airline_theme = "ayu-dark"
 " let g:airline_theme = "distinguished"
 " let g:airline_theme = "zenburn"
-let g:airline_theme = "onedark"
 
-let g:airline_left_sep=''
-let g:airline_right_sep=''
+" let g:airline_left_sep = ''
+" let g:airline_left_alt_sep = ''
+" let g:airline_right_sep = ''
+" let g:airline_right_alt_sep = ''
+
+" let g:airline_left_sep=''
+" let g:airline_right_sep=''
 " use Aix.font
 " if(has("gui"))
 "   let g:airline_left_sep='◣'
@@ -245,14 +250,22 @@ let g:xml_syntax_folding = 1
 
 " webdevicons
 let g:webdevicons_enable = 1
+" devIcons for NerdTree
 let g:webdevicons_enable_nerdtree = 1
-let g:webdevicons_enable_airline_statusline = 1
-let g:webdevicons_enable_airline_tabline = 1
-let g:webdevicons_enable_ctrlp = 1
-let g:WebDevIconsUnicodeDecorateFileNodes = 1
 let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 0
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ''
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+" devIcons for AirLine
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:WebDevIconsTabAirLineAfterGlyphPadding = ' '
+let g:WebDevIconsTabAirLineBeforeGlyphPadding = ' '
+" devIcons for CtrlP
+let g:webdevicons_enable_ctrlp = 1
+" devIcons base config
+let g:WebDevIconsUnicodeDecorateFileNodes = 1
+let g:WebDevIconsUnicodeGlyphDoubleWidth = 1
+
 let g:WebDevIconsOS = 'Darwin'
 
 " scrooloose/nerdcommenter
@@ -337,17 +350,36 @@ let g:markdown_fenced_languages = [
       \]
 
 " bagrat/vim-buffet
-let g:buffet_always_show_tabline = 1
-let g:buffet_use_devicons = 1
-let g:buffet_tab_icon = "≡"
+" let g:buffet_always_show_tabline = 1
+" let g:buffet_use_devicons = 1
+" let g:buffet_tab_icon = "≡"
 " let g:buffet_max_plug = 3
-let g:buffet_new_buffer_name = "⇲"
+" let g:buffet_new_buffer_name = "⇲"
 
-function! g:BuffetSetCustomColors()
-  hi! link BuffetTrunc TablineExp
-  hi! link BuffetCurrentBuffer TabLineExp
-  hi! link BuffetActiveBuffer TabLine
-  hi! link BuffetTab TablineSel
-  hi! link BuffetBuffer TablineFill
-endfunction
+" function! g:BuffetSetCustomColors()
+"   hi! link BuffetTrunc TablineExp
+"   hi! link BuffetCurrentBuffer TabLineExp
+"   hi! link BuffetActiveBuffer TabLine
+"   hi! link BuffetTab TablineSel
+"   hi! link BuffetBuffer TablineFill
+" endfunction
+
+" vim-xtabline
+let g:xtabline_settings = {}
+let g:xtabline_settings.enabled = 1
+let g:xtabline_settings.buffers_paths = 0
+let g:xtabline_settings.other_tabs_paths = 0
+let g:xtabline_settings.current_tab_paths = 0
+let g:xtabline_settings.tab_icon = ["≡", "⇲"]
+" vim-Illuminate
+let g:Illuminate_delay = 1
+
+" vim-visual-multi
+let g:VM_disable_syntax_in_imode = 1
+let g:VM_Extend_hl = "illuminatedWord"
+let g:VM_Mono_hl = "illuminatedWord"
+let g:VM_Extend_hl = "illuminatedWord"
+let g:VM_Cursor_hl = "illuminatedWord"
+let g:VM_Insert_hl = "illuminatedWord"
+
 "========================= Plugin Config End =========================

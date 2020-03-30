@@ -100,6 +100,7 @@ nnoremap <silent> g, g,zz
 " Smooth Scroll the terminal
 " nnoremap <silent> <C-u> :call smooth_scroll#up(&scroll, 0, 2)<CR>
 " nnoremap <silent> <C-d> :call smooth_scroll#down(&scroll, 0, 2)<CR>
+
 nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
 nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
 nnoremap <silent> <C-f> :call comfortable_motion#flick(200)<CR>

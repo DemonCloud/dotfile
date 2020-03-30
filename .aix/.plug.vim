@@ -34,11 +34,14 @@ Plug 'rhysd/clever-f.vim'
 
 " @ Plugin --- [ View ]
 Plug 'yuttie/comfortable-motion.vim'
-Plug 'terryma/vim-multiple-cursors'
+" Plug 'psliwka/vim-smoothie'
+" Plug 'terryma/vim-multiple-cursors'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'terryma/vim-expand-region'
 Plug 'kana/vim-operator-user'
 Plug 'osyo-manga/vim-anzu'
-Plug 'itchyny/vim-cursorword'
+" Plug 'itchyny/vim-cursorword'
+Plug 'RRethy/vim-illuminate'
 Plug 'haya14busa/vim-operator-flashy'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/vim-asterisk'
@@ -46,10 +49,11 @@ Plug 'haya14busa/is.vim'
 " Plug 'markonm/traces.vim'
 
 " @ Plugin --- [ Code Complete Unity ]
-if(has('gui'))
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" for vim8
+" if(has('gui'))
+" Plug 'roxma/nvim-yarp'
+" Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Plug 'Raimondi/delimitMate'
@@ -60,7 +64,7 @@ Plug 'Shougo/neco-syntax'
 Plug 'Shougo/neoinclude.vim'
 Plug 'neoclide/coc-neco'
 Plug 'jsfaint/coc-neoinclude'
-Plug 'neoclide/coc.nvim', {'tag': '*', 'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 " Plug 'ycm-core/YouCompleteMe'
 " Plug 'mattn/emmet-vim'
@@ -109,13 +113,14 @@ Plug 'ajswis/vim-colorful-go'
 Plug 'kh3phr3n/python-syntax'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
+" Plug 'yuezk/vim-js'
 Plug 'digitaltoad/vim-pug'
 " Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'groenewege/vim-less'
 Plug 'lepture/vim-velocity'
 Plug 'cakebaker/scss-syntax.vim'
 Plug 'hail2u/vim-css3-syntax'
-Plug 'leafgarland/typescript-vim'
+" Plug 'leafgarland/typescript-vim'
 Plug 'jason0x43/vim-js-indent'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Quramy/tsuquyomi'
@@ -164,12 +169,14 @@ Plug 'kana/vim-textobj-line'
 
 Plug 'DemonCloud/J'
 Plug 'joshdick/onedark.vim'
+Plug 'fenetikm/falcon'
 Plug 'ayu-theme/ayu-vim'
 " Plug 'morhetz/gruvbox'
 
 " Plug 'gregsexton/gitv'
 " Plug 'bagrat/vim-workspace'
-Plug 'ap/vim-buftabline'
+" Plug 'ap/vim-buftabline'
+Plug 'mg979/vim-xtabline'
 " Plug 'bagrat/vim-buffet'
 Plug 'thaerkh/vim-workspace'
 Plug 'ryanoasis/vim-devicons'
